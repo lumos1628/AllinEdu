@@ -34,6 +34,14 @@ public class AuthServiceImpl implements AuthService {
         }
 
         String token = tokenProvider.generateToken(user);
-        return new LoginResponse(token, user.getId(), user.getName(), user.getEmail(), user.getRole().name());
+        return new LoginResponse(
+                token,
+                user.getId(),
+                user.getName(),
+                user.getEmail(),
+                user.getRole().name(),
+                user.getRoleScope() == null ? null : user.getRoleScope().name(),
+                user.getEducationLevelId(),
+                user.getSupervisorUserId());
     }
 }

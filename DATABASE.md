@@ -116,6 +116,14 @@ Actividades y comunicación:
 
 El registro de “no entregada” solo se crea al ser confirmado por un actor autorizado; no se infiere por ausencia de archivo. El evento de notificación es idempotente y puede producir distintas entregas por destinatario/dispositivo.
 
+### `20260928000400_roles_y_alcances_personal.sql`
+
+- Agrega el rol de acceso `SECRETARIA`.
+- `asignaciones_roles.nivel_educativo_id` delimita asignaciones de dirección por nivel; `NULL` representa alcance institucional.
+- `asignaciones_roles.reporta_a_cuenta_usuario_id` registra la relación de supervisión de una asignación, por ejemplo, una secretaria que reporta a la dirección general.
+- `asignaciones_docentes.funcion` distingue a un docente regular de un auxiliar. Ambos usan el rol de acceso `DOCENTE`.
+- Habilita `pgcrypto` para que el generador de datos de desarrollo convierta la contraseña configurada en un hash BCrypt sin guardarla en los archivos del repositorio.
+
 ## Restricciones críticas
 
 - `UNIQUE(institucion_id, anio_escolar_id, grado_id, nombre)` en secciones.
@@ -132,7 +140,8 @@ El registro de “no entregada” solo se crea al ser confirmado por un actor au
 ## Supabase, seguridad y migraciones
 
 - Aplicar migraciones con Supabase CLI (`supabase db push`), después de enlazar el proyecto local al proyecto Supabase.
-- Ejecutar `supabase/seed.sql` solo en la base de desarrollo/demo. Genera información sintética: 6 grados de primaria, 5 de secundaria, 2 secciones por grado, 18 estudiantes por sección (396 en total), una cuenta docente y una cuenta apoderado vinculada a un estudiante. La contraseña de prueba de ambas cuentas es `123456`.
+- Ejecutar `supabase/seed.sql` solo en desarrollo. El generador crea 2 secciones por grado y una cantidad configurable de estudiantes por sección (10 por defecto); genera una relación de apoderado para cada estudiante y agrupa hermanos mediante el parámetro `EDUFAST_DEMO_SIBLING_PAIRS`. Crea cuentas sintéticas solo para personal adulto y apoderados, nunca para estudiantes. Los correos de prueba usan `EDUFAST_DEMO_EMAIL_DOMAIN` y el hash de contraseña se deriva de `EDUFAST_DEMO_PASSWORD`, ambos definidos localmente en `backend/.env`. Las notificaciones de las relaciones demo quedan desactivadas mientras sus contactos ficticios no estén verificados.
+- La semilla dinámica no se ejecuta automáticamente desde Supabase CLI. En local, usa `supabase db reset` y luego ejecútala con `psql` contra el puerto local configurado. En un proyecto remoto de desarrollo, despliega primero las migraciones con `supabase db push` y ejecuta luego la semilla con `psql` usando la URI `SUPABASE_DB_URL`. No ejecutes la semilla en producción.
 - La clave de conexión solo vive en variables de entorno del backend. No agregar `service_role`, contraseña ni JWT secreto al repositorio.
 - El backend se conecta con un rol de servicio que ignora RLS (equivalente al usuario `postgres` o `service_role` de Supabase, o a un rol local con `BYPASSRLS`). Las políticas RLS están pensadas para bloquear el acceso directo de clientes (`anon`/`authenticated`); el backend nunca publica credenciales a web/móvil.
 - Las entidades JPA mapean estas tablas y Hibernate valida el esquema al arrancar (`ddl-auto=validate`); las migraciones son la única fuente de verdad de la estructura.

@@ -4,6 +4,7 @@ import com.edufast.application.dto.AttendanceRequest;
 import com.edufast.application.dto.AttendanceResponse;
 import com.edufast.domain.exception.NotFoundException;
 import com.edufast.domain.model.Attendance;
+import com.edufast.domain.model.EstadoJornada;
 import com.edufast.domain.model.Jornada;
 import com.edufast.domain.model.Role;
 import com.edufast.domain.model.Section;
@@ -61,10 +62,10 @@ class AttendanceServiceImplTest {
     @Test
     void tomarAsistenciaCreaJornadaConfirmada() {
         when(sectionService.getAssignedSection(professor, 1L)).thenReturn(section);
-        Jornada saved = new Jornada(5L, 1L, FECHA, "CONFIRMADA",
-                List.of(new Attendance(1L, FECHA, true)));
+        when(studentRepository.findBySectionId(1L)).thenReturn(List.of(student));
+        Jornada saved = new Jornada(5L, 1L, FECHA, EstadoJornada.CONFIRMADA,
+                List.of(new Attendance(1L, "Ana Torres", FECHA, true)));
         when(attendanceRepository.save(any(Jornada.class), eq(1L), eq(true))).thenReturn(saved);
-        when(studentRepository.findById(1L)).thenReturn(Optional.of(student));
 
         List<AttendanceResponse> results = attendanceService.takeAttendance(professor, 1L,
                 new AttendanceRequest(FECHA, List.of(new AttendanceRequest.AttendanceEntry(1L, true))));
@@ -78,8 +79,7 @@ class AttendanceServiceImplTest {
     @Test
     void tomarAsistenciaDeAlumnoNoMatriculadoLanzaExcepcion() {
         when(sectionService.getAssignedSection(professor, 1L)).thenReturn(section);
-        when(attendanceRepository.save(any(Jornada.class), eq(1L), eq(true)))
-                .thenThrow(new NotFoundException("El alumno no está matriculado en esta sección"));
+        when(studentRepository.findBySectionId(1L)).thenReturn(List.of());
 
         assertThrows(NotFoundException.class, () -> attendanceService.takeAttendance(professor, 1L,
                 new AttendanceRequest(FECHA, List.of(new AttendanceRequest.AttendanceEntry(1L, true)))));
@@ -88,10 +88,10 @@ class AttendanceServiceImplTest {
     @Test
     void tomarAsistenciaConAlumnoDuplicadoUsaLaUltimaEntrada() {
         when(sectionService.getAssignedSection(professor, 1L)).thenReturn(section);
-        Jornada saved = new Jornada(5L, 1L, FECHA, "CONFIRMADA",
-                List.of(new Attendance(1L, FECHA, false)));
+        when(studentRepository.findBySectionId(1L)).thenReturn(List.of(student));
+        Jornada saved = new Jornada(5L, 1L, FECHA, EstadoJornada.CONFIRMADA,
+                List.of(new Attendance(1L, "Ana Torres", FECHA, false)));
         when(attendanceRepository.save(any(Jornada.class), eq(1L), eq(true))).thenReturn(saved);
-        when(studentRepository.findById(1L)).thenReturn(Optional.of(student));
 
         List<AttendanceResponse> results = attendanceService.takeAttendance(professor, 1L,
                 new AttendanceRequest(FECHA, List.of(
@@ -105,15 +105,15 @@ class AttendanceServiceImplTest {
     @Test
     void verAsistenciaFiltraPorSeccionYFecha() {
         when(sectionService.getAssignedSection(professor, 1L)).thenReturn(section);
-        Jornada jornada = new Jornada(5L, 1L, FECHA, "CONFIRMADA",
-                List.of(new Attendance(1L, FECHA, true)));
+        Jornada jornada = new Jornada(5L, 1L, FECHA, EstadoJornada.CONFIRMADA,
+                List.of(new Attendance(1L, "Ana Torres", FECHA, true)));
         when(attendanceRepository.findBySectionAndDate(1L, FECHA)).thenReturn(Optional.of(jornada));
-        when(studentRepository.findById(1L)).thenReturn(Optional.of(student));
 
         List<AttendanceResponse> results = attendanceService.getAttendance(professor, 1L, FECHA);
 
         assertEquals(1, results.size());
         assertTrue(results.get(0).present());
+        assertEquals("Ana Torres", results.get(0).studentName());
     }
 
     @Test

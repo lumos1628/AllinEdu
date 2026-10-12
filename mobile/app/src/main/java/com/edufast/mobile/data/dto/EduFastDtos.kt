@@ -18,6 +18,9 @@ data class LoginResponseDto(
     val name: String,
     val email: String,
     val role: String,
+    val roleScope: String? = null,
+    val educationLevelId: Short? = null,
+    val supervisorUserId: Long? = null,
 )
 
 @Serializable

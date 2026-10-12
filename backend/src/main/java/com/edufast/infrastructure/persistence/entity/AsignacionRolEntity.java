@@ -20,6 +20,13 @@ public class AsignacionRolEntity {
     @JoinColumn(name = "rol_id")
     private RolEntity rol;
 
+    @Column(name = "nivel_educativo_id")
+    private Short nivelEducativoId;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "reporta_a_cuenta_usuario_id")
+    private CuentaUsuarioEntity reportaA;
+
     @Column(name = "vigente_desde", nullable = false)
     private LocalDate vigenteDesde;
 
@@ -46,6 +53,14 @@ public class AsignacionRolEntity {
 
     public RolEntity getRol() {
         return rol;
+    }
+
+    public Short getNivelEducativoId() {
+        return nivelEducativoId;
+    }
+
+    public CuentaUsuarioEntity getReportaA() {
+        return reportaA;
     }
 
     public LocalDate getVigenteDesde() {

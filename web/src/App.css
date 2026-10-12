@@ -82,6 +82,27 @@ input {
   font-size: 15px;
 }
 
+.password-field {
+  position: relative;
+}
+
+.password-field input {
+  width: 100%;
+  padding-right: 84px;
+}
+
+.password-field .toggle {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  transform: translateY(-50%);
+  padding: 4px 8px;
+  border: none;
+  background: none;
+  color: var(--primary);
+  font-size: 13px;
+}
+
 button {
   padding: 10px 14px;
   border: 1px solid var(--border);
@@ -118,13 +139,6 @@ button:disabled {
 .ok {
   color: var(--ok);
   font-weight: 600;
-}
-
-.hint {
-  color: var(--muted);
-  font-size: 13px;
-  margin-top: 16px;
-  text-align: center;
 }
 
 .course-grid {

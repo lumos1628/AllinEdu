@@ -8,6 +8,8 @@ import java.time.LocalDate;
 @Table(name = "ubicaciones_matricula")
 public class UbicacionMatriculaEntity {
 
+    private static final String MOTIVO_MATRICULA_INICIAL = "MATRICULA_INICIAL";
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -37,7 +39,7 @@ public class UbicacionMatriculaEntity {
         this.matricula = matricula;
         this.seccion = seccion;
         this.fechaInicio = fechaInicio;
-        this.motivo = "MATRICULA_INICIAL";
+        this.motivo = MOTIVO_MATRICULA_INICIAL;
     }
 
     public Long getId() {

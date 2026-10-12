@@ -3,6 +3,7 @@ package com.edufast.infrastructure.security;
 import com.edufast.domain.model.User;
 import com.edufast.domain.port.TokenProvider;
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
@@ -30,14 +31,24 @@ public class JwtService implements TokenProvider {
 
     @Override
     public String generateToken(User user) {
-        return Jwts.builder()
+        JwtBuilder builder = Jwts.builder()
                 .subject(user.getEmail())
                 .claim("uid", user.getId())
                 .claim("role", user.getRole().name())
                 .issuedAt(new Date())
-                .expiration(new Date(System.currentTimeMillis() + expirationMs))
-                .signWith(key)
-                .compact();
+                .expiration(new Date(System.currentTimeMillis() + expirationMs));
+
+        if (user.getRoleScope() != null) {
+            builder.claim("role_scope", user.getRoleScope().name());
+        }
+        if (user.getEducationLevelId() != null) {
+            builder.claim("education_level_id", user.getEducationLevelId());
+        }
+        if (user.getSupervisorUserId() != null) {
+            builder.claim("supervisor_user_id", user.getSupervisorUserId());
+        }
+
+        return builder.signWith(key).compact();
     }
 
     public Claims parseToken(String token) {

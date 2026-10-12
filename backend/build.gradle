@@ -36,6 +36,37 @@ dependencies {
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
+// Carga backend/.env (si existe) para que test y bootRun usen las credenciales
+// privadas de Supabase sin exportarlas a mano. Las variables del entorno real
+// tienen prioridad y los valores vacíos se ignoran (así un .env sin completar
+// no anula los defaults de application.properties). No imprime valores.
+def dotenv = [:]
+def dotenvFile = file('.env')
+if (dotenvFile.exists()) {
+	dotenvFile.eachLine('UTF-8') { rawLine ->
+		def line = rawLine.trim()
+		if (!line || line.startsWith('#') || !line.contains('=')) {
+			return
+		}
+		def idx = line.indexOf('=')
+		def key = line.substring(0, idx).trim()
+		def value = line.substring(idx + 1).trim()
+		if (value.length() >= 2 &&
+				((value.startsWith("'") && value.endsWith("'")) ||
+						(value.startsWith('"') && value.endsWith('"')))) {
+			value = value.substring(1, value.length() - 1)
+		}
+		if (key && value && !System.getenv().containsKey(key)) {
+			dotenv[key] = value
+		}
+	}
+}
+
 tasks.named('test') {
 	useJUnitPlatform()
+	environment dotenv
+}
+
+tasks.named('bootRun') {
+	environment dotenv
 }

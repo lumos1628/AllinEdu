@@ -14,6 +14,10 @@ class EduFastApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        repository = ApiEduFastRepository(TokenStore(this))
+        val baseUrl = BuildConfig.API_BASE_URL
+        check(baseUrl.isNotBlank()) {
+            "API_BASE_URL no está configurada. Define -Pedufast.apiBaseUrl para el build release."
+        }
+        repository = ApiEduFastRepository(TokenStore(this), baseUrl)
     }
 }

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { login } from '../services/api'
+import { login, NetworkError } from '../services/api'
 
 interface Props {
   onLogin: (name: string) => void
@@ -8,6 +8,7 @@ interface Props {
 export default function Login({ onLogin }: Props) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [showPassword, setShowPassword] = useState(false)
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
 
@@ -18,8 +19,8 @@ export default function Login({ onLogin }: Props) {
     try {
       const data = await login(email, password)
       onLogin(data.name)
-    } catch {
-      setError('Credenciales inválidas')
+    } catch (e) {
+      setError(e instanceof NetworkError ? 'Sin conexión con el servidor' : 'Credenciales inválidas')
     } finally {
       setLoading(false)
     }
@@ -37,19 +38,28 @@ export default function Login({ onLogin }: Props) {
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-        <input
-          type="password"
-          placeholder="Contraseña"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
+        <div className="password-field">
+          <input
+            type={showPassword ? 'text' : 'password'}
+            placeholder="Contraseña"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          <button
+            type="button"
+            className="toggle"
+            aria-label={showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'}
+            onClick={() => setShowPassword((visible) => !visible)}
+          >
+            {showPassword ? 'Ocultar' : 'Mostrar'}
+          </button>
+        </div>
         {error && <p className="error">{error}</p>}
         <button type="submit" disabled={loading}>
           {loading ? 'Entrando...' : 'Ingresar'}
         </button>
       </form>
-      <p className="hint">Demo: profesor@edufast.com / 123456</p>
     </div>
   )
 }

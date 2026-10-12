@@ -8,17 +8,23 @@ import java.time.LocalDate;
 public class Attendance {
 
     private final Long studentId;
+    private final String studentName;
     private final LocalDate date;
     private boolean present;
 
-    public Attendance(Long studentId, LocalDate date, boolean present) {
+    public Attendance(Long studentId, String studentName, LocalDate date, boolean present) {
         this.studentId = studentId;
+        this.studentName = studentName;
         this.date = date;
         this.present = present;
     }
 
     public Long getStudentId() {
         return studentId;
+    }
+
+    public String getStudentName() {
+        return studentName;
     }
 
     public LocalDate getDate() {

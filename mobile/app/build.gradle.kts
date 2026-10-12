@@ -17,15 +17,25 @@ android {
         versionName = "0.1.0"
     }
 
+    val debugApiBaseUrl = providers.gradleProperty("edufast.debugApiBaseUrl")
+        .getOrElse("http://10.0.2.2:8080")
+    val releaseApiBaseUrl = providers.gradleProperty("edufast.apiBaseUrl")
+        .getOrElse("")
+
     buildTypes {
+        debug {
+            buildConfigField("String", "API_BASE_URL", "\"$debugApiBaseUrl\"")
+        }
         release {
             isMinifyEnabled = false
+            buildConfigField("String", "API_BASE_URL", "\"$releaseApiBaseUrl\"")
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
 
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 
     compileOptions {

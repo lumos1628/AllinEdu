@@ -28,7 +28,7 @@ import kotlinx.serialization.json.Json
 // En la web, esto es lo mismo que services/api.ts
 class ApiEduFastRepository(
     private val tokenStore: TokenStore,
-    private val baseUrl: String = "http://10.0.2.2:8080", // 10.0.2.2 = "localhost" del emulador Android
+    private val baseUrl: String,
 ) : EduFastRepository {
 
     private val client = HttpClient {

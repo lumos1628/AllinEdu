@@ -186,6 +186,33 @@ Prioridad 1. Ataca el dolor más costoso: 2.5 a 4 horas diarias de trabajo no re
 - **Acotado deliberadamente:** sin tiempo real, sin grupos, sin chat libre. Si se vuelve una
   mensajería, el caso de uso falló.
 
+### UC-19 — Vincular un apoderado con un estudiante
+
+- **Actor:** director / administrador.
+- **Flujo:** registra la relación, el tipo de vínculo, su vigencia y los permisos para consultar
+  información y recibir avisos. Verifica al menos un medio de contacto antes de activar
+  notificaciones.
+- **Variantes:** un estudiante puede tener varios apoderados y una persona puede estar vinculada
+  a varios estudiantes. El vínculo puede vencer o revocarse sin borrar su historial.
+- **Precondición de los casos UC-16 a UC-18:** sin vínculo vigente y autorizado no hay avisos ni
+  consultas.
+
+### UC-20 — Registrar dispositivo y preferencias de aviso
+
+- **Actor:** apoderado.
+- **Flujo:** inicia sesión en Android o en la web instalada, autoriza las notificaciones y
+  registra el token del dispositivo. Puede activar o desactivar categorías de aviso.
+- **Variantes:** el permiso puede denegarse o revocarse; en ese caso los avisos permanecen en la
+  bandeja interna de la aplicación si la cuenta está habilitada.
+
+### UC-21 — Abrir y consultar una notificación
+
+- **Actor:** apoderado autorizado.
+- **Flujo:** toca el aviso del sistema, inicia sesión si hace falta y abre el detalle del
+  estudiante y la fecha. El servidor vuelve a verificar que el vínculo esté vigente.
+- **Privacidad:** el texto visible en la pantalla bloqueada debe revelar lo mínimo; el detalle
+  solo se obtiene dentro de una sesión autenticada.
+
 ---
 
 ## Reglas transversales

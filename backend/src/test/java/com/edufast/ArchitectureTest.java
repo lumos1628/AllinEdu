@@ -1,5 +1,7 @@
 package com.edufast;
 
+import com.tngtech.archunit.base.DescribedPredicate;
+import com.tngtech.archunit.core.domain.JavaClass;
 import com.tngtech.archunit.core.importer.ImportOption;
 import com.tngtech.archunit.junit.AnalyzeClasses;
 import com.tngtech.archunit.junit.ArchTest;
@@ -46,4 +48,24 @@ class ArchitectureTest {
             .that().resideInAPackage("..infrastructure.controller..")
             .should().dependOnClassesThat().resideInAPackage("..infrastructure.persistence..")
             .as("Los controllers hablan con servicios y DTOs, nunca con repositorios ni entidades JPA");
+
+    @ArchTest
+    static final ArchRule los_servicios_dependen_de_interfaces_no_de_implementaciones = noClasses()
+            .that().resideInAPackage("..application.service..")
+            .should().dependOnClassesThat().haveSimpleNameEndingWith("Impl")
+            .as("Los servicios dependen de interfaces (...Service), nunca de implementaciones (...ServiceImpl)");
+
+    @ArchTest
+    static final ArchRule los_controllers_no_hablan_con_puertos_del_dominio = noClasses()
+            .that().resideInAPackage("..infrastructure.controller..")
+            .should().dependOnClassesThat().resideInAPackage("..domain.port..")
+            .as("Los controllers llaman a un servicio, nunca directamente a un repositorio (puerto)");
+
+    @ArchTest
+    static final ArchRule los_controllers_no_exponen_modelos_de_dominio = noClasses()
+            .that().resideInAPackage("..infrastructure.controller..")
+            .should().dependOnClassesThat(
+                    JavaClass.Predicates.resideInAPackage("..domain.model..")
+                            .and(DescribedPredicate.not(JavaClass.Predicates.simpleName("User"))))
+            .as("La API solo expone DTOs; User se usa únicamente para inyectar al usuario autenticado");
 }

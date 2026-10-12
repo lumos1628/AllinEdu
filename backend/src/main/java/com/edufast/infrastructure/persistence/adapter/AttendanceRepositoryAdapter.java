@@ -2,12 +2,15 @@ package com.edufast.infrastructure.persistence.adapter;
 
 import com.edufast.domain.exception.NotFoundException;
 import com.edufast.domain.model.Attendance;
+import com.edufast.domain.model.EstadoAsistencia;
+import com.edufast.domain.model.EstadoJornada;
 import com.edufast.domain.model.Jornada;
 import com.edufast.domain.port.AttendanceRepository;
 import com.edufast.infrastructure.persistence.entity.CuentaUsuarioEntity;
 import com.edufast.infrastructure.persistence.entity.JornadaAsistenciaEntity;
 import com.edufast.infrastructure.persistence.entity.RegistroAsistenciaEntity;
 import com.edufast.infrastructure.persistence.entity.SeccionEntity;
+import com.edufast.infrastructure.persistence.entity.UbicacionMatriculaEntity;
 import com.edufast.infrastructure.persistence.mapper.AttendanceMapper;
 import com.edufast.infrastructure.persistence.repository.SpringDataCuentaUsuarioRepository;
 import com.edufast.infrastructure.persistence.repository.SpringDataJornadaAsistenciaRepository;
@@ -20,7 +23,9 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * ADAPTADOR del puerto AttendanceRepository.
@@ -53,7 +58,8 @@ public class AttendanceRepositoryAdapter implements AttendanceRepository {
             List<Attendance> registrosJornada = registros.findByJornadaId(jornada.getId()).stream()
                     .map(AttendanceMapper::toDomain)
                     .toList();
-            return new Jornada(jornada.getId(), sectionId, date, jornada.getEstado(), registrosJornada);
+            return new Jornada(jornada.getId(), sectionId, date,
+                    EstadoJornada.fromPersisted(jornada.getEstado()), registrosJornada);
         });
     }
 
@@ -65,26 +71,36 @@ public class AttendanceRepositoryAdapter implements AttendanceRepository {
 
         JornadaAsistenciaEntity jornadaEntity = jornadas
                 .findBySeccionIdAndFecha(jornada.getSectionId(), jornada.getDate())
-                .orElseGet(() -> new JornadaAsistenciaEntity(null, seccion, jornada.getDate(), "BORRADOR", cuenta));
+                .orElseGet(() -> new JornadaAsistenciaEntity(null, seccion, jornada.getDate(),
+                        EstadoJornada.BORRADOR.name(), cuenta));
 
-        jornadaEntity.setEstado(confirm ? "CONFIRMADA" : "BORRADOR");
+        jornadaEntity.setEstado(confirm ? EstadoJornada.CONFIRMADA.name() : EstadoJornada.BORRADOR.name());
         if (confirm) {
             jornadaEntity.setConfirmadaPor(cuenta);
             jornadaEntity.setConfirmadaAt(Instant.now());
         }
-        jornadaEntity = jornadas.save(jornadaEntity);
+        JornadaAsistenciaEntity jornadaGuardada = jornadas.save(jornadaEntity);
 
-        registros.deleteRegistrosDeJornada(jornadaEntity.getId());
+        registros.deleteRegistrosDeJornada(jornadaGuardada.getId());
 
-        for (Attendance asistencia : jornada.getRegistros()) {
-            var ubicacion = ubicaciones
-                    .findFirstByMatriculaEstudianteIdAndSeccionIdAndFechaFinIsNull(
-                            asistencia.getStudentId(), jornada.getSectionId())
-                    .orElseThrow(() -> new NotFoundException("El alumno no está matriculado en esta sección"));
+        Map<Long, UbicacionMatriculaEntity> ubicacionesPorEstudiante = ubicaciones
+                .findBySeccionIdAndFechaFinIsNull(jornada.getSectionId()).stream()
+                .collect(Collectors.toMap(
+                        u -> u.getMatricula().getEstudiante().getId(),
+                        u -> u,
+                        (existente, nuevo) -> existente));
 
-            String estado = asistencia.isPresent() ? "PRESENTE" : "AUSENTE";
-            registros.save(new RegistroAsistenciaEntity(null, jornadaEntity, ubicacion, estado));
-        }
+        List<RegistroAsistenciaEntity> nuevos = jornada.getRegistros().stream()
+                .map(asistencia -> {
+                    UbicacionMatriculaEntity ubicacion = ubicacionesPorEstudiante.get(asistencia.getStudentId());
+                    if (ubicacion == null) {
+                        throw new NotFoundException("El alumno no está matriculado en esta sección");
+                    }
+                    String estado = (asistencia.isPresent() ? EstadoAsistencia.PRESENTE : EstadoAsistencia.AUSENTE).name();
+                    return new RegistroAsistenciaEntity(null, jornadaGuardada, ubicacion, estado);
+                })
+                .toList();
+        registros.saveAll(nuevos);
 
         return findBySectionAndDate(jornada.getSectionId(), jornada.getDate())
                 .orElseThrow(() -> new NotFoundException("No se pudo guardar la asistencia"));

@@ -2,7 +2,9 @@ package com.edufast.application.service;
 
 import com.edufast.application.dto.AttendanceRequest;
 import com.edufast.application.dto.AttendanceResponse;
+import com.edufast.domain.exception.NotFoundException;
 import com.edufast.domain.model.Attendance;
+import com.edufast.domain.model.EstadoJornada;
 import com.edufast.domain.model.Jornada;
 import com.edufast.domain.model.Section;
 import com.edufast.domain.model.Student;
@@ -13,10 +15,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Service
 public class AttendanceServiceImpl implements AttendanceService {
@@ -37,12 +40,13 @@ public class AttendanceServiceImpl implements AttendanceService {
     @Transactional
     public List<AttendanceResponse> takeAttendance(User user, Long sectionId, AttendanceRequest request) {
         Section section = sectionService.getAssignedSection(user, sectionId);
+        Map<Long, Student> matriculados = studentsBySection(sectionId);
 
         List<Attendance> registros = deduplicate(request.attendance()).stream()
-                .map(entry -> new Attendance(entry.studentId(), request.date(), entry.present()))
+                .map(entry -> toDomain(entry, request.date(), matriculados))
                 .toList();
 
-        Jornada jornada = new Jornada(null, section.getId(), request.date(), "CONFIRMADA", registros);
+        Jornada jornada = new Jornada(null, section.getId(), request.date(), EstadoJornada.CONFIRMADA, registros);
         Jornada saved = attendanceRepository.save(jornada, user.getId(), true);
 
         return saved.getRegistros().stream()
@@ -61,11 +65,22 @@ public class AttendanceServiceImpl implements AttendanceService {
                 .orElse(List.of());
     }
 
+    private Map<Long, Student> studentsBySection(Long sectionId) {
+        return studentRepository.findBySectionId(sectionId).stream()
+                .collect(Collectors.toMap(Student::getId, Function.identity()));
+    }
+
+    private Attendance toDomain(AttendanceRequest.AttendanceEntry entry, LocalDate date,
+                                Map<Long, Student> matriculados) {
+        Student student = matriculados.get(entry.studentId());
+        if (student == null) {
+            throw new NotFoundException("El alumno no está matriculado en esta sección");
+        }
+        return new Attendance(entry.studentId(), student.getName(), date, entry.present());
+    }
+
     private AttendanceResponse toResponse(Attendance asistencia, LocalDate date) {
-        String studentName = studentRepository.findById(asistencia.getStudentId())
-                .map(Student::getName)
-                .orElse("Alumno");
-        return new AttendanceResponse(asistencia.getStudentId(), studentName, date, asistencia.isPresent());
+        return new AttendanceResponse(asistencia.getStudentId(), asistencia.getStudentName(), date, asistencia.isPresent());
     }
 
     private List<AttendanceRequest.AttendanceEntry> deduplicate(List<AttendanceRequest.AttendanceEntry> entries) {

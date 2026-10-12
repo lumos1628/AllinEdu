@@ -43,9 +43,10 @@ Monorepo con 3 piezas que se comunican por HTTP + JSON:
 
 ```bash
 # Backend: correr tests (OBLIGATORIO antes de dar trabajo por terminado)
+# Gradle carga backend/.env solo; no hace falta exportarlo a mano.
 cd backend && ./gradlew test
 
-# Backend: levantar la API (requiere PostgreSQL en localhost:5432)
+# Backend: levantar la API
 cd backend && ./gradlew bootRun
 
 # Web: lint + build (OBLIGATORIO si tocaste web/)
@@ -55,11 +56,22 @@ cd web && npm run lint && npm run build
 cd web && npm run dev
 ```
 
-La base de datos se crea una sola vez:
+Por defecto el backend apunta al **Supabase de desarrollo compartido** (host y usuario no son secretos y ya son el default en `application.properties`). Para conectar solo falta `DB_PASSWORD`, que se pide al equipo por un canal seguro: clonar el repo no da acceso a la base.
+
+```bash
+cp backend/.env.example backend/.env   # completa DB_PASSWORD (y JWT_SECRET)
+```
+
+Gradle carga `backend/.env` automáticamente para `./gradlew test` y `./gradlew bootRun`. Sin `DB_PASSWORD`, los tests de arquitectura y de servicio pasan, pero `contextLoads` falla al no conectar.
+
+Para desarrollar contra un **Postgres local** en vez de Supabase, define `DB_URL`, `DB_USER` y `DB_PASSWORD` en `backend/.env` (esos valores ganan sobre el default). En ese caso el rol se crea una sola vez:
 ```sql
 CREATE ROLE edufast WITH LOGIN PASSWORD 'edufast123' BYPASSRLS;
 CREATE DATABASE edufast OWNER edufast;
+-- Si el rol ya existe con otra contraseña, alinéalo:
+-- ALTER ROLE edufast WITH LOGIN PASSWORD 'edufast123' BYPASSRLS;
 ```
+
 Las tablas las crean las migraciones de `supabase/migrations/`; no uses `ddl-auto=update`.
 
 ---

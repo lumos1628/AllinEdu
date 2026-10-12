@@ -4,6 +4,7 @@ import com.edufast.application.dto.LoginRequest;
 import com.edufast.application.dto.LoginResponse;
 import com.edufast.domain.exception.UnauthorizedException;
 import com.edufast.domain.model.Role;
+import com.edufast.domain.model.RoleScope;
 import com.edufast.domain.model.User;
 import com.edufast.domain.port.PasswordHasher;
 import com.edufast.domain.port.TokenProvider;
@@ -52,6 +53,51 @@ class AuthServiceImplTest {
         assertEquals("token-de-prueba", response.token());
         assertEquals("Profesor Demo", response.name());
         assertEquals("DOCENTE", response.role());
+    }
+
+    @Test
+    void loginDeDirectorIncluyeSuAlcanceInstitucional() {
+        User user = new User(
+                2L,
+                "Directora Demo",
+                "director@edufast.test",
+                "hash",
+                Role.DIRECTOR,
+                RoleScope.NIVEL_EDUCATIVO,
+                (short) 1,
+                null);
+        when(userRepository.findByEmail("director@edufast.test")).thenReturn(Optional.of(user));
+        when(passwordHasher.matches("clave-local", "hash")).thenReturn(true);
+        when(tokenProvider.generateToken(user)).thenReturn("token-directora");
+
+        LoginResponse response = authService.login(
+                new LoginRequest("director@edufast.test", "clave-local"));
+
+        assertEquals("DIRECTOR", response.role());
+        assertEquals("NIVEL_EDUCATIVO", response.roleScope());
+        assertEquals((short) 1, response.educationLevelId());
+    }
+
+    @Test
+    void loginDeSecretariaIncluyeSuDirectorResponsable() {
+        User user = new User(
+                3L,
+                "Secretaria Demo",
+                "secretaria@edufast.test",
+                "hash",
+                Role.SECRETARIA,
+                null,
+                null,
+                2L);
+        when(userRepository.findByEmail("secretaria@edufast.test")).thenReturn(Optional.of(user));
+        when(passwordHasher.matches("clave-local", "hash")).thenReturn(true);
+        when(tokenProvider.generateToken(user)).thenReturn("token-secretaria");
+
+        LoginResponse response = authService.login(
+                new LoginRequest("secretaria@edufast.test", "clave-local"));
+
+        assertEquals("SECRETARIA", response.role());
+        assertEquals(2L, response.supervisorUserId());
     }
 
     @Test

@@ -11,10 +11,10 @@ public class Jornada {
     private final Long id;
     private final Long sectionId;
     private final LocalDate date;
-    private String estado;
+    private final EstadoJornada estado;
     private final List<Attendance> registros;
 
-    public Jornada(Long id, Long sectionId, LocalDate date, String estado, List<Attendance> registros) {
+    public Jornada(Long id, Long sectionId, LocalDate date, EstadoJornada estado, List<Attendance> registros) {
         this.id = id;
         this.sectionId = sectionId;
         this.date = date;
@@ -34,7 +34,7 @@ public class Jornada {
         return date;
     }
 
-    public String getEstado() {
+    public EstadoJornada getEstado() {
         return estado;
     }
 

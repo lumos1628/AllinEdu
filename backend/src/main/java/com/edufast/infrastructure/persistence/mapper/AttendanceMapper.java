@@ -1,6 +1,7 @@
 package com.edufast.infrastructure.persistence.mapper;
 
 import com.edufast.domain.model.Attendance;
+import com.edufast.domain.model.EstadoAsistencia;
 import com.edufast.infrastructure.persistence.entity.RegistroAsistenciaEntity;
 
 import java.time.LocalDate;
@@ -15,8 +16,11 @@ public final class AttendanceMapper {
 
     public static Attendance toDomain(RegistroAsistenciaEntity entity) {
         LocalDate fecha = entity.getJornada().getFecha();
-        Long studentId = entity.getUbicacionMatricula().getMatricula().getEstudiante().getId();
-        boolean present = "PRESENTE".equals(entity.getEstado()) || "TARDANZA".equals(entity.getEstado());
-        return new Attendance(studentId, fecha, present);
+        var estudiante = entity.getUbicacionMatricula().getMatricula().getEstudiante();
+        Long studentId = estudiante.getId();
+        String studentName = estudiante.getPersona().getNombreCompleto();
+        EstadoAsistencia estado = EstadoAsistencia.fromPersisted(entity.getEstado());
+        boolean present = estado == EstadoAsistencia.PRESENTE || estado == EstadoAsistencia.TARDANZA;
+        return new Attendance(studentId, studentName, fecha, present);
     }
 }

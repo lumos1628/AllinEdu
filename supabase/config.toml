@@ -12,7 +12,8 @@ port = 54322
 major_version = 17
 
 [db.seed]
-enabled = true
+# La semilla necesita variables locales y se ejecuta explícitamente con psql.
+enabled = false
 sql_paths = ["./seed.sql"]
 
 [studio]

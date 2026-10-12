@@ -36,9 +36,4 @@ public class StudentRepositoryAdapter implements StudentRepository {
                 .map(u -> StudentMapper.toDomain(u.getMatricula().getEstudiante()))
                 .toList();
     }
-
-    @Override
-    public Student save(Student student) {
-        throw new UnsupportedOperationException("No se crean estudiantes por la API en esta versión");
-    }
 }

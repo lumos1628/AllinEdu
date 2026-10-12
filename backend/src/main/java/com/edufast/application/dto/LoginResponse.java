@@ -5,5 +5,8 @@ public record LoginResponse(
         Long userId,
         String name,
         String email,
-        String role) {
+        String role,
+        String roleScope,
+        Short educationLevelId,
+        Long supervisorUserId) {
 }

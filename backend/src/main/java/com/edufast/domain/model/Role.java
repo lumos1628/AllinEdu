@@ -5,5 +5,6 @@ public enum Role {
     DIRECTOR,
     APODERADO,
     ESTUDIANTE,
-    ADMINISTRADOR
+    ADMINISTRADOR,
+    SECRETARIA
 }

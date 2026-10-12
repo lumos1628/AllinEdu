@@ -22,5 +22,14 @@ mobile/.gradle/
 .DS_Store
 *.log
 
-# Encuestas con datos personales de docentes (evidencia de investigación, no va al repo)
+# Variables de entorno y credenciales locales
+.env
+.env.*
+!.env.example
+
+# Supabase CLI state local (includes project-link metadata)
+supabase/.temp/
+
+# Encuestas y documentos locales (evidencia de investigación, no va al repo)
 *.xlsx
+*.docx

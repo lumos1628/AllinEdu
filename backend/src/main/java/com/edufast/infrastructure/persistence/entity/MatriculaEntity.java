@@ -9,6 +9,8 @@ import java.time.LocalDate;
         uniqueConstraints = @UniqueConstraint(columnNames = {"estudiante_id", "anio_escolar_id"}))
 public class MatriculaEntity {
 
+    private static final String ESTADO_ACTIVA = "ACTIVA";
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -39,7 +41,7 @@ public class MatriculaEntity {
         this.estudiante = estudiante;
         this.anioEscolar = anioEscolar;
         this.fechaMatricula = LocalDate.now();
-        this.estado = "ACTIVA";
+        this.estado = ESTADO_ACTIVA;
     }
 
     public Long getId() {

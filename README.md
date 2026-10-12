@@ -152,16 +152,41 @@ AllinEdu/
 ### Requisitos
 - Java 25, Node 20+, PostgreSQL 16 (local, puerto 5432).
 
+### Configuración para colaboradores
+
+1. Copia la plantilla y completa los valores privados:
+   ```bash
+   cp backend/.env.example backend/.env
+   ```
+   Gradle carga `backend/.env` solo para `./gradlew test` y `./gradlew bootRun`; no hace falta exportarlo a mano. Si vas a ejecutar comandos `psql` o `supabase` CLI, expórtalo tú:
+   ```bash
+   set -a && source backend/.env && set +a
+   ```
+2. El backend ya apunta por defecto al **Supabase de desarrollo** (el host y el usuario no son secretos y viven en `application.properties`). La plantilla trae los **valores compartidos** (`EDUFAST_DEMO_EMAIL_DOMAIN=example.test`, `EDUFAST_DEMO_PASSWORD=demo123`). Solo debes completar los campos **privados** en `backend/.env`:
+   - `DB_PASSWORD`: contraseña del Supabase de desarrollo, que se comparte por un canal privado. El `clone` del repositorio **no** concede acceso al proyecto.
+   - `SUPABASE_DB_URL`: URI para `psql` (supabase/seed.sql), también privada.
+   - `JWT_SECRET`: genera uno propio con `openssl rand -hex 32`.
+3. No re-ejecutes la semilla en la base compartida sin acordarlo, porque cambiaría los datos para todo el equipo.
+
+> Para trabajar contra un **Postgres local**, define `DB_URL`, `DB_USER` y `DB_PASSWORD` en `backend/.env`; esos valores ganan sobre el default de Supabase.
+
 ### Base de datos local (desarrollo)
 ```sql
 CREATE ROLE edufast WITH LOGIN PASSWORD 'edufast123' BYPASSRLS;
 CREATE DATABASE edufast OWNER edufast;
+```
+Si el rol `edufast` ya existía con otra contraseña, alínealo en vez de crearlo:
+```sql
+ALTER ROLE edufast WITH LOGIN PASSWORD 'edufast123' BYPASSRLS;
 ```
 Aplica migraciones y semilla sobre esa base:
 ```bash
 psql -d edufast -f supabase/migrations/20260928000100_base_escolar.sql
 psql -d edufast -f supabase/migrations/20260928000200_curriculo_planificacion.sql
 psql -d edufast -f supabase/migrations/20260928000300_actividades_notificaciones.sql
+psql -d edufast -f supabase/migrations/20260928000400_roles_y_alcances_personal.sql
+cp backend/.env.example backend/.env
+set -a && source backend/.env && set +a
 psql -d edufast -f supabase/seed.sql
 ```
 El rol `edufast` usa `BYPASSRLS` para comportarse como el rol de servicio del backend.
@@ -172,32 +197,55 @@ Hibernate valida el esquema, no lo modifica.
 Con Supabase CLI instalado y Docker activo, ejecuta localmente:
 
 ```bash
+cp backend/.env.example backend/.env
+# Completa los valores locales en backend/.env antes de continuar.
+set -a
+source backend/.env
+set +a
 supabase start
 supabase db reset
+psql 'postgresql://postgres:postgres@127.0.0.1:54322/postgres' \
+  -v ON_ERROR_STOP=1 -f supabase/seed.sql
 ```
 
-Para aplicar migraciones a un proyecto remoto, autentícate y enlaza el proyecto:
+Para aplicar migraciones al proyecto Supabase compartido de desarrollo, autentícate y enlázalo:
 
 ```bash
-supabase login
-supabase link --project-ref <PROJECT_REF>
-supabase db push
+npx supabase@latest login
+npx supabase@latest link --project-ref <DEV_PROJECT_REF>
+npx supabase@latest db push --dry-run
+npx supabase@latest db push
+cp backend/.env.example backend/.env
+# Completa las credenciales y los parámetros locales en backend/.env.
+set -a
+source backend/.env
+set +a
+psql "$SUPABASE_DB_URL" -v ON_ERROR_STOP=1 -f supabase/seed.sql
 ```
 
-El archivo `supabase/seed.sql` crea datos sintéticos de prueba: 22 secciones, 396 estudiantes y
-cuentas demo. No guardes contraseñas ni claves en Git. El backend se conecta con un rol de
-servicio que ignora RLS; las políticas RLS están pensadas para bloquear el acceso directo de
-clientes (`anon`/`authenticated`), no del servidor.
+`db push` aplica el esquema; la semilla se ejecuta por separado con `psql` y solo en desarrollo, porque toma su configuración del entorno local. Genera 10 estudiantes por sección por defecto y una cuenta de apoderado por familia; las parejas de hermanos y el tamaño de cada sección son parámetros locales. También genera cuentas demo de docentes, directores y secretaría, con correos del dominio de prueba configurado y una contraseña que defines localmente. No se crean cuentas para estudiantes ni se guardan personas o contraseñas en Git. No cargues la semilla en producción. El backend se conecta a PostgreSQL con credenciales privadas; web y Android solo llaman a la API Spring.
 
 ### Variables de entorno del backend
-En producción, define:
 
-| Variable | Qué es | Default (solo dev) |
-|---|---|---|
-| `DB_URL` | URL de PostgreSQL | `jdbc:postgresql://localhost:5432/edufast` |
-| `DB_USER` | Usuario de la BD | `edufast` |
-| `DB_PASSWORD` | Contraseña de la BD | `edufast123` |
-| `JWT_SECRET` | Clave para firmar tokens | valor de desarrollo |
+| Variable | Tipo | Qué es | Valor |
+|---|---|---|---|
+| `DB_URL` | Default en repo | URL JDBC de PostgreSQL | Supabase dev; override en `backend/.env` para local |
+| `DB_USER` | Default en repo | Usuario de la BD | `edufast`; override en `backend/.env` para local |
+| `DB_PASSWORD` | Privado | Contraseña de la BD | canal privado (obligatoria) |
+| `SUPABASE_DB_URL` | Privado | URI para ejecutar la semilla | Supabase → Connect |
+| `JWT_SECRET` | Privado | Clave para firmar tokens | `openssl rand -hex 32` |
+| `EDUFAST_DEMO_EMAIL_DOMAIN` | Compartido | Dominio de correos demo | `example.test` |
+| `EDUFAST_DEMO_PASSWORD` | Compartido | Contraseña de las cuentas demo | `demo123` |
+| `EDUFAST_DEMO_STUDENTS_PER_SECTION` | Compartido | Alumnos por sección en la semilla | `10` |
+| `EDUFAST_DEMO_SIBLING_PAIRS` | Compartido | Pares de hermanos en la semilla | `10` |
+
+Inicia el backend (Gradle carga `backend/.env` automáticamente):
+
+```bash
+cd backend && ./gradlew bootRun
+```
+
+`backend/.env` está excluido de Git. Los valores privados se comparten por un canal seguro; el `clone` del repositorio no concede acceso a Supabase. Mantén producción en un proyecto separado y no cargues allí la semilla demo.
 
 ### 1. Backend (Java + Spring Boot)
 ```bash
@@ -217,15 +265,24 @@ npm run dev
 - Web: `http://localhost:5173` (el proxy reenvía `/api` al backend)
 
 ### 3. Móvil (Kotlin + Android)
-Requiere **Android Studio**. Abrir la carpeta `mobile/`, sincronizar Gradle y correr en un
-emulador. La app se conecta a `http://10.0.2.2:8080`.
+Requiere **Android Studio** y **JDK 21** para compilar. Abrir la carpeta `mobile/`, sincronizar Gradle y correr en un emulador.
+
+- La URL de la API vive en `BuildConfig.API_BASE_URL` (no está en el código). En debug apunta a `http://10.0.2.2:8080`; se puede sobreescribir con la propiedad Gradle `edufast.debugApiBaseUrl`. Para release, define `edufast.apiBaseUrl`.
+- El HTTP en claro al backend local solo se habilita en debug (`mobile/app/src/debug/AndroidManifest.xml`); release no lo incluye.
 
 ### Datos de prueba
 ```
-Docente:   profesor@edufast.com / 123456   (asignado a 4.º de primaria, sección A)
-Apoderado: apoderado@edufast.com / 123456  (vinculado a un estudiante de esa sección)
+Dominio:     example.test
+Contraseña:  demo123
+
+Personal:    personal.docente.regular@example.test
+             personal.docente.auxiliar@example.test
+             personal.director.primaria@example.test
+             personal.director.general@example.test
+             personal.secretaria@example.test
+Apoderados:  apoderado.hermanos.0001@example.test (y los generados por familia)
 ```
-Los datos los crea `supabase/seed.sql` solo en desarrollo.
+El docente regular está asignado a **4.º de primaria - A**. Los datos sintéticos los genera `supabase/seed.sql` solo en desarrollo. Revisa `backend/.env.example` para los parámetros configurables.
 
 ---
 
