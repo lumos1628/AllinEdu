@@ -18,21 +18,43 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             var loggedIn by remember { mutableStateOf(false) }
+            var userName by remember { mutableStateOf("Profesor") }
             var section by remember { mutableStateOf<Section?>(null) }
+            var selectedModule by remember { mutableStateOf<String?>(null) }
 
             when {
                 !loggedIn -> LoginScreen(
                     repository = repository,
-                    onLogin = { loggedIn = true },
+                    onLogin = { name ->
+                        userName = name
+                        loggedIn = true
+                    },
                 )
-                section == null -> SectionListScreen(
+                selectedModule == null -> HomeScreen(
+                    userName = userName,
+                    onModuleSelect = { module ->
+                        selectedModule = module
+                        when (module) {
+                            "attendance" -> {} // Irá a AttendanceScreen
+                            "planning" -> {} // Próximamente
+                            "evaluation" -> {} // Próximamente
+                            "reinforcement" -> {} // Próximamente
+                            "communication" -> {} // Próximamente
+                        }
+                    }
+                )
+                section == null && selectedModule == "attendance" -> SectionListScreen(
                     repository = repository,
                     onSelect = { section = it },
                 )
-                else -> AttendanceScreen(
+                section != null && selectedModule == "attendance" -> AttendanceScreen(
                     repository = repository,
                     section = section!!,
-                    onBack = { section = null },
+                    onBack = { section = null; selectedModule = null },
+                )
+                else -> HomeScreen(
+                    userName = userName,
+                    onModuleSelect = { selectedModule = it }
                 )
             }
         }

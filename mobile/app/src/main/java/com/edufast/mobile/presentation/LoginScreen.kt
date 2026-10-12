@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 @Composable
 fun LoginScreen(
     repository: EduFastRepository,
-    onLogin: () -> Unit,
+    onLogin: (userName: String) -> Unit,
 ) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
@@ -51,7 +51,7 @@ fun LoginScreen(
                         error = null
                         try {
                             repository.login(email, password)
-                            onLogin()
+                            onLogin(email.substringBefore("@"))
                         } catch (e: ClientRequestException) {
                             // El backend respondió 4xx: las credenciales están mal
                             error = "Credenciales inválidas"
