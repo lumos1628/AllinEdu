@@ -7,7 +7,27 @@
 
 ## 1. Qué es este proyecto
 
-**EduFast**: plataforma para docentes peruanos. MVP actual: asistencia digital (web + móvil).
+**AllinEdu**: plataforma web y móvil que reduce la carga operativa del docente en la preparación, aplicación y evaluación de sus clases, y convierte la evidencia de ese ciclo en apoyo para reforzar aprendizajes. ODS 4 (educación de calidad) y ODS 8 (trabajo decente).
+
+El producto es **una cadena**, no módulos sueltos:
+
+```
+planificar (sesión → ficha diferenciada → instrumento)
+   → aplicar en clase (asistencia + evidencia por criterio)
+      → evaluar por competencia
+         → refuerzo y repaso espaciado · conclusiones descriptivas
+```
+
+**Prioridad 1 es el pipeline de preparación de clases** (2.5–4 h/día de trabajo no remunerado). La asistencia ya está construida y es el eslabón "aplicar en clase".
+
+Antes de proponer o construir una feature, lee:
+
+| Documento | Qué te dice |
+|---|---|
+| `ALCANCE.md` | Qué entra, qué **no** y por qué. Decisiones pendientes. Historial de cambios de alcance |
+| `EVIDENCIA.md` | La línea base y los insights que justifican cada decisión |
+| `USE_CASES.md` | Los flujos y qué está marcado `[EXISTE]` |
+
 Monorepo con 3 piezas que se comunican por HTTP + JSON:
 
 | Carpeta | Tecnología | Rol |
@@ -44,7 +64,19 @@ Las tablas las crean las migraciones de `supabase/migrations/`; no uses `ddl-aut
 
 ---
 
-## 3. Las 8 reglas de oro (NUNCA las rompas)
+## 3. Las 10 reglas de oro (NUNCA las rompas)
+
+Las dos primeras son de producto; las ocho siguientes, de arquitectura.
+
+### Regla 0a — La IA propone borradores, el docente aprueba
+Nada generado automáticamente llega al estudiante, se imprime o entra a un registro oficial sin aprobación explícita del docente. Todo contenido generado nace en estado **no aprobado** y el sistema conserva qué fue generado y qué fue editado por una persona.
+
+### Regla 0b — El sistema entrega evidencia; el docente decide
+Prohibido implementar calificación automática, decisiones pedagógicas automáticas o cualquier función de vigilancia de estudiantes. Las prácticas y simulacros son formativos y de bajo riesgo.
+
+Si una tarea te pide romper 0a o 0b, **detente y pregunta**. Están en el alcance por razones éticas y de perfil de proyecto, no por conveniencia técnica.
+
+---
 
 ### Regla 1 — Las dependencias solo apuntan hacia adentro
 ```
@@ -117,8 +149,10 @@ Incluye `ArchitectureTest`, que verifica las reglas 1, 2 y 4 automáticamente. U
 |---|---|---|
 | Migración PostgreSQL/Supabase | `supabase/migrations/` | SQL versionado; tablas/columnas en español y `snake_case` |
 | Datos de desarrollo | `supabase/seed.sql` | Solo datos sintéticos; nunca menores reales ni secretos |
-| Casos de uso | raíz, `USE_CASES.md` | Actores, flujos, excepciones y alcance aceptado |
+| Casos de uso | raíz, `USE_CASES.md` | Actores, flujos y excepciones; marca `[EXISTE]` lo implementado |
 | ERD y diccionario | raíz, `DATABASE.md` | Debe coincidir con las migraciones |
+| Decisión de alcance | raíz, `ALCANCE.md` | Catálogo, exclusiones con razón e historial de cambios |
+| Hallazgo de investigación | raíz, `EVIDENCIA.md` | Con fuente, `n` y cita anonimizada |
 
 No uses el dashboard remoto como fuente única para cambios de esquema: todas las modificaciones deben quedar en migraciones versionadas. La web y Android nunca reciben credenciales de PostgreSQL, claves `service_role` ni acceso directo a las tablas.
 
@@ -164,6 +198,13 @@ No uses el dashboard remoto como fuente única para cambios de esquema: todas la
 
 ## 8. Referencias
 
+- `EVIDENCIA.md` — línea base, insights y límites metodológicos. **Toda cifra del proyecto se rastrea aquí.** Si vas a afirmar algo sobre el problema docente, cítalo de este documento o márcalo como hipótesis.
+- `ALCANCE.md` — qué entra, qué no y por qué; decisiones pendientes; historial de cambios de alcance.
+- `USE_CASES.md` — actores, flujos y qué está marcado `[EXISTE]`.
+- `DATABASE.md` — modelo de datos y qué tablas sirven a cada parte de la cadena.
 - `ARCHITECTURE.md` — explicación didáctica completa de la arquitectura (léela si no entiendes POR QUÉ una regla existe).
-- `USE_CASES.md` y `DATABASE.md` — alcance funcional y modelo de datos objetivo.
 - `README.md` — contexto del producto y cómo correr el proyecto.
+
+### Al terminar un cambio de producto
+
+Si tu cambio altera el alcance, actualiza `ALCANCE.md` (catálogo, exclusiones o historial de cambios) en el mismo commit. Un alcance que no coincide con el código es la causa raíz del desorden que este repositorio ya tuvo una vez.

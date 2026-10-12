@@ -1,0 +1,1011 @@
+Guía de Formulación de un Proyecto
+Investigación e Innovación Tecnológica
+
+Comenzar aprendizaje
+Sensor
+WiFi
+Docente
+Harry Elvis Ccoaquira Enríquez
+
+Curso
+Investigación e Innovación Tecnológica - TEORÍA
+
+Institución
+TECSUP Arequipa
+
+Caso de aplicación
+Macetero inteligente con sistema de riego automatizado
+
+Bienvenido a esta guía educativa interactiva. A lo largo de las secciones aprenderás a formular un proyecto de investigación e innovación tecnológica paso a paso, utilizando como ejemplo el caso del macetero inteligente con sistema de riego automatizado. Cada tema incluye definiciones, ejemplos, errores comunes y actividades de comprobación para reforzar tu aprendizaje.
+
+Título del proyecto
+La primera impresión de tu trabajo de investigación
+
+Definición
+El título de un proyecto es una frase breve, clara y específica que resume el contenido principal del trabajo. Permite reconocer qué solución se desarrollará, qué se busca obtener y cuál será su utilidad.
+
+"El título es la presentación del proyecto: debe informar sin explicar todo el trabajo."
+
+Tres preguntas para redactar el título
+1
+¿Qué tipo de solución se creará?
+
+2
+¿Qué se quiere obtener?
+
+3
+¿Cuál será su utilidad?
+
+Ejemplo aplicado al caso
+Solución
+Un macetero inteligente con sensores y riego automatizado.
+
+Resultado
+Mejorar el cuidado de una planta.
+
+Utilidad
+Evitar el riego insuficiente o excesivo y reducir el desperdicio de agua.
+
+FÓRMULA DEL TÍTULO
+
+Acción o solución + producto tecnológico + finalidad
+
+Título final del ejemplo
+"Desarrollo de un macetero inteligente con sistema de riego automatizado para mejorar el cuidado de plantas domésticas."
+
+Errores comunes
+Utilizar títulos demasiado generales.
+
+Redactar una pregunta en lugar de un título.
+
+Incluir demasiados detalles técnicos.
+
+Prometer resultados absolutos.
+
+Presentar un título que no se relaciona con el problema.
+
+Actividad: Ordena las partes del título
+Usa las flechas para ordenar las tres partes según la fórmula: Acción o solución + producto tecnológico + finalidad.
+
+Mezclar para comenzar
+
+Inicio
+Marcar como completado
+
+Planteamiento del problema
+
+Planteamiento del problema
+Describe la situación que requiere investigación
+
+Definición
+El planteamiento del problema es la explicación ordenada de una situación negativa o necesidad que requiere investigación y una posible solución. Describe qué sucede, a quién afecta, dónde ocurre, por qué ocurre y qué consecuencias produce.
+
+"Primero se demuestra que existe el problema. Después se propone una posible solución."
+
+Elementos del planteamiento
+Problema central
+Causas
+Efectos
+Usuarios afectados
+Contexto
+Aplicación al caso
+Problema central
+"Las plantas domésticas reciben un riego inadecuado cuando sus cuidadores olvidan regarlas o aplican demasiada agua."
+
+Causas
+Falta de tiempo.
+Olvido.
+Desconocimiento de la humedad real del suelo.
+Efectos
+Marchitamiento.
+Pudrición de las raíces.
+Desperdicio de agua.
+Pérdida de la planta.
+PREGUNTA DEL PROBLEMA
+
+"¿Cómo mejorar el cuidado y el riego de plantas domésticas mediante un macetero inteligente con sistema de riego automatizado?"
+
+Diagrama del problema
+Causas
+
+Problema central
+
+Efectos
+
+Las causas generan el problema central y este produce efectos negativos en las plantas y en el consumo de agua.
+
+Contextos del problema
+General, local y específico: del panorama amplio al detalle concreto
+
+Tres niveles de contexto
+El problema se describe en tres niveles para mostrar que la situación no es aislada, sino que forma parte de una realidad más amplia. Se parte de lo general, se llega a lo local y finalmente se precisa lo específico.
+
+Aspecto general
+Presenta el problema en un contexto amplio, como el mundo, el país o un sector.
+
+Ejemplo
+En el mundo, muchas personas que cultivan plantas en sus hogares enfrentan dificultades para mantener un riego adecuado por falta de tiempo o de conocimiento sobre la humedad del suelo.
+
+Aspecto local
+Ubica el problema en una región, ciudad o institución específica.
+
+Ejemplo
+En Arequipa, los estudiantes y trabajadores que tienen plantas domésticas suelen olvidar regarlas por sus horarios ocupados, lo que provoca que muchas plantas se sequen o reciban agua en exceso.
+
+Aspecto específico
+Delimita el problema a una situación concreta y medible, centrada en los usuarios directos.
+
+Ejemplo
+Los cuidadores de plantas domésticas en el hogar no cuentan con un sistema que les indique la humedad real del suelo ni que regule automáticamente la cantidad de agua que recibe cada planta.
+
+Del general al específico
+General
+→
+Local
+→
+Específico
+Usuarios afectados
+Personas con plantas domésticas
+
+Estudiantes y trabajadores con horarios ocupados
+
+Personas preocupadas por el desperdicio de agua
+
+Consecuencias del problema
+Las plantas se marchitan o mueren por falta de riego adecuado.
+
+El exceso de agua pudre las raíces y daña la planta.
+
+Se desperdicia agua al regar sin conocer la humedad del suelo.
+
+Se pierde tiempo y dinero en plantas que no sobreviven.
+
+Hipótesis
+La respuesta tentativa al problema de investigación
+
+Definición
+La hipótesis es una respuesta tentativa al problema de investigación. Es una suposición que se plantea antes de comprobarla y que relaciona dos elementos: una posible solución y el resultado que se espera obtener.
+
+"La hipótesis propone lo que se espera lograr si la solución funciona correctamente."
+
+Estructura de una hipótesis
+Posible solución
+
+Lo que se propone
+
+Resultado esperado
+
+Lo que se logrará
+
+La hipótesis conecta la solución propuesta con el resultado que se espera comprobar.
+
+Ejemplo aplicado al caso
+Hipótesis del macetero inteligente
+"El desarrollo de un macetero inteligente con sistema de riego automatizado permitirá mejorar el cuidado de plantas domésticas, evitando el riego insuficiente o excesivo y reduciendo el desperdicio de agua."
+
+Posible solución
+Desarrollo de un macetero inteligente con sistema de riego automatizado.
+
+Resultado esperado
+Mejorar el cuidado de plantas domésticas, evitando el riego insuficiente o excesivo y reduciendo el desperdicio de agua.
+
+Características de una buena hipótesis
+Debe ser clara y comprensible.
+
+Debe relacionar la solución con un resultado esperado.
+
+Debe poder comprobarse mediante la experimentación.
+
+Debe estar directamente conectada con el problema planteado.
+
+Errores comunes
+Plantear una hipótesis que no se relaciona con el problema.
+
+Formularla como una pregunta en lugar de una afirmación.
+
+Incluir resultados que no se pueden comprobar.
+
+Confundir la hipótesis con el objetivo general.
+
+Objetivos
+General, específicos, verbos en infinitivo y coherencia
+
+Objetivo general
+El objetivo general expresa el propósito principal del proyecto. Se redacta en infinitivo y resume lo que se busca lograr al culminar la investigación.
+
+Ejemplo
+"Desarrollar un macetero inteligente con sistema de riego automatizado para mejorar el cuidado de plantas domésticas."
+
+Objetivos específicos
+Los objetivos específicos descomponen el objetivo general en pasos concretos. Cada uno representa una etapa del proyecto y, en conjunto, permiten alcanzar el objetivo general.
+
+1
+Diseñar un circuito con sensores de humedad para medir el estado del suelo.
+
+2
+Programar un sistema de riego que active una bomba de agua según la humedad detectada.
+
+3
+Construir un prototipo de macetero que integre los sensores y el sistema de riego.
+
+4
+Evaluar el funcionamiento del prototipo con plantas domésticas reales.
+
+Verbos en infinitivo
+Los objetivos siempre se redactan con verbos en infinitivo, es decir, verbos terminados en -ar, -er o -ir. Estos verbos indican la acción que se realizará durante el proyecto.
+
+Diseñar
+
+Construir
+
+Programar
+
+Desarrollar
+
+Evaluar
+
+Implementar
+
+Analizar
+
+Probar
+
+Errores comunes de redacción
+Usar verbos conjugados en lugar de infinitivo (ej. "desarrolló" en vez de "desarrollar").
+
+Redactar objetivos como preguntas.
+
+Plantear objetivos que no se pueden cumplir ni medir.
+
+Confundir el objetivo general con los específicos.
+
+Incluir más de un objetivo general.
+
+Redactar objetivos sin relación con el problema o la hipótesis.
+
+Coherencia entre los elementos del proyecto
+Todos los elementos del proyecto deben estar conectados entre sí. El título, el problema, la hipótesis y los objetivos deben referirse al mismo tema y mantener una relación lógica.
+
+Título
+
+Problema
+
+Hipótesis
+
+Objetivos
+
+Si un elemento no se relaciona con los demás, el proyecto pierde coherencia y dirección.
+
+El título refleja el problema y la solución propuesta.
+
+La hipótesis responde a la pregunta del problema.
+
+El objetivo general coincide con el propósito del título.
+
+Los objetivos específicos permiten lograr el objetivo general.
+
+Caso completo
+Todos los elementos integrados en un solo proyecto
+
+Proyecto integrado: Macetero inteligente
+A continuación se presentan todos los elementos del proyecto de investigación e innovación tecnológica integrados en un solo caso. Cada elemento se conecta con los demás para formar un proyecto coherente y completo.
+
+Planta
+Sensor
+Riego
+Conectividad
+Título
+"Desarrollo de un macetero inteligente con sistema de riego automatizado para mejorar el cuidado de plantas domésticas."
+
+Planteamiento del problema
+Problema central
+Las plantas domésticas reciben un riego inadecuado cuando sus cuidadores olvidan regarlas o aplican demasiada agua.
+
+Causas
+• Falta de tiempo
+• Olvido
+• Desconocimiento de la humedad real del suelo
+Efectos
+• Marchitamiento
+• Pudrición de las raíces
+• Desperdicio de agua
+• Pérdida de la planta
+Pregunta: ¿Cómo mejorar el cuidado y el riego de plantas domésticas mediante un macetero inteligente con sistema de riego automatizado?
+
+Contextos
+General
+En el mundo, muchas personas con plantas domésticas no logran un riego adecuado.
+
+Local
+En Arequipa, los horarios ocupados impiden un riego constante.
+
+Específico
+No existe un sistema que indique la humedad del suelo y regule el riego automáticamente.
+
+Hipótesis
+"El desarrollo de un macetero inteligente con sistema de riego automatizado permitirá mejorar el cuidado de plantas domésticas, evitando el riego insuficiente o excesivo y reduciendo el desperdicio de agua."
+
+Objetivos
+Objetivo general
+Desarrollar un macetero inteligente con sistema de riego automatizado para mejorar el cuidado de plantas domésticas.
+
+Objetivos específicos
+1
+Diseñar un circuito con sensores de humedad para medir el estado del suelo.
+2
+Programar un sistema de riego que active una bomba de agua según la humedad detectada.
+3
+Construir un prototipo de macetero que integre los sensores y el sistema de riego.
+4
+Evaluar el funcionamiento del prototipo con plantas domésticas reales.
+Coherencia del proyecto
+Todos los elementos del proyecto están conectados: el título resume la solución, el problema describe la necesidad, la hipótesis propone el resultado esperado y los objetivos detallan los pasos para lograrlo. Cada parte refuerza a las demás y juntas forman un proyecto coherente.
+
+Actividad
+Pon a prueba lo aprendido con ejercicios interactivos
+
+
+Relacionar conceptos
+
+Ordenar elementos
+
+Verdadero o falso
+Relaciona cada concepto de la izquierda con su definición correcta de la derecha. Selecciona primero un concepto y luego su definición.
+
+TítuloProblema centralHipótesisObjetivo general
+Propósito principal del proyectoResumen breve del proyectoRespuesta tentativa al problemaRiego inadecuado de plantas
+Módulo 1
+Resumen ejecutivo
+¿Qué es?
+El resumen ejecutivo es una síntesis breve del proyecto que permite a cualquier lector entender de qué trata, qué problema resuelve, cómo se abordó y qué resultados se obtuvieron, todo en un texto corto y directo.
+
+Explicación en palabras sencillas
+Imagina que tienes solo un minuto para contarle a alguien de qué trata tu proyecto. El resumen ejecutivo es exactamente eso: una versión condensada que va al punto. No es una introducción ni un índice; es una pieza completa que resume lo esencial. Se coloca al inicio del informe, pero se redacta al final, cuando ya tienes todos los resultados. Sirve para que un evaluador, un inversionista o un docente decida rápidamente si el proyecto es relevante para él.
+
+Cómo redactarlo
+Escríbelo al final, cuando el proyecto ya está completo y tienes resultados.
+No superes una página (entre 250 y 400 palabras es suficiente).
+Usa lenguaje claro y directo, evita jerga innecesaria.
+Incluye los cinco componentes: problema, contexto, solución, metodología y resultados.
+Cada componente se resume en uno o dos párrafos como máximo.
+No agregues información que no aparezca en el cuerpo del proyecto.
+Ejemplo completo del macetero inteligente
+En las zonas urbanas del Perú, muchas personas cultivan plantas en espacios reducidos sin contar con conocimientos técnicos sobre el riego. Esto provoca que las plantas mueran por exceso o falta de agua, un problema que afecta tanto a la estética del hogar como al bienestar emocional de quienes las cuidan. En el contexto local, los departamentos pequeños y las jornadas laborales extensas dificultan un riego constante. Como solución, se propone un macetero inteligente de riego automático que detecta la humedad del sustrato mediante un sensor y activa una bomba de agua cuando el nivel baja de un umbral definido. La metodología consistió en diseñar y construir un prototipo con un microcontrolador Arduino, un sensor de humedad del suelo y una mini bomba de agua, calibrando el umbral de activación mediante pruebas. Como resultado esperado, el prototipo debería mantener la humedad del sustrato en un rango adecuado sin intervención humana, reduciendo la mortalidad de plantas en espacios reducidos.
+
+Errores frecuentes y versión corregida
+Incorrecto
+
+Escribir el resumen al inicio, antes de tener resultados.
+
+Corregido
+
+Redactarlo al final, cuando ya conoces los resultados del proyecto.
+
+Incorrecto
+
+Confundir resultados esperados con resultados obtenidos.
+
+Corregido
+
+Si el proyecto aún no termina, usa "se espera lograr…". Si ya terminó, describe lo que se obtuvo.
+
+Incorrecto
+
+Incluir detalles técnicos excesivos o citas bibliográficas.
+
+Corregido
+
+Mantenerlo breve y enfocado en lo esencial: qué, cómo y para qué.
+
+Actividad breve
+¿Cuál de los siguientes es un componente obligatorio del resumen ejecutivo?
+
+a.La bibliografía completab.La metodologíac.Los anexos técnicosd.El índice de figuras
+Conceptos clave
+Cinco componentes del resumen
+1. Problema: qué situación se busca resolver. 2. Contexto: dónde y a quién afecta. 3. Solución: qué se propone. 4. Metodología: cómo se abordó. 5. Resultados: qué se logró o espera lograr.
+
+Cuándo escribirlo
+Aunque va al inicio del documento, se redacta al final, cuando el proyecto ya está completo y se conocen los resultados.
+
+Resultados esperados vs. obtenidos
+Resultados esperados: lo que se proyecta lograr antes de ejecutar. Resultados obtenidos: lo que efectivamente se midió tras la implementación. En el resumen, usa el que corresponda según la fase del proyecto.
+
+Módulo 2
+Planteamiento del problema
+¿Qué es?
+El planteamiento del problema es la sección donde se describe, de manera clara y argumentada, la situación que requiere solución y por qué es importante resolverla.
+
+Explicación en palabras sencillas
+No basta con decir "hay un problema". Hay que demostrar que el problema existe, que afecta a personas reales y que merece ser investigado. Para ello se parte de un contexto amplio y se va estrechando hasta llegar al problema específico. Cada afirmación debe estar respaldada por evidencia: datos, observaciones, encuestas o fuentes confiables. Sin evidencia, el planteamiento es solo una opinión.
+
+Cómo redactarlo
+Empieza con el contexto general (el panorama amplio, a nivel mundial o nacional).
+Luego describe el contexto local (tu región, ciudad o institución).
+Finalmente presenta el contexto específico (la situación concreta que observas).
+Identifica el problema central: la situación negativa que afecta a alguien.
+Analiza las causas (por qué ocurre) y los efectos (qué consecuencias tiene).
+Redacta tres párrafos: uno de contexto, uno de causas y uno de efectos.
+Termina con una pregunta de investigación clara y respondible.
+Sustenta cada afirmación con evidencia: datos, cifras o fuentes.
+Ejemplo del macetero inteligente
+Contexto general: En el mundo, más del 50% de la población vive en zonas urbanas y muchas personas cultivan plantas en espacios reducidos sin conocimientos técnicos de riego. Contexto local: En las ciudades peruanas, los departamentos pequeños y las jornadas laborales extensas dificultan un riego constante. Contexto específico: En TECSUP, los estudiantes que cultivan plantas en el laboratorio pierden ejemplares por riego deficiente. Problema central: Las plantas en espacios urbanos reducidos mueren por exceso o falta de agua porque no existe un control automático del riego. Causas: desconocimiento de las necesidades hídricas, falta de tiempo para regar manualmente y ausencia de tecnología accesible. Efectos: pérdida de plantas, gasto innecesario en nuevas plantas y desmotivación. Pregunta de investigación: ¿En qué medida un macetero inteligente con sensor de humedad y riego automático permite mantener el sustrato en un rango adecuado de humedad para plantas de interior?
+
+Errores frecuentes y versión corregida
+Incorrecto
+
+Afirmar "muchas plantas mueren" sin datos que lo respalden.
+
+Corregido
+
+Citar una fuente: "Según el INEI (2023), el 60% de hogares urbanos reporta pérdida de plantas por riego inadecuado".
+
+Incorrecto
+
+Confundir el problema con la solución ("el problema es que no hay macetero automático").
+
+Corregido
+
+El problema es la situación negativa: "las plantas mueren por riego deficiente". La solución es el macetero automático.
+
+Incorrecto
+
+Plantear un problema demasiado amplio o vago.
+
+Corregido
+
+Delimitar: especificar quién, dónde y cómo se manifiesta el problema.
+
+Actividad breve
+¿Cuál es la diferencia entre contexto general y contexto específico?
+
+a.No hay diferencia, son lo mismob.El general aborda el panorama amplio; el específico, la situación concreta que observasc.El específico es más largo que el generald.El general se escribe al final
+Conceptos clave
+Contexto general, local y específico
+General: panorama amplio (mundial o nacional). Local: tu región, ciudad o institución. Específico: la situación concreta y observable. Se va de lo amplio a lo específico como un embudo.
+
+Problema central, causas y efectos
+Problema central: la situación negativa que afecta a alguien. Causas: por qué ocurre. Efectos: qué consecuencias produce. Se recomienda usar un árbol de problemas para visualizarlo.
+
+Pregunta de investigación
+Es la pregunta que guía todo el proyecto. Debe ser clara, específica y respondible mediante la investigación. Ejemplo: ¿En qué medida un macetero inteligente permite mantener el sustrato en un rango adecuado de humedad?
+
+Necesidad de sustentar con evidencias
+Cada afirmación del planteamiento debe respaldarse con datos, observaciones, encuestas o fuentes confiables. Sin evidencia, el planteamiento es solo una opinión personal.
+
+Hipótesis
+¿Qué es?
+La hipótesis es una respuesta provisional y comprobable a la pregunta de investigación. Es lo que crees que va a ocurrir, expresado de forma que pueda medirse y verificarse.
+
+Explicación en palabras sencillas
+Después de plantear el problema y formular la pregunta de investigación, propones una posible respuesta. Esa respuesta es la hipótesis. No es una adivinanza: es una afirmación que se puede poner a prueba. Si los datos la confirman, se acepta; si la contradicen, se rechaza. La hipótesis conecta el problema con la solución tentativa y guía el diseño de la investigación.
+
+Cómo redactarlo
+Parte de la pregunta de investigación.
+Formula una afirmación que pueda medirse o verificarse.
+Incluye las variables principales: qué se manipula y qué se mide.
+Usa un lenguaje claro y concreto.
+Asegúrate de que sea refutable: que exista la posibilidad de que resulte falsa.
+Ejemplo del macetero inteligente
+Si se implementa un macetero inteligente con un sensor de humedad del sustrato que active una bomba de agua cuando el nivel desciende del 40%, entonces la humedad del sustrato se mantendrá en un rango entre 40% y 70%, adecuado para plantas de interior, sin necesidad de riego manual.
+
+Errores frecuentes y versión corregida
+Incorrecto
+
+Confundir la hipótesis con el objetivo ("El objetivo es construir un macetero").
+
+Corregido
+
+La hipótesis es una suposición comprobable: "Si se implementa el macetero, la humedad se mantendrá en el rango adecuado".
+
+Incorrecto
+
+Formular una hipótesis que no se puede medir ni verificar.
+
+Corregido
+
+Incluir variables observables: porcentaje de humedad, frecuencia de activación, supervivencia de la planta.
+
+Incorrecto
+
+Plantear la hipótesis como certeza ("El macetero funcionará perfectamente").
+
+Corregido
+
+Es una respuesta provisional: "Se espera que el macetero mantenga la humedad en el rango adecuado".
+
+Actividad breve
+¿Qué hace que una hipótesis sea válida para la investigación?
+
+a.Que sea una opinión personal del investigadorb.Que sea comprobable y refutable mediante datosc.Que sea lo más larga posibled.Que no mencione variables
+Conceptos clave
+Variables e indicadores para contrastarla
+Variable independiente: la que se manipula (activación de la bomba según umbral). Variable dependiente: la que se mide (humedad del sustrato). Indicadores: porcentaje de humedad, frecuencia de riego, estado de la planta.
+
+Diferencia entre hipótesis y objetivo
+La hipótesis es una suposición comprobable (qué crees que ocurrirá). El objetivo es una meta accionable (qué vas a hacer). La hipótesis se verifica; el objetivo se cumple.
+
+Objetivos de la investigación
+¿Qué es?
+Los objetivos son las metas concretas que el proyecto busca alcanzar. El objetivo general define el propósito central y los objetivos específicos son los pasos que permiten lograrlo.
+
+Explicación en palabras sencillas
+Los objetivos dicen qué vas a hacer, no cómo lo vas a hacer. Se redactan con un verbo en infinitivo (terminaciones en -ar, -er, -ir), seguido del objeto sobre el que se actúa y la finalidad o condición. El objetivo general es la meta amplia; los específicos la descomponen en pasos manejables. Cada objetivo específico debe poder cumplirse de forma independiente, pero juntos conducen al objetivo general.
+
+Cómo redactarlo
+Empieza siempre con un verbo en infinitivo (diseñar, construir, evaluar, analizar).
+Indica el objeto: sobre qué o quién se actúa.
+Añade la finalidad o condición: para qué se hace o bajo qué circunstancias.
+El objetivo general debe abarcar todo el proyecto.
+Los objetivos específicos deben ser pasos concretos hacia el general.
+Usa verbos que se puedan verificar (diseñar, medir, calibrar), no vagos (conocer, comprender).
+Objetivo general y específicos del macetero
+Objetivo general: Diseñar y construir un macetero inteligente de riego automático que mantenga la humedad del sustrato en un rango adecuado para plantas de interior. Objetivos específicos: 1) Seleccionar los componentes electrónicos (sensor, microcontrolador y bomba) según las necesidades del riego automático. 2) Ensamblar el circuito y la estructura física del macetero. 3) Programar el microcontrolador para activar la bomba según el umbral de humedad. 4) Calibrar el sensor de humedad con diferentes tipos de sustrato. 5) Evaluar el funcionamiento del prototipo midiendo la humedad durante una semana de pruebas.
+
+Errores frecuentes y versión corregida
+Incorrecto
+
+Usar verbos vagos: "Conocer el funcionamiento del sensor".
+
+Corregido
+
+Usar verbos verificables: "Calibrar el sensor de humedad con dos tipos de sustrato".
+
+Incorrecto
+
+Confundir objetivos con tareas ("Comprar los materiales en el mercado").
+
+Corregido
+
+La tarea es una acción administrativa; el objetivo es una meta académica: "Seleccionar los componentes electrónicos según las necesidades del riego".
+
+Incorrecto
+
+Redactar objetivos específicos que no conducen al general.
+
+Corregido
+
+Cada objetivo específico debe ser un paso necesario para alcanzar el objetivo general.
+
+Actividad breve
+¿Cuál de los siguientes es un objetivo correctamente redactado?
+
+a.Conocer sobre los sensores de humedadb.Comprar los materiales en la ferreteríac.Calibrar el sensor de humedad con dos tipos de sustratod.Entender cómo funciona el riego
+Conceptos clave
+Estructura del objetivo
+Verbo en infinitivo + objeto + finalidad o condición. Ejemplo: "Diseñar [verbo] un macetero inteligente [objeto] para mantener la humedad del sustrato [finalidad]".
+
+Verbos apropiados
+Apropiados: diseñar, construir, programar, calibrar, evaluar, analizar, medir, seleccionar, ensamblar. Evitar: conocer, comprender, entender, saber (no se pueden verificar).
+
+Diferencia entre objetivos y tareas
+Objetivo: meta académica verificable (qué se logra). Tarea: acción administrativa u operativa (qué se hace para lograrlo). "Comprar materiales" es tarea; "Seleccionar componentes según necesidades" es objetivo.
+
+Justificación
+¿Qué es?
+La justificación explica por qué el proyecto es importante, a quién beneficia y qué aporte ofrece. Responde a la pregunta: ¿por qué vale la pena hacer esta investigación?
+
+Explicación en palabras sencillas
+Mientras el planteamiento del problema describe la situación negativa, la justificación argumenta por qué resolverla importa. No se trata de listar características técnicas del prototipo, sino de explicar el valor que aporta: qué necesidad cubre, a quién ayuda y qué diferencia hace. Una buena justificación combina importancia (por qué el problema importa), utilidad práctica (para qué sirve la solución), beneficiarios (a quién ayuda) y aportes (qué contribución nueva ofrece).
+
+Cómo redactarlo
+Explica la importancia del problema: por qué merece atención.
+Describe la utilidad práctica de la solución: para qué serviría.
+Identifica a los beneficiarios: quiénes ganan con el proyecto.
+Menciona los aportes: qué contribución nueva ofrece.
+Distingue entre características técnicas y beneficios.
+Redacta en párrafos breves, cada uno con un foco claro.
+Ejemplo redactado del macetero
+El proyecto es importante porque el riego inadecuado es una de las principales causas de mortalidad de plantas de interior en hogares urbanos, generando pérdidas económicas y desmotivación en quienes intentan cultivar. La utilidad práctica del macetero inteligente radica en automatizar el riego, liberando al usuario de la tarea manual y garantizando condiciones adecuadas para la planta. Los beneficiarios directos son las personas que viven en espacios reducidos y tienen jornadas laborales extensas, así como los estudiantes de áreas técnicas que pueden replicar el prototipo como caso de aprendizaje. Como aporte, el proyecto ofrece un diseño de bajo costo, construido con componentes accesibles en el mercado local, que puede servir como base para sistemas de riego doméstico más amplios.
+
+Errores frecuentes y versión corregida
+Incorrecto
+
+Listar características técnicas como si fueran justificación: "El macetero usa un Arduino Uno y un sensor capacitivo".
+
+Corregido
+
+Explicar el beneficio: "El macetero permite que personas sin conocimientos técnicos mantengan sus plantas en buen estado".
+
+Incorrecto
+
+Repetir el planteamiento del problema en la justificación.
+
+Corregido
+
+El problema describe la situación negativa; la justificación argumenta por qué resolverla importa y a quién beneficia.
+
+Incorrecto
+
+No mencionar beneficiarios ni aportes.
+
+Corregido
+
+Identificar claramente a quién ayuda el proyecto y qué contribución nueva ofrece.
+
+Actividad breve
+¿Cuál de los siguientes es un beneficio y no una característica técnica?
+
+a.El prototipo usa un microcontrolador Arduino Unob.El sensor es de tipo capacitivoc.El macetero permite que personas sin conocimientos mantengan sus plantasd.La bomba funciona con 5V de corriente
+Conceptos clave
+Importancia del problema
+Por qué el problema merece atención: magnitud, frecuencia, consecuencias. No basta con decir que existe; hay que argumentar por qué importa resolverlo.
+
+Utilidad práctica
+Para qué serviría la solución una vez desarrollada. Qué función cumpliría en la vida real.
+
+Beneficiarios
+Quiénes ganan directamente con el proyecto: personas, instituciones, comunidad académica.
+
+Aportes
+Qué contribución nueva ofrece el proyecto: un diseño de bajo costo, una solución replicable, un caso de aprendizaje.
+
+Característica técnica vs. beneficio
+Característica técnica: describe el componente (Arduino, sensor, 5V). Beneficio: describe el valor para el usuario (mantener plantas sin conocimientos técnicos).
+
+Alcance de la investigación
+¿Qué es?
+El alcance define hasta dónde llega la investigación: qué nivel de profundidad tiene, qué variables aborda y qué límites tiene. No es lo mismo describir algo que explicar por qué ocurre.
+
+Explicación en palabras sencillas
+El alcance responde a la pregunta: ¿qué nivel de profundidad tendrá la investigación? No es lo mismo describir algo que explicar por qué ocurre. El alcance puede ser exploratorio (explorar algo poco conocido), descriptivo (describir características), correlacional (relacionar variables) o explicativo (explicar causas). Es importante no confundir alcance con diseño: el diseño es el plan metodológico (experimental, no experimental), mientras que el alcance es el nivel de profundidad. Las delimitaciones son los límites concretos: usuario, lugar, periodo, especie, sustrato y condiciones.
+
+Cómo redactarlo
+Define el tipo de alcance: exploratorio, descriptivo, correlacional o explicativo.
+Explica por qué elegiste ese alcance.
+Establece las delimitaciones: usuario, lugar, periodo, especie, sustrato y condiciones.
+No confundas alcance con diseño: el diseño es el plan metodológico.
+Aclara qué queda fuera del proyecto (exclusiones).
+Ejemplo del macetero inteligente
+Alcance: descriptivo, porque se busca describir y evaluar el comportamiento del prototipo en condiciones controladas, sin pretender establecer relaciones causales complejas. Delimitaciones: Usuario: estudiantes y personas sin conocimientos técnicos de riego. Lugar: laboratorio de TECSUP. Periodo: cuatro semanas de pruebas. Especie: planta de interior (pothos). Sustrato: mezcla universal. Condiciones: temperatura ambiente del laboratorio. Exclusiones: no se evalúa el rendimiento con plantas de exterior, ni en exteriores, ni con sustratos especializados.
+
+Errores frecuentes y versión corregida
+Incorrecto
+
+Confundir alcance con diseño ("el alcance es experimental").
+
+Corregido
+
+El alcance es descriptivo; lo experimental es el diseño (el plan metodológico).
+
+Incorrecto
+
+No establecer delimitaciones y dejar el alcance abierto.
+
+Corregido
+
+Especificar usuario, lugar, periodo, especie, sustrato y condiciones.
+
+Incorrecto
+
+Confundir correlación con causalidad ("si A y B se relacionan, A causa B").
+
+Corregido
+
+La correlación indica asociación entre variables; la causalidad requiere demostrar que una variable causa la otra.
+
+Actividad breve
+¿Cuál es la diferencia entre alcance y diseño?
+
+a.Son lo mismo, solo cambian el nombreb.El alcance es el nivel de profundidad; el diseño es el plan metodológicoc.El alcance se escribe al final; el diseño al iniciod.El diseño es parte del alcance
+Conceptos clave
+Tipos de alcance
+Exploratorio: explorar temas poco conocidos. Descriptivo: describir características. Correlacional: relacionar dos o más variables. Explicativo: explicar causas.
+
+Correlación vs. causalidad
+Correlación: dos variables se asocian (cuando una cambia, la otra también). Causalidad: una variable causa el cambio en la otra. La correlación no implica causalidad; esta debe demostrarse.
+
+¿"Experimental" es un alcance?
+No. "Experimental" corresponde al diseño (el plan metodológico), no al alcance. Los alcances son: exploratorio, descriptivo, correlacional y explicativo.
+
+Delimitaciones
+Usuario: a quién va dirigido. Lugar: dónde se realiza. Periodo: cuánto dura. Especie: qué planta se usa. Sustrato: qué tipo de tierra. Condiciones: bajo qué circunstancias.
+
+Marco teórico
+¿Qué es?
+El marco teórico es el fundamento conceptual del proyecto. Reúne los antecedentes (investigaciones previas), las bases teóricas (principios que explican el problema) y las bases conceptuales (definición de términos clave).
+
+Explicación en palabras sencillas
+El marco teórico demuestra que conoces el tema y que tu proyecto se apoya en conocimiento existente. Se divide en tres partes. Los antecedentes son investigaciones previas relacionadas con tu proyecto: qué hicieron otros, qué encontraron y cómo aporta a tu trabajo. Las bases teóricas son los principios científicos que explican el problema y el funcionamiento de tu solución. Las bases conceptuales son las definiciones de los términos clave que usarás. Es fundamental buscar fuentes reales, parafrasear (no copiar), citar correctamente y no inventar investigaciones, autores ni resultados.
+
+Cómo redactarlo
+Busca antecedentes en bases de datos reales (Google Scholar, Redalyc, Scielo).
+Para cada antecedente, completa una ficha: autor, año, objetivo, método, resultados y aporte.
+Redacta las bases teóricas con principios que expliquen tu problema y solución.
+Define los términos clave en las bases conceptuales.
+Parafrasea: expresa con tus palabras lo que dice la fuente, sin copiar literalmente.
+Cita correctamente: autor, año y referencia completa al final.
+No inventes investigaciones, autores ni resultados.
+Ejemplo del macetero inteligente
+Antecedente (ejemplo hipotético de ficha): Autor: García, M. (2022). Objetivo: evaluar un sistema de riego automático con Arduino. Método: prototipo con sensor capacitivo y bomba sumergible. Resultados: la humedad se mantuvo entre 45% y 65%. Aporte: valida el uso de Arduino para riego automático en macetas. Bases teóricas: la humedad del sustrato depende de su capacidad de retención de agua; las plantas de interior requieren un rango de 40%-70%; los sensores capacitivos miden la humedad sin contacto directo con el agua; el microcontrolador compara la lectura con un umbral y activa la bomba. Bases conceptuales: Sensor: dispositivo que detecta una magnitud física. Microcontrolador: circuito programable que procesa señales. Bomba: dispositivo que mueve agua. Umbral: valor límite de activación. Riego automático: suministro de agua sin intervención humana. Prototipo: versión preliminar de un producto.
+
+Errores frecuentes y versión corregida
+Incorrecto
+
+Inventar investigaciones o autores que no existen.
+
+Corregido
+
+Buscar antecedentes reales en bases de datos como Google Scholar, Redalyc o Scielo. Si usas un ejemplo hipotético, indícalo claramente.
+
+Incorrecto
+
+Copiar literalmente sin parafrasear ni citar.
+
+Corregido
+
+Parafrasear con tus palabras y citar la fuente: autor, año y referencia completa.
+
+Incorrecto
+
+Confundir antecedentes con bases teóricas.
+
+Corregido
+
+Antecedentes: investigaciones previas. Bases teóricas: principios que explican el problema. Bases conceptuales: definiciones de términos.
+
+Actividad breve
+¿Qué información debe incluir la ficha de un antecedente?
+
+a.Solo el nombre del autor y el títulob.Autor, año, objetivo, método, resultados y aportec.Solo el resumen del proyectod.Solo la conclusión
+Conceptos clave
+Antecedentes
+Son investigaciones previas relacionadas con tu proyecto. Se buscan en bases de datos reales (Google Scholar, Redalyc, Scielo). Para cada uno se completa una ficha: autor, año, objetivo, método, resultados y aporte.
+
+Bases teóricas
+Son los principios científicos que explican el problema y el funcionamiento de la solución. Ejemplos: humedad del sustrato, necesidades de agua de las plantas, principios de sensores y control automático.
+
+Bases conceptuales
+Son las definiciones de los términos clave: sensor, microcontrolador, bomba, umbral, riego automático, prototipo. Cada término se define de forma breve y clara.
+
+Diferencias entre los tres
+Antecedentes: investigaciones previas (qué hicieron otros). Bases teóricas: principios que explican (por qué funciona). Bases conceptuales: definiciones de términos (qué significa cada palabra).
+
+Búsqueda de fuentes, paráfrasis y citas
+Buscar en bases de datos reales. Parafrasear: expresar con tus palabras. Citar: autor, año y referencia completa al final. No copiar literalmente sin citar.
+
+No inventar
+No inventar investigaciones, autores, referencias ni resultados. Si usas un ejemplo hipotético para fines didácticos, indícalo claramente como tal.
+
+Integración del proyecto
+¿Qué es?
+La integración consiste en conectar todas las partes del proyecto (problema, hipótesis, objetivos, justificación, alcance y marco teórico) para que formen un todo coherente y alineado.
+
+Explicación en palabras sencillas
+Un proyecto bien formulado no es un conjunto de secciones sueltas: cada parte debe conectar con las demás. El problema genera la pregunta de investigación; la hipótesis responde esa pregunta; los objetivos definen cómo se comprobará la hipótesis; la justificación explica por qué importa; el alcance define hasta dónde llega; y el marco teórico sustenta todo. Si una sección no enlaza con las demás, el proyecto pierde coherencia. La integración se verifica con una lista de verificación final y se aplica al proyecto del laboratorio mediante una actividad grupal.
+
+Cómo redactarlo
+Verifica que el problema, la hipótesis y los objetivos hablen del mismo tema.
+Comprueba que los objetivos específicos conduzcan al objetivo general.
+Asegura que la justificación responda al problema planteado.
+Confirma que el alcance sea coherente con los objetivos.
+Revisa que el marco teórico sustente las variables de la hipótesis.
+Usa la lista de verificación final para revisar cada apartado.
+Caso integrado del macetero
+Problema: las plantas mueren por riego inadecuado en espacios urbanos. Pregunta: ¿en qué medida un macetero inteligente mantiene la humedad del sustrato en un rango adecuado? Hipótesis: si se implementa el macetero con sensor y bomba, la humedad se mantendrá entre 40% y 70%. Objetivo general: diseñar y construir el macetero para mantener la humedad. Objetivos específicos: seleccionar componentes, ensamblar, programar, calibrar y evaluar. Justificación: automatiza el riego para personas sin conocimientos técnicos. Alcance: descriptivo, en laboratorio, con pothos, durante cuatro semanas. Marco teórico: antecedentes de riego automático, bases teóricas de humedad del sustrato y bases conceptuales de sensores y microcontroladores. Todo enlaza: el problema genera la pregunta, la hipótesis responde, los objetivos definen cómo comprobarla, la justificación explica por qué importa, el alcance delimita y el marco teórico sustenta.
+
+Errores frecuentes y versión corregida
+Incorrecto
+
+El problema habla de riego, pero los objetivos tratan de iluminación.
+
+Corregido
+
+Todas las secciones deben girar en torno al mismo tema central.
+
+Incorrecto
+
+La hipótesis no responde a la pregunta de investigación.
+
+Corregido
+
+La hipótesis debe ser una respuesta directa y comprobable a la pregunta de investigación.
+
+Incorrecto
+
+El marco teórico no incluye las variables de la hipótesis.
+
+Corregido
+
+El marco teórico debe sustentar las variables principales: humedad del sustrato, sensores, control automático.
+
+Actividad breve
+¿Qué significa que un proyecto esté integrado?
+
+a.Que todas las secciones tratan del mismo tema y se conectan entre síb.Que el proyecto tiene muchas páginasc.Que el marco teórico es muy largod.Que tiene muchos objetivos específicos
+Conceptos clave
+Relación entre las partes
+Problema → pregunta → hipótesis → objetivos → justificación → alcance → marco teórico. Cada eslabón conecta con el anterior y el siguiente.
+
+Actividad grupal
+Aplica la integración al proyecto de tu grupo en el laboratorio: revisen que el problema, la hipótesis, los objetivos, la justificación, el alcance y el marco teórico estén alineados.
+
+Lista de verificación final
+¿El problema está sustentado con evidencia? ¿La hipótesis responde a la pregunta? ¿Los objetivos conducen al general? ¿La justificación explica por qué importa? ¿El alcance está delimitado? ¿El marco teórico sustenta las variables?
+
+Preguntas para el foro
+1. ¿Qué parte del proyecto te costó más redactar y por qué? 2. ¿Cómo aseguraste que tus objetivos sean verificables? 3. ¿Qué evidencia usaste para sustentar tu problema?
+
+Informe de Extracción y Estructuración Teórica para IA Local: Metodología de Investigación e Innovación Tecnológica
+
+1. Documento 1: Investigación Científica Básica, Aplicada e Innovación (Fuente: TEO-S3-HCCOAQUIRA-2026-2-LECTURA.pdf)
+
+1.1 Fundamentos y Tipología de la Investigación Científica
+
+La categorización rigurosa del conocimiento científico constituye una etapa esencial en la estructuración de bases de datos conceptuales para modelos de inteligencia artificial locales. Asimilar las diferencias ontológicas y metodológicas entre la investigación pura y la aplicada permite a un sistema de lenguaje procesar, clasificar y recuperar adecuadamente las intencionalidades de proyectos de desarrollo e ingeniería.
+
+La Investigación Científica se define como un proceso sistemático orientativo diseñado para estudiar fenómenos, responder interrogantes formuladas y producir conocimientos con un alto nivel de confiabilidad. Este proceso se despliega a través de seis etapas secuenciales obligatorias:
+
+1. Observación
+2. Formulación del problema
+3. Revisión de información
+4. Planteamiento de hipótesis
+5. Recolección y análisis de datos
+6. Comunicación de resultados
+
+Atendiendo a su finalidad principal, la ciencia se disgrega formalmente en dos grandes vertientes:
+
+* Investigación científica básica (pura o fundamental): Su propósito primario radica en ampliar el conocimiento teórico y profundizar la comprensión de cómo funciona un determinado fenómeno, sin la exigencia de ofrecer una utilidad práctica de aplicación inmediata. Se orienta a explicar principios, relaciones y causas mediante teorías y bases científicas que posteriormente pueden originar nuevas tecnologías. Para guiar su indagación, se formula de manera estándar las siguientes interrogantes metodológicas:
+  * ¿Por qué ocurre?
+  * ¿Cómo funciona?
+  * ¿Qué propiedades presenta?
+* Investigación científica aplicada: Se caracteriza por utilizar el acervo de conocimientos científicos previamente consolidados con el fin explícito de resolver necesidades específicas y concretas en los ámbitos social, industrial o ambiental. Parte de un problema claramente identificado y busca diseñar, probar, validar o mejorar productos, procesos, servicios o métodos. Orienta su diseño experimental mediante la respuesta a las siguientes preguntas metodológicas clave:
+  * ¿Cómo solucionamos este problema?
+  * ¿Qué tecnología podemos desarrollar?
+  * ¿Cómo mejoramos un procedimiento existente?
+
+La delimitación formal entre ambas tipologías teóricas sienta las bases conceptuales para evaluar casos prácticos concretos dentro del desarrollo tecnológico contemporáneo.
+
+1.2 Catálogo Tecnológico de Aplicaciones Específicas
+
+Para un modelo de inteligencia artificial local, el aprendizaje supervisado mediante instancias concretas resulta indispensable para delimitar con exactitud la frontera operativa donde concluye la teorización científica y comienza la ejecución técnica.
+
+Tipo de Investigación	Ejemplo Tecnológico	Fundamento / Aplicación Específica
+Investigación Básica	Materiales conductores	Estudio del movimiento de los electrones en nuevos materiales para comprender sus propiedades eléctricas. Aunque no genera un producto directo inmediato, fundamenta la creación posterior de baterías de mayor duración, sensores de alta precisión o procesadores más rápidos.
+Investigación Básica	Microorganismos extremófilos	Análisis de los mecanismos biológicos de adaptación y supervivencia de organismos en entornos con alta radiación, frío extremo o elevada salinidad. Sus hallazgos nutren campos como la biotecnología, la medicina avanzada y experimentos para misiones espaciales.
+Investigación Aplicada	Sistema de riego inteligente	Integración multidisciplinaria de sensores de humedad de suelo, programación y conocimientos agronómicos para medir el estado del suelo y activar el riego únicamente cuando es necesario, optimizando el agua y la producción agrícola.
+Investigación Aplicada	Prótesis mediante impresión 3D	Utilización e integración de conceptos de anatomía humana, ingeniería y diseño digital para fabricar dispositivos biomecánicos personalizados, económicos y funcionales mediante la evaluación previa de materiales, ajustes de medidas, resistencia y comodidad.
+Investigación Aplicada	Cohete experimental	Aplicación directa de la física, la electrónica, la ciencia de materiales y la programación para transportar sensores o una pequeña carga científica. Abarca pruebas operativas de estabilidad aerodinámica, telemetría y sistemas de recuperación para mejorar la seguridad y desempeño.
+
+Los casos prácticos catalogados en la tabla previa justifican la importancia de articular formalmente el proceso continuo que transforma los hallazgos de laboratorio en soluciones de mercado.
+
+1.3 Sinergia y Ciclo de Vida: Investigación Básica, Aplicada e Innovación
+
+La interacción ordenada y fluida entre la ciencia pura, la ciencia aplicada y la transferencia tecnológica genera el ciclo de vida de la innovación. Este circuito integrado transforma la investigación en valor económico, social y tecnológico accesible.
+
+1. Generación de principios (Investigación Básica): Descubre y sistematiza las leyes fundamentales, explicaciones y principios de la naturaleza.
+2. Aplicación orientada (Investigación Aplicada): Emplea dichos conocimientos teóricos como herramientas para solucionar problemas concretos identificados en la sociedad, la industria o el ambiente.
+3. Efectivización del valor (Innovación): Ocurre cuando la solución diseñada se implementa efectivamente en el entorno real y genera un beneficio utilizable o impacto económico/social.
+
+Un caso histórico determinante expuesto en la literatura radica en el estudio teórico fundamental de las ondas electromagnéticas. Las investigaciones puras sobre la naturaleza de estas ondas sirvieron como cimiento indiscutible para el posterior desarrollo aplicado de tecnologías fundamentales para la civilización moderna, tales como:
+
+* La radio.
+* Las redes de conectividad inalámbrica (Wi-Fi).
+* La telefonía móvil celular.
+* Las redes de comunicación satelital.
+
+Para consolidar el procesamiento de interacción (prompts) en el modelo de lenguaje, se rescata la siguiente unidad de evaluación reflexiva expuesta en el texto:
+
+Pregunta de reflexión: ¿Qué problema de tu comunidad podría investigarse y qué solución tecnológica propondrías mediante una investigación aplicada?
+
+Esta base conceptual sobre el ciclo de la investigación se formaliza operativamente en los proyectos metodológicos expuestos en el segundo documento.
+
+2. Documento 2: Marcos y Estructura Metodológica de Proyectos Tecnológicos (Fuente: TEO-S5-HCCOAQUIRA-2026-02-PPT.pptx)
+
+2.1 Estructura del Resumen Ejecutivo y Manejo de Resultados Esperados
+
+El resumen ejecutivo es una sección medular dentro de la documentación técnica formal de un proyecto. Proporcionar reglas precisas sobre su composición permite a una inteligencia artificial analizar, estructurar y sintetizar propuestas de ingeniería garantizando alta densidad informativa en poco espacio.
+
+El Resumen Ejecutivo se define como la explicación breve y coherente de la información más importante del proyecto de investigación e innovación tecnológica, orientada a la rápida comprensión y retención de su tema central por parte del lector. Sus componentes obligatorios son:
+
+* Contexto: Entorno situacional en el que se enmarca la propuesta.
+* Planteamiento: Declaración sucinta de la problemática identificada.
+* Solución: Descripción de la propuesta técnica o tecnológica desarrollada.
+* Metodología: Procedimiento, fases y herramientas utilizadas para la ejecución.
+* Resultados: Exposición de las métricas, hallazgos o metas alcanzadas/esperadas.
+
+Escenario / Fase del Proyecto	Regla Metodológica de Redacción de Resultados
+Prototipo NO probado empíricamente (Ejemplo: Fase inicial de diseño del macetero inteligente)	Restricción obligatoria: redactar en términos de "resultados esperados" o metas estimadas (Ejemplo: "Se espera mejorar el riego y se evaluará el consumo de agua"). Está estrictamente prohibido afirmar beneficios comprobados o incluir porcentajes de eficiencia cuantitativa sin contar con mediciones previas verificables.
+Prototipo probado empíricamente (Fase posterior a ensayos)	Se deben presentar los resultados obtenidos mediante métricas reales extraídas de las pruebas, mediciones y datos recopilados.
+
+La síntesis correcta contenida en el resumen ejecutivo depende directamente de la solidez metodológica empleada en la construcción detallada del planteamiento del problema.
+
+2.2 Formulación del Problema, Causalidad y Justificación del Proyecto
+
+El desarrollo de la justificación y la delimitación del problema representan la fase crítica donde se argumenta la viabilidad, pertinencia y necesidad de una solución técnica.
+
+El Planteamiento del Problema exige una extensión mínima de 3 párrafos y debe redactarse siguiendo de manera estricta una secuencia jerárquica deductiva que avanza desde lo general hasta lo específico:
+
+1. General (Aspecto Mundial): Explicar el problema encontrado en un contexto del mundo o marco global.
+2. Local (Aspecto Regional): Explicar el problema en un contexto de País o región.
+3. Específico (Aspecto del Usuario Empático): Explicar la dificultad en un contexto dirigido concretamente al usuario final.
+
+Para lograr un planteamiento riguroso y analítico, es indispensable diferenciar el factor origen del fenómeno frente a sus consecuencias observadas:
+
+Dimensión Causal	Caso Práctico Macetero Inteligente	Implicación Metodológica para la IA
+Causa Fundamental	El olvido sistemático del usuario de revisar manualmente la humedad del sustrato.	Factor origen o condición desencadenante sobre la cual debe actuar la solución tecnológica.
+Efectos / Consecuencias	Deterioro fisiológico, daño progresivo o pérdida de la planta por riego inadecuado (exceso o falta de agua).	Impactos negativos derivados de la causa. Constituyen las variables que se buscan reducir o eliminar.
+
+La Justificación complementa el planteamiento argumentando por qué vale la pena realizar el proyecto a través de seis preguntas clave:
+
+Pregunta Guía de Justificación	Respuesta Teórica / Orientación Metodológica
+¿Para qué servirá tu investigación?	Definir el propósito directo del proyecto (ej. mejorar la atención o automatizar el riego).
+¿Qué posible utilidad tendrá?	Explicar la aplicación práctica del dispositivo, prototipo o sistema desarrollado.
+¿Para qué problema sería útil tu investigación?	Precisar la necesidad o falla específica que el proyecto aborda y resuelve.
+¿Qué beneficios aportará a la sociedad?	Exponer las mejoras sociales, ambientales o económicas (ej. ahorro hídrico).
+¿Qué información nueva aportará a la industria?	Identificar los aportes técnicos, metodologías o datos que se integran al sector técnico.
+¿Quiénes podrían beneficiarse con los resultados?	Identificar explícitamente a los usuarios directos e indirectos favorecidos.
+
+Una justa delimitación del problema y su fundamentación permiten trazar con precisión los objetivos y las hipótesis del proyecto.
+
+2.3 Definición de Objetivos, Hipótesis y Alcance de la Investigación
+
+La arquitectura de un proyecto tecnológico exige una articulación lógica entre la intención del proyecto (objetivos), la predicción científica (hipótesis) y su nivel de profundidad (alcance).
+
+Objetivos de la Investigación
+
+* Objetivo General: Representa el resultado final al que se quiere llegar en el proceso de investigación. Se expresa al inicio obligatoriamente con un VERBO EN INFINITIVO (-AR, -ER, -IR), precisando qué se desarrollará y cuál es su finalidad.
+  * Ejemplo estandarizado: Desarrollar un macetero inteligente para apoyar el riego de plantas domésticas.
+* Objetivos Específicos: Son aquellos objetivos que constituyen un nivel de conocimiento previo indispensable para lograr el objetivo general; es decir, el conjunto de los objetivos específicos es el medio para alcanzar el objetivo general.
+  * Ejemplo estandarizado: Evaluar la activación de la bomba según las lecturas de humedad.
+
+Hipótesis de Investigación
+
+Es el planteamiento del problema formulado en modo de aseveración o afirmación de que la idea innovadora va a funcionar en el usuario dando solución al problema definido, indicando por qué se tiene dicha aseveración. Consiste en una respuesta provisional que debe ser susceptible de contrastación empírica mediante pruebas, observaciones o mediciones de datos.
+
+* Ejemplo de hipótesis contrastable: En condiciones comparables, el riego automático mantendrá la humedad en el rango elegido más tiempo que el manual.
+
+Alcance de la Investigación
+
+Define qué tan profunda será la investigación que se realizará. Se clasifica metodológicamente en cuatro tipos:
+
+1. Exploratorio: Es un abordaje superficial de un tema poco estudiado.
+2. Descriptivo: Se centra en trabajar los detalles en modo descripción, caracterizando minuciosamente componentes, condiciones o comportamientos (ej. registrar y describir la humedad, las activaciones y el consumo de agua del macetero).
+3. Correlacional: Orientado a analizar la relación o asociación existente entre 3 o más variables.
+4. Explicativo: Diseñado para realizar el análisis de los resultados derivados de la relación causal entre variables.
+
+La determinación del alcance sienta las bases para estructurar los fundamentos teóricos requeridos para sustentar el estudio.
+
+2.4 Construcción del Marco Teórico, Antecedentes y Delimitación
+
+El marco teórico ofrece la fundamentación científica que valida la interpretación de datos por parte de un investigador o un modelo analítico local.
+
+El Marco Teórico debe elaborarse obligatoriamente bajo las pautas internacionales de citación y referenciación de las Normas APA (basado en http://normasapa.net/marco-teorico/). Sus componentes cumplen funciones metodológicas diferenciadas:
+
+Componente del Marco Teórico	Función y Ejemplo Práctico
+Antecedentes de la investigación	Resumen y revisión sistemática de estudios o artículos previos relacionados. Debe estructurarse bajo el rigor de las Normas APA e incluir obligatoriamente: objetivo del estudio, método utilizado, resultados obtenidos y aporte concreto al trabajo actual. <br>Ejemplo: Consulta y síntesis de un artículo científico previo que evaluó un sistema automatizado de riego.
+Bases teóricas	Análisis sistemático, integrado y sintético de las principales teorías científicas consolidadas que explican el tema investigado y sus principios de funcionamiento. Una teoría explica sistemáticamente por qué ocurren ciertos fenómenos integrando sus partes sin contradicciones. <br>Ejemplo: Teorías de control automático del riego basadas en las constantes físicas de humedad del suelo.
+Bases conceptuales	Definición técnica e inequívoca de las variables, términos clave y vocabulario especializado utilizado en el proyecto. <br>Ejemplo: Definiciones formales de sensor, umbral, microcontrolador y prototipo.
+Delimitación del estudio	Precision de los límites de alcance, fronteras y condiciones operativas bajo las cuales se evaluará el prototipo y se validarán los resultados. <br>Ejemplo: Evaluar un prototipo con una especie de planta y un sustrato definidos durante un periodo establecido.
+
+La comprensión de estos marcos metodológicos permite abordar la traducción semántica completa de los recursos visuales e instruccionales de la fuente.
+
+3. Matriz de Traducción Semántica de Activos Visuales e Íconos (Transliteración para LLM)
+
+3.1 Desagregación Texto-Imagen y Contenido Didáctico
+
+Para que un modelo de procesamiento de lenguaje natural (NLP) carente de visión computacional directa pueda procesar e integrar el contenido didáctico de las fuentes primarias en formato de diapositivas, se traduce la totalidad de los activos visuales ([SOURCE_IMAGE_1] a [SOURCE_IMAGE_19]) en unidades de información explícitas. Se descartan elementos decorativos redundantes y se conserva la transcripción íntegra del texto incrustado, reactivos pedagógicos, opciones de respuesta, retroalimentaciones y significado metodológico.
+
+ID Imagen	Tipo de Elemento	Texto / Mensaje Extraído	Significado Metodológico para la IA
+[SOURCE_IMAGE_1]	Infografía conceptual	"INVESTIGACIÓN E INNOVACIÓN TECNOLÓGICA - PLANTEAMIENTO DEL PROBLEMA MARCO TEORICO MARCO CONTEXTUAL"	Bombilla sobre libro abierto con bocetos de diagramas de flujo, gráficos e idea. Representa la génesis del proyecto y la estructuración del marco teórico.
+[SOURCE_IMAGE_2]	Cuadro de contenidos	"Capacidades de la sesión: 2. Redactar el marco contextual 3. Redactar el Planteamiento del Problema Redactar el Alcance de la Investigación Redactar el marco teórico del proyecto. INVESTIGACIÓN E INNOVACIÓN TECNOLÓGCIA CIENCIA, INVESTIGACIÓN APLICADA E INNOVACIÓN"	Globo de texto guía. Define el mapa de competencias metodológicas a desarrollar en el módulo.
+[SOURCE_IMAGE_3]	Vector ilustrativo / Silueta	Sin texto incrustado en la figura.	Marcador visual de sección pedagógica para autoevaluaciones y resúmenes estructurados.
+[SOURCE_IMAGE_4]	Vector ilustrativo y Evaluación	"Resumen del Projecto 1. Resumen Ejecutivo de la investigación o innovación. Es una explicación breve de la información más importantes del proyecto. Este texto ayuda al lector a comprender y retener el tema. ¿Qué debe contener? Contexto, Planteamiento, Solución, Metodología, Resultados. INVESTIGACIÓN E INNOVACIÓN TECNOLÓGCIA CIENCIA, INVESTIGACIÓN APLICADA E INNOVACIÓN"\n\n*"Pregunta 1. ¿Cuál es el propósito principal del resumen ejecutivo? A) Describir detalladamente todos los componentes electrónicos. B) Presentar brevemente el problema, la propuesta, el método y los resultados. C) Explicar únicamente las razones para realizar el proyecto. D) Reunir las definiciones técnicas utilizadas en el proyecto. Retroalimentación: El resumen ejecutivo presenta los aspectos esenciales del proyecto para comprenderlo rápidamente. Incluye el problema, el contexto, la solución, la metodología y los resultados esperados u obtenidos."*	Marcador visual de sección pedagógica para autoevaluaciones y resúmenes estructurados. Par de entrenamiento sobre la función del resumen ejecutivo.
+[SOURCE_IMAGE_5]	Mascota ilustrada y Evaluación	"ELECTRICIDAD INDUSTRIAL - Conectamos ideas con soluciones."\n\n*"Pregunta 2. El equipo aún no ha probado el macetero inteligente. ¿Cómo debe presentar sus resultados en el resumen ejecutivo? A) El macetero redujo el consumo de agua en un 40 %. B) Las pruebas demostraron que el sistema funciona sin fallas. C) Se espera mejorar el riego y se evaluará el consumo de agua. D) El prototipo garantizó un crecimiento más rápido de las plantas. Respuesta correcta: C. Retroalimentación: Cuando todavía no se realizan las pruebas, se deben presentar resultados esperados. No corresponde afirmar beneficios comprobados ni incluir porcentajes sin mediciones."*	Mascota con casco, multímetro y tablero eléctrico. Reactivo pedagógico sobre la regla de redacción de resultados esperados en proyectos no probados.
+[SOURCE_IMAGE_6]	Mascota ilustrada y Texto Metodológico	"En TECSUP, tu idea se vuelve prototipo."\n\n*"2. Especifico (Aspecto del Usuario Empático), explicar el problema en un contexto dirigido al Usuario. 3. Local (Aspecto Regional), explicar el problema en un contexto de País o región. INVESTIGACIÓN E INNOVACIÓN TECNOLÓGCIA CIENCIA, INVESTIGACIÓN APLICADA E INNOVACIÓN"*	Mascota en taller construyendo robot. Texto incrustado de fondo que especifica los niveles local y específico del planteamiento del problema.
+[SOURCE_IMAGE_7]	Vector ilustrativo y Evaluación	"General (Aspecto Mundial), explicar el problema encontrado en un contexto del mundo. 1. Planteamiento del Problema. Explica el problema indicando los hallazgos desde lo general hasta lo especifico. Sera mínimo 3 párrafos, en el cual el se responderá la Pregunta de Planteamiento del Problema, con el siguiente orden"\n\n*"Pregunta 3. ¿Qué orden debe seguir el planteamiento del problema según la estructura trabajada en clase? A) Contexto general, contexto local y situación específica del usuario. B) Situación específica, solución tecnológica y presupuesto. C) Contexto local, resultados obtenidos y marco teórico. D) Objetivo general, componentes técnicos y contexto general. Respuesta correcta: A. Retroalimentación: El planteamiento avanza de lo general a lo específico. Primero presenta el problema en un ámbito amplio, luego explica su contexto local y finalmente describe la dificultad concreta del usuario."*	Marcador visual de sección pedagógica para autoevaluaciones y resúmenes estructurados. Define la jerarquía deductiva del planteamiento del problema.
+[SOURCE_IMAGE_8]	Mascota ilustrada y Evaluación	"Modo equipo: juntos innovamos."\n\n*"Pregunta 4. Un usuario olvida revisar la humedad del sustrato y su planta recibe un riego inadecuado. ¿Cuál es una posible causa del problema? A) El deterioro de la planta por falta de agua. B) La construcción de un sistema de riego automático. C) La pérdida de la planta después de varios días. D) El olvido de revisar la humedad del sustrato. Respuesta correcta: D. Retroalimentación: Una causa es un factor que origina o contribuye al problema. El olvido puede provocar un riego inadecuado, mientras que el deterioro o la pérdida de la planta son posibles efectos."*	Mascota levantando el puño con tablet. Reactivo pedagógico que evalúa la distinción formal entre causa y efectos.
+[SOURCE_IMAGE_9]	Mascota ilustrada	"PROCESAMIENTO DE MINERALES - Transformamos minerales en oportunidades. FLOTACIÓN. INVESTIGACIÓN E INNOVACIÓN TECNOLÓGCIA CIENCIA, INVESTIGACIÓN APLICADA E INNOVACIÓN"	Mascota con traje de protección junto a celda de flotación. Contextualización de ingeniería de procesos e identidad institucional.
+[SOURCE_IMAGE_10]	Vector ilustrativo y Evaluación	"Objetivos de la Investigación. OBJETIVO GENERAL: Representa el resultado final al que se quiere llegar un proceso de investigación. Se expresa el inicio con VERBO en Infinitivo AR, ER, IR. OBJETIVO ESPECIFICOS: Son aquellos objetivos que constituyen un nivel de conocimiento previo para lograr el objetivo general. Es decir, el conjunto de los objetivos específicos es el medio para alcanzar el objetivo general de la investigación."\n\n*"Pregunta 5. ¿Cuál está redactado adecuadamente como objetivo general del proyecto? A) Compramos sensores y mangueras para preparar el trabajo. B) Desarrollar un macetero inteligente para apoyar el riego de plantas domésticas. C) El macetero será una herramienta importante para las familias. D) ¿Podrá el macetero mejorar el cuidado de las plantas? Respuesta correcta: B. Retroalimentación: El objetivo general comienza con un verbo en infinitivo, identifica qué se desarrollará y expresa su finalidad. En este caso, el verbo es “desarrollar”."*	Marcador visual de sección pedagógica para autoevaluaciones y resúmenes estructurados. Explicita la regla sintáctica del verbo en infinitivo para objetivos.
+[SOURCE_IMAGE_11]	Mascota ilustrada y Evaluación	"MAQUINARIA PESADA - Movemos grandes ideas."\n\n*"Pregunta 6. Si el objetivo general es desarrollar un macetero inteligente, ¿cuál es un objetivo específico coherente? A) Investigar las preferencias de transporte de los estudiantes. B) Organizar una feria de productos artesanales de la ciudad. C) Evaluar la activación de la bomba según las lecturas de humedad. D) Diseñar una aplicación para reservar entradas a eventos. Respuesta correcta: C. Retroalimentación: Los objetivos específicos contribuyen al objetivo general. Evaluar la activación de la bomba permite comprobar una función esencial del macetero inteligente."*	Mascota con llave de tuercas y cargador frontal. Ejemplifica la coherencia entre el objetivo general y los específicos.
+[SOURCE_IMAGE_12]	Mascota ilustrada	"Tranqui, prueba, aprende y mejora. INVESTIGACIÓN E INNOVACIÓN TECNOLÓGCIA CIENCIA, INVESTIGACIÓN APLICADA E INNOVACIÓN"	Mascota con protoboard, Arduino y LED. Ilustra la iteración experimental y prototipado ágil en ingeniería.
+[SOURCE_IMAGE_13]	Vector ilustrativo y Evaluación	"Hipotesis: Es el planteamiento del problema pero en modo de aseveración, además de indicar por qué se tiene dicha aseveración. Es la afirmación de que la idea innovadora va funcionar en nuestro usuario dando solución al problema definido."\n\n*"Pregunta 7. ¿Qué es una hipótesis de investigación? A) Una respuesta provisional que puede contrastarse con datos. B) Una conclusión definitiva que no necesita evaluación. C) Una lista de actividades para construir el prototipo. D) Una descripción de los costos de los materiales. Respuesta correcta: A. Retroalimentación: La hipótesis expresa lo que se considera que podría ocurrir. Debe contrastarse mediante observaciones, pruebas o mediciones para determinar si los datos la apoyan."*	Marcador visual de sección pedagógica para autoevaluaciones y resúmenes estructurados. Define la naturaleza aseverativa y contrastable de la hipótesis.
+[SOURCE_IMAGE_14]	Mascota ilustrada y Evaluación	"DESARROLLO WEB - Del código a la realidad."\n\n*"Pregunta 8. ¿Cuál de las siguientes afirmaciones es una hipótesis que puede contrastarse mediante pruebas del macetero? A) Construir un macetero con sensor, depósito y bomba de agua. B) El macetero será el mejor invento para todas las personas. C) ¿Cuáles son las piezas necesarias para construir el macetero? D) En condiciones comparables, el riego automático mantendrá la humedad en el rango elegido más tiempo que el manual. Respuesta correcta: D. Retroalimentación: Esta afirmación anticipa un resultado medible. El equipo puede registrar cuánto tiempo se mantiene la humedad dentro del rango definido y comparar ambos sistemas de riego."*	Mascota programando en laptop. Proporciona un ejemplo operativo de hipótesis formulada para pruebas empíricas.
+[SOURCE_IMAGE_15]	Mascota ilustrada y Evaluación	"ADN TECSUP: crear para ayudar. INVESTIGACIÓN E INNOVACIÓN TECNOLÓGCIA CIENCIA, INVESTIGACIÓN APLICADA E INNOVACIÓN. JUSTIFICACION DEBE RESPONDER: ¿Para que servirá tu investigación? ¿Qué posible utilidad tendrá? ¿Para que problema seria útil tu investigación? ¿Que beneficios aportara a la sociedad? ¿Que información nueva aportara a la industria? ¿Quienes podrían beneficiarse con los resultados? EJEMPLO: TITULO: El estrés laboral y la calidad de atención al cliente en promotores de servicios de la empresa X. La investigación servirá para mejorar la calidad de atención evitando el estrés laboral."\n\n*"Pregunta 9. ¿Qué pregunta responde principalmente la justificación del proyecto? A) ¿Qué actividades se realizarán en cada semana? B) ¿Qué componentes se conectarán al controlador? C) ¿Por qué vale la pena realizar el proyecto y a quién beneficiará? D) ¿Qué resultados se registraron en cada prueba? Respuesta correcta: C. Retroalimentación: La justificación explica la importancia y utilidad del proyecto. Identifica a los beneficiarios y argumenta qué aportes se esperan de su desarrollo."*	Mascota reparando robot de servicio. Explicita las 6 preguntas analíticas obligatorias de la justificación de un proyecto.
+[SOURCE_IMAGE_16]	Mascota ilustrada y Evaluación	"Tecnología con sentido."\n\n*"Pregunta 10. ¿Qué enunciado expresa un beneficio esperado del macetero inteligente? A) El prototipo incorpora un sensor conectado al controlador. B) El sistema puede disminuir la necesidad de supervisar continuamente el riego. C) El depósito se conecta a una manguera y una bomba. D) El programa contiene instrucciones para activar una salida. Respuesta correcta: B. Retroalimentación: Un beneficio explica cómo la propuesta puede ayudar al usuario. Las otras alternativas describen características técnicas, pero no explican directamente su utilidad."*	Mascota sosteniendo maceta con planta. Evalúa la diferenciación entre características técnicas y beneficios esperados para el usuario.
+[SOURCE_IMAGE_17]	Mascota ilustrada y Evaluación	"SEGURIDAD EN EL TRABAJO - Nos cuidamos en equipo. ALCANCE. FINALIDAD: Es mencionar que tan profundo será la investigación que se realizara. TIPOS: Explorativos – Es superficial. Descriptivos – Es trabajar los detalles en modo descripción. Correlacionales – Ver la relación entre 3 o mas variables. Explicativos – Realizar el análisis de los resultados de la relación de las variables. EJEMPLOS: TITULO: El estrés laboral y la calidad de atención al cliente en promotores de servicios de la empresa X. Comparar, buscar la relación … Analizar la relación en porcentaje del … INVESTIGACIÓN E INNOVACIÓN TECNOLÓGCIA CIENCIA, INVESTIGACIÓN APLICADA E INNOVACIÓN"\n\n*"Pregunta 11. El equipo registrará y describirá la humedad, las activaciones y el consumo de agua del prototipo. ¿Qué alcance corresponde a ese propósito? A) Descriptivo. B) Correlacional. C) Explicativo. D) Exploratorio. Respuesta correcta: A. Retroalimentación: El alcance descriptivo permite caracterizar condiciones y comportamientos. Registrar y describir el funcionamiento del macetero no implica, por sí solo, analizar relaciones entre variables ni demostrar causas."*	Mascota con casco, chaleco reflectivo y checklist. Detalla los 4 tipos de alcance y evalúa la clasificación de un estudio descriptivo.
+[SOURCE_IMAGE_18]	Mascota ilustrada y Evaluación	"Tranqui, lo probamos."\n\n*"Pregunta 12. ¿Cuál es una delimitación adecuada para las pruebas del macetero? A) El sistema resolverá los problemas de riego de cualquier cultivo. B) El proyecto será innovador y útil para toda la sociedad. C) El equipo desarrollará la mejor solución disponible en el mercado. D) Se evaluará un prototipo con una especie y un sustrato definidos durante un periodo establecido. Respuesta correcta: D. Retroalimentación: Delimitar significa precisar qué se estudiará y bajo qué condiciones. Definir el prototipo, la especie, el sustrato y el periodo ayuda a establecer los límites de los resultados."*	Mascota sentada con laptop. Proporciona un ejemplo estandarizado de delimitación de pruebas operativas.
+[SOURCE_IMAGE_19]	Mascota ilustrada y Evaluación	"DESARROLLO WEB - Del código a la realidad. MARCO TEÓRICO. INVESTIGACIÓN E INNOVACIÓN TECNOLÓGCIA CIENCIA, INVESTIGACIÓN APLICADA E INNOVACIÓN. LAS BASES TEÓRICAS: Son el análisis sistemático y sintético de las principales teorías que explican el tema que estás investigando. TEORIA: Es una explicación sistemática de por qué ocurren ciertos fenómenos. Nos sirven para entender la realidad, para explicarla. Es sistemática porque todas sus partes se integran sin contradicción alguna."\n\n*"Pregunta 13. El equipo consulta un artículo que evaluó un sistema de riego y resume su objetivo, método, resultados y aporte. ¿A qué apartado corresponde? A) Bases conceptuales. B) Antecedentes de la investigación. C) Objetivos específicos. D) Justificación del proyecto. Respuesta correcta: B. Retroalimentación: Los antecedentes presentan estudios previos relacionados con el proyecto. Se debe explicar qué investigaron, cómo lo hicieron, qué encontraron y cómo aportan al trabajo actual."\n\n"Pregunta 14. ¿Qué opción distingue correctamente las bases teóricas de las bases conceptuales? A) Las teóricas presentan costos y las conceptuales organizan fechas. B) Las teóricas reúnen resultados propios y las conceptuales establecen objetivos. C) Las teóricas explican principios de funcionamiento y las conceptuales definen términos clave. D) Las teóricas enumeran materiales y las conceptuales detallan el montaje. Respuesta correcta: C. Retroalimentación: Las bases teóricas explican los principios que sustentan el proyecto, como el control del riego mediante mediciones de humedad. Las bases conceptuales definen términos como sensor, umbral, microcontrolador y prototipo."\n\n"Figura 1. Marco Teórico: ¿Qué es y cómo elaborarlo?. Recuperado de: http://normasapa.net/marco-teorico/ Basado en las NORMAS APA"*	Mascota programando en laptop. Modulo de evaluación sobre componentes del marco teórico y fuente citada explícitamente bajo Normas APA.
+
+Esta matriz garantiza la ingesta semántica exhaustiva y precisa de los datos conceptuales y didácticos contenidos en la fuente original para su integración en el modelo de inteligencia artificial local.
+

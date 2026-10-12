@@ -3,6 +3,7 @@
 *.iml
 .vscode/
 
+
 # Backend (Java/Gradle)
 backend/build/
 backend/.gradle/

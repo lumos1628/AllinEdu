@@ -1,0 +1,16 @@
+1	Introducción a Android y Kotlin esencial	Aprende Kotlin (Android Developers), Historia de Android, Codelab “Mi primer programa en Kotlin”, Codelab “Fundamentos de Kotlin”	25 ago
+2	POO en Kotlin	Clases y objetos (Kotlin.org), Clases abstractas e interfaces, Codelab de configuración de Android Studio, guía de instalación de Kotlin (PDF) y Kotlin_Onboarding_2_POO_ES.zip	1 sep
+3	Jetpack Compose: layouts y controles	Documentación oficial de Compose, Codelabs “Crea un diseño básico” y “Aspectos básicos de Jetpack Compose”, Conceptos básicos sobre el diseño de Compose	8 sep
+4	Manejo del estado y Git	Estado y Jetpack Compose, repositorio Jetnews	15 sep
+5	Navegación entre múltiples vistas	Navegación en Android (primeros pasos), Tipos de navegación, Codelab de navegación con XML, android-kotlin-compose-training.zip	22 sep
+6	Menús y Material Design 3	Scaffold en Compose, Codelab de Temas de Material, repositorio compose-samples (Reply)	4 oct
+7	SQLite con Room	Room (guardar datos en BD local), rutas de aprendizaje “SQL Basic” y “Persistencia con Room”	6 oct
+8	Arquitectura MVVM + UDF con persistencia	Guía de arquitectura de apps Android	13 oct
+9	Consumo de API con Retrofit	Pathway “Obtener datos de Internet”, DummyJson, repaso de arquitectura Android	20 oct
+10	CRUD de API con Retrofit II	Listas y grids con Lazy en Compose, DummyJson	27 oct
+11	Firebase: Firestore y Authentication	Configura Firebase en tu proyecto Android, DummyJson	3 nov
+12	Google Maps SDK	Maps SDK for Android, Codelabs de Map	10 nov
+13	Animaciones en Jetpack Compose	Introducción a animaciones, Codelabs de animaciones	17 nov
+14	Widgets con Jetpack Glance	Jetpack Glance, Guía de diseño de widgets, Android UI Kit	24 nov
+15	Notificaciones y WorkManager	Documentación de notificaciones en Android	1 dic
+16	Sustentación del proyecto final	Recomendaciones de arquitectura Android	8 dic

@@ -1,10 +1,34 @@
-# Modelo de datos — EduFast
+# Modelo de datos — AllinEdu
 
 > **Fuente de verdad del esquema:** migraciones SQL de `supabase/migrations/`. Los nombres físicos de tablas y columnas están en español, `snake_case` y sin tildes. El código Java conserva nombres en inglés y mapea las entidades a esos nombres.
 
-## Alcance
+## Qué tabla sirve a qué parte de la cadena
 
-Este esquema contempla la primera entrega de asistencia, matrícula anual, apoderados, notificaciones y seguimiento básico de actividades. También deja modeladas las relaciones curriculares necesarias para vincular unidades/sesiones futuras sin matricular estudiantes en cursos.
+El producto es la cadena descrita en [`ALCANCE.md`](ALCANCE.md). El esquema ya cubre la mayor parte:
+
+| Eslabón de la cadena | Tablas disponibles | Estado |
+|---|---|---|
+| **Planificar** | `planificaciones_anuales`, `experiencias_aprendizaje`, `sesiones_planificadas`, `actividades_sesion`, `instrumentos_evaluacion`, `criterios_instrumento`, `niveles_instrumento`, `evidencias_previstas` | Esquema listo, **sin usar por el código** |
+| **Aplicar en clase** | `jornadas_asistencia`, `registros_asistencia`, `ejecuciones_sesion`, `evidencias_aprendizaje` | Asistencia **implementada**; evidencia sin usar |
+| **Evaluar** | `criterios_evaluacion`, `valoraciones_evidencia`, `retroalimentaciones`, `progreso_competencias` | Esquema listo, sin usar |
+| **Refuerzo y repaso** | `actividades_aprendizaje`, `asignaciones_actividad`, `entregas_actividad`, `revisiones_actividad` | Parcial — **falta modelo de ítems**, ver brecha abajo |
+| **Comunicación con familias** | `vinculos_apoderado_estudiante`, `eventos_notificacion`, `notificaciones`, `entregas_notificacion`, `intentos_notificacion`, `preferencias_notificacion`, `dispositivos_notificacion` | Esquema listo, sin usar |
+| Base común | `instituciones_educativas`, `anios_escolares`, `grados_educativos`, `secciones`, `personas`, `cuentas_usuario`, `roles`, `estudiantes`, `matriculas`, `ubicaciones_matricula`, `asignaciones_docentes` | **Implementado** |
+
+### Brecha pendiente: banco de ítems y práctica
+
+Falta modelar el sustrato del refuerzo. Requiere una migración nueva y aprobada:
+
+- **Ítems** por competencia, capacidad y nivel de dificultad, con su origen (generado por IA o escrito por el docente) y su estado de aprobación.
+- **Intentos y respuestas** de práctica, con marca de tiempo, para poder comparar diagnóstico, práctica posterior y prueba diferida.
+- **Programación de repaso espaciado**: qué ítem reaparece, cuándo y cuántas veces se practicó.
+
+`actividades_aprendizaje` y `asignaciones_actividad` sirven para *asignar* una práctica, pero no guardan ítems ni respuestas. No forzarlas a cumplir ese rol.
+
+### Lo que el esquema ya resuelve y conviene no duplicar
+
+- La **generación con IA** no necesita tablas nuevas de contenido: las sesiones, actividades e instrumentos se guardan donde ya corresponde. Lo que sí hace falta es el estado de aprobación y la distinción entre contenido generado y contenido editado por una persona (Regla 0a de `AGENTS.md`).
+- La **justificación de ausencias** se apoya en `registros_asistencia` más `archivos`; no crea un flujo paralelo.
 
 La app/web nunca accede directamente a la base: ambos clientes usan la API Spring. Las claves privadas de PostgreSQL y de proveedores push no se distribuyen a los clientes.
 

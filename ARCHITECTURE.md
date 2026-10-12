@@ -1,4 +1,4 @@
-# 🏛️ ARCHITECTURE.md — Cómo está organizado EduFast (explicado desde cero)
+# 🏛️ ARCHITECTURE.md — Arquitectura de AllinEdu (explicada desde cero)
 
 > **Para quién es:** alguien que ya escribe código pero nunca estudió arquitectura formalmente.
 > **Cómo leerlo:** de arriba a abajo. Cada término técnico se explica primero con una analogía y luego se muestra en el código real.
@@ -32,7 +32,13 @@ Con capas, cada pieza se puede **cambiar, probar y entender por separado**.
 
 ---
 
-## 2. La arquitectura de EduFast, explicada desde cero
+## 2. La arquitectura del prototipo de código, explicada desde cero
+
+> **Contexto de producto:** AllinEdu reduce la carga operativa del docente en la preparación, aplicación y evaluación de sus clases. El alcance completo está en `ALCANCE.md` y los flujos en `USE_CASES.md`.
+>
+> Este documento usa la **asistencia** como ejemplo didáctico en todas sus secciones porque es el flujo que ya está implementado de punta a punta: web, móvil, API, servicio, dominio y base de datos. Sirve como plantilla para construir el resto de la cadena, empezando por el pipeline de preparación de clases, que es la prioridad 1.
+>
+> Los identificadores del código dicen `EduFast`, de una iteración anterior del proyecto. Renombrarlos es la decisión pendiente D-2 de `ALCANCE.md`.
 
 ### Estado del esquema escolar
 

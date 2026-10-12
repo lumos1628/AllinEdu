@@ -1,0 +1,572 @@
+BASE DE CONOCIMIENTO MAESTRA: INVESTIGACIÓN E INNOVACIÓN TECNOLÓGICA
+
+1. Semana 1: Introducción al Proceso Creativo e Investigación Aplicada
+
+El desarrollo de proyectos de investigación aplicada e innovación tecnológica en la formación técnica profesional exige trascender la mera intuición empírica para adoptar metodologías estructuradas, sistemáticas y replicables. Comprender la arquitectura del proceso creativo resulta estratégico, pues permite transformar la generación espontánea de ideas en un flujo de trabajo riguroso capaz de responder a desafíos complejos del entorno productivo y social. A diferencia de los enfoques intuitivos —que dependen de la casualidad y carecen de predictibilidad—, la innovación metodológica garantiza que las soluciones no solo sean novedosas, sino verdaderamente pertinentes, viables y centradas en las necesidades reales del ser humano y del mercado.
+
+1.1. Marco Teórico y Conceptos
+
+Definición del Proceso Creativo
+
+El concepto de proceso creativo ha evolucionado desde concepciones individuales hacia marcos colaborativos y metodológicos integrados:
+
+* Amabile (1983, p. 115): Define el proceso creativo como «el conjunto de actividades mentales y prácticas que lleva a cabo una persona para generar ideas, soluciones o productos originales y únicos». Este enfoque enfatiza la dimensión cognitiva y ejecutiva del individuo en la búsqueda de originalidad.
+* Brown (2008, p. 86): Amplía la visión hacia una dimensión sistémica, definándolo como «un enfoque colaborativo e iterativo para la resolución de problemas centrado en el ser humano, que incorpora métodos de diseño para explorar y comprender desafíos complejos, generar ideas creativas y desarrollar soluciones innovadoras».
+
+Modalidades del Proceso Creativo
+
+Según Medina (2022), la operatividad de la creatividad en entornos de desarrollo se divide en dos modalidades fundamentales:
+
+* Proceso Creativo Orgánico: Nace de manera natural e intuitiva, careciendo de una estructura o método predefinido. Se fundamenta en la libertad absoluta de exploración y la expresión espontánea de ideas, manifestándose sin una secuencia rígida de pasos.
+* Proceso Creativo Inorgánico: Se basa en métodos y técnicas rigurosamente estructuradas que siguen un conjunto de procedimientos y fases predefinidas. Es el enfoque estándar en entornos empresariales, industriales y de diseño, donde se requiere dirigir la generación de ideas mediante herramientas sistemáticas (como brainstorming, mapas mentales o análisis morfológico) para resolver problemas específicos.
+
+Paradigmas de Pensamiento
+
+Medina (2022) contrapone dos dinámicas de pensamiento esenciales para la innovación:
+
+* Pensamiento Divergente: Es la capacidad cognitiva de explorar múltiples caminos, perspectivas e hipótesis a partir de un único problema o interrogante. No sigue una lógica lineal y resulta clave en etapas iniciales de ideación e innovación abierta.
+* Pensamiento Disruptivo: Es la modalidad cognitiva orientada a romper de forma radical con el statu quo y las reglas establecidas en un sector o industria. Su propósito explícito es generar cambios de tal magnitud que lleguen a desplazar o sustituir a los actores dominantes del mercado existente.
+
+Normativa del Entorno de Desarrollo
+
+El trabajo en laboratorios y talleres de innovación requiere el estricto cumplimiento de acuerdos operativos para garantizar la integridad personal, la eficiencia del equipamiento y la sostenibilidad:
+
+1. Seguridad Industrial: Conciencia constante del entorno y uso obligatorio de Equipos de Protección Personal (EPP).
+2. Higiene y Orden: Mantenimiento de la limpieza continua del área de trabajo.
+3. Gestión de Componentes: Manejo eficiente y responsable de los recursos e insumos electrónicos.
+4. Cierre de Sesión: Desocupación y ordenamiento del espacio de trabajo 5 minutos antes del término de la sesión.
+5. Reporte de Incidencias: Comunicación inmediata al docente o encargado sobre cualquier anomalía o fallo en el equipamiento.
+6. Sostenibilidad: Adopción activa de una cultura de reciclaje y optimización de materiales.
+
+1.2. Metodologías, Herramientas y Pasos (Frameworks)
+
+Design Thinking (IDEO / Tim Brown)
+
+La metodología de Design Thinking, visibilizada globalmente por Tim Brown (presidente de IDEO), estructura el proceso creativo centrado en el ser humano a través de 5 etapas secuenciales pero intrínsecamente iterativas, distribuidas en 2 ciclos principales de exploración y concreción:
+
+* Ciclo 1: Exploración y Definición del Desafío
+  1. Empatizar: Inmersión profunda para comprender a la audiencia a través de la observación y la entrevista directa.
+  2. Definir: Configuración de un punto de vista (Point of View) fundamentado en necesidades reales e insights del usuario.
+* Ciclo 2: Generación, Experimentación y Validación 3. Idear: Generación masiva de soluciones creativas no juzgadas previamente (wild ideas). 4. Prototipar: Construcción tangible o representación rápida de las ideas para mostrarlas a terceros. 5. Testear: Evaluación del prototipo con el usuario original para obtener retroalimentación y verificar qué funcionó y qué falló.
+
+Capacidades Terminales
+
+El dominio de esta sesión busca asegurar el cumplimiento de las siguientes competencias de aprendizaje:
+
+* Comprender la secuencia y el propósito de cada una de las etapas del proceso creativo.
+* Identificar con precisión los equipos, herramientas y recursos disponibles en el entorno de desarrollo.
+* Reconocer las bases teóricas de la investigación para fundamentar el proceso de I+D+i.
+* Comprender y aplicar operativamente el pensamiento divergente.
+* Evaluar y aplicar el pensamiento disruptivo en modelos de solución.
+* Cobrar conciencia situacional sobre el valor de las etapas iterativas de la innovación.
+
+1.3. Tablas e Información Estructurada
+
+Tabla Comparativa de Proceso Creativo (Orgánico vs. Inorgánico)
+
+Fuente: Medina (2022)
+
+Criterio / Dimensión	Proceso Creativo Orgánico	Proceso Creativo Inorgánico
+Origen	Surge de manera natural e intuitiva.	Se basa en métodos y técnicas estructuradas.
+Estructura	No sigue una estructura o método predefinido.	Sigue un conjunto de pasos o procedimientos predefinidos.
+Libertad de Exploración	Se basa en la libertad de expresión y la espontaneidad.	Enfoque dirigido y metódico para generar ideas y soluciones.
+Técnicas Comunes	Surgimiento espontáneo de ideas sin juicio.	Brainstorming, mapas mentales, análisis morfológico.
+Ámbitos de Aplicación	Ámbitos artísticos o exploración libre sin condicionantes.	Entornos empresariales, industriales y de diseño de productos.
+
+Tabla Comparativa de Tipos de Pensamiento
+
+Fuente: Medina (2022)
+
+Dimensión	Pensamiento Divergente	Pensamiento Disruptivo
+Definición	Capacidad de generar múltiples soluciones o ideas a partir de una misma pregunta o problema.	Forma de pensamiento que busca romper con lo establecido para desplazar a un actor del sistema.
+Dinámica Cognitiva	No sigue una lógica lineal; explora diferentes caminos y perspectivas simultáneas.	Cuestiona normas, desafía el statu quo y propone soluciones totalmente inesperadas.
+Rol en la Innovación	Clave en procesos de ideación masiva, brainstorming e innovación abierta.	Asociado a la innovación disruptiva que transforma industrias completas.
+Ejemplo Práctico	Ante la pregunta «¿Qué puedes hacer con un ladrillo?»: construir una casa, usarlo como pisapapeles, crear una obra de arte, etc.	Modelos de negocio como Uber o Airbnb, que replantearon el transporte de taxis y la búsqueda de hospedaje.
+
+Rúbrica de Calificación de la Sesión
+
+Criterio de Evaluación	Descripción del Criterio	Puntaje Máximo
+Trabajo en equipo	Colaboración activa y coordinación entre los integrantes.	3 puntos
+Cumplimiento de actividades	Ejecución en tiempo y forma de los ejercicios programados.	5 puntos
+Observaciones	Redacción técnica de los hallazgos durante el laboratorio.	3 puntos
+Conclusiones	Calidad del análisis sintético y cierre crítico de la sesión.	3 puntos
+Generación de material multimedia	Elaboración de soporte visual, fotográfico o digital explicativo.	4 puntos
+Comportamiento	Respeto a las normas de convivencia, seguridad e higiene.	2 puntos
+PUNTAJE TOTAL	Evaluación integral de la sesión	20 puntos
+
+1.4. Diagramas e Ilustraciones Explicadas
+
+![[Portada e Identidad Visual del Curso de Investigación e Innovación Tecnológica]] Propósito/Contenido: Marco gráfico e identificador institucional del módulo académico de Investigación e Innovación Tecnológica dictado en Tecsup por el docente Ing. Biotech. Oscar Medina, Gestor de Innovación y Negocios Tecnológicos. Elementos clave:
+
+* Franja vertical azul institucional a la derecha con el logotipo oficial de Tecsup.
+* Título principal del curso (Investigación e innovación Tecnológica) e identificación del docente.
+* Subtítulo con el foco operativo de la sesión: Introducción al proceso creativo / Investigación aplicada / proyectos de innovación.
+* Líneas horizontales estilizadas en azul claro en la esquina superior izquierda como patrón de diseño corporativo.
+
+![[Concepto del Proceso Creativo y Colaboración]] Propósito/Contenido: Representación metafórica del proceso creativo como una construcción colaborativa donde diversas mentes ensamblan piezas para estructurar una idea iluminada. Elementos clave:
+
+* BOMBILLA CENTRAL: Dibujada en color amarillo con filamentos visibles, simbolizando la idea o solución innovadora.
+* PIEZAS DE ROMPECABEZAS: Múltiples piezas individuales de puzle que encajan en el contorno del foco.
+* MANOS INTERACTUANTES: Ilustración de tres manos independientes sosteniendo e insertando piezas de rompecabezas hacia el centro, representando la naturaleza colectiva, multidisciplinaria y progresiva del trabajo creativo.
+* FONDO AZUL CLARO: Espacio limpio de trabajo que enmarca la generación de conocimiento.
+
+![[Marco Hexagonal del Metodología Design Thinking]] Propósito/Contenido: Diagrama de flujo hexagonal que sintetiza las 5 etapas estándar de Design Thinking desarrolladas por IDEO, detallando las preguntas de indagación fundamentales en idioma inglés. Elementos clave:
+
+* EMPATHIZE (Hexágono Azul): «Learn about the audience for whom you are designing, by observation and interview. Who is my user? What matters to this person?» (Aprender sobre el usuario mediante observación y entrevistas).
+* DEFINE (Hexágono Verde): «Create a point of view that is based on user needs and insights. What are their needs?» (Construir un punto de vista basado en necesidades e insights).
+* IDEATE (Hexágono Naranja): «Brainstorm and come up with as many creative solutions as possible. Wild ideas encouraged!» (Lluvia de ideas masiva animando la propuesta de soluciones radicales).
+* PROTOTYPE (Hexágono Rojo-Naranja): «Build a representation of one or more of your ideas to show to others. Remember: A prototype is just a rough draft!» (Construcción rápida de borradores tangibles).
+* TEST (Hexágono Granate): «Share your prototyped idea with your original user for feedback. What worked? What didn't?» (Someter el prototipo a prueba con el usuario real para evaluar éxitos y fallos).
+
+1.5. Ejemplos y Casos Prácticos de Clase
+
+El Caso del Ladrillo
+
+Este ejercicio clásico demuestra la mecánica del Pensamiento Divergente. Frente a un objeto rígido y unifuncional tradicional (el ladrillo de construcción), la flexibilidad cognitiva permite romper el sesgo de fijación funcional para derivar múltiples usos no convencionales:
+
+1. Elemento estructural de edificación (uso tradicional).
+2. Contrapeso o pisapapeles en un escritorio de trabajo.
+3. Soporte térmico o retentor de calor en la cocina artesanal.
+4. Material base para la escultura u obra de arte tridimensional.
+
+Desplazamiento de Mercado (Uber y Airbnb)
+
+El análisis de Uber y Airbnb ejemplifica el Pensamiento Disruptivo aplicado a modelos de negocio. Ambas organizaciones no se limitaron a mejorar marginalmente los servicios existentes (taxis o hoteles), sino que reconfiguraron la lógica del sector:
+
+* Uber: Eliminó la intermediación centralizada del taxi tradicional mediante una plataforma digital peer-to-peer, transformando la experiencia del transporte urbano.
+* Airbnb: Redefinió la industria hotelera al convertir propiedades privadas desaprovechadas en una red mundial de alojamiento, desplazando a cadenas tradicionales sin poseer bienes inmuebles propios.
+
+La estructuración metódica de la creatividad permite transformar la inspiración fortuita en un proceso técnico controlado, estableciendo la base para explorar de manera directa al ser humano en la etapa inicial de Empatizar.
+
+2. Semana 2: La Etapa de Empatizar y Herramientas de Inmersión
+
+La empatía activa constituye el pilar fundamental sobre el cual se erige la innovación centrada en el ser humano, garantizando que el desarrollo tecnológico responda a necesidades reales y verdaderas oportunidades de mercado. Desprenderse de juicios preconcebidos y observar la conducta del usuario en su propio contexto resulta crítico, pues la mayoría de las frustraciones e impulsos de adopción tecnológica no se encuentran en declaraciones explícitas, sino en sesgos implícitos y barreras emocionales que solo una inmersión empática rigurosa puede desvelar.
+
+2.1. Marco Teórico y Conceptos
+
+Definición Psicológica de Empatía
+
+Citando a A. Smith (2020) en su trabajo Understanding Empathy: A Review of Theoretical Models and Research Findings (Journal of Social Psychology, 45(2), pp. 123-145), la empatía se define formalmente como:
+
+«La capacidad de comprender y compartir los sentimientos de otra persona, constituyendo un concepto fundamental en la psicología y las ciencias sociales para establecer vínculos de conexión interpersonal e indagación conductual».
+
+Naturaleza de la Fase "Empatizar"
+
+Dentro de la arquitectura de Design Thinking de Tim Brown (IDEO), la fase de empatía tiene como propósito central sumergirse sin prejuicios en la realidad cotidiana del usuario. El objetivo operativo no es proponer soluciones inmediatas ni identificar problemas de forma prematura, sino observar profundamente cómo interactúan las personas con su entorno para desenterrar necesidades latentes, motivaciones invisibles y frustraciones no expresadas.
+
+Pilares de la Indagación Empática
+
+Para garantizar una recolección de datos cualitativos auténtica, se deben aplicar cuatro recomendaciones metodológicas:
+
+1. Observación Directa: Evaluación del usuario en su entorno natural de interacción, registrando conductas no verbales e incongruencias.
+2. Entrevistas en Profundidad: Diálogos abiertos y exploratorios diseñados para que las personas compartan libremente sus historias, deseos y barreras.
+3. Inmersión Etnográfica: Participación activa de los diseñadores en las actividades diarias del usuario, experimentando su contexto social y cultural.
+4. Empatía Activa: Establecimiento de una conexión emocional auténtica para interpretar los sentimientos ocultos detrás de las palabras expresadas.
+
+2.2. Metodologías, Herramientas y Pasos (Frameworks)
+
+Mapa de Empatía (XPLANE)
+
+El Lienzo desarrollado por la firma XPLANE organiza de manera visual las observaciones cualitativas recopiladas en campo a través de cuatro cuadrantes de percepción externa e interna y dos dimensiones de impacto profundo:
+
+* Cuadrantes de Percepción:
+  * ¿Qué piensa y siente?: Lo que realmente le importa al usuario, sus principales preocupaciones, inquietudes y aspiraciones profundas.
+  * ¿Qué oye?: Lo que escuchan en su entorno social, opiniones de amigos, familia, jefes y personas influyentes.
+  * ¿Qué ve?: Su entorno cotidiano, comportamiento de sus pares y la oferta existente en el mercado.
+  * ¿Qué dice y hace?: Su actitud en público, aspecto externo y comportamiento observable hacia los demás.
+* Dimensiones de Impacto:
+  * Esfuerzos (Dolores): Miedos, frustraciones, barreras y obstáculos a los que se enfrenta.
+  * Resultados (Necesidades): Deseos reales, necesidades de éxito y medidas de logro deseadas.
+
+Escalera de Abstracción / Escalera de Inferencia
+
+Adaptación metodológica basada en los desarrollos teóricos de Chris Argyris y Peter Senge (The Fifth Discipline), que describe cómo la mente humana salta reflexivamente desde los datos puros hasta la toma de acciones, y cómo el diseñador puede desmontar supuestos limitantes formulando preguntas progresivas:
+
+1. Actual Experience (Experiencia Real): La realidad fáctica objetiva disponible en el entorno.
+2. Selected Data (Datos Seleccionados): Filtrado de aspectos específicos realizado por el observador.
+3. Added Meaning (Significado Añadido): Asignación de una interpretación cultural o personal a los datos.
+4. Assumptions (Supuestos): Creación de hipótesis sin validar basadas en el significado atribuido.
+5. Conclusions (Conclusiones): Formulación de juicios sintéticos.
+6. Beliefs (Creencias): Adopción de convicciones consolidadas sobre cómo funciona el mundo.
+7. Actions (Acciones): Ejecución de comportamientos basados en las creencias adoptadas.
+
+* Reflexive Loop (Bucle Reflexivo): Las creencias adoptadas influyen directamente en la selección de datos que el usuario realizará en su próxima experiencia real, cerrando el ciclo cognitivo.
+
+Proceso de Corte Láser (Paso Práctico de Laboratorio)
+
+Como parte del aprendizaje técnico integrado al prototipado, los estudiantes deben explorar el equipamiento del taller de manufactura:
+
+* Exigencia operativa: Al menos un miembro del equipo de proyecto debe operar la máquina cortadora láser y reportar evidencia fotográfica o técnica del resultado obtenido.
+
+2.3. Tablas e Información Estructurada
+
+Rúbrica de Evaluación Ajustada (Semana 2)
+
+Criterio de Evaluación	Descripción Específica de la Sesión	Puntaje Máximo
+Trabajo en equipo	Coordinación e integración en el trabajo de campo empático.	3 puntos
+Cumplimiento de actividades	Ejecución de entrevistas y diligenciamiento de los lienzos.	5 puntos
+Redacción de observaciones	Rigor técnico en la sistematización cualitativa del entorno.	3 puntos
+Redacción de conclusiones	Calidad de la abstracción analítica de los hallazgos.	3 puntos
+Generación de material multimedia	Evidencia digital de la interacción y del proceso de corte láser.	4 puntos
+Comportamiento	Cumplimiento de normas de seguridad (EPP) y limpieza del taller.	2 puntos
+PUNTAJE TOTAL	Evaluación integral de la sesión	20 puntos
+
+2.4. Diagramas e Ilustraciones Explicadas
+
+![[Portada de la Sesión 2 - Empatizar]] Propósito/Contenido: Identificador gráfico oficial de la segunda sesión del curso, centrada en la primera fase de Design Thinking: Empatizar. Elementos clave:
+
+* Membrete corporativo Tecsup e identificación de la asignatura e instructor.
+* Título destacado: Estructura de un proyecto de innovación / Empatizar.
+* Énfasis visual en la frase de advertencia: «Ojo, aún no estamos identificando el problema, estamos observando para entender el comportamiento de las personas».
+
+![[Sincronización Cognitiva y Engranajes de la Empatía]] Propósito/Contenido: Representación de la empatía como la alineación e interconexión del pensamiento entre dos individuos durante el proceso de investigación. Elementos clave:
+
+* Dos siluetas humanas enfrentadas de perfil (una roja y una azul).
+* Mecanismos de engranajes de colores dentro de las áreas cerebrales de ambas siluetas.
+* Una línea discontinua circular en la parte posterior que conecta ambos cerebros, simbolizando la transferencia de estados mentales y la sincronización cognitiva.
+
+![[Conexión Emocional y Acompañamiento sin Juicios]] Propósito/Contenido: Ilustración metafórica del principio de empatía activa, representando el acto de acompañar a alguien en su estado emocional sin pretender juzgar o reparar inmediatamente su dolor. Elementos clave:
+
+* ZORRO (Derecha): Un personaje de zorro pequeño vestido con camiseta clara, cabizbajo, bajo una pequeña nube negra que le arroja lluvia sobre la cabeza y un boceto de habla con una carita triste :(, representando el abatimiento.
+* OSO (Izquierda): Un personaje de oso de mayor tamaño, con gorra y camiseta oscura, inclinado a la misma altura visual del zorro, observándolo en silencio con postura atenta, encarnando la presencia y la escucha libre de prejuicios.
+
+![[Clima Emocional Dual - Tormenta vs. Arcoíris]] Propósito/Contenido: Representación del mapeo empático de los estados emocionales del usuario, contrapesando la frustración frente a las aspiraciones de bienestar. Elementos clave:
+
+* SILUETA IZQUIERDA: Contiene una nube oscura de tormenta con rayos y gotas de lluvia, representando los dolores, miedos y frustraciones del usuario (Esfuerzos).
+* SILUETA DERECHA: Contiene un arcoíris brillante y colorido, representando el estado deseado, los aliviadores de dolor y las aspiraciones del usuario (Resultados).
+
+![[Lienzo del Mapa de Empatía XPLANE]] Propósito/Contenido: Esquema estructural normalizado del Mapa de Empatía diseñado por XPLANE para sintetizar datos cualitativos de observación directa. Elementos clave:
+
+* CABEZA CENTRAL: Ilustración esquemática del usuario rodeado por 4 cuadrantes.
+* CUADRANTE SUPERIOR: ¿Qué PIENSA y SIENTE? (Inquietudes, aspiraciones, prioridades).
+* CUADRANTE IZQUIERDO: ¿Qué OYE? (Influencias de amigos, jefe y entorno social).
+* CUADRANTE DERECHO: ¿Qué VE? (Oferta del mercado, comportamiento del entorno).
+* CUADRANTE INFERIOR: ¿Qué DICE y HACE? (Actitud pública, aspecto y comportamiento).
+* BLOQUE INFERIOR IZQUIERDO: ESFUERZOS (Miedos, frustraciones y obstáculos).
+* BLOQUE INFERIOR DERECHO: RESULTADOS (Deseos, necesidades e indicadores de éxito).
+
+![[Esquema de la Escalera de Inferencia]] Propósito/Contenido: Diagrama representativo de la Ladder of Inference adaptado de Chris Argyris y Peter Senge por Kelvy Bird, que grafica cómo la mente salta de la observación pura a las decisiones. Elementos clave:
+
+* PELDAÑOS DE LA ESCALERA (De abajo a arriba): ACTUAL EXPERIENCE > SELECTED DATA > ADDED MEANING > ASSUMPTIONS > CONCLUSIONS > BELIEFS > ACTIONS.
+* REAL BIRD (Abajo a la derecha): Ilustración de un ave en su postura biológica real sobre el suelo.
+* INTERPRETED BIRD (Arriba a la derecha): Ilustración de un ave estilizada volando, representando cómo la mente abstrae la realidad.
+* REFLEXIVE LOOP: Flecha curva a la izquierda que conecta el nivel superior de BELIEFS con la selección inferior de SELECTED DATA.
+
+2.5. Ejemplos y Casos Prácticos de Clase
+
+Caso de Estudio: La Lavadora de Ropa Moderna
+
+Mediante la aplicación de la Escalera de Abstracción, el investigador desarmó progresivamente las barreras declarativas de un usuario para descubrir la causa emocional raíz:
+
+1. Pregunta Inicial: ¿Qué opinas de la lavadora?
+  * Respuesta declarativa del usuario: «No la utilizo porque malogra la ropa».
+2. Indagación en Datos Seleccionados: ¿Dónde viste que la lavadora deja manchas en la ropa?
+  * Respuesta del usuario: «Porque deja manchas de detergente. Vi las manchas en el colgador».
+3. Evaluación de Significado y Supuestos: ¿Limpiaste las manchas? ¿Qué resultados obtuviste?
+  * Respuesta del usuario: «Las limpié con agua y no destiñó la ropa».
+4. Desmontando Conclusiones y Creencias: ¿Le pasa a toda la ropa? ¿Sería un problema grave?
+  * Respuesta del usuario: «Solo con una prenda, en realidad no sería un problema».
+5. Cuestionamiento directo a la Acción: ¿Utilizarías la lavadora ahora?
+  * Respuesta real (¡Ajá!): «No, porque es difícil para mí aprender a programarla».
+
+Desglose del hallazgo ("¡Ajá!"):
+
+* Miedo/Freno Real: La usuaria no evita la lavadora por costos o fallas del equipo, sino por la vergüenza de pedir que le enseñen a programarla y el sentimiento de que sus familiares no le tienen paciencia.
+
+Clasificación en el Lienzo del Mapa de Empatía:
+
+* ¿Qué piensa y siente?: Siente frustración y vergüenza por no dominar la tecnología moderna.
+* ¿Qué ve?: Ve que las prendas quedan con restos de detergente si no se programa el ciclo adecuado.
+* ¿Qué dice?: Arguye que «la lavadora estira la ropa, gasta mucha agua y consume demasiada luz».
+* Dolor (Dolores/Esfuerzos): No saber programar la lavadora electrónica.
+* Alivio (Resultados/Deseos): Disfrutar de tiempo libre de calidad con su familia al automatizar el lavado.
+
+Los hallazgos emocionales y cualitativos recopilados en la fase de empatía se transforman en los insumos indispensables para la estructuración y acotamiento de la fase de Definir.
+
+3. Semana 3: La Etapa de Definir: Transición al Cliente Ideal y Descubrimiento de Insights
+
+El procesamiento analítico de la información de campo permite transitar de la observación de un usuario genérico hacia la caracterización precisa de un "Cliente Ideal" (Buyer Persona). Esta transición exige la identificación de Insights o visiones internas profundas que desvelen las verdaderas motivaciones subyacentes del comportamiento humano, asegurando que la solución a diseñar resuelva una tensión real y con viabilidad de mercado.
+
+3.1. Marco Teórico y Conceptos
+
+Etimología y Concepto de Insight
+
+El término Insight tiene su origen en la psicología Gestalt y fue popularizado por el psicólogo alemán Wolfgang Köhler en su trabajo The Mentality of Apes (1917). Köhler lo definió como:
+
+«Una comprensión repentina e intuitiva de una situación o problema complejo que conduce directamente a su resolución mediante una reestructuración del campo perceptivo (la visión interna que percibimos de las personas)».
+
+Lista de Verificación (Checklist) para la Fase Definir
+
+Antes de proceder a estructurar la problemática, el equipo debe verificar la consolidación de tres prerrequisitos de entrada:
+
+1. Mercado Validado: Identificación de un mercado donde exista movimiento económico real.
+2. Segmento Delimitado: Elección del segmento específico dentro del mercado donde se realizó la exploración.
+3. Información de Campo: Recopilación previa de hallazgos y evidencias empíricas cualitativas.
+
+Diferenciación Conceptual
+
+La metodología exige diferenciar con rigor dos herramientas de perfilamiento:
+
+* Caracterización del Usuario: Enfocada en la interacción directa con el producto o servicio. Analiza aspectos funcionales, usabilidad, hábitos de compra inmediatos y limitaciones de uso.
+* Buyer Persona (Cliente Ideal): Representación holística del cliente centrada en comprender su contexto psico-emocional amplio, sus valores de vida, sus retos de desarrollo personal/profesional e insights profundos.
+
+Nota de Trazabilidad Académica: Si bien el material fuente en diapositivas (Medina, 2020/2022) utiliza la denominación informal "Bayer personas", este término corresponde estrictamente al marco metodológico estándar de la industria denominado Buyer Persona (Cliente Ideal), denominación que se mantendrá en esta Base de Conocimiento para preservar el rigor profesional.
+
+3.2. Metodologías, Herramientas y Pasos (Frameworks)
+
+Arquitectura de Definición del Insight
+
+Para destilar un Insight válido se deben combinar de manera iterativa 5 herramientas primarias de recolección:
+
+1. Observación Directa: Mapeo de hábitos en el contexto natural.
+2. Entrevistas en Profundidad: Exploración de historias y contradicciones verbales.
+3. Encuestas: Recopilación cuantitativa de preferencias y actitudes.
+4. Persona: Construcción de arquetipos fácticos.
+5. Grupos Focales (Focus Groups): Discusión interactiva sobre la experiencia con usuarios representativos.
+
+Framework de Síntesis del Insight
+
+La información recolectada mediante las 5 herramientas se procesa respondiendo a 5 cuestionamientos estructurados:
+
+* ¿Cuál es el aporte del análisis de la información recolectada?
+* ¿Qué cosas nos sorprendieron de los hallazgos?
+* ¿Cuál es el concepto más importante encontrado?
+* ¿Cómo sintetizar en 3 palabras los elementos esenciales?
+* ¿Cómo aplicar esos elementos a los proyectos de innovación?
+
+Este procesamiento permite obtener una secuencia sintética: Información Sintetizada \rightarrow Concepto Claro y Corto \rightarrow Resultados Medibles.
+
+Estructura del Persona (Avatar)
+
+Un Buyer Persona profesional debe integrar obligatoriamente los siguientes componentes:
+
+* Patrón de Cualidades (> 70%): Consolidación de cualidades compartidas por la mayoría de las personas observadas.
+* Avatar Visual: Imagen detallada e hiperespecífica del personaje (elaborada opcionalmente mediante Inteligencia Artificial).
+* Datos Demográficos: Edad, ocupación, nivel socioeconómico, estado civil.
+* Intereses: Pasatiempos, metas y hábitos de consumo de información.
+* Sentimientos: Motivaciones primarias y frustraciones profundas.
+* Retos Personales/Profesionales: Desafíos a resolver para su desarrollo.
+* Insight Específico: La revelación interna (visión interna) que condiciona su conducta.
+
+3.3. Tablas e Información Estructurada
+
+Matriz Comparativa: Caracterización del Usuario vs. Buyer Persona
+
+Eje de Análisis	Caracterización del Usuario	Buyer Persona (Cliente Ideal)
+Enfoque y Propósito	Identifica al usuario a partir del producto o servicio; incluye demografía y comportamiento de compra directo.	Se centra en el cliente ideal en su contexto amplio, incluyendo necesidades, deseos, motivaciones y experiencia integral.
+Profundidad de Investigación	Centrada en el proceso de compra directo y los factores que influyen en la transacción inmediata.	Ámbito amplio que abarca aspectos emocionales, psicológicos y sociales que moldean su estilo de vida.
+Ámbito de Aplicación	Utilizado principalmente en estrategias inmediatas de marketing, ventas y segmentación.	Aplicado en diseño de productos, arquitectura de servicios y experiencias para garantizar la adaptabilidad total.
+Granularidad de Datos	Datos demográficos básicos y hábitos de compra transaccionales asociados al producto.	Incorpora una gama rica de datos cualitativos y cuantitativos sobre la experiencia de vida completa.
+Uso en el Proceso Creativo	Empleado en etapas iniciales para identificar mercados objetivo y mensajes clave.	Fundamental en todas las etapas de Design Thinking, desde la investigación hasta la evaluación y mejora continua.
+
+Tabla de Caracterización de Usuario (Caso Ama de Casa)
+
+Fuente: Medina (2020)
+
+Usuario	Necesidad	Pensamiento Limitante	Insight
+Ama de casa, mayor de 65 años que realiza sus actividades con tecnologías antiguas que requieren de mayor tiempo y esfuerzo, a pesar de que tiene acceso a la tecnología moderna de sus hijos.	Necesita lavar su ropa en menor tiempo y con menor esfuerzo.	Argumenta que no lava la ropa en la lavadora moderna porque piensa que malogra la ropa, gasta agua, gasta luz y la estira.	No lava su ropa en una lavadora moderna porque no sabe cómo programarla y le avergüenza pedir instrucción.
+
+Lienzo de Estructura del Buyer Persona (Perfil de la Persona)
+
+Fuente: Adaptado de Medina (2020/2022)
+
+Componente Principal	Sub-Componente de Anclaje	Guía de Diligenciamiento / Definición
+Perfil de la Persona	Patrón Sintetizado (>70%)	Síntesis de la información recolectada de varias personas, priorizando cualidades similares en más del 70% de la muestra.
+Visualización	Avatar (Generación IA)	Imagen detallada e hiperespecífica del personaje arquetípico centrado en el individuo definido.
+Desarrollo	Retos de la Persona	Enumeración de los retos que la persona busca alcanzar para su desarrollo personal o profesional.
+Atributos Sociales	Datos Demográficos	Descripción de edad, ubicación, ocupación, nivel socioeconómico y estado civil.
+Comportamiento	Intereses	Descripción detallada de pasatiempos, hábitos de consumo e inquietudes habituales.
+Afectividad	Sentimientos	Desglose explícito de las motivaciones primarias y frustraciones emocionales.
+Eje de Innovación	Insight de la Persona	Definición de la visión interna profunda que condiciona y explica el comportamiento del personaje.
+
+3.4. Diagramas e Ilustraciones Explicadas
+
+![[Portada de la Sesión 3 - Definir y Explorando Insights]] Propósito/Contenido: Identificador visual de la tercera sesión de aprendizaje sobre el proceso de I+D+i. Elementos clave:
+
+* Membrete oficial Tecsup e identificación temática: Definir | Explorando Insights / Estructura de un proyecto de innovación.
+* Presentación del mapa de capacidades enfocado en la exploración de oportunidades de mercado con movimiento económico.
+
+![[Diagrama del Desenredo del Insight]] Propósito/Contenido: Representación gráfica del proceso de destilación del Insight, ilustrando cómo la mente del diseñador pasa del caos conceptual a la claridad brillante. Elementos clave:
+
+* GARABATO IZQUIERDO: Una línea negra profundamente enredada y caótica que representa la masa confusa de datos cualitativos sin procesar.
+* LÍNEA DE TRANSICIÓN: Un único hilo conductor continuo que se desenreda progresivamente hacia la derecha.
+* SOL/CÍRCULO ORDENADO (Derecha): Un círculo perfecto rodeado de rayos de luz sobre un fondo amarillo vibrante, simbolizando el descubrimiento del Insight (la visión interna clara y simplificada).
+
+![[Fotografía del Contexto Comercial de Apple - Estatus y Pertenencia]] Propósito/Contenido: Caso visual de aplicación de Insights en el mercado masivo, mostrando cómo el posicionamiento de una marca líder apela a emociones superiores y no solo a especificaciones técnicas. Elementos clave:
+
+* Una multitud de usuarios sosteniendo teléfonos inteligentes para fotografiar la fachada de una tienda de vidrio de Apple con el logotipo de la manzana iluminado.
+* ANÁLISIS DEL INSIGHT: Los consumidores no hacen largas filas únicamente para comprar un hardware funcional (teléfono), sino para satisfacer un Insight de pertenencia a una comunidad exclusiva, prestigio social y estatus identitario.
+
+3.5. Ejemplos y Casos Prácticos de Clase
+
+Caso Ama de Casa Mayor de 65 Años
+
+El análisis del patrón de comportamiento de mujeres mayores de 65 años demostró que las justificaciones financieras o técnicas («la lavadora gasta mucha luz y malogra las prendas») eran simples mecanismos de defensa para ocultar un freno socioemocional. La identificación de este Insight permitió transformar el enfoque de diseño: en lugar de intentar vender una máquina con mayor potencia o eficiencia hídrica, la oportunidad de innovación consistió en diseñar interfaces de programación ultra-simplificadas, guías por voz o servicios de acompañamiento instruccional libre de juicios.
+
+La formulación precisa del Buyer Persona y el descubrimiento de su Insight clave constituyen la base indispensable para formalizar la problemática mediante herramientas de causalidad.
+
+4. Semana 4: La Etapa de Definir: Formulación de la Problemática Pertinente y el Árbol de Problemas
+
+La eficacia de una innovación tecnológica no depende de la sofisticación técnica de la solución, sino de la precisión con la que se ha delimitado un "Problema Pertinente". Intervenir en síntomas superficiales genera soluciones irrelevantes y desperdicio de recursos; la verdadera innovación exige identificar y neutralizar las causas raíz de un desafío dentro de un contexto económico y social determinado.
+
+4.1. Marco Teórico y Conceptos
+
+Concepto de Problema Pertinente
+
+Un problema es metodológicamente pertinente cuando guarda una estricta relación de afinidad, congruencia y eficacia con las exigencias y necesidades reales del entorno social, laboral y productivo. No basta con que un problema exista; debe ser académicamente significativo y poseer viabilidad técnica para ser resuelto con los recursos y competencias del equipo proyectista.
+
+Impulsores Estratégicos de la Innovación
+
+Las organizaciones y emprendedores asumen riesgos e invierten en proyectos de innovación cuando enfrentan amenazas situacionales o buscan satisfacer uno o más de los siguientes 6 impulsores:
+
+1. Ser más competitivos: Diferenciación en valor frente a actores rivales.
+2. Atraer nuevos clientes: Captura de segmentos no atendidos.
+3. Tomar mejores decisiones: Optimización de procesos operativos sustentada en datos.
+4. Hacer crecer nuevos negocios: Diversificación de la cartera comercial.
+5. Mantener la vanguardia tecnológica: Evitar la obsolescencia técnica.
+6. Alcanzar nuevos mercados: Expansión geográfica o demográfica.
+
+4.2. Metodologías, Herramientas y Pasos (Frameworks)
+
+Metodología del Árbol de Problemas
+
+El Árbol de Problemas es una herramienta de análisis sistémico que permite descomponer una situación compleja en tres niveles de análisis interconectados:
+
+* Las Ramas y Hojas / Efectos del Problema (EP): Son las consecuencias visibles derivables. Permiten construir los indicadores cuantitativos de impacto y definir el alcance del proyecto.
+* El Tronco / Problema Central (PC): Representa el problema prioritario acotado, sobre el cual se invierte el esfuerzo conceptual de diseño.
+* Las Raíces / Causas del Problema (CP): Constituyen el origen del desafío. Es el punto exacto donde el equipo debe intervenir e inventar la solución innovadora.
+
+Ruta Causa-Efecto
+
+Mediante plataformas colaborativas digitales como Miro o MindMeister, se despliega una red causal multinivel que mapea relaciones directas e indirectas:
+
+* Causas primarias (Causa 1, Causa 2, Causa 3) derivan en causas secundarias (Causa 1.1, Causa 3.2).
+* El Problema Central se ramifica en efectos inmediatos (Efecto 1, Efecto 2) y efectos colaterales (Efecto 3.2).
+* La selección de una ruta azul específica (Causa raíz \rightarrow Problema Central \rightarrow Efecto indicador) define la arquitectura del proyecto de I+D+i.
+
+Evolución del Problema a la Solución
+
+Una vez identificada la Causa Raíz en el árbol, la transición metodológica formal hacia la construcción de la solución sigue la ecuación de valor:
+
+\text{Causa Raíz} \xrightarrow{\text{Desactivación}} \text{Propuesta de Valor} \longrightarrow \text{Idea Innovadora} \longrightarrow \text{Producto Mínimo Viable (PMV)} \longrightarrow \text{Soporte Mínimo Viable (SMV)}
+
+* Producto Mínimo Viable (PMV): Versión inicial simplificada del producto con las funciones mínimas para ser probado.
+* Soporte Mínimo Viable (SMV): Estructura básica de servicio o infraestructura necesaria para sostener operativamente al PMV.
+
+4.3. Tablas e Información Estructurada
+
+Estructura Causal de un Problema Pertinente (Caso Agroindustrial)
+
+Componente del Árbol	Elemento Analítico	Contenido y Datos Cuantitativos de Impacto
+Propósito Inicial	Meta general no acotada	Reducir enfermedades producidas por la contaminación del aire.
+Problema Central (Tronco)	Definición acotada y pertinente	La contaminación del aire por la quema de broza de residuos agroindustriales en zonas rurales del sur del Perú.
+Efecto del Problema (Ramas)	Consecuencia medible (Dato de impacto)	Más de 50 mil niños sufren de asma en zonas rurales en el sur del Perú.
+Causa Raíz (Raíces)	Origen donde se diseña la solución	El 70% de los agricultores queman la broza de sus residuos debido a prácticas tradicionales y la falta de alternativas de valorización.
+
+4.4. Diagramas e Ilustraciones Explicadas
+
+![[Portada de la Sesión 4 - La Problemática Pertinente]] Propósito/Contenido: Identificador gráfico de la cuarta sesión de aprendizaje, enfocada en la delimitación de problemas y la herramienta del Árbol de Problemas. Elementos clave:
+
+* Membrete corporativo Tecsup, asignatura e identificación del docente.
+* Título principal: Definir | La problemática pertinente / Estructura de un proyecto de innovación.
+* Checklist de entrada requerido: Insights validados y perfil de Buyer Persona consolidado.
+
+![[Metáfora Gráfica del Árbol de Problemas - SOURCE_IMAGE_14 / SOURCE_IMAGE_15 / SOURCE_IMAGE_16]] Propósito/Contenido: Gráfico conceptual que establece la equivalencia entre la estructura botánica de un árbol y los niveles de análisis causal de un proyecto de investigación. Elementos clave:
+
+* COPA DE HOJAS Y RAMAS: Representa los Efectos del Problema (EP) y los indicadores de impacto.
+* TRONCO ROBUSTO: Representa el Problema Central (PC), actuando como el eje articulador del esfuerzo de diseño.
+* SISTEMA DE RAÍCES: Ubicado bajo tierra, representa las Causas del Problema (CP), indicando el punto de origen donde se debe aplicar la solución tecnológica.
+
+![[Diagrama de Ruta Causa-Efecto en Plataforma Miro]] Propósito/Contenido: Mapa de red de nodos interconectados desarrollado en una pizarra digital colaborativa (Miro) para trazar la jerarquía de causas y efectos. Elementos clave:
+
+* NODO CENTRAL: Problema Central en tipografía azul.
+* RAMIFICACIÓN DE CAUSAS (Abajo): Nodos descendentes que desglosan Causa 1 (con Causa 1.1), Causa 2 (con Causa 2.1 y 2.2) y Causa 3 (con Causa 3.1 y Causa 3.2).
+* RAMIFICACIÓN DE EFECTOS (Arriba): Nodos ascendentes que derivan en Efecto 1 (con Efecto 3.1 y 3.2), Efecto 2 (con Efecto 2.2) y Efecto 3.
+* CAMINITO AZUL DESTACADO: Línea de flujo en color azul que vincula la Causa 3.2 con el Problema Central y proyecta su impacto hacia el Efecto 3.2, definiendo la ruta crítica del proyecto.
+
+4.5. Ejemplos y Casos Prácticos de Clase
+
+Caso Práctico: Contaminación del Aire en el Sur del Perú
+
+El ejercicio desarrollado en clase ilustra la conversión de un deseo genérico en una problemática técnicamente abordable:
+
+1. Inadecuación inicial: El grupo plantea «Queremos reducir las enfermedades respiratorias». Este enunciado es inabordable por su amplitud y vaguedad.
+2. Acotamiento del Problema Central: Se introduce contexto geográfico y productivo: «Contaminación del aire por la quema de broza de residuos agroindustriales en zonas rurales del sur del Perú».
+3. Identificación de Efectos con Datos: Se investiga el impacto real: «Más de 50 mil niños sufren de asma en zonas rurales en el sur del Perú».
+4. Aislamiento de la Causa Raíz: Se identifica la conducta del productor: «El 70% de los agricultores queman la broza por falta de tecnología de valorización». La solución innovadora no debe enfocarse en curar el asma (efecto), sino en procesar o valorizar la broza agrícola para evitar su quema (causa).
+
+La identificación precisa de la causa raíz en el Árbol de Problemas proporciona la base directa para la apertura de la fase de Idear.
+
+5. Semana 5: La Etapa de Idear: Generación de Propuestas Innovadoras
+
+La etapa de ideación representa la transición decisiva dentro del ciclo de diseño, donde el esfuerzo analítico previo se transforma en creación de valor. Una vez delimitada la causa raíz del problema, la ideación focalizada permite desplegar la creatividad técnica para estructurar propuestas originales que resuelvan la problemática de manera no convencional y con alto impacto.
+
+5.1. Marco Teórico y Conceptos
+
+Concepto de Idea Innovadora
+
+Una idea innovadora es una propuesta original y novedosa que surge como respuesta directa a un problema, necesidad u oportunidad específica. No constituye un simple chispazo creativo sin dirección; es el detonante formal del proceso de I+D+i que reconfigura un enfoque existente o introduce una manera totalmente inédita de resolver un desafío.
+
+Orígenes de la Innovación
+
+Las ideas disruptivas no emergen de la nada, sino que provienen de la convergencia de cuatro fuentes primarias:
+
+* Observación atenta: Identificación de fricciones e incongruencias en la vida diaria.
+* Investigación aplicada: Descubrimiento de nuevos principios científicos y capacidades tecnológicas.
+* Creatividad individual y colectiva: Aplicación de técnicas divergentes dentro de equipos multidisciplinarios.
+* Análisis de Oportunidades: Exploración de vacíos no atendidos en mercados existentes.
+
+5.2. Metodologías, Herramientas y Pasos (Frameworks)
+
+Técnicas de Ideación y Aplicación del Método SCAMPER
+
+Para neutralizar la causa raíz aislada en la etapa de Definición, el proceso metodológico recurre al uso articulado del Brainstorming y la mnemotecnia SCAMPER. Esta última actúa como un algoritmo de transformación sobre el proceso tradicional o la ausencia de tecnología.
+
+A continuación se detalla la definición instruccional de los 7 operadores de SCAMPER y su aplicación práctica para desactivar la causa raíz del caso agroindustrial («El 70% de los agricultores queman la broza por falta de alternativas de valorización»):
+
+1. S - Sustituir (Substitute): Reemplazar materiales, materiales de insumo, pasos o métodos del proceso actual.
+  * Aplicación al Caso: Sustituir la práctica tradicional de incineración a cielo abierto por un proceso mecánico in situ de trituración y densificación de biomasa.
+2. C - Combinar (Combine): Mezclar diferentes tecnologías, servicios o funciones para crear una solución integrada.
+  * Aplicación al Caso: Combinar la trituración mecánica de la broza con la adición de inóculos biológicos aceleradores para generar compost de alta calidad en tiempo récord.
+3. A - Adaptar (Adapt): Ajustar o incorporar soluciones de otros contextos tecnológicos o industrias.
+  * Aplicación al Caso: Adaptar el sistema de peletizado industrial de la madera para crear peli-peletizadoras compactas accesorias al motor de los tractores agrícolas existentes.
+4. M - Modificar / Magnificar (Modify/Magnify): Alterar la escala, forma, tamaño o parámetros operativos del sistema.
+  * Aplicación al Caso: Modificar la escala de procesamiento, pasando de grandes plantas centralizadas a unidades móviles de recolección inter-finca de bajo costo operacional.
+5. P - Poner en otros usos (Put to another use): Dar una función económica secundaria o un nuevo propósito al residuo.
+  * Aplicación al Caso: Transformar la broza triturada en sustrato para la producción de hongos comestibles o en aglomerado para embalaje ecológico industrial.
+6. E - Eliminar (Eliminate): Suprimir pasos, componentes o costos innecesarios en la cadena.
+  * Aplicación al Caso: Eliminar el costo de flete y transporte de biomasa fresca mediante el procesamiento térmico/mecánico directamente en el lindero de la parcela.
+7. R - Reorganizar / Invertir (Reverse/Rearrange): Invertir la secuencia operativa o la lógica del modelo de trabajo.
+  * Aplicación al Caso: Invertir la responsabilidad financiera: el agricultor deja de pagar o perder por gestionar el residuo y pasa a recibir ingresos por vender la broza procesada a la industria energética.
+
+5.3. Tablas e Información Estructurada
+
+Matriz de Articulación (Causa Raíz vs. Idea Innovadora)
+
+Causa Raíz Identificada (Semana 4)	Operador SCAMPER Aplicado	Concepto de Idea Innovadora (Semana 5)	Tipo de Solución Proyectada
+El 70% de los agricultores queman la broza de sus residuos agroindustriales debido a la falta de alternativas de valorización.	Modificar / Combinar	Desarrollo de una máquina procesadora móvil de bajo costo para triturar la broza y convertirla en aglomerado de biomasa o compostaje acelerado.	Innovación tecnológica en equipamiento de valorización de residuos agrícolas (PMV).
+
+5.4. Ejemplos y Casos Prácticos de Clase
+
+Caso Steve Jobs y el iPhone
+
+El caso histórico analizado en clase sobre Steve Jobs ilustra la ruptura de paradigmas en la fase de ideación:
+
+Paradigma Preexistente: Los teléfonos móviles avanzados dependían de teclados físicos de botones plásticos rígidos, lo que limitaba el espacio de pantalla y condicionaba la usabilidad a una sola función.
+
+Idea Innovadora de Steve Jobs: Eliminar por completo el teclado físico e integrar una pantalla táctil capacitiva multipunto, transformando el celular en una computadora de bolsillo interactiva y reconfigurable por software.
+
+Resumen de Progresión Metodológica de la Base de Conocimiento Maestra
+
+La presente Base de Conocimiento Maestra consolida la progresión rigurosa del proceso de Investigación e Innovación Tecnológica (I+D+i) a lo largo de las primeras cinco semanas de desarrollo:
+
+\text{Semana 1: Fundamentos} \longrightarrow \text{Semana 2: Empatizar} \longrightarrow \text{Semana 3: Insights} \longrightarrow \text{Semana 4: Árbol de Problemas} \longrightarrow \text{Semana 5: Idear}
+
+1. Semana 1: Comprensión de los marcos teóricos de la creatividad (Amabile, Brown, Medina) y las etapas de Design Thinking.
+2. Semana 2: Inmersión empática en el entorno del usuario (A. Smith, XPLANE, Argyris & Senge).
+3. Semana 3: Transición del usuario al cliente ideal (Buyer Persona) mediante la destilación de Insights (Wolfgang Köhler).
+4. Semana 4: Delimitación de un Problema Pertinente e identificación de la causa raíz a través del Árbol de Problemas.
+5. Semana 5: Conversión de la causa raíz en Ideas Innovadoras disruptivas mediante SCAMPER y técnicas de ideación focalizada.
+
+Esta secuencia metodológica garantiza que todo desarrollo técnico subsiguiente posea un fundamento analítico sólido, asegurando la pertinencia, viabilidad e impacto real de las soluciones tecnológicas proyectadas.
+

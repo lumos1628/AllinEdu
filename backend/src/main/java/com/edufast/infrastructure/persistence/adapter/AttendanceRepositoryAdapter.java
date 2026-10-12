@@ -74,7 +74,7 @@ public class AttendanceRepositoryAdapter implements AttendanceRepository {
         }
         jornadaEntity = jornadas.save(jornadaEntity);
 
-        registros.deleteByJornadaId(jornadaEntity.getId());
+        registros.deleteRegistrosDeJornada(jornadaEntity.getId());
 
         for (Attendance asistencia : jornada.getRegistros()) {
             var ubicacion = ubicaciones
