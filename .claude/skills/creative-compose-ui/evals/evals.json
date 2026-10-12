@@ -1,0 +1,52 @@
+{
+  "skill_name": "creative-compose-ui",
+  "evals": [
+    {
+      "id": 0,
+      "name": "redesign-generic-home",
+      "prompt": "El menú principal de mi app Android se ve súper genérico — son puras tarjetas Material 3 con esquinas redondeadas, igual que cualquier otra app. Es una herramienta para docentes de colegios públicos en Perú, la usan todos los días. Quiero que tenga personalidad propia sin volverse un circo. El archivo es mobile/app/src/main/java/com/edufast/mobile/presentation/HomeScreen.kt",
+      "expected_output": "A rewritten HomeScreen.kt that introduces genuine visual character through custom shapes or layered drawing, while exercising restraint: one clear hero element with the rest of the screen left calm. Must preserve the 5 existing modules and their enabled/disabled states, keep accessibility intact, and avoid per-frame allocation.",
+      "files": [],
+      "assertions": [
+        "States an explicit design plan that names a single hero element and identifies what is deliberately left visually calm",
+        "Introduces at least one custom shape or custom drawing pass (GenericShape, Shape, drawBehind, drawWithCache) rather than relying only on stock Material components",
+        "Preserves all five existing modules (attendance, planning, evaluation, reinforcement, communication) including their enabled/disabled semantics",
+        "Does not construct Path, Paint, or collections inside a per-frame draw lambda",
+        "Keeps accessibility intact: interactive elements carry text or contentDescription, and custom-drawn meaning is not left unlabeled",
+        "Animates visual properties via graphicsLayer rather than animating size, padding, or offset modifiers"
+      ]
+    },
+    {
+      "id": 1,
+      "name": "angled-bubble-overlap",
+      "prompt": "Necesito un componente de mensaje tipo burbuja para una pantalla de comunicación con padres de familia. Quiero que la burbuja tenga el lado derecho inclinado (no un rectángulo redondeado normal) y que el avatar del docente se superponga encima del borde izquierdo de la burbuja, como mordiéndola. Tiene que verse bien tanto con mensajes de una línea como de seis líneas.",
+      "expected_output": "A reusable bubble component whose slanted geometry is recomputed from the measured size (so it reflows for one-line and six-line messages), with Dp values converted through Density, and the avatar overlap handled by a custom Layout that computes the bubble's constraints from the avatar's measured width.",
+      "files": [],
+      "assertions": [
+        "Builds the slanted edge with GenericShape or a Shape implementation rather than approximating it with RoundedCornerShape or a rotated Box",
+        "Derives the shape geometry from the size passed into the shape builder, so it adapts to message length instead of assuming fixed dimensions",
+        "Converts Dp to pixels through Density (a Shape implementation's density parameter, LocalDensity, or a Density-scoped receiver) instead of hardcoding raw float pixel values",
+        "Uses a custom Layout to position the overlapping avatar, computing the bubble's available width from the avatar's measured width",
+        "Resets minWidth to 0 when copying incoming Constraints for the bubble child, avoiding the fixed-constraint overflow pitfall",
+        "Includes @Preview functions covering both a short single-line message and a long multi-line message",
+        "Avatar image carries a contentDescription"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "celebration-particles",
+      "prompt": "Cuando un docente termina de registrar la asistencia de su sección quiero una pequeña celebración — algo tipo confeti o papelitos cayendo por un par de segundos. Pero ojo: la app la usan en celulares baratos y de gama baja, no quiero que se trabe, y no debe estorbar los botones de la pantalla.",
+      "expected_output": "A short confetti effect driven by the frame clock, with a preallocated and bounded particle pool, no allocation in the draw path, a clamped frame delta, and layered so it never intercepts touch input on the screen's buttons.",
+      "files": [],
+      "assertions": [
+        "Drives the simulation from the frame clock via withFrameMillis (or withFrameNanos) rather than a fixed delay/timer loop",
+        "Reuses particle instances from a preallocated pool or fixed-size list instead of allocating a new particle per spawn",
+        "Performs no object allocation inside the Canvas draw lambda",
+        "Clamps or guards the per-frame time delta so a stall does not produce a huge simulation step",
+        "Caps the particle count at a bounded maximum appropriate for low-end devices",
+        "Ensures the effect cannot intercept touch input on the underlying buttons (drawn behind content, or explicitly non-interactive with no pointer input)",
+        "Limits the effect to a short duration and stops the frame loop afterwards rather than running indefinitely"
+      ]
+    }
+  ]
+}
