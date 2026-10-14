@@ -137,7 +137,7 @@ No se fija de antemano un porcentaje de mejora.
 | ID | Decisión | Bloqueada por |
 |---|---|---|
 | D-1 | ¿Entra el registro de notas? | Saber si se puede exportar al formato que SIAGIE importa. Si no se puede, queda fuera: una app que registra notas sin alimentar SIAGIE agrega un **tercer** lugar donde tipear y empeora el problema |
-| D-2 | ¿Se renombra el código de `EduFast` a `AllinEdu`? | Decisión del equipo. Afecta paquetes Java, nombre de BD, clases y cuentas de prueba |
+| D-2 | ¿Se renombra el código de `EduFast` a `AllinEdu`? | Decisión del equipo. Afecta paquetes Java/Kotlin, nombre de BD, clases, claves de `localStorage` y cuentas de prueba. Desde 2026-10-14 el nombre **visible** en web y Android ya es AllinEdu; el renombrado interno sigue pendiente |
 | D-3 | ¿Hay piloto con estudiantes? | Autorización institucional y consentimiento |
 | D-4 | ¿Coordinación/dirección entra como rol? | Entrevistas de semana 9 |
 

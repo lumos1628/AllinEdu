@@ -45,7 +45,7 @@ export default function App() {
   return (
     <div className="page">
       <header className="header">
-        <strong>EduFast</strong>
+        <strong>AllinEdu</strong>
         <span>
           {userName} · <button className="link" onClick={handleLogout}>Salir</button>
         </span>

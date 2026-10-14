@@ -10,13 +10,13 @@ public class Attendance {
     private final Long studentId;
     private final String studentName;
     private final LocalDate date;
-    private boolean present;
+    private final EstadoAsistencia status;
 
-    public Attendance(Long studentId, String studentName, LocalDate date, boolean present) {
+    public Attendance(Long studentId, String studentName, LocalDate date, EstadoAsistencia status) {
         this.studentId = studentId;
         this.studentName = studentName;
         this.date = date;
-        this.present = present;
+        this.status = status;
     }
 
     public Long getStudentId() {
@@ -31,11 +31,12 @@ public class Attendance {
         return date;
     }
 
-    public boolean isPresent() {
-        return present;
+    public EstadoAsistencia getStatus() {
+        return status;
     }
 
-    public void setPresent(boolean present) {
-        this.present = present;
+    /** TARDANZA cuenta como presente para los resúmenes. */
+    public boolean isPresent() {
+        return status == EstadoAsistencia.PRESENTE || status == EstadoAsistencia.TARDANZA;
     }
 }

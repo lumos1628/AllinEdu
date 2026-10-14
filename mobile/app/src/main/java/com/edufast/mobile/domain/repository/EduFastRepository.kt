@@ -1,6 +1,7 @@
 package com.edufast.mobile.domain.repository
 
 import com.edufast.mobile.domain.model.AttendanceEntry
+import com.edufast.mobile.domain.model.AttendanceStatus
 import com.edufast.mobile.domain.model.Section
 import com.edufast.mobile.domain.model.Student
 
@@ -15,7 +16,7 @@ interface EduFastRepository {
 
     suspend fun getSectionStudents(sectionId: Long): List<Student>
 
-    suspend fun saveAttendance(sectionId: Long, date: String, presentByStudent: Map<Long, Boolean>): List<AttendanceEntry>
+    suspend fun saveAttendance(sectionId: Long, date: String, statusByStudent: Map<Long, AttendanceStatus>): List<AttendanceEntry>
 
     suspend fun getAttendance(sectionId: Long, date: String): List<AttendanceEntry>
 }

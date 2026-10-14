@@ -4,6 +4,7 @@ import com.edufast.application.dto.AttendanceRequest;
 import com.edufast.application.dto.AttendanceResponse;
 import com.edufast.domain.exception.NotFoundException;
 import com.edufast.domain.model.Attendance;
+import com.edufast.domain.model.EstadoAsistencia;
 import com.edufast.domain.model.EstadoJornada;
 import com.edufast.domain.model.Jornada;
 import com.edufast.domain.model.Section;
@@ -76,11 +77,20 @@ public class AttendanceServiceImpl implements AttendanceService {
         if (student == null) {
             throw new NotFoundException("El alumno no está matriculado en esta sección");
         }
-        return new Attendance(entry.studentId(), student.getName(), date, entry.present());
+        return new Attendance(entry.studentId(), student.getName(), date, statusOf(entry));
+    }
+
+    // Si llegan ambos campos, manda "status": es el que distingue la tardanza.
+    private EstadoAsistencia statusOf(AttendanceRequest.AttendanceEntry entry) {
+        if (entry.status() != null) {
+            return EstadoAsistencia.valueOf(entry.status());
+        }
+        return Boolean.TRUE.equals(entry.present()) ? EstadoAsistencia.PRESENTE : EstadoAsistencia.AUSENTE;
     }
 
     private AttendanceResponse toResponse(Attendance asistencia, LocalDate date) {
-        return new AttendanceResponse(asistencia.getStudentId(), asistencia.getStudentName(), date, asistencia.isPresent());
+        return new AttendanceResponse(asistencia.getStudentId(), asistencia.getStudentName(), date,
+                asistencia.isPresent(), asistencia.getStatus().name());
     }
 
     private List<AttendanceRequest.AttendanceEntry> deduplicate(List<AttendanceRequest.AttendanceEntry> entries) {

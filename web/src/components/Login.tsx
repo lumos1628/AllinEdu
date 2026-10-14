@@ -28,8 +28,8 @@ export default function Login({ onLogin }: Props) {
 
   return (
     <div className="login-card">
-      <h1>EduFast</h1>
-      <p className="subtitle">Asistencia para docentes</p>
+      <h1>AllinEdu</h1>
+      <p className="subtitle">Prepara, aplica y evalúa tus clases con menos carga</p>
       <form onSubmit={handleSubmit}>
         <input
           type="email"

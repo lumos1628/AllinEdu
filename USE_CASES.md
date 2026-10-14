@@ -72,7 +72,7 @@ Prioridad 1. Ataca el dolor más costoso: 2.5 a 4 horas diarias de trabajo no re
 
 - **Actor:** docente.
 - **Flujo:** selecciona su sección y la fecha; el sistema presenta a los estudiantes
-  matriculados en esa sección para esa fecha; marca presente/ausente y guarda.
+  matriculados en esa sección para esa fecha; marca a cada uno como asistió, tardanza o faltó (tarjetas por color) y guarda.
 - **Reglas:** registrar asistencia no crea ni modifica una matrícula. Solo las jornadas
   confirmadas quedan como registro oficial.
 - **Objetivo de diseño:** eliminar el doble registro vía fotografía (EVIDENCIA I-2). La

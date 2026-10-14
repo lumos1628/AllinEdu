@@ -20,7 +20,6 @@ public final class AttendanceMapper {
         Long studentId = estudiante.getId();
         String studentName = estudiante.getPersona().getNombreCompleto();
         EstadoAsistencia estado = EstadoAsistencia.fromPersisted(entity.getEstado());
-        boolean present = estado == EstadoAsistencia.PRESENTE || estado == EstadoAsistencia.TARDANZA;
-        return new Attendance(studentId, studentName, fecha, present);
+        return new Attendance(studentId, studentName, fecha, estado);
     }
 }

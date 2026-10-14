@@ -1,9 +1,12 @@
 package com.edufast.mobile.domain.model
 
-// Entidad de dominio: un registro de asistencia (alumno presente/ausente en una fecha).
+// Estado de asistencia. TARDANZA cuenta como presente en los resúmenes.
+enum class AttendanceStatus { PRESENTE, AUSENTE, TARDANZA }
+
+// Entidad de dominio: un registro de asistencia de un alumno en una fecha.
 data class AttendanceEntry(
     val studentId: Long,
     val studentName: String,
     val date: String,
-    val present: Boolean,
+    val status: AttendanceStatus,
 )

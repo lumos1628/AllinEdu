@@ -4,6 +4,7 @@ import com.edufast.application.dto.AttendanceRequest;
 import com.edufast.application.dto.AttendanceResponse;
 import com.edufast.domain.exception.NotFoundException;
 import com.edufast.domain.model.Attendance;
+import com.edufast.domain.model.EstadoAsistencia;
 import com.edufast.domain.model.EstadoJornada;
 import com.edufast.domain.model.Jornada;
 import com.edufast.domain.model.Role;
@@ -27,6 +28,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.argThat;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -64,11 +66,11 @@ class AttendanceServiceImplTest {
         when(sectionService.getAssignedSection(professor, 1L)).thenReturn(section);
         when(studentRepository.findBySectionId(1L)).thenReturn(List.of(student));
         Jornada saved = new Jornada(5L, 1L, FECHA, EstadoJornada.CONFIRMADA,
-                List.of(new Attendance(1L, "Ana Torres", FECHA, true)));
+                List.of(new Attendance(1L, "Ana Torres", FECHA, EstadoAsistencia.PRESENTE)));
         when(attendanceRepository.save(any(Jornada.class), eq(1L), eq(true))).thenReturn(saved);
 
         List<AttendanceResponse> results = attendanceService.takeAttendance(professor, 1L,
-                new AttendanceRequest(FECHA, List.of(new AttendanceRequest.AttendanceEntry(1L, true))));
+                new AttendanceRequest(FECHA, List.of(new AttendanceRequest.AttendanceEntry(1L, true, null))));
 
         assertEquals(1, results.size());
         assertTrue(results.get(0).present());
@@ -77,12 +79,44 @@ class AttendanceServiceImplTest {
     }
 
     @Test
+    void tomarAsistenciaConTardanzaGuardaElEstadoYCuentaComoPresente() {
+        when(sectionService.getAssignedSection(professor, 1L)).thenReturn(section);
+        when(studentRepository.findBySectionId(1L)).thenReturn(List.of(student));
+        Jornada saved = new Jornada(5L, 1L, FECHA, EstadoJornada.CONFIRMADA,
+                List.of(new Attendance(1L, "Ana Torres", FECHA, EstadoAsistencia.TARDANZA)));
+        when(attendanceRepository.save(any(Jornada.class), eq(1L), eq(true))).thenReturn(saved);
+
+        List<AttendanceResponse> results = attendanceService.takeAttendance(professor, 1L,
+                new AttendanceRequest(FECHA, List.of(new AttendanceRequest.AttendanceEntry(1L, null, "TARDANZA"))));
+
+        verify(attendanceRepository).save(argThat(j ->
+                j.getRegistros().get(0).getStatus() == EstadoAsistencia.TARDANZA), eq(1L), eq(true));
+        assertEquals("TARDANZA", results.get(0).status());
+        assertTrue(results.get(0).present());
+    }
+
+    @Test
+    void tomarAsistenciaPrefiereStatusSobrePresent() {
+        when(sectionService.getAssignedSection(professor, 1L)).thenReturn(section);
+        when(studentRepository.findBySectionId(1L)).thenReturn(List.of(student));
+        Jornada saved = new Jornada(5L, 1L, FECHA, EstadoJornada.CONFIRMADA,
+                List.of(new Attendance(1L, "Ana Torres", FECHA, EstadoAsistencia.AUSENTE)));
+        when(attendanceRepository.save(any(Jornada.class), eq(1L), eq(true))).thenReturn(saved);
+
+        attendanceService.takeAttendance(professor, 1L,
+                new AttendanceRequest(FECHA, List.of(new AttendanceRequest.AttendanceEntry(1L, true, "AUSENTE"))));
+
+        verify(attendanceRepository).save(argThat(j ->
+                j.getRegistros().get(0).getStatus() == EstadoAsistencia.AUSENTE), eq(1L), eq(true));
+    }
+
+    @Test
     void tomarAsistenciaDeAlumnoNoMatriculadoLanzaExcepcion() {
         when(sectionService.getAssignedSection(professor, 1L)).thenReturn(section);
         when(studentRepository.findBySectionId(1L)).thenReturn(List.of());
 
         assertThrows(NotFoundException.class, () -> attendanceService.takeAttendance(professor, 1L,
-                new AttendanceRequest(FECHA, List.of(new AttendanceRequest.AttendanceEntry(1L, true)))));
+                new AttendanceRequest(FECHA, List.of(new AttendanceRequest.AttendanceEntry(1L, true, null)))));
     }
 
     @Test
@@ -90,13 +124,13 @@ class AttendanceServiceImplTest {
         when(sectionService.getAssignedSection(professor, 1L)).thenReturn(section);
         when(studentRepository.findBySectionId(1L)).thenReturn(List.of(student));
         Jornada saved = new Jornada(5L, 1L, FECHA, EstadoJornada.CONFIRMADA,
-                List.of(new Attendance(1L, "Ana Torres", FECHA, false)));
+                List.of(new Attendance(1L, "Ana Torres", FECHA, EstadoAsistencia.AUSENTE)));
         when(attendanceRepository.save(any(Jornada.class), eq(1L), eq(true))).thenReturn(saved);
 
         List<AttendanceResponse> results = attendanceService.takeAttendance(professor, 1L,
                 new AttendanceRequest(FECHA, List.of(
-                        new AttendanceRequest.AttendanceEntry(1L, true),
-                        new AttendanceRequest.AttendanceEntry(1L, false))));
+                        new AttendanceRequest.AttendanceEntry(1L, true, null),
+                        new AttendanceRequest.AttendanceEntry(1L, false, null))));
 
         assertEquals(1, results.size());
         assertFalse(results.get(0).present());
@@ -106,7 +140,7 @@ class AttendanceServiceImplTest {
     void verAsistenciaFiltraPorSeccionYFecha() {
         when(sectionService.getAssignedSection(professor, 1L)).thenReturn(section);
         Jornada jornada = new Jornada(5L, 1L, FECHA, EstadoJornada.CONFIRMADA,
-                List.of(new Attendance(1L, "Ana Torres", FECHA, true)));
+                List.of(new Attendance(1L, "Ana Torres", FECHA, EstadoAsistencia.PRESENTE)));
         when(attendanceRepository.findBySectionAndDate(1L, FECHA)).thenReturn(Optional.of(jornada));
 
         List<AttendanceResponse> results = attendanceService.getAttendance(professor, 1L, FECHA);

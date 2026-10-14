@@ -27,8 +27,8 @@ fun LoginScreen(
             modifier = Modifier.padding(padding).padding(24.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-            Text("EduFast", style = MaterialTheme.typography.headlineLarge)
-            Text("Asistencia para docentes", style = MaterialTheme.typography.bodyMedium)
+            Text("AllinEdu", style = MaterialTheme.typography.headlineLarge)
+            Text("Prepara, aplica y evalúa tus clases con menos carga", style = MaterialTheme.typography.bodyMedium)
 
             Spacer(Modifier.height(24.dp))
 

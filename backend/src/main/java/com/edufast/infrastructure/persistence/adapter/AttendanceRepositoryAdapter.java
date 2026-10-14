@@ -2,7 +2,6 @@ package com.edufast.infrastructure.persistence.adapter;
 
 import com.edufast.domain.exception.NotFoundException;
 import com.edufast.domain.model.Attendance;
-import com.edufast.domain.model.EstadoAsistencia;
 import com.edufast.domain.model.EstadoJornada;
 import com.edufast.domain.model.Jornada;
 import com.edufast.domain.port.AttendanceRepository;
@@ -96,7 +95,7 @@ public class AttendanceRepositoryAdapter implements AttendanceRepository {
                     if (ubicacion == null) {
                         throw new NotFoundException("El alumno no está matriculado en esta sección");
                     }
-                    String estado = (asistencia.isPresent() ? EstadoAsistencia.PRESENTE : EstadoAsistencia.AUSENTE).name();
+                    String estado = asistencia.getStatus().name();
                     return new RegistroAsistenciaEntity(null, jornadaGuardada, ubicacion, estado);
                 })
                 .toList();

@@ -8,6 +8,7 @@ import com.edufast.mobile.data.dto.LoginResponseDto
 import com.edufast.mobile.data.dto.SectionDto
 import com.edufast.mobile.data.dto.StudentDto
 import com.edufast.mobile.domain.model.AttendanceEntry
+import com.edufast.mobile.domain.model.AttendanceStatus
 import com.edufast.mobile.domain.model.Section
 import com.edufast.mobile.domain.model.Student
 import com.edufast.mobile.domain.repository.EduFastRepository
@@ -64,12 +65,12 @@ class ApiEduFastRepository(
     override suspend fun saveAttendance(
         sectionId: Long,
         date: String,
-        presentByStudent: Map<Long, Boolean>,
+        statusByStudent: Map<Long, AttendanceStatus>,
     ): List<AttendanceEntry> {
         val request = AttendanceRequestDto(
             date = date,
-            attendance = presentByStudent.map { (studentId, present) ->
-                AttendanceEntryDto(studentId, present)
+            attendance = statusByStudent.map { (studentId, status) ->
+                AttendanceEntryDto(studentId, status.name)
             },
         )
         val dtos: List<AttendanceResponseDto> = client.post("$baseUrl/api/v1/sections/$sectionId/attendance") {
@@ -92,5 +93,5 @@ class ApiEduFastRepository(
         tokenStore.getToken() ?: throw IllegalStateException("No hay sesión iniciada")
 
     private fun List<AttendanceResponseDto>.toDomain(): List<AttendanceEntry> =
-        map { AttendanceEntry(it.studentId, it.studentName, it.date, it.present) }
+        map { AttendanceEntry(it.studentId, it.studentName, it.date, AttendanceStatus.valueOf(it.status)) }
 }

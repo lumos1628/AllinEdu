@@ -47,7 +47,7 @@ data class AttendanceRequestDto(
 @Serializable
 data class AttendanceEntryDto(
     val studentId: Long,
-    val present: Boolean,
+    val status: String,
 )
 
 @Serializable
@@ -56,4 +56,5 @@ data class AttendanceResponseDto(
     val studentName: String,
     val date: String,
     val present: Boolean,
+    val status: String,
 )

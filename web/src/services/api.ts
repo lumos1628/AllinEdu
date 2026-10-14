@@ -56,9 +56,12 @@ export interface Student {
   code: string
 }
 
+// TARDANZA cuenta como presente en los resúmenes, pero se registra aparte.
+export type AttendanceStatus = 'PRESENTE' | 'AUSENTE' | 'TARDANZA'
+
 export interface AttendanceEntry {
   studentId: number
-  present: boolean
+  status: AttendanceStatus
 }
 
 export interface AttendanceRecord {
@@ -66,6 +69,7 @@ export interface AttendanceRecord {
   studentName: string
   date: string
   present: boolean
+  status: AttendanceStatus
 }
 
 export async function login(email: string, password: string): Promise<LoginResponse> {
