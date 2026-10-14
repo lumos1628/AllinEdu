@@ -164,6 +164,7 @@ Incluye `ArchitectureTest`, que verifica las reglas 1, 2 y 4 automáticamente. U
 | Casos de uso | raíz, `USE_CASES.md` | Actores, flujos y excepciones; marca `[EXISTE]` lo implementado |
 | ERD y diccionario | raíz, `DATABASE.md` | Debe coincidir con las migraciones |
 | Decisión de alcance | raíz, `ALCANCE.md` | Catálogo, exclusiones con razón e historial de cambios |
+| Colores y piezas de marca | raíz, `IDENTIDAD.md` | Tokens compartidos web/Android; sin hex sueltos en componentes |
 | Hallazgo de investigación | raíz, `EVIDENCIA.md` | Con fuente, `n` y cita anonimizada |
 
 No uses el dashboard remoto como fuente única para cambios de esquema: todas las modificaciones deben quedar en migraciones versionadas. La web y Android nunca reciben credenciales de PostgreSQL, claves `service_role` ni acceso directo a las tablas.

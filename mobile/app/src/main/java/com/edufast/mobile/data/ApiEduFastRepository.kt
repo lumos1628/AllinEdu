@@ -33,6 +33,9 @@ class ApiEduFastRepository(
 ) : EduFastRepository {
 
     private val client = HttpClient {
+        // Un 4xx/5xx lanza excepción (ClientRequestException en 4xx) en vez de
+        // intentar leer el cuerpo como si fuera éxito: así un 401 no parece "sin conexión".
+        expectSuccess = true
         install(ContentNegotiation) {
             json(Json { ignoreUnknownKeys = true })
         }
@@ -45,7 +48,7 @@ class ApiEduFastRepository(
         }
         val dto: LoginResponseDto = response.body()
         tokenStore.saveToken(dto.token)
-        return dto.token
+        return dto.name
     }
 
     override suspend fun getMySections(): List<Section> {

@@ -1,13 +1,72 @@
 :root {
-  --primary: #2563eb;
-  --primary-dark: #1d4ed8;
-  --bg: #f1f5f9;
+  /* Identidad AllinEdu (ver IDENTIDAD.md): modo oscuro por defecto, dorado como color
+     de acción y azul como complemento. Mismos valores que AllinColors en Android. */
+  color-scheme: dark;
+
+  --bg: #0e0f12;           /* negro de base */
+  --card: #17191e;
+  --input-bg: #121418;
+  --text: #f2efe8;
+  --muted: #a3a7b1;
+  --border: #2a2e37;
+  --rail: #3a3f4b;
+  --input-border: #5f6676; /* borde de campos: contraste 3:1 */
+  --hover-bg: #1f222a;
+  --shadow: 0, 0, 0;       /* rgb para sombras: rgba(var(--shadow), .3) */
+
+  --primary: #e3b341;      /* dorado: botones, paso disponible, logotipo */
+  --primary-hover: #f0c75e;
+  --on-primary: #16130a;   /* texto sobre dorado */
+  --gold-text: #e3b341;    /* dorado usado como texto */
+  --accent: #7aa2ff;       /* azul complementario: enlaces, foco, línea de la cadena */
+  --accent-text: #7aa2ff;
+
+  /* Estados de asistencia: semánticos, no son colores de marca */
+  --present-bg: #10291c;
+  --present: #2f9e5e;
+  --present-text: #6ee7a0;
+  --late-bg: #2a2210;
+  --late: #b8890f;
+  --late-text: #f2c14e;
+  --absent-bg: #2e1416;
+  --absent: #c93b3b;
+  --absent-text: #f58a8a;
+
+  --ok: var(--present-text);
+  --err: var(--absent-text);
+}
+
+/* Modo claro opcional (botón ☀/☾), pensado para aulas con mucha luz */
+:root[data-theme='light'] {
+  color-scheme: light;
+
+  --bg: #f7f5f0;
   --card: #ffffff;
-  --text: #0f172a;
-  --muted: #64748b;
-  --border: #e2e8f0;
-  --ok: #16a34a;
-  --err: #dc2626;
+  --input-bg: #ffffff;
+  --text: #1b1d22;
+  --muted: #5f6470;
+  --border: #e4e1d8;
+  --rail: #d3cfc4;
+  --input-border: #8c8f98;
+  --hover-bg: #f1eee6;
+  --shadow: 27, 29, 34;
+
+  --primary: #e3b341;
+  --primary-hover: #d4a22e;
+  --on-primary: #16130a;
+  --gold-text: #85650c;    /* el dorado puro no se lee como texto sobre claro */
+  --accent: #2f5bd3;
+  --accent-text: #2f5bd3;
+
+  --present-bg: #dcfce7;
+  --present: #16a34a;
+  --present-text: #15803d;
+  --late-bg: #fef9c3;
+  --late: #ca8a04;
+  --late-text: #854d0e;
+  --absent-bg: #fee2e2;
+  --absent: #dc2626;
+  --absent-text: #b91c1c;
 }
 
 * {
@@ -36,37 +95,281 @@ body {
   color: var(--muted);
 }
 
-.header strong {
-  color: var(--primary);
+/* Logotipo AllinEdu */
+.wordmark {
+  display: inline-flex;
+  flex-direction: row;
+  position: relative;
+  margin: 0;
+  padding-bottom: 0.18em;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.wordmark-allin {
+  color: var(--text);
+}
+
+.wordmark-edu {
+  color: var(--gold-text);
+}
+
+.wordmark::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 1.1em;
+  height: max(3px, 0.14em);
+  border-radius: 999px;
+  background: var(--primary);
+}
+
+.header-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.login-topbar {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-radius: 999px;
+  color: var(--gold-text);
   font-size: 18px;
+}
+
+.theme-toggle:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.header {
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
 }
 
 .link {
   background: none;
   border: none;
-  color: var(--primary);
+  color: var(--accent-text);
   cursor: pointer;
   font-size: inherit;
 }
 
+/* ---------- Login ---------- */
+.login-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding-top: 8px;
+}
+
 .login-card {
+  width: 100%;
+  max-width: 380px;
   background: var(--card);
   border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 32px;
-  max-width: 360px;
-  margin: 60px auto;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  border-radius: 16px;
+  padding: 28px 28px 32px;
+  box-shadow: 0 12px 32px rgba(var(--shadow), 0.08);
 }
 
 .login-card h1 {
-  margin: 0 0 4px;
-  color: var(--primary);
+  margin: 0 0 8px;
 }
 
 .login-card .subtitle {
-  margin: 0 0 20px;
+  margin: 0 0 22px;
   color: var(--muted);
+}
+
+.login-card.shake {
+  animation: shake 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.field input {
+  width: 100%;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.field input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
+.field input[aria-invalid='true'] {
+  border-color: var(--err);
+}
+
+.login-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  margin-top: 6px;
+  font-weight: 600;
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid color-mix(in srgb, var(--on-primary) 35%, transparent);
+  border-top-color: var(--on-primary);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+/* Cadena que se dibuja sola sobre la tarjeta */
+.chain-hero {
+  width: 100%;
+  max-width: 380px;
+  height: auto;
+  overflow: visible;
+}
+
+.chain-hero-track {
+  stroke: var(--border);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.chain-hero-line {
+  stroke: var(--accent);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: drawLine 1.2s cubic-bezier(0.45, 0, 0.2, 1) 0.15s forwards;
+}
+
+.chain-hero-dot {
+  fill: var(--card);
+  stroke: var(--accent);
+  stroke-width: 3;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: nodePop 0.35s cubic-bezier(0.34, 1.8, 0.5, 1) both;
+  animation-delay: calc(0.15s + var(--i) * 0.4s);
+}
+
+.chain-hero-node text {
+  fill: var(--muted);
+  font-size: 12px;
+  font-weight: 600;
+  font-family: inherit;
+  animation: fadeIn 0.3s ease both;
+  animation-delay: calc(0.25s + var(--i) * 0.4s);
+}
+
+/* El eslabón disponible se enciende en verde cuando la línea termina */
+.chain-hero-node.ready .chain-hero-dot {
+  animation: nodePop 0.35s cubic-bezier(0.34, 1.8, 0.5, 1) both, lightUp 0.4s ease 1.45s forwards;
+  animation-delay: calc(0.15s + var(--i) * 0.4s), 1.45s;
+}
+
+.chain-hero-node.ready text {
+  fill: var(--gold-text);
+}
+
+.chain-hero-pulse {
+  fill: var(--primary);
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pulse 0.9s ease-out 1.6s;
+}
+
+/* Sello de bienvenida al entrar */
+.welcome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 0 8px;
+}
+
+.welcome-stamp {
+  padding: 8px 14px;
+  border: 3px solid var(--primary);
+  border-radius: 8px;
+  color: var(--gold-text);
+  font-size: 18px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  transform: rotate(-6deg);
+  animation: stampIn 0.45s cubic-bezier(0.34, 1.8, 0.5, 1) both;
+}
+
+.welcome-name {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+@keyframes drawLine {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes nodePop {
+  from { transform: scale(0); }
+  to { transform: scale(1); }
+}
+
+@keyframes lightUp {
+  to { fill: var(--primary); stroke: var(--primary); }
+}
+
+@keyframes pulse {
+  from { opacity: 0.45; transform: scale(1); }
+  to { opacity: 0; transform: scale(2.4); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes shake {
+  20%, 60% { transform: translateX(-8px); }
+  40%, 80% { transform: translateX(8px); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chain-hero-line { animation: none; stroke-dashoffset: 0; }
+  .chain-hero-dot,
+  .chain-hero-node text,
+  .chain-hero-pulse,
+  .welcome-stamp,
+  .login-card.shake { animation: none; }
+  .chain-hero-node.ready .chain-hero-dot { animation: none; fill: var(--primary); stroke: var(--primary); }
+  .spinner { animation-duration: 1.6s; }
 }
 
 form {
@@ -77,12 +380,15 @@ form {
 
 input {
   padding: 10px 12px;
-  border: 1px solid var(--border);
+  border: 1px solid var(--input-border);
+  background: var(--input-bg);
+  color: var(--text);
   border-radius: 8px;
   font-size: 15px;
 }
 
 .password-field {
+  display: block;
   position: relative;
 }
 
@@ -99,7 +405,7 @@ input {
   padding: 4px 8px;
   border: none;
   background: none;
-  color: var(--primary);
+  color: var(--accent-text);
   font-size: 13px;
 }
 
@@ -108,22 +414,23 @@ button {
   border: 1px solid var(--border);
   border-radius: 8px;
   background: var(--card);
+  color: var(--text);
   cursor: pointer;
   font-size: 15px;
 }
 
 button:hover {
-  background: #eef2ff;
+  background: var(--hover-bg);
 }
 
 button.primary {
   background: var(--primary);
-  color: #fff;
+  color: var(--on-primary);
   border: none;
 }
 
 button.primary:hover {
-  background: var(--primary-dark);
+  background: var(--primary-hover);
 }
 
 button:disabled {
@@ -174,7 +481,7 @@ button:disabled {
 }
 
 .chain-step.ready {
-  border: 1px solid var(--ok);
+  border: 1px solid var(--primary);
   background: var(--card);
   color: var(--text);
 }
@@ -189,7 +496,7 @@ button:disabled {
 }
 
 .chain-step.ready .chain-hint {
-  color: var(--ok);
+  color: var(--gold-text);
   font-weight: 600;
 }
 
@@ -221,7 +528,7 @@ button:disabled {
   padding: 16px 18px;
   text-align: left;
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 2px 8px rgba(var(--shadow), 0.04);
   font-family: inherit;
   color: inherit;
   transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
@@ -229,22 +536,24 @@ button:disabled {
 }
 
 .section-card.level-primaria {
-  --card-color: #2563eb;
+  --card-color: var(--primary);
+  --card-text: var(--gold-text);
 }
 
 .section-card.level-secundaria {
-  --card-color: #7c3aed;
+  --card-color: var(--accent);
+  --card-text: var(--accent-text);
 }
 
 .section-card:hover {
   background: var(--card);
   border-color: var(--card-color);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 20px rgba(var(--shadow), 0.1);
   transform: translateY(-2px);
 }
 
 .section-card:focus-visible {
-  outline: 3px solid var(--primary);
+  outline: 3px solid var(--accent);
   outline-offset: 2px;
 }
 
@@ -263,7 +572,7 @@ button:disabled {
   margin-top: 8px;
   font-size: 14px;
   font-weight: 600;
-  color: var(--card-color);
+  color: var(--card-text, var(--gold-text));
 }
 
 @keyframes slideInUp {
@@ -357,18 +666,18 @@ button:disabled {
   border: 1px solid currentColor;
 }
 
-.count-present { color: #15803d; }
-.count-late { color: #a16207; }
-.count-absent { color: #b91c1c; }
+.count-present { color: var(--present-text); }
+.count-late { color: var(--late-text); }
+.count-absent { color: var(--absent-text); }
 
 /* Colores por estado: --status-* es el estado actual, --from-bg el anterior
    (el fondo sobre el que se expande la tinta). */
-.status-presente { --status-bg: #dcfce7; --status-border: #16a34a; --status-text: #15803d; }
-.status-tardanza { --status-bg: #fef9c3; --status-border: #ca8a04; --status-text: #854d0e; }
-.status-ausente  { --status-bg: #fee2e2; --status-border: #dc2626; --status-text: #b91c1c; }
-.from-presente { --from-bg: #dcfce7; }
-.from-tardanza { --from-bg: #fef9c3; }
-.from-ausente  { --from-bg: #fee2e2; }
+.status-presente { --status-bg: var(--present-bg); --status-border: var(--present); --status-text: var(--present-text); }
+.status-tardanza { --status-bg: var(--late-bg); --status-border: var(--late); --status-text: var(--late-text); }
+.status-ausente  { --status-bg: var(--absent-bg); --status-border: var(--absent); --status-text: var(--absent-text); }
+.from-presente { --from-bg: var(--present-bg); }
+.from-tardanza { --from-bg: var(--late-bg); }
+.from-ausente  { --from-bg: var(--absent-bg); }
 
 /* Lista vertical con el riel del pase de lista a la izquierda */
 .roll-list {
@@ -394,7 +703,7 @@ button:disabled {
   top: 0;
   bottom: 0;
   width: 2px;
-  background: #cbd5e1;
+  background: var(--rail);
 }
 
 .roll-item:first-child::before { top: 50%; }
@@ -436,7 +745,7 @@ button:disabled {
 
 .student-card:hover {
   background: var(--from-bg, var(--status-bg));
-  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
+  box-shadow: 0 4px 14px rgba(var(--shadow), 0.08);
 }
 
 .student-card:active {
@@ -444,7 +753,7 @@ button:disabled {
 }
 
 .student-card:focus-visible {
-  outline: 3px solid var(--primary);
+  outline: 3px solid var(--accent);
   outline-offset: 2px;
 }
 
@@ -470,7 +779,7 @@ button:disabled {
 }
 
 .student-code {
-  color: #475569;
+  color: var(--muted);
   font-size: 12px;
 }
 
@@ -507,9 +816,9 @@ button:disabled {
   border: none;
   border-radius: 14px;
   background: var(--primary);
-  color: #fff;
+  color: var(--on-primary);
   font-size: 22px;
-  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
+  box-shadow: 0 6px 16px rgba(var(--shadow), 0.35);
   opacity: 0;
   transform: scale(0.6);
   pointer-events: none;
@@ -523,7 +832,7 @@ button:disabled {
 }
 
 .fab:hover {
-  background: var(--primary-dark);
+  background: var(--primary-hover);
 }
 
 @keyframes rollIn {

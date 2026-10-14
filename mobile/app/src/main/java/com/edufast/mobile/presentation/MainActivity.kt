@@ -1,11 +1,17 @@
 package com.edufast.mobile.presentation
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.activity.ComponentActivity
+import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.*
 import com.edufast.mobile.EduFastApp
 import com.edufast.mobile.domain.model.Section
+import com.edufast.mobile.presentation.theme.AllinColors
+import com.edufast.mobile.presentation.theme.AllinEduTheme
+import com.edufast.mobile.presentation.theme.loadSavedTheme
 
 // La pantalla raíz: decide qué mostrar según el estado de la sesión.
 // (equivalente a App.tsx en la web)
@@ -15,8 +21,17 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         val repository = (application as EduFastApp).repository
+        loadSavedTheme(this)
 
-        setContent {
+        setContent { AllinEduTheme {
+            // Íconos de la barra de estado claros en modo oscuro y oscuros en modo claro
+            val dark = AllinColors.palette.isDark
+            LaunchedEffect(dark) {
+                val style = if (dark) SystemBarStyle.dark(Color.TRANSPARENT)
+                else SystemBarStyle.light(Color.TRANSPARENT, Color.TRANSPARENT)
+                enableEdgeToEdge(statusBarStyle = style, navigationBarStyle = style)
+            }
+
             var loggedIn by remember { mutableStateOf(false) }
             var userName by remember { mutableStateOf("Profesor") }
             var section by remember { mutableStateOf<Section?>(null) }
@@ -46,17 +61,18 @@ class MainActivity : ComponentActivity() {
                 section == null && selectedModule == "attendance" -> SectionListScreen(
                     repository = repository,
                     onSelect = { section = it },
+                    onBack = { selectedModule = null },
                 )
                 section != null && selectedModule == "attendance" -> AttendanceScreen(
                     repository = repository,
                     section = section!!,
-                    onBack = { section = null; selectedModule = null },
+                    onBack = { section = null },
                 )
                 else -> HomeScreen(
                     userName = userName,
                     onModuleSelect = { selectedModule = it }
                 )
             }
-        }
+        } }
     }
 }

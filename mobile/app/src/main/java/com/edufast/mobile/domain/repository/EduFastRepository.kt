@@ -10,6 +10,7 @@ import com.edufast.mobile.domain.model.Student
 // Si mañana cambia el backend, solo cambia la implementación, no este contrato.
 interface EduFastRepository {
 
+    // Guarda la sesión y devuelve el nombre del docente para saludarlo.
     suspend fun login(email: String, password: String): String
 
     suspend fun getMySections(): List<Section>

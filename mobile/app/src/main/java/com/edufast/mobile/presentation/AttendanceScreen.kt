@@ -1,6 +1,5 @@
 package com.edufast.mobile.presentation
 
-import android.provider.Settings
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.Animatable
@@ -34,7 +33,6 @@ import androidx.compose.ui.geometry.isSpecified
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.graphicsLayer
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.stateDescription
@@ -44,6 +42,7 @@ import com.edufast.mobile.domain.model.AttendanceStatus
 import com.edufast.mobile.domain.model.Section
 import com.edufast.mobile.domain.model.Student
 import com.edufast.mobile.domain.repository.EduFastRepository
+import com.edufast.mobile.presentation.theme.AllinColors
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlin.math.hypot
@@ -53,9 +52,9 @@ import kotlin.math.hypot
 private data class StatusStyle(val label: String, val background: Color, val border: Color, val text: Color)
 
 private fun styleOf(status: AttendanceStatus): StatusStyle = when (status) {
-    AttendanceStatus.PRESENTE -> StatusStyle("Asistió", Color(0xFFDCFCE7), Color(0xFF16A34A), Color(0xFF15803D))
-    AttendanceStatus.TARDANZA -> StatusStyle("Tardanza", Color(0xFFFEF9C3), Color(0xFFCA8A04), Color(0xFF854D0E))
-    AttendanceStatus.AUSENTE -> StatusStyle("Faltó", Color(0xFFFEE2E2), Color(0xFFDC2626), Color(0xFFB91C1C))
+    AttendanceStatus.PRESENTE -> StatusStyle("Asistió", AllinColors.PresentBg, AllinColors.Present, AllinColors.PresentText)
+    AttendanceStatus.TARDANZA -> StatusStyle("Tardanza", AllinColors.LateBg, AllinColors.Late, AllinColors.LateText)
+    AttendanceStatus.AUSENTE -> StatusStyle("Faltó", AllinColors.AbsentBg, AllinColors.Absent, AllinColors.AbsentText)
 }
 
 // Cada toque avanza al siguiente estado: asistió → faltó → tardanza (igual que la web).
@@ -66,16 +65,7 @@ private fun AttendanceStatus.next(): AttendanceStatus = when (this) {
 }
 
 private val CardShape = RoundedCornerShape(16.dp)
-private val RailColor = Color(0xFFCBD5E1)
-
-// Si el docente desactivó las animaciones del sistema, todo cambia sin transición.
-@Composable
-private fun rememberReduceMotion(): Boolean {
-    val context = LocalContext.current
-    return remember {
-        Settings.Global.getFloat(context.contentResolver, Settings.Global.ANIMATOR_DURATION_SCALE, 1f) == 0f
-    }
-}
+private val RailColor = AllinColors.Rail
 
 // Pantalla de asistencia: lista vertical de tarjetas + guardar. Igual que Attendance.tsx en la web.
 @OptIn(ExperimentalMaterial3Api::class)
@@ -107,9 +97,11 @@ fun AttendanceScreen(
     val counts = statuses.values.groupingBy { it }.eachCount()
 
     Scaffold(
+        containerColor = AllinColors.Background,
         topBar = {
             TopAppBar(
-                title = { Text(section.descripcion) },
+                title = { Text(section.descripcion, color = AllinColors.Text, fontWeight = FontWeight.Bold) },
+                colors = TopAppBarDefaults.topAppBarColors(containerColor = AllinColors.Card),
                 navigationIcon = {
                     TextButton(onClick = onBack) { Text("←") }
                 },
@@ -199,12 +191,12 @@ private fun ScrollButtons(
 ) {
     Column(modifier, verticalArrangement = Arrangement.spacedBy(8.dp)) {
         AnimatedVisibility(visible = canGoUp, enter = scaleIn() + fadeIn(), exit = scaleOut() + fadeOut()) {
-            SmallFloatingActionButton(onClick = onUp) {
+            SmallFloatingActionButton(onClick = onUp, containerColor = AllinColors.Primary, contentColor = AllinColors.OnPrimary) {
                 Icon(Icons.Default.KeyboardArrowUp, contentDescription = "Ir al primer alumno")
             }
         }
         AnimatedVisibility(visible = canGoDown, enter = scaleIn() + fadeIn(), exit = scaleOut() + fadeOut()) {
-            SmallFloatingActionButton(onClick = onDown) {
+            SmallFloatingActionButton(onClick = onDown, containerColor = AllinColors.Primary, contentColor = AllinColors.OnPrimary) {
                 Icon(Icons.Default.KeyboardArrowDown, contentDescription = "Ir al último alumno")
             }
         }
@@ -366,7 +358,7 @@ private fun StudentCard(
         Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
             Column(Modifier.weight(1f).padding(end = 12.dp)) {
                 Text(student.name, style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.SemiBold)
-                Text(student.code, style = MaterialTheme.typography.bodySmall, color = Color(0xFF475569))
+                Text(student.code, style = MaterialTheme.typography.bodySmall, color = AllinColors.Muted)
             }
             // Sello del estado, ligeramente girado como un sello de registro.
             Text(

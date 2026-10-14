@@ -1,5 +1,6 @@
 package com.edufast.mobile.presentation
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -20,19 +21,10 @@ import androidx.compose.ui.semantics.disabled
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.edufast.mobile.presentation.theme.AllinColors
+import com.edufast.mobile.presentation.theme.ThemeToggleButton
+import com.edufast.mobile.presentation.theme.Wordmark
 import java.util.Calendar
-
-// Colores por eslabón de la cadena
-object EduColors {
-    val PrimaryDark = Color(0xFF1B5E7C)
-    val Accent = Color(0xFF2E8B97)
-    val Success = Color(0xFF4A7C59)
-    val Warning = Color(0xFFB7791F)
-    val Highlight = Color(0xFF6B4C9A)
-    val Secondary = Color(0xFFB85A5A)
-    val Muted = Color(0xFF5A6C7D)
-    val Background = Color(0xFFFAFBFC)
-}
 
 // Saludo según la hora del día
 fun getGreeting(hour: Int): String = when (hour) {
@@ -49,18 +41,17 @@ data class ModuleItem(
     val title: String,
     val description: String,
     val icon: ImageVector,
-    val color: Color,
     val isEnabled: Boolean = false,
 )
 
 // Orden de la cadena: se respeta tal cual para que el docente vea el ciclo completo.
 // Solo "Aplicar en clase" está construido; el resto se anuncia sin ser navegable.
 private val chainModules = listOf(
-    ModuleItem("planning", "Planificar", "Sesión, ficha diferenciada e instrumento", Icons.Default.Edit, EduColors.PrimaryDark),
-    ModuleItem("attendance", "Aplicar en clase", "Asistencia de tus secciones", Icons.Default.CheckCircle, EduColors.Success, isEnabled = true),
-    ModuleItem("evaluation", "Evaluar", "Criterios y evidencia por competencia", Icons.Default.Star, EduColors.Warning),
-    ModuleItem("reinforcement", "Reforzar", "Diagnóstico, práctica y repaso", Icons.Default.Refresh, EduColors.Highlight),
-    ModuleItem("communication", "Comunicar", "Avisos a familias con horario visible", Icons.Default.Email, EduColors.Secondary),
+    ModuleItem("planning", "Planificar", "Sesión, ficha diferenciada e instrumento", Icons.Default.Edit),
+    ModuleItem("attendance", "Aplicar en clase", "Asistencia de tus secciones", Icons.Default.CheckCircle, isEnabled = true),
+    ModuleItem("evaluation", "Evaluar", "Criterios y evidencia por competencia", Icons.Default.Star),
+    ModuleItem("reinforcement", "Reforzar", "Diagnóstico, práctica y repaso", Icons.Default.Refresh),
+    ModuleItem("communication", "Comunicar", "Avisos a familias con horario visible", Icons.Default.Email),
 )
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -74,22 +65,23 @@ fun HomeScreen(
             TopAppBar(
                 title = {
                     Column {
-                        Text("AllinEdu", fontWeight = FontWeight.Bold, color = EduColors.PrimaryDark)
+                        Wordmark(fontSize = 20)
                         Text(
                             "${getGreeting(getCurrentHour())}, $userName",
                             style = MaterialTheme.typography.bodySmall,
-                            color = EduColors.Muted,
+                            color = AllinColors.Muted,
                         )
                     }
                 },
-                colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.White),
+                colors = TopAppBarDefaults.topAppBarColors(containerColor = AllinColors.Card),
+                actions = { ThemeToggleButton() },
             )
         },
     ) { padding ->
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
-                .background(EduColors.Background)
+                .background(AllinColors.Background)
                 .padding(padding),
             contentPadding = PaddingValues(16.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp),
@@ -99,12 +91,12 @@ fun HomeScreen(
                     "Tu ciclo de clase",
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.Bold,
-                    color = EduColors.PrimaryDark,
+                    color = AllinColors.Text,
                 )
                 Text(
                     "Planificar → Aplicar → Evaluar → Reforzar",
                     style = MaterialTheme.typography.bodySmall,
-                    color = EduColors.Muted,
+                    color = AllinColors.Muted,
                 )
             }
             items(chainModules.withIndex().toList(), key = { it.value.id }) { (index, module) ->
@@ -128,9 +120,11 @@ private fun ModuleCard(module: ModuleItem, step: Int, onClick: () -> Unit) {
         enabled = module.isEnabled,
         shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.cardColors(
-            containerColor = Color.White,
-            disabledContainerColor = Color(0xFFF3F4F6),
+            containerColor = AllinColors.Card,
+            disabledContainerColor = AllinColors.Background,
         ),
+        // El eslabón disponible lleva el filo dorado de la marca
+        border = if (module.isEnabled) BorderStroke(1.5.dp, AllinColors.Primary) else BorderStroke(1.dp, AllinColors.Border),
         elevation = CardDefaults.cardElevation(
             defaultElevation = if (module.isEnabled) 3.dp else 0.dp,
         ),
@@ -145,11 +139,11 @@ private fun ModuleCard(module: ModuleItem, step: Int, onClick: () -> Unit) {
             modifier = Modifier.padding(16.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            val tint = if (module.isEnabled) module.color else EduColors.Muted
+            val tint = if (module.isEnabled) AllinColors.GoldText else AllinColors.Muted
             Box(
                 modifier = Modifier
                     .size(if (module.isEnabled) 52.dp else 40.dp)
-                    .background(tint.copy(alpha = 0.12f), CircleShape),
+                    .background(if (module.isEnabled) AllinColors.Primary.copy(alpha = 0.15f) else AllinColors.Border.copy(alpha = 0.5f), CircleShape),
                 contentAlignment = Alignment.Center,
             ) {
                 Icon(module.icon, contentDescription = null, tint = tint)
@@ -159,23 +153,23 @@ private fun ModuleCard(module: ModuleItem, step: Int, onClick: () -> Unit) {
                 Text(
                     "Paso $step · $status",
                     style = MaterialTheme.typography.labelSmall,
-                    color = tint,
+                    color = if (module.isEnabled) AllinColors.GoldText else AllinColors.Muted,
                     fontWeight = FontWeight.SemiBold,
                 )
                 Text(
                     module.title,
                     style = if (module.isEnabled) MaterialTheme.typography.titleLarge else MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.Bold,
-                    color = if (module.isEnabled) EduColors.PrimaryDark else EduColors.Muted,
+                    color = if (module.isEnabled) AllinColors.Text else AllinColors.Muted,
                 )
                 Text(
                     module.description,
                     style = MaterialTheme.typography.bodySmall,
-                    color = EduColors.Muted,
+                    color = AllinColors.Muted,
                 )
             }
             if (module.isEnabled) {
-                Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, contentDescription = null, tint = module.color)
+                Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, contentDescription = null, tint = AllinColors.GoldText)
             }
         }
     }

@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import Attendance from './components/Attendance'
 import SectionList from './components/SectionList'
 import Login from './components/Login'
+import Wordmark from './components/Wordmark'
+import ThemeToggle from './components/ThemeToggle'
 import { SESSION_EXPIRED_EVENT, loggedName, logout } from './services/api'
 import type { Section } from './services/api'
 
@@ -25,6 +27,9 @@ export default function App() {
   if (!token) {
     return (
       <div className="page">
+        <div className="login-topbar">
+          <ThemeToggle />
+        </div>
         <Login
           onLogin={(name) => {
             setToken(localStorage.getItem('edufast_token'))
@@ -45,8 +50,9 @@ export default function App() {
   return (
     <div className="page">
       <header className="header">
-        <strong>AllinEdu</strong>
-        <span>
+        <Wordmark size={20} />
+        <span className="header-actions">
+          <ThemeToggle />
           {userName} · <button className="link" onClick={handleLogout}>Salir</button>
         </span>
       </header>
