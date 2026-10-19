@@ -14,7 +14,7 @@ major_version = 17
 [db.seed]
 # La semilla necesita variables locales y se ejecuta explícitamente con psql.
 enabled = false
-sql_paths = ["./seed.sql"]
+sql_paths = ["./seed.sql", "./seed_primaria.sql"]
 
 [studio]
 enabled = true

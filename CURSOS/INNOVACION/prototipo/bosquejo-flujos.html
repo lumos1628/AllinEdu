@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bosquejo de flujos</title>
+<style>
+  :root{--tinta:#1b1d22;--papel:#fbfaf7;--gris:#8a8d94;--linea:#c9c6bd;--oro:#9a7a16;--azul:#2f5bd3;}
+  *{box-sizing:border-box}
+  body{margin:0;padding:28px 16px 60px;background:var(--papel);color:var(--tinta);
+       font-family:ui-sans-serif,system-ui,"Segoe UI",sans-serif;line-height:1.5}
+  .wrap{max-width:1180px;margin:0 auto}
+  h1{font-size:26px;margin:0 0 4px}
+  .sub{color:var(--gris);font-size:14px;margin:0 0 26px}
+  h2{font-size:19px;margin:34px 0 4px;padding-top:18px;border-top:2px solid var(--tinta)}
+  .nota{font-size:13px;color:var(--gris);margin:0 0 16px}
+  .fila{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-start}
+  .paso{flex:0 0 auto}
+  .cap{font-size:12px;font-weight:600;margin:6px 0 0;max-width:210px}
+  .cap small{display:block;font-weight:400;color:var(--gris);margin-top:2px}
+  .flecha{align-self:center;font-size:22px;color:var(--gris);padding:0 2px}
+  .clave{margin-top:22px;padding:14px 16px;border:2px dashed var(--oro);border-radius:10px;
+         background:#fffdf5;font-size:14px}
+  .clave b{color:var(--oro)}
+  @media print{body{padding:0}.clave{break-inside:avoid}}
+</style>
+</head>
+<body><div class="wrap">
+
+<h1>Bosquejo de flujos — asistente pedagógico</h1>
+<p class="sub">Para copiar a mano en papel. Móvil = el día a día de la docente · Web = lo pesado, una vez al mes.</p>
+
+<h2>Flujo móvil — revisar y aprobar el día siguiente</h2>
+<p class="nota">La docente lo usa de pie, con el pulgar, con poca conexión. Objetivo: 20 minutos para el paquete completo.</p>
+
+<div class="fila">
+  <div class="paso">
+    <svg width="210" height="330" viewBox="0 0 210 330">
+      <rect x="4" y="4" width="202" height="322" rx="18" fill="none" stroke="#1b1d22" stroke-width="2.5"/>
+      <text x="20" y="38" font-size="16" font-weight="700">AllinEdu</text>
+      <text x="20" y="58" font-size="11" fill="#8a8d94">Buenas tardes, docente</text>
+      <rect x="18" y="74" width="80" height="74" rx="10" fill="none" stroke="#c9c6bd" stroke-width="2"/>
+      <circle cx="40" cy="98" r="11" fill="none" stroke="#9a7a16" stroke-width="2"/>
+      <text x="26" y="132" font-size="10">Planificación</text>
+      <rect x="112" y="74" width="80" height="74" rx="10" fill="none" stroke="#c9c6bd" stroke-width="2"/>
+      <circle cx="134" cy="98" r="11" fill="none" stroke="#c9c6bd" stroke-width="2"/>
+      <text x="122" y="132" font-size="10">Asistencia</text>
+      <rect x="18" y="160" width="80" height="74" rx="10" fill="none" stroke="#c9c6bd" stroke-width="2"/>
+      <circle cx="40" cy="184" r="11" fill="none" stroke="#c9c6bd" stroke-width="2"/>
+      <text x="26" y="218" font-size="10">Evaluación</text>
+      <rect x="112" y="160" width="80" height="74" rx="10" fill="none" stroke="#c9c6bd" stroke-width="2"/>
+      <circle cx="134" cy="184" r="11" fill="none" stroke="#c9c6bd" stroke-width="2"/>
+      <text x="118" y="218" font-size="10">Familias</text>
+      <rect x="18" y="252" width="174" height="44" rx="10" fill="none" stroke="#9a7a16" stroke-width="2.5"/>
+      <text x="34" y="272" font-size="11" font-weight="700" fill="#9a7a16">Mañana: 2 sesiones</text>
+      <text x="34" y="287" font-size="10" fill="#8a8d94">por revisar</text>
+    </svg>
+    <p class="cap">1 · Inicio<small>Atajo directo a lo de mañana</small></p>
+  </div>
+  <div class="flecha">→</div>
+
+  <div class="paso">
+    <svg width="210" height="330" viewBox="0 0 210 330">
+      <rect x="4" y="4" width="202" height="322" rx="18" fill="none" stroke="#1b1d22" stroke-width="2.5"/>
+      <text x="20" y="34" font-size="13" font-weight="700">Mis cursos</text>
+      <g stroke="#c9c6bd" stroke-width="2" fill="none">
+        <rect x="18" y="50" width="174" height="56" rx="10"/>
+        <rect x="18" y="116" width="174" height="56" rx="10"/>
+        <rect x="18" y="182" width="174" height="56" rx="10"/>
+        <rect x="18" y="248" width="174" height="56" rx="10"/>
+      </g>
+      <text x="30" y="72" font-size="11" font-weight="600">Matemática</text>
+      <text x="30" y="90" font-size="10" fill="#8a8d94">4° B</text>
+      <text x="140" y="82" font-size="11" font-weight="700" fill="#9a7a16">3/8</text>
+      <text x="30" y="138" font-size="11" font-weight="600">Comunicación</text>
+      <text x="30" y="156" font-size="10" fill="#8a8d94">4° B</text>
+      <text x="140" y="148" font-size="11" font-weight="700" fill="#9a7a16">5/8</text>
+      <text x="30" y="204" font-size="11" font-weight="600">Personal Social</text>
+      <text x="30" y="222" font-size="10" fill="#8a8d94">4° B</text>
+      <text x="140" y="214" font-size="11" font-weight="700" fill="#9a7a16">2/8</text>
+      <text x="30" y="270" font-size="11" font-weight="600">Ciencia y Tec.</text>
+      <text x="30" y="288" font-size="10" fill="#8a8d94">4° B</text>
+      <text x="140" y="280" font-size="11" font-weight="700" fill="#9a7a16">4/8</text>
+    </svg>
+    <p class="cap">2 · Mis cursos<small>Contador = sesiones aprobadas de la unidad</small></p>
+  </div>
+  <div class="flecha">→</div>
+
+  <div class="paso">
+    <svg width="210" height="330" viewBox="0 0 210 330">
+      <rect x="4" y="4" width="202" height="322" rx="18" fill="none" stroke="#1b1d22" stroke-width="2.5"/>
+      <text x="20" y="32" font-size="12" font-weight="700">Matemática · 4° B</text>
+      <rect x="18" y="44" width="174" height="46" rx="10" fill="#f3f0e6" stroke="#c9c6bd" stroke-width="2"/>
+      <text x="28" y="63" font-size="10" font-weight="600">Unidad 7 · Fracciones</text>
+      <text x="28" y="79" font-size="9" fill="#8a8d94">16 oct – 10 nov</text>
+      <g font-size="10">
+        <rect x="18" y="104" width="174" height="44" rx="9" fill="none" stroke="#c9c6bd" stroke-width="2"/>
+        <circle cx="34" cy="126" r="7" fill="none" stroke="#2f9e5e" stroke-width="2"/>
+        <path d="M31 126l3 3 5-6" stroke="#2f9e5e" stroke-width="2" fill="none"/>
+        <text x="50" y="123">Sesión 12</text><text x="50" y="137" fill="#8a8d94">Aprobada</text>
+        <rect x="18" y="158" width="174" height="44" rx="9" fill="#fffbee" stroke="#9a7a16" stroke-width="2.5"/>
+        <circle cx="34" cy="180" r="7" fill="none" stroke="#9a7a16" stroke-width="2"/>
+        <text x="31" y="184" font-size="10" fill="#9a7a16" font-weight="700">!</text>
+        <text x="50" y="177" font-weight="700">Sesión 13</text>
+        <text x="50" y="191" fill="#9a7a16" font-weight="600">Por revisar · 2 avisos</text>
+        <rect x="18" y="212" width="174" height="44" rx="9" fill="none" stroke="#c9c6bd" stroke-width="2"/>
+        <circle cx="34" cy="234" r="7" fill="none" stroke="#c9c6bd" stroke-width="2"/>
+        <text x="50" y="231">Sesión 14</text><text x="50" y="245" fill="#8a8d94">Pendiente</text>
+      </g>
+      <rect x="18" y="268" width="174" height="40" rx="10" fill="#9a7a16"/>
+      <text x="46" y="293" font-size="11" font-weight="700" fill="#fff">Revisar mañana</text>
+    </svg>
+    <p class="cap">3 · Sesiones del mes<small>Los 3 estados prueban que revisa, no redacta</small></p>
+  </div>
+</div>
+
+<div class="fila" style="margin-top:20px">
+  <div class="paso">
+    <svg width="210" height="330" viewBox="0 0 210 330">
+      <rect x="4" y="4" width="202" height="322" rx="18" fill="none" stroke="#1b1d22" stroke-width="2.5"/>
+      <text x="20" y="30" font-size="12" font-weight="700">Sesión 13 · revisión</text>
+      <text x="20" y="46" font-size="9" fill="#8a8d94">2 puntos requieren tu atención</text>
+      <rect x="16" y="58" width="178" height="62" rx="9" fill="#fffbee" stroke="#9a7a16" stroke-width="2.5"/>
+      <text x="26" y="76" font-size="9" font-weight="700" fill="#9a7a16">⚠ No pude contextualizar</text>
+      <text x="26" y="91" font-size="9">El problema usa un contexto</text>
+      <text x="26" y="104" font-size="9">que no es de tu aula.</text>
+      <text x="26" y="116" font-size="9" fill="#2f5bd3" font-weight="600">Editar · Aceptar igual</text>
+      <rect x="16" y="130" width="178" height="62" rx="9" fill="#fffbee" stroke="#9a7a16" stroke-width="2.5"/>
+      <text x="26" y="148" font-size="9" font-weight="700" fill="#9a7a16">⚠ Excede el tiempo</text>
+      <text x="26" y="163" font-size="9">105 min planificados para</text>
+      <text x="26" y="176" font-size="9">un bloque de 90.</text>
+      <text x="26" y="188" font-size="9" fill="#2f5bd3" font-weight="600">Recortar · Aceptar igual</text>
+      <rect x="16" y="204" width="178" height="40" rx="9" fill="#f1f5f0" stroke="#c9c6bd" stroke-width="2"/>
+      <text x="26" y="222" font-size="9" fill="#2f9e5e" font-weight="700">✓ Lo demás está conforme</text>
+      <text x="26" y="236" font-size="9" fill="#8a8d94">Propósito, criterios, ficha, instrumento</text>
+      <text x="26" y="262" font-size="9" fill="#2f5bd3" font-weight="600">Ver sesión completa</text>
+      <rect x="16" y="274" width="178" height="38" rx="10" fill="#9a7a16"/>
+      <text x="36" y="298" font-size="11" font-weight="700" fill="#fff">Aprobar el resto</text>
+    </svg>
+    <p class="cap">4 · Revisión por excepción<small><b>La pantalla clave.</b> Solo lo dudoso; el resto en bloque</small></p>
+  </div>
+  <div class="flecha">→</div>
+
+  <div class="paso">
+    <svg width="210" height="330" viewBox="0 0 210 330">
+      <rect x="4" y="4" width="202" height="322" rx="18" fill="none" stroke="#1b1d22" stroke-width="2.5"/>
+      <circle cx="105" cy="92" r="34" fill="none" stroke="#2f9e5e" stroke-width="3"/>
+      <path d="M92 92l10 11 18-22" stroke="#2f9e5e" stroke-width="3.5" fill="none"/>
+      <text x="48" y="152" font-size="13" font-weight="700">Sesión aprobada</text>
+      <text x="36" y="172" font-size="10" fill="#8a8d94">Revisaste en 3 min 40 s</text>
+      <rect x="20" y="194" width="170" height="40" rx="10" fill="none" stroke="#9a7a16" stroke-width="2.5"/>
+      <text x="40" y="219" font-size="11" font-weight="700" fill="#9a7a16">Descargar para imprimir</text>
+      <text x="34" y="252" font-size="9" fill="#8a8d94">Sesión + ficha por niveles +</text>
+      <text x="34" y="266" font-size="9" fill="#8a8d94">instrumento · 6 hojas</text>
+      <rect x="20" y="280" width="170" height="34" rx="9" fill="none" stroke="#c9c6bd" stroke-width="2"/>
+      <text x="48" y="302" font-size="10">Revisar la siguiente</text>
+    </svg>
+    <p class="cap">5 · Aprobado<small>Solo lo aprobado se imprime</small></p>
+  </div>
+  <div class="flecha">→</div>
+
+  <div class="paso">
+    <svg width="210" height="330" viewBox="0 0 210 330">
+      <rect x="4" y="4" width="202" height="322" rx="18" fill="none" stroke="#1b1d22" stroke-width="2.5"/>
+      <text x="20" y="30" font-size="12" font-weight="700">En clase · evidencia</text>
+      <text x="20" y="46" font-size="9" fill="#8a8d94">Criterio 2 de 3 · Sesión 13</text>
+      <rect x="16" y="56" width="178" height="34" rx="8" fill="#f3f0e6" stroke="#c9c6bd" stroke-width="2"/>
+      <text x="24" y="70" font-size="9" font-weight="600">Representa fracciones con</text>
+      <text x="24" y="83" font-size="9" font-weight="600">material concreto</text>
+      <g font-size="10">
+        <rect x="16" y="100" width="178" height="32" rx="8" fill="none" stroke="#c9c6bd" stroke-width="2"/>
+        <text x="26" y="120">Ana Q.</text>
+        <circle cx="126" cy="116" r="9" fill="none" stroke="#2f9e5e" stroke-width="2"/>
+        <circle cx="152" cy="116" r="9" fill="none" stroke="#c9c6bd" stroke-width="2"/>
+        <circle cx="178" cy="116" r="9" fill="none" stroke="#c9c6bd" stroke-width="2"/>
+        <rect x="16" y="140" width="178" height="32" rx="8" fill="none" stroke="#c9c6bd" stroke-width="2"/>
+        <text x="26" y="160">Luz M.</text>
+        <circle cx="126" cy="156" r="9" fill="none" stroke="#c9c6bd" stroke-width="2"/>
+        <circle cx="152" cy="156" r="9" fill="#9a7a16" stroke="#9a7a16" stroke-width="2"/>
+        <circle cx="178" cy="156" r="9" fill="none" stroke="#c9c6bd" stroke-width="2"/>
+        <rect x="16" y="180" width="178" height="32" rx="8" fill="none" stroke="#c9c6bd" stroke-width="2"/>
+        <text x="26" y="200">Sara T.</text>
+        <circle cx="126" cy="196" r="9" fill="none" stroke="#c9c6bd" stroke-width="2"/>
+        <circle cx="152" cy="196" r="9" fill="none" stroke="#c9c6bd" stroke-width="2"/>
+        <circle cx="178" cy="196" r="9" fill="none" stroke="#c9c6bd" stroke-width="2"/>
+      </g>
+      <text x="118" y="232" font-size="8" fill="#8a8d94">logró</text>
+      <text x="142" y="232" font-size="8" fill="#8a8d94">proceso</text>
+      <text x="170" y="232" font-size="8" fill="#8a8d94">inicio</text>
+      <text x="20" y="258" font-size="9" fill="#8a8d94">Un toque por estudiante.</text>
+      <text x="20" y="272" font-size="9" fill="#8a8d94">Sin conexión: se sincroniza</text>
+      <text x="20" y="286" font-size="9" fill="#8a8d94">después.</text>
+      <rect x="16" y="296" width="178" height="18" rx="6" fill="#f1f5f0"/>
+      <text x="26" y="309" font-size="8" fill="#2f9e5e">✓ Guardado local</text>
+    </svg>
+    <p class="cap">6 · Evidencia en clase<small>Elimina el "hago un recuerdo" de la tarde</small></p>
+  </div>
+</div>
+
+<div class="clave">
+  <b>La idea que sostiene todo el flujo:</b> la docente nunca ve una caja de texto vacía.
+  Entra y encuentra el material hecho. Su trabajo es decidir, no redactar.
+  Si en el bosquejo aparece un editor de texto en blanco, el diseño falló.
+</div>
+
+<h2>Flujo web — aprobar la unidad, una vez al mes</h2>
+<p class="nota">En computadora, con tiempo. Aquí se dispara la generación del mes completo.</p>
+
+<div class="fila">
+  <div class="paso">
+    <svg width="250" height="190" viewBox="0 0 250 190">
+      <rect x="4" y="4" width="242" height="182" rx="8" fill="none" stroke="#1b1d22" stroke-width="2.5"/>
+      <line x1="4" y1="30" x2="246" y2="30" stroke="#1b1d22" stroke-width="2"/>
+      <text x="16" y="22" font-size="11" font-weight="700">Mis secciones</text>
+      <g stroke="#c9c6bd" stroke-width="2" fill="none">
+        <rect x="16" y="44" width="105" height="58" rx="8"/>
+        <rect x="131" y="44" width="105" height="58" rx="8"/>
+        <rect x="16" y="112" width="105" height="58" rx="8"/>
+        <rect x="131" y="112" width="105" height="58" rx="8"/>
+      </g>
+      <text x="28" y="66" font-size="10" font-weight="600">4° B</text>
+      <text x="28" y="82" font-size="9" fill="#8a8d94">26 estudiantes</text>
+      <text x="143" y="66" font-size="10" font-weight="600">5° A</text>
+      <text x="143" y="82" font-size="9" fill="#8a8d94">24 estudiantes</text>
+    </svg>
+    <p class="cap">W1 · Secciones</p>
+  </div>
+  <div class="flecha">→</div>
+
+  <div class="paso">
+    <svg width="250" height="190" viewBox="0 0 250 190">
+      <rect x="4" y="4" width="242" height="182" rx="8" fill="none" stroke="#1b1d22" stroke-width="2.5"/>
+      <line x1="4" y1="30" x2="246" y2="30" stroke="#1b1d22" stroke-width="2"/>
+      <text x="16" y="22" font-size="11" font-weight="700">Unidad 7 · Fracciones</text>
+      <text x="16" y="48" font-size="9" fill="#8a8d94">Situación significativa</text>
+      <rect x="16" y="54" width="220" height="34" rx="6" fill="none" stroke="#c9c6bd" stroke-width="2"/>
+      <text x="24" y="68" font-size="8">"En el mercado del barrio las</text>
+      <text x="24" y="80" font-size="8">frutas se venden por partes…"</text>
+      <text x="16" y="104" font-size="9" fill="#8a8d94">Competencias · 3 seleccionadas</text>
+      <g fill="none" stroke="#2f5bd3" stroke-width="1.8">
+        <rect x="16" y="110" width="66" height="20" rx="10"/><rect x="88" y="110" width="66" height="20" rx="10"/>
+        <rect x="160" y="110" width="66" height="20" rx="10"/>
+      </g>
+      <text x="22" y="124" font-size="7" fill="#2f5bd3">Resuelve cantidad</text>
+      <text x="94" y="124" font-size="7" fill="#2f5bd3">Comunica</text>
+      <text x="166" y="124" font-size="7" fill="#2f5bd3">Argumenta</text>
+      <rect x="16" y="142" width="220" height="32" rx="8" fill="#9a7a16"/>
+      <text x="52" y="162" font-size="11" font-weight="700" fill="#fff">Aprobar unidad y generar el mes</text>
+    </svg>
+    <p class="cap">W2 · Unidad<small><b>Aquí se dispara la generación</b></small></p>
+  </div>
+  <div class="flecha">→</div>
+
+  <div class="paso">
+    <svg width="250" height="190" viewBox="0 0 250 190">
+      <rect x="4" y="4" width="242" height="182" rx="8" fill="none" stroke="#1b1d22" stroke-width="2.5"/>
+      <line x1="4" y1="30" x2="246" y2="30" stroke="#1b1d22" stroke-width="2"/>
+      <text x="16" y="22" font-size="11" font-weight="700">Generando…</text>
+      <text x="16" y="52" font-size="9">Leyendo el Currículo Nacional</text>
+      <text x="200" y="52" font-size="9" fill="#2f9e5e">✓</text>
+      <text x="16" y="74" font-size="9">Competencias y desempeños de 4°</text>
+      <text x="200" y="74" font-size="9" fill="#2f9e5e">✓</text>
+      <text x="16" y="96" font-size="9">Cuadernos del Estado · pág. 48–61</text>
+      <text x="200" y="96" font-size="9" fill="#2f9e5e">✓</text>
+      <text x="16" y="118" font-size="9">Sesiones 12 a 19…</text>
+      <rect x="16" y="130" width="220" height="10" rx="5" fill="none" stroke="#c9c6bd" stroke-width="1.8"/>
+      <rect x="16" y="130" width="140" height="10" rx="5" fill="#9a7a16"/>
+      <text x="16" y="162" font-size="9" fill="#8a8d94">Puedes cerrar esta ventana.</text>
+      <text x="16" y="176" font-size="9" fill="#8a8d94">Te avisamos al terminar.</text>
+    </svg>
+    <p class="cap">W3 · Generación en lote<small>Una vez al mes, no cada consulta</small></p>
+  </div>
+</div>
+
+<div class="fila" style="margin-top:20px">
+  <div class="paso">
+    <svg width="250" height="190" viewBox="0 0 250 190">
+      <rect x="4" y="4" width="242" height="182" rx="8" fill="none" stroke="#1b1d22" stroke-width="2.5"/>
+      <line x1="4" y1="30" x2="246" y2="30" stroke="#1b1d22" stroke-width="2"/>
+      <text x="16" y="22" font-size="11" font-weight="700">8 sesiones generadas</text>
+      <g font-size="9">
+        <rect x="16" y="42" width="220" height="24" rx="6" fill="none" stroke="#c9c6bd" stroke-width="1.8"/>
+        <text x="26" y="58">S12 · Fracciones equivalentes</text>
+        <text x="180" y="58" fill="#9a7a16" font-weight="700">Por revisar</text>
+        <rect x="16" y="72" width="220" height="24" rx="6" fill="#fffbee" stroke="#9a7a16" stroke-width="2"/>
+        <text x="26" y="88" font-weight="700">S13 · Comparación</text>
+        <text x="172" y="88" fill="#9a7a16" font-weight="700">2 avisos</text>
+        <rect x="16" y="102" width="220" height="24" rx="6" fill="none" stroke="#c9c6bd" stroke-width="1.8"/>
+        <text x="26" y="118">S14 · Suma de fracciones</text>
+        <text x="180" y="118" fill="#9a7a16" font-weight="700">Por revisar</text>
+        <rect x="16" y="132" width="220" height="24" rx="6" fill="none" stroke="#c9c6bd" stroke-width="1.8"/>
+        <text x="26" y="148">S15 · Resolución de problemas</text>
+        <text x="180" y="148" fill="#9a7a16" font-weight="700">Por revisar</text>
+      </g>
+      <text x="16" y="174" font-size="9" fill="#8a8d94">Ninguna se imprime sin tu aprobación.</text>
+    </svg>
+    <p class="cap">W4 · Lista generada<small>Todo nace "por revisar"</small></p>
+  </div>
+  <div class="flecha">→</div>
+
+  <div class="paso">
+    <svg width="250" height="190" viewBox="0 0 250 190">
+      <rect x="4" y="4" width="242" height="182" rx="8" fill="none" stroke="#1b1d22" stroke-width="2.5"/>
+      <line x1="4" y1="30" x2="246" y2="30" stroke="#1b1d22" stroke-width="2"/>
+      <line x1="150" y1="30" x2="150" y2="186" stroke="#c9c6bd" stroke-width="2"/>
+      <text x="16" y="22" font-size="11" font-weight="700">S13 · revisión</text>
+      <text x="16" y="48" font-size="8" fill="#8a8d94">Sesión completa</text>
+      <g stroke="#c9c6bd" stroke-width="1.5">
+        <line x1="16" y1="60" x2="138" y2="60"/><line x1="16" y1="72" x2="138" y2="72"/>
+        <line x1="16" y1="84" x2="110" y2="84"/><line x1="16" y1="104" x2="138" y2="104"/>
+        <line x1="16" y1="116" x2="138" y2="116"/><line x1="16" y1="128" x2="96" y2="128"/>
+      </g>
+      <rect x="14" y="94" width="126" height="16" fill="#fffbee" stroke="#9a7a16" stroke-width="1.5"/>
+      <text x="160" y="50" font-size="9" font-weight="700" fill="#9a7a16">⚠ 2 avisos</text>
+      <rect x="158" y="58" width="80" height="44" rx="6" fill="#fffbee" stroke="#9a7a16" stroke-width="2"/>
+      <text x="164" y="72" font-size="7">Contexto ajeno</text>
+      <text x="164" y="84" font-size="7" fill="#2f5bd3">Editar</text>
+      <text x="200" y="84" font-size="7" fill="#2f5bd3">Aceptar</text>
+      <rect x="158" y="108" width="80" height="44" rx="6" fill="#fffbee" stroke="#9a7a16" stroke-width="2"/>
+      <text x="164" y="122" font-size="7">Excede 90 min</text>
+      <text x="164" y="134" font-size="7" fill="#2f5bd3">Recortar</text>
+      <text x="206" y="134" font-size="7" fill="#2f5bd3">Aceptar</text>
+      <rect x="158" y="158" width="80" height="22" rx="7" fill="#9a7a16"/>
+      <text x="170" y="173" font-size="8" font-weight="700" fill="#fff">Aprobar resto</text>
+    </svg>
+    <p class="cap">W5 · Revisión con el documento al lado<small>Pantalla ancha: texto a la izquierda, avisos a la derecha</small></p>
+  </div>
+  <div class="flecha">→</div>
+
+  <div class="paso">
+    <svg width="250" height="190" viewBox="0 0 250 190">
+      <rect x="4" y="4" width="242" height="182" rx="8" fill="none" stroke="#1b1d22" stroke-width="2.5"/>
+      <line x1="4" y1="30" x2="246" y2="30" stroke="#1b1d22" stroke-width="2"/>
+      <text x="16" y="22" font-size="11" font-weight="700">Exportar para imprimir</text>
+      <g stroke="#c9c6bd" stroke-width="2" fill="none">
+        <rect x="20" y="48" width="48" height="62" rx="4"/>
+        <rect x="80" y="48" width="48" height="62" rx="4"/>
+        <rect x="140" y="48" width="48" height="62" rx="4"/>
+      </g>
+      <text x="24" y="124" font-size="8">Sesión</text>
+      <text x="82" y="124" font-size="8">Ficha ×3</text>
+      <text x="142" y="124" font-size="8">Instrumento</text>
+      <text x="16" y="146" font-size="9" fill="#8a8d94">Solo lo aprobado · 6 hojas</text>
+      <rect x="16" y="154" width="220" height="24" rx="8" fill="#9a7a16"/>
+      <text x="92" y="170" font-size="10" font-weight="700" fill="#fff">Descargar PDF</text>
+    </svg>
+    <p class="cap">W6 · Exportar<small>Ficha ×3 = un nivel de dificultad cada una</small></p>
+  </div>
+</div>
+
+<div class="clave" style="border-color:#2f5bd3;background:#f5f8ff">
+  <b style="color:#2f5bd3">División del trabajo entre web y móvil:</b>
+  la web es para lo que se hace <b style="color:#2f5bd3">una vez al mes</b> y con tiempo —aprobar la unidad, revisar en pantalla ancha, exportar—.
+  El móvil es para lo <b style="color:#2f5bd3">diario y de pie</b> —revisar lo de mañana, registrar evidencia en clase—.
+  No son la misma app encogida: son dos momentos distintos del trabajo de la docente.
+</div>
+
+</div></body></html>

@@ -10,13 +10,30 @@
 
 | Fuente | Tamaño | Qué permite afirmar |
 |---|---|---|
-| Entrevistas en profundidad | **1 docente** de primaria pública | Describir un caso con detalle. **No** generalizar. |
+| Entrevistas en profundidad | **1 docente** de primaria pública (D01) | Describir un caso con detalle. **No** generalizar. |
+| Ronda de entrevistas del 16-10-2026 | hasta **12 docentes de aula**, 1 cargo directivo, 1 docente de educación física — al menos 2 instituciones | Convergencia de un dolor, con el grueso en **una** institución. **No** una muestra nacional. |
 | Encuesta A | 8 respuestas | Tendencia exploratoria. |
 | Encuesta B (primaria pública) | 4 respuestas | Tendencia exploratoria. |
 
-**Esto es un caso, no una línea base poblacional.** Los tiempos de la sección 3 provienen de
-una sola docente. Sirven para dimensionar el problema y diseñar el prototipo; no sirven para
+**Esto sigue sin ser una línea base poblacional.** Los tiempos de la sección 3 provienen de una
+sola docente. Sirven para dimensionar el problema y diseñar el prototipo; no sirven para
 afirmar que "los docentes peruanos dedican X horas a Y".
+
+Advertencias específicas de la ronda del 16-10-2026, detalladas en
+`investigacion/HALLAZGOS-2026-10-16.md`:
+
+- **El `n` exacto está pendiente de confirmar.** Son 17 audios, no 17 personas: uno no tiene
+  contenido y tres son sesiones de asesoría, no entrevistas a sujetos. Hasta que el
+  entrevistador confirme el mapeo, no se cita ninguna cifra agregada de esta ronda.
+- **El bloque de la mañana (`R01`–`R12`) parece ser una sola institución**, un colegio público
+  de primaria de mujeres: el alumnado se menciona siempre en femenino y se repiten la directora,
+  la auxiliar que pasa por las aulas y el formato de unidad de la UGEL. La convergencia entre
+  esos docentes es fuerte dentro de ese centro y, por sí sola, no dice nada sobre otros.
+- **`R13` y `R14` parecen ser instituciones distintas**, lo cual amplía el alcance: `R13` habla
+  de alumnado mixto con 24–25 estudiantes, y en `R14` se tratan casos de **secundaria** e
+  **inicial**, niveles que una primaria de mujeres no tiene. Confirmar con el entrevistador.
+- **Parte de la ronda está contaminada por preguntas que anuncian la conclusión.** Lo que se
+  obtuvo así no se cuenta como hallazgo. Ver §10.
 
 Reglas al escribir documentos del proyecto:
 
@@ -29,10 +46,16 @@ Reglas al escribir documentos del proyecto:
 
 ## 2. Fuentes
 
-- Entrevistas grabadas y transcritas (NotebookLM) a docente de primaria pública.
+- Entrevistas grabadas y transcritas (NotebookLM) a docente de primaria pública (D01).
+- **Ronda del 16-10-2026**: 17 audios, 3 h 37 min. El grueso en un colegio público de primaria
+  de mujeres, más al menos una institución distinta con secundaria e inicial (§1).
+  Transcritas con faster-whisper `large-v3` en local (`investigacion/transcribir.py`);
+  transcripciones automáticas sin verificar en `investigacion/crudo/`, no versionado. Síntesis
+  en `investigacion/HALLAZGOS-2026-10-16.md`.
 - Dos encuestas en línea a docentes (8 y 4 respuestas), incluyendo primaria pública en
   Arequipa y Cajamarca. Respuestas en las hojas de cálculo del proyecto.
-- Pendiente (semana 9): entrevistas a responsables de coordinación/dirección.
+- Cubierto en la ronda del 16-10-2026: una entrevista a un cargo directivo (directora
+  encargada). Sigue pendiente la perspectiva de coordinación pedagógica de otra institución.
 
 ---
 
@@ -142,24 +165,85 @@ Adapta cada ficha de trabajo filtrando ejercicios por nivel.
 Implicación: la detección de nivel y la práctica progresiva no son un módulo aparte de
 "calidad educativa". Son la misma función que ya realiza manualmente, y sirve a los dos ODS.
 
+### I-6 — Cuando no se llevó el registro de evaluación, la nota se fabrica
+
+Ronda 16-10-2026. Describiendo el llenado de criterios de evaluación por sesión: *"ese es el
+trabajo que demoran en hacer, que normalmente no lo hacen"*, y al momento de calificar, *"se
+pueden inventar si es que no lo han hecho… al ojo les ponen la nota"* (`R16 [06:01]`). Desde el
+cargo directivo, la contraparte: *"los profesores no nos preparamos, honestamente"* (`R14 [10:04]`).
+
+Esto es más fuerte que I-3. En I-3, D01 evaluaba de memoria; aquí se afirma que a veces el dato
+**no existe** y se construye al cierre del bimestre.
+
+Implicación: es el argumento más fuerte a favor de capturar la evidencia durante la clase. Sin
+captura en el momento, la trazabilidad por competencia es nominal.
+
+> **Manejo de este hallazgo.** Es material profesionalmente sensible. Se encuadra como falla del
+> sistema de registro —el mismo dato se transcribe tres veces a mano, ver I-7— y no como
+> negligencia individual. No se usa en presentaciones públicas ni frente a la institución.
+
+### I-7 — El mismo dato se transcribe tres veces a mano
+
+Ronda 16-10-2026. La cadena declarada es: criterios de la **sesión** → **registro auxiliar** →
+**SIAGIE**, *"uno por uno"*. *"Es una vaina, pues como doble triple trabajo de lo mismo"*
+(`R16 [07:36]`).
+
+Generaliza I-2, que había detectado el doble registro solo en asistencia. El patrón es el mismo:
+el dato existe varias veces y ninguna copia intermedia es digital.
+
+### I-8 — El DUA convierte una sesión en varias
+
+Ronda 16-10-2026. El Diseño Universal de Aprendizaje exige que la sesión responda a cada
+estudiante. Con 25 estudiantes y sin grupos homogéneos, *"en una sesión hacer como 8 sesiones"*
+(`R14 [12:17]`).
+
+Esto le da nombre normativo a lo que I-5 observaba como práctica manual de D01, y explica por
+qué los dolores 1 y 3 de §6 son el mismo problema: una exigencia regulatoria de diferenciación
+sin herramienta que la soporte.
+
+### I-9 — Los propios docentes formulan la propuesta de valor
+
+Ronda 16-10-2026, sin que se les ofreciera la idea: separar **planificar / enseñar / evaluar**, y
+que el sistema se encargue de planificar para que el docente solo enseñe. *"Ese es el sueño"*
+(`R16 [22:21]`, `R17 [02:19]`). Un cargo directivo recuerda que el Estado antes entregaba las
+programaciones ya elaboradas (`R14 [11:27]`).
+
+Implicación: no es solo validación de la hipótesis, es la hipótesis enunciada por el usuario.
+Conviene citarla literalmente, y conviene notar que fija la expectativa en "planificación
+entregada", no en "asistente que ayuda a planificar".
+
 ---
 
-## 5. Contradicción abierta entre fuentes
+## 5. Contradicción entre fuentes — resuelta el 16-10-2026
 
 | Fuente | Tiempo de planificación |
 |---|---|
 | Encuestas (n=12) | 2–5 horas **por semana** |
-| Entrevista (n=1) | 2.5–4 horas **por día** |
+| Entrevista D01 (n=1) | 2.5–4 horas **por día** |
 
-Diferencia de aproximadamente 5×. Explicaciones posibles, aún sin resolver:
+La brecha era de ~5×. La ronda del 16-10-2026 la resuelve del lado de la entrevista: **cuatro
+fuentes independientes describen carga diaria de varias horas**, y una es más extrema que D01.
 
-1. Las encuestas midieron solo "planificar"; la entrevista incluye fichas, instrumentos,
-   búsqueda de imágenes e impresión.
-2. La docente entrevistada es un caso extremo.
-3. Las encuestas subdeclaran por efecto de autorreporte.
+| Fuente | Declaración | Verificar en |
+|---|---|---|
+| Docente, fichas diferenciadas | "dos horas" al día, en las tardes. "Demasiado" | `R02 [03:22]` |
+| Docente, programación y material | "Me siento a las 4 para hacer material y terminó a las 12" (8 h) | `R03 [02:26]` |
+| Docente, sesiones y fichas | "Casi siempre terminamos a las 10, 11 de la noche… es horrible" | `R04 [01:19]` |
+| Directora encargada (observa al colectivo) | Salen 1 p.m.; desde las 6 p.m. preparan **tres temas** más materiales, a diario | `R14 [10:46]` |
 
-**No usar ambas cifras en el mismo documento sin explicar esta brecha.** Resolverlo es una
-pregunta explícita para la semana 9.
+**Conclusión:** la explicación 1 queda respaldada y la 2 descartada. D01 no era un caso extremo
+aislado. Las encuestas subdeclaran, con la mejor explicación disponible siendo que "planificar"
+en una encuesta no incluye fichas diferenciadas, instrumentos de evaluación, material concreto
+ni impresión, que es donde se va la mayor parte del tiempo.
+
+A favor de la conclusión: las cuatro fuentes no están todas en el mismo centro. `R02` y `R04`
+son del colegio de primaria de mujeres; `R14` describe una institución con secundaria e inicial.
+El patrón cruza al menos dos instituciones, pendiente de confirmar (§1).
+
+**Lo que esto todavía no autoriza.** Las cuatro son estimaciones de autorreporte, dichas al
+paso ("será pues dos horas"). Sirven para afirmar que el problema es diario y de varias horas.
+No sirven como línea base cuantitativa. Para eso hace falta medir: registro de tiempos de una
+semana con dos o tres docentes. **Seguir entrevistando no mejora este dato.**
 
 ---
 
@@ -179,6 +263,29 @@ Orden por tiempo recuperable, no por intensidad declarada.
 | 8 | Registro de notas manual | 20–40 min/actividad (encuestas) | Depende de SIAGIE |
 | 9 | Conclusiones descriptivas | 2–10 h/bimestre (encuestas) | Sí, si existe evidencia por competencia |
 
+**Corroboración del dolor nº1 (16-10-2026).** Salió de una pregunta abierta —*"¿cuál es el
+proceso que más se le dificulta?"*— en al menos tres entrevistas independientes, con tres
+formulaciones distintas del mismo problema: fichas diferenciadas (`R02`), programación y
+unidades (`R03`), sesiones y fichas (`R04`). Una cuarta lo ubica en la unidad, no en la sesión:
+*"en la unidad es donde nos demoramos más"* (`R01 [06:45]`). Es el hallazgo metodológicamente
+más limpio del proyecto, porque nadie sugirió la respuesta.
+
+Matiz que hay que conservar: la unidad de aprendizaje, no la sesión, es donde varios docentes
+ubican el cuello de botella, y se elabora **de forma colegiada** fuera de horario (`R01 [05:13]`,
+`R06 [01:03]`: una semana de trabajo conjunto, una vez al mes). Un producto que solo genere
+sesiones individuales ataca la mitad visible del problema.
+
+**Casos negativos — registrar también a quien no tiene este dolor.**
+
+| Fuente | Qué declara |
+|---|---|
+| `R11 [02:25]` | Ningún proceso le molesta, ni pedagógico ni administrativo. Docente desde 2018 |
+| `R12` | Docente de educación física: su dolor son las actividades de UGEL y municipio avisadas con días de anticipación, ~2 por mes. No la planificación |
+| `R07 [00:00]` | Ubica el problema en la falta de formación didáctica desde Minedu/PerúEduca, no en la carga |
+
+El dolor nº1 es dominante, no universal. El perfil de educación física y los docentes sin carga
+declarada son el límite natural del alcance.
+
 ---
 
 ## 7. Lo que software NO resuelve (decirlo explícitamente)
@@ -190,19 +297,47 @@ Orden por tiempo recuperable, no por intensidad declarada.
 - **Cerrar la brecha de nivel.** El sistema puede medirla y organizar el refuerzo; cerrarla
   depende del docente y del tiempo de clase disponible.
 - **Que la jornada de 90 minutos alcance.** Es una restricción curricular.
+- **Crear horas de planificación dentro de la jornada.** Es la condición estructural del
+  problema (ver §11) y es una decisión normativa. El sistema no crea horas: reduce el trabajo
+  que debe caber en las que no existen.
 
 ---
 
-## 8. Vacíos — qué falta preguntar (semana 9)
+## 8. Vacíos — qué falta (actualizado 16-10-2026)
 
-1. Resolver la contradicción de 5× en el tiempo de planificación.
-2. ¿Se puede exportar al formato que SIAGIE importa? Pedir que muestren el flujo real.
-   De esta respuesta depende si el registro de notas entra al alcance.
-3. ¿Cómo asignan, comunican y revisan actividades los responsables de coordinación/dirección?
-4. ¿Qué pasa cuando la docente no responde fuera de horario? Confirmar el mecanismo real de
-   reportes de desempeño que sustenta I-4.
-5. Validar los tiempos con al menos dos docentes más antes de usarlos como línea base.
-6. ¿Quién puede autorizar un piloto con estudiantes y bajo qué consentimiento?
+### Prioridad alta
+
+1. ~~**¿Cambia el currículo nacional a un enfoque por contenidos?**~~ **VERIFICADO Y DESCARTADO
+   (18-10-2026).** La **Norma Técnica para el Año Escolar 2026** (RM N.º 501-2025-MINEDU, del
+   7-11-2025) organiza el año escolar pero **no reemplaza el CNEB ni implanta un enfoque por
+   contenidos**. El marco vigente sigue siendo por competencias, con estándares, desempeños y
+   evidencias. El rumor de `R14 [18:23]` queda registrado como lo que era: una expectativa de una
+   sola fuente, sin respaldo documental. **El riesgo sobre la arquitectura queda cerrado.**
+2. **Medir, no preguntar, el tiempo de planificación.** Registro de una semana con dos o tres
+   docentes. Otra ronda de entrevistas no mejora este dato (§5).
+3. ¿Se puede exportar al formato que SIAGIE importa? Pedir que muestren el flujo real. De esta
+   respuesta depende si el registro de notas entra al alcance. **Sigue abierto**, aunque
+   `R12 [08:14]` ya describe la cadena de tres registros (borrador, auxiliar, oficial).
+4. **Replicar fuera del colegio del bloque de la mañana.** Doce de las diecisiete grabaciones
+   del 16-10-2026 vienen de un solo centro. La convergencia entre ellas puede ser cultura
+   institucional y no un patrón del sector. `R13` y `R14` ayudan, pero son una entrevista cada
+   una. Confirmar primero cuántas instituciones hay realmente en la ronda (§1).
+
+### Prioridad media
+
+5. ¿Cómo se elabora la **unidad** de forma colegiada, paso a paso? Es donde varios docentes
+   ubican el cuello de botella y es el proceso que menos se ha documentado.
+6. ¿Qué pasa cuando la docente no responde fuera de horario? Confirmar el mecanismo real de
+   reportes de desempeño que sustenta I-4. **No se tocó el 16-10-2026.**
+7. ¿Quién puede autorizar un piloto con estudiantes y bajo qué consentimiento?
+8. Pedir una **carpeta pedagógica y un registro auxiliar físicos** para ver el formato real.
+   Solicitado en `R06 [03:25]` y parcialmente mostrado en `R15`/`R16`, sin capturar.
+
+### Resueltos
+
+- ~~Contradicción de 5× en el tiempo de planificación~~ → §5.
+- ~~Perspectiva de dirección~~ → cubierta parcialmente por `R14`, un cargo directivo de una
+  institución con secundaria e inicial, distinta del colegio del bloque de la mañana.
 
 ---
 
@@ -223,3 +358,129 @@ Sostiene el componente de práctica y repaso, no los resultados del prototipo.
 
 > Ninguna de estas fuentes acredita un resultado de AllinEdu. Respaldan que las estrategias
 > elegidas son razonables de probar.
+
+---
+
+## 10. Nota de método sobre la ronda del 16-10-2026
+
+Varias entrevistas de esta ronda abren enunciando la conclusión y pidiendo confirmación:
+*"se ha concluido que el principal problema es el desinterés de los padres… ¿es verdad eso?
+Usted puede confirmar"* (`R09 [00:17]`; también `R08 [00:00]`, `R11 [00:09]`, `R12 [03:17]`).
+
+Eso induce la respuesta, y tiene dos consecuencias que este documento debe respetar:
+
+**El desinterés de los padres no se registra como hallazgo de esta ronda.** Apareció porque se
+preguntó por él en esos términos. Puede ser un problema real —hay un dato propio y verificable:
+de unos 50 apoderados esperados en la escuela de padres, *"a la hora que deben estar, exagerados
+serán unos 20"* (`R12 [19:41]`)— pero el número de docentes que "lo confirman" no vale como
+evidencia, y no se usará para priorizar.
+
+**El dolor nº1 sí es limpio**, porque salió de una pregunta abierta. La diferencia entre ambos
+casos es la mejor ilustración de por qué el orden de las preguntas importa.
+
+Dos docentes resistieron la premisa, lo que confirma que el sesgo era visible en el momento:
+`R08 [00:34]` responde *"eso es falso"* sobre la orientación de las sesiones a concursos, y
+`R11 [02:25]` no encuentra ninguna queja.
+
+**Regla para la próxima ronda:** preguntar antes de contar. Abrir con la pregunta abierta, dejar
+que la persona nombre su propio dolor, y solo al final —si hace falta— confrontar con lo que
+dijeron otros. Lo que se obtenga en esa fase final se anota como reacción, no como hallazgo.
+
+### La ronda cayó en una semana de gestión
+
+Según la Tabla 1 de la Norma Técnica para el Año Escolar 2026 (RM N.º 501-2025-MINEDU), del
+**12 al 16 de octubre de 2026** corrió el cuarto bloque de **semanas de gestión**: el tercer
+bloque lectivo cerró el 9 de octubre y el cuarto empezó el 19.
+
+Las 17 grabaciones de esta ronda se hicieron el **16 de octubre**, o sea el último día de esa
+semana de gestión. Las docentes **no estaban dictando clase**. Eso explica la disponibilidad
+para entrevistas relámpago y probablemente también por qué el cierre de periodo y el papeleo
+aparecen tan presentes: era justo lo que estaban haciendo esa semana.
+
+**Consecuencia para este documento:** las respuestas de la ronda del 16-10 describen bien la
+carga de una semana de gestión, no la de una semana lectiva típica. Los tiempos de la tarde
+que sostienen el dolor nº1 vienen de las rondas del 20-09 y del 25/26-09, que sí cayeron en
+bloque lectivo. Antes de citar cifras agregadas de las 26 grabaciones hay que separar por
+tipo de semana.
+
+### Datos personales en el material
+
+El audio y las transcripciones automáticas de la ronda contienen un nombre y un teléfono
+dictado (`R05 [05:49]`), nombres de pila de docentes (`R14`, `R15`, `R16`) y nombres de
+instituciones (`R13`). Viven en `investigacion/crudo/`, que no se versiona. Nada de eso pasa a
+`investigacion/transcripciones/` ni a este documento: la regla sigue siendo `D<n>` y perfil.
+
+---
+
+## 11. La condición estructural: la jornada no reparte las horas
+
+Verificado leyendo los PDF oficiales. **Corregido el 19-10-2026**: la versión anterior de
+esta sección decía 30 horas de jornada y «no sobra nada». Era falso, por dos errores de
+cita que se arrastraron desde una búsqueda de terceros. Lo que sigue está verificado
+contra los archivos de `investigacion/normativa/FUENTES.md`.
+
+| Dato | Valor | Fuente |
+|---|---|---|
+| Clase de los estudiantes de primaria | **30 horas pedagógicas** por semana, todos los grados | CNEB, Tabla N.º 6, p. 165 |
+| Hora pedagógica | **45 minutos** | CNEB, p. 165 |
+| Jornada del **profesor con aula a cargo**, primaria | **35 horas pedagógicas**, y «puede ser lectiva o no lectiva» | D.S. N.º 004-2013-ED, art. 139, **modificado por el D.S. N.º 005-2017-MINEDU** |
+| Qué comprende esa remuneración | docencia en aula, **preparación de clases y evaluación**, actividades extracurriculares, trabajo con familias y apoyo a la institución | Ley N.º 29944, art. 65 |
+| ¿Alguna norma reparte las 35 horas entre lectivas y no lectivas? | **No.** El reglamento ni define los términos | verificado en sus 134 pp. |
+| Cuando la norma sí quiere reservar tiempo, lo hace | personal jerárquico: 40 horas con **12 de dictado obligatorio** | D.S. N.º 004-2013-ED, art. 141 |
+
+### Dos errores corregidos
+
+1. **El reglamento es el D.S. N.º 004-2013-ED**, no el 004-2014-ED. El número equivocado
+   venía de una búsqueda de terceros y se citó sin abrir el archivo.
+2. **El artículo 139 fue modificado** por el D.S. N.º 005-2017-MINEDU, que subió la jornada
+   de primaria a **35 horas** y agregó que «puede ser lectiva o no lectiva». No hay
+   modificación posterior.
+
+### La aritmética correcta
+
+La jornada son 35 horas pedagógicas y el plan de estudios asigna 30 horas de clase a los
+estudiantes. Cuánto le queda a la docente para preparar y evaluar depende de si la IE tiene
+docentes especializados:
+
+| Escenario | Dicta | No lectivas | Sesiones semanales | **Minutos por sesión** |
+|---|---|---|---|---|
+| Con especialista de Inglés y Educación Física | 22 h | 13 h | 11 | **53 min** |
+| Sin especialistas, la tutora dicta todo | 28 h | 7 h | 14 | **22 min** |
+
+Contra los **90 a 120 minutos por sesión** que midió el trabajo de campo (§5). El hueco es
+de **dos a cinco veces**, en los dos escenarios.
+
+Estas cifras no están afirmadas en prosa: las calcula la vista `v_carga_no_programada`
+de la base de datos a partir de la tabla `jornadas_normativas`, que guarda las horas con
+su norma y su artículo.
+
+### Por qué importa para el planteamiento
+
+Decir «carga de trabajo **no remunerada**» es rebatible en una línea con el artículo 65.
+Decir «no hay tiempo asignado» también era rebatible, porque sí hay margen. Lo que no se
+puede rebatir es que **el margen es de dos a cinco veces menor que el trabajo**. El PC1 y
+el laboratorio 04 quedaron corregidos en ese sentido el 19-10-2026.
+
+### Lo que decide cuál escenario aplica — **PENDIENTE**
+
+**¿La IE tiene profesor de Inglés? ¿De Educación Física?** Si los tiene son 53 minutos;
+si no, 22. Es la pregunta de mayor rendimiento que queda, y está modelada en la semilla
+como dos banderas de configuración (`tiene_docente_ingles`, `tiene_docente_ed_fisica`).
+
+### Corrección sobre «material concreto»
+
+La cifra de **7 ocurrencias** que se venía citando sale de la maqueta de 212 pp. del día de
+aprobación del Programa Curricular. En la **edición publicada de 396 pp.**, que es la que
+MINEDU sirve hoy, son **28 ocurrencias repartidas en 13 páginas**. La conclusión no cambia
+—la exigencia es por desempeño y no general— pero la cifra correcta es 28 en 13 páginas.
+
+### Las 8 semanas de gestión
+
+La Norma Técnica 2026 asigna **36 semanas lectivas y 8 de gestión** (mínimo 160 días
+lectivos y 30 de gestión). Las semanas de gestión se definen como «período destinado al
+trabajo colegiado o individual […] para garantizar acciones de planificación, seguimiento
+y evaluación» y las regula la **RM N.º 239-2025-MINEDU**, cuyo articulado completo aún no
+se pudo descargar.
+
+Es el único tiempo explícito para planificar, y es institucional: sirve para el trabajo
+colegiado de toda la IE, no para que cada docente prepare sus ~500 sesiones del año.

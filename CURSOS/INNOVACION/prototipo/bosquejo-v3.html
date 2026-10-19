@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bosquejo v3</title>
+<style>
+:root{--tinta:#1b1d22;--papel:#fbfaf7;--gris:#8a8d94;--linea:#c9c6bd;--oro:#9a7a16;--azul:#2f5bd3;--verde:#2f9e5e;--rojo:#b3261e;--morado:#6b3fa0}
+*{box-sizing:border-box}
+body{margin:0;padding:28px 16px 60px;background:var(--papel);color:var(--tinta);
+     font-family:ui-sans-serif,system-ui,"Segoe UI",sans-serif;line-height:1.5}
+.wrap{max-width:1200px;margin:0 auto}
+h1{font-size:26px;margin:0 0 4px}.sub{color:var(--gris);font-size:14px;margin:0 0 22px}
+h2{font-size:18px;margin:32px 0 2px;padding-top:16px;border-top:2px solid var(--tinta)}
+.nota{font-size:13px;color:var(--gris);margin:0 0 14px}
+.fila{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-start}
+.paso{flex:0 0 auto}
+.cap{font-size:12px;font-weight:600;margin:6px 0 0;max-width:214px}
+.cap small{display:block;font-weight:400;color:var(--gris);margin-top:2px}
+.flecha{align-self:center;font-size:22px;color:var(--gris)}
+.caja{margin:18px 0;padding:13px 16px;border-left:5px solid var(--oro);background:#fffdf5;font-size:14px}
+.caja b{color:var(--oro)}
+.caja.azul{border-color:var(--azul);background:#f5f8ff}.caja.azul b{color:var(--azul)}
+.caja.morada{border-color:var(--morado);background:#f9f5ff}.caja.morada b{color:var(--morado)}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:12px 0}
+th,td{border:1px solid var(--linea);padding:7px 9px;text-align:left;vertical-align:top}
+th{background:#f3f0e6}
+@media print{body{padding:0}}
+</style></head><body><div class="wrap">
+
+<h1>Bosquejo v3 — diseño final</h1>
+<p class="sub">Incorpora los patrones con evidencia (v2) y lo que exige la normativa peruana verificada. Para copiar a mano.</p>
+
+<div class="caja morada">
+<b>El principio que ordena todo el diseño: dos capas.</b><br>
+<b style="color:var(--morado)">Capa normativa</b> — competencia, capacidad, estándar, desempeño, evidencia. Viene del CNEB,
+se <b style="color:var(--morado)">cita con su fuente</b> y el sistema la valida. No la edita la institución.<br>
+<b style="color:var(--morado)">Capa de práctica</b> — los momentos que esa IE exige en su ficha, el formato de la UGEL,
+cuántas sesiones. <b style="color:var(--morado)">Varía por colegio y la norma lo permite.</b><br>
+Si se mezclan, el sistema impone un formato que nadie usa o valida contra algo que no es normativo.
+</div>
+
+<h2>A · Configuración — una sola vez</h2>
+<p class="nota">Resuelve el hueco del bosquejo anterior: no existía "la primera vez". Y evita que el generador proponga lo que el aula no tiene.</p>
+
+<div class="fila">
+  <div class="paso">
+    <svg width="214" height="316" viewBox="0 0 214 316">
+      <rect x="4" y="4" width="206" height="308" rx="18" fill="none" stroke="#1b1d22" stroke-width="2.5"/>
+      <text x="18" y="28" font-size="12" font-weight="700">Mi sección</text>
+      <text x="18" y="44" font-size="8" fill="#8a8d94">Paso 1 de 3</text>
+      <text x="18" y="68" font-size="9" font-weight="600">Grado y sección</text>
+      <rect x="16" y="74" width="180" height="26" rx="6" fill="none" stroke="#c9c6bd" stroke-width="2"/>
+      <text x="26" y="92" font-size="10">4° B · primaria</text>
+      <text x="18" y="118" font-size="9" font-weight="600">Áreas que enseño</text>
+      <g font-size="9">
+        <rect x="16" y="124" width="86" height="24" rx="12" fill="#9a7a16"/><text x="28" y="140" fill="#fff">Matemática</text>
+        <rect x="108" y="124" width="88" height="24" rx="12" fill="#9a7a16"/><text x="116" y="140" fill="#fff">Comunicación</text>
+        <rect x="16" y="152" width="94" height="24" rx="12" fill="none" stroke="#c9c6bd" stroke-width="1.8"/><text x="24" y="168">Personal Social</text>
+        <rect x="116" y="152" width="80" height="24" rx="12" fill="none" stroke="#c9c6bd" stroke-width="1.8"/><text x="124" y="168">Ciencia y T.</text>
+      </g>
+      <text x="18" y="196" font-size="9" font-weight="600">Estudiantes</text>
+      <rect x="16" y="202" width="86" height="26" rx="6" fill="none" stroke="#c9c6bd" stroke-width="2"/>
+      <text x="26" y="220" font-size="10">26</text>
+      <text x="18" y="248" font-size="9" font-weight="600">¿Cuántas requieren apoyo distinto?</text>
+      <rect x="16" y="254" width="86" height="26" rx="6" fill="none" stroke="#c9c6bd" stroke-width="2"/>
+      <text x="26" y="272" font-size="10">2</text>
+      <text x="18" y="296" font-size="7" fill="#8a8d94">Solo el número. No pedimos nombres ni diagnósticos.</text>
+    </svg>
+    <p class="cap">A1 · Mi sección<small><b>Solo el número</b> de quienes requieren apoyo. Nunca etiquetas</small></p>
+  </div>
+  <div class="flecha">→</div>
+
+  <div class="paso">
+    <svg width="214" height="316" viewBox="0 0 214 316">
+      <rect x="4" y="4" width="206" height="308" rx="18" fill="none" stroke="#1b1d22" stroke-width="2.5"/>
+      <text x="18" y="28" font-size="12" font-weight="700">Material que SÍ tengo</text>
+      <text x="18" y="44" font-size="8" fill="#8a8d94">Paso 2 de 3 · solo propondremos esto</text>
+      <g font-size="9">
+        <rect x="16" y="56" width="180" height="26" rx="6" fill="none" stroke="#c9c6bd" stroke-width="1.8"/>
+        <rect x="24" y="62" width="14" height="14" rx="3" fill="#2f9e5e"/><text x="27" y="73" font-size="9" fill="#fff">✓</text>
+        <text x="46" y="73">Base diez</text>
+        <rect x="16" y="88" width="180" height="26" rx="6" fill="none" stroke="#c9c6bd" stroke-width="1.8"/>
+        <rect x="24" y="94" width="14" height="14" rx="3" fill="#2f9e5e"/><text x="27" y="105" font-size="9" fill="#fff">✓</text>
+        <text x="46" y="105">Regletas de colores</text>
+        <rect x="16" y="120" width="180" height="26" rx="6" fill="none" stroke="#c9c6bd" stroke-width="1.8"/>
+        <rect x="24" y="126" width="14" height="14" rx="3" fill="#2f9e5e"/><text x="27" y="137" font-size="9" fill="#fff">✓</text>
+        <text x="46" y="137">Ábaco</text>
+        <rect x="16" y="152" width="180" height="26" rx="6" fill="none" stroke="#c9c6bd" stroke-width="1.8"/>
+        <rect x="24" y="158" width="14" height="14" rx="3" fill="none" stroke="#c9c6bd" stroke-width="1.8"/>
+        <text x="46" y="169" fill="#8a8d94">Geoplano</text>
+        <text x="150" y="169" font-size="7" fill="#8a8d94">no tengo</text>
+        <rect x="16" y="184" width="180" height="26" rx="6" fill="none" stroke="#c9c6bd" stroke-width="1.8"/>
+        <rect x="24" y="190" width="14" height="14" rx="3" fill="#2f9e5e"/><text x="27" y="201" font-size="9" fill="#fff">✓</text>
+        <text x="46" y="201">Tapitas y chapitas</text>
+        <rect x="16" y="216" width="180" height="26" rx="6" fill="none" stroke="#c9c6bd" stroke-width="1.8"/>
+        <rect x="24" y="222" width="14" height="14" rx="3" fill="#2f9e5e"/><text x="27" y="233" font-size="9" fill="#fff">✓</text>
+        <text x="46" y="233">Cubos de cartón</text>
+      </g>
+      <rect x="16" y="252" width="180" height="30" rx="7" fill="none" stroke="#2f5bd3" stroke-width="2"/>
+      <text x="30" y="271" font-size="9" fill="#2f5bd3">+ Agregar material propio</text>
+      <text x="18" y="298" font-size="7" fill="#8a8d94">Puedes pedir prestado a dirección y marcarlo luego.</text>
+    </svg>
+    <p class="cap">A2 · Inventario de material<small><b>Nuevo.</b> Evita proponer lo que el aula no tiene</small></p>
+  </div>
+  <div class="flecha">→</div>
+
+  <div class="paso">
+    <svg width="214" height="316" viewBox="0 0 214 316">
+      <rect x="4" y="4" width="206" height="308" rx="18" fill="none" stroke="#1b1d22" stroke-width="2.5"/>
+      <text x="18" y="28" font-size="12" font-weight="700">Formato de mi colegio</text>
+      <text x="18" y="44" font-size="8" fill="#8a8d94">Paso 3 de 3 · qué momentos exige tu IE</text>
+      <rect x="16" y="54" width="180" height="26" rx="6" fill="#f9f5ff" stroke="#6b3fa0" stroke-width="2"/>
+      <text x="24" y="71" font-size="8" fill="#6b3fa0" font-weight="700">Obligatorio por el CNEB · fijo</text>
+      <text x="22" y="94" font-size="8">Competencia · capacidad · desempeño</text>
+      <text x="22" y="106" font-size="8">Propósito · criterios · evidencia</text>
+      <rect x="16" y="118" width="180" height="22" rx="6" fill="#fffdf5" stroke="#9a7a16" stroke-width="2"/>
+      <text x="24" y="133" font-size="8" fill="#9a7a16" font-weight="700">Lo que tu colegio añade</text>
+      <g font-size="9">
+        <rect x="16" y="146" width="180" height="24" rx="6" fill="none" stroke="#c9c6bd" stroke-width="1.8"/>
+        <rect x="24" y="151" width="13" height="13" rx="3" fill="#9a7a16"/><text x="27" y="161" font-size="8" fill="#fff">✓</text>
+        <text x="45" y="161">Motivación inicial</text>
+        <rect x="16" y="176" width="180" height="24" rx="6" fill="none" stroke="#c9c6bd" stroke-width="1.8"/>
+        <rect x="24" y="181" width="13" height="13" rx="3" fill="#9a7a16"/><text x="27" y="191" font-size="8" fill="#fff">✓</text>
+        <text x="45" y="191">Saberes previos</text>
+        <rect x="16" y="206" width="180" height="24" rx="6" fill="none" stroke="#c9c6bd" stroke-width="1.8"/>
+        <rect x="24" y="211" width="13" height="13" rx="3" fill="#9a7a16"/><text x="27" y="221" font-size="8" fill="#fff">✓</text>
+        <text x="45" y="221">Conflicto cognitivo</text>
+        <rect x="16" y="236" width="180" height="24" rx="6" fill="none" stroke="#c9c6bd" stroke-width="1.8"/>
+        <rect x="24" y="241" width="13" height="13" rx="3" fill="#9a7a16"/><text x="27" y="251" font-size="8" fill="#fff">✓</text>
+        <text x="45" y="251">Normas de aula</text>
+        <rect x="16" y="266" width="180" height="24" rx="6" fill="none" stroke="#c9c6bd" stroke-width="1.8"/>
+        <rect x="24" y="271" width="13" height="13" rx="3" fill="none" stroke="#c9c6bd" stroke-width="1.8"/>
+        <text x="45" y="281" fill="#8a8d94">Metacognición</text>
+      </g>
+      <text x="18" y="304" font-size="7" fill="#8a8d94">El Minedu no impone una ficha única.</text>
+    </svg>
+    <p class="cap">A3 · Formato institucional<small><b>Las dos capas, visibles.</b> Morado = fijo · dorado = de tu IE</small></p>
+  </div>
+</div>
+
+<h2>B · Mensual, en computadora — aprobar la unidad y generar</h2>
+<p class="nota">La plantilla cambia por área: Matemática parte de un problema; Comunicación, de una situación comunicativa.</p>
+
+<div class="fila">
+  <div class="paso">
+    <svg width="258" height="196" viewBox="0 0 258 196">
+      <rect x="4" y="4" width="250" height="188" rx="8" fill="none" stroke="#1b1d22" stroke-width="2.5"/>
+      <line x1="4" y1="30" x2="254" y2="30" stroke="#1b1d22" stroke-width="2"/>
+      <text x="16" y="22" font-size="11" font-weight="700">Unidad 7 · Fracciones · 4°B</text>
+      <text x="16" y="48" font-size="8" fill="#8a8d94">Situación significativa</text>
+      <rect x="16" y="54" width="228" height="30" rx="6" fill="none" stroke="#c9c6bd" stroke-width="2"/>
+      <text x="24" y="68" font-size="8">"En el mercado del barrio las frutas</text>
+      <text x="24" y="79" font-size="8">se venden por partes…"</text>
+      <rect x="16" y="92" width="228" height="34" rx="6" fill="#f9f5ff" stroke="#6b3fa0" stroke-width="2"/>
+      <text x="24" y="106" font-size="8" fill="#6b3fa0" font-weight="700">Plantilla: MATEMÁTICA</text>
+      <text x="24" y="119" font-size="7">Problematización → desarrollo del saber → reflexión → transferencia</text>
+      <text x="16" y="142" font-size="8" fill="#8a8d94">Sesiones estimadas</text>
+      <rect x="92" y="132" width="34" height="18" rx="4" fill="none" stroke="#c9c6bd" stroke-width="1.8"/>
+      <text x="102" y="145" font-size="9">8</text>
+      <text x="134" y="145" font-size="7" fill="#8a8d94">tentativo · lo ajustas tú</text>
+      <rect x="16" y="158" width="228" height="26" rx="8" fill="#9a7a16"/>
+      <text x="56" y="176" font-size="10" font-weight="700" fill="#fff">Aprobar unidad y generar las sesiones</text>
+    </svg>
+    <p class="cap">B1 · Unidad<small>La plantilla se elige por área. El nº de sesiones es tentativo, no regla</small></p>
+  </div>
+  <div class="flecha">→</div>
+
+  <div class="paso">
+    <svg width="258" height="196" viewBox="0 0 258 196">
+      <rect x="4" y="4" width="250" height="188" rx="8" fill="none" stroke="#1b1d22" stroke-width="2.5"/>
+      <line x1="4" y1="30" x2="254" y2="30" stroke="#1b1d22" stroke-width="2"/>
+      <text x="16" y="22" font-size="11" font-weight="700">Generando · cito mis fuentes</text>
+      <g font-size="8">
+        <text x="16" y="50">Competencia "Resuelve problemas de cantidad"</text>
+        <text x="228" y="50" fill="#2f9e5e">✓</text>
+        <text x="16" y="68">Desempeño de 4° grado · CNEB pág. 142</text>
+        <text x="228" y="68" fill="#2f9e5e">✓</text>
+        <text x="16" y="86">Cuaderno de trabajo · págs. 48–61</text>
+        <text x="228" y="86" fill="#2f9e5e">✓</text>
+        <text x="16" y="104">Material disponible en tu aula · 5 recursos</text>
+        <text x="228" y="104" fill="#2f9e5e">✓</text>
+        <text x="16" y="122">Opciones de apoyo para 2 estudiantes</text>
+        <text x="228" y="122" fill="#2f9e5e">✓</text>
+      </g>
+      <rect x="16" y="132" width="228" height="9" rx="4" fill="none" stroke="#c9c6bd" stroke-width="1.6"/>
+      <rect x="16" y="132" width="150" height="9" rx="4" fill="#9a7a16"/>
+      <text x="16" y="162" font-size="8" fill="#8a8d94">Puedes cerrar. Te aviso al terminar.</text>
+      <text x="16" y="178" font-size="7" fill="#6b3fa0">Cada sesión guardará de dónde salió cada campo.</text>
+    </svg>
+    <p class="cap">B2 · Generación<small>Cita las fuentes en vivo: ese es el factor diferencial</small></p>
+  </div>
+</div>
+
+<h2>C · Diario, en el celular — revisar y aprobar</h2>
+<p class="nota">Sin aprobación masiva. Decisión por documento, con cuatro confirmaciones explícitas solo sobre lo pedagógico.</p>
+
+<div class="fila">
+  <div class="paso">
+    <svg width="214" height="320" viewBox="0 0 214 320">
+      <rect x="4" y="4" width="206" height="312" rx="18" fill="none" stroke="#1b1d22" stroke-width="2.5"/>
+      <rect x="4" y="4" width="206" height="22" fill="#f3f0e6"/>
+      <text x="14" y="19" font-size="9" fill="#8a8d94">● Sin internet · trabajas igual</text>
+      <text x="18" y="46" font-size="12" font-weight="700">Mañana · 6 documentos</text>
+      <text x="18" y="68" font-size="9" font-weight="700" fill="#2f9e5e">✓ VERIFICADO · 2</text>
+      <rect x="16" y="74" width="180" height="32" rx="8" fill="#f1f5f0" stroke="#c9c6bd" stroke-width="1.8"/>
+      <text x="26" y="94" font-size="9">Instrumento · Sesión 13</text>
+      <text x="18" y="126" font-size="9" font-weight="700" fill="#9a7a16">! REQUIERE TU REVISIÓN · 3</text>
+      <rect x="16" y="132" width="180" height="36" rx="8" fill="#fffbee" stroke="#9a7a16" stroke-width="2.2"/>
+      <text x="26" y="148" font-size="9" font-weight="700">Sesión 13 · Comparación</text>
+      <text x="26" y="161" font-size="8" fill="#9a7a16">Contexto · tiempo</text>
+      <rect x="16" y="172" width="180" height="30" rx="8" fill="#fffbee" stroke="#9a7a16" stroke-width="2.2"/>
+      <text x="26" y="191" font-size="9">Ficha nivel inicio</text>
+      <text x="18" y="224" font-size="9" font-weight="700" fill="#b3261e">✕ NO PUDE VERIFICAR · 1</text>
+      <rect x="16" y="230" width="180" height="44" rx="8" fill="#fdf2f1" stroke="#b3261e" stroke-width="2.2"/>
+      <text x="26" y="246" font-size="9" font-weight="700">Ficha nivel avanzado</text>
+      <text x="26" y="259" font-size="8">No hallé el desempeño de 4°</text>
+      <text x="26" y="270" font-size="8">para esa competencia.</text>
+      <rect x="16" y="282" width="180" height="26" rx="8" fill="none" stroke="#2f5bd3" stroke-width="2"/>
+      <text x="42" y="299" font-size="10" fill="#2f5bd3" font-weight="600">Empezar por lo marcado</text>
+    </svg>
+    <p class="cap">C1 · Tres colas<small>"Verificado" = pasó mi validación contra el CNEB, no "la IA confía"</small></p>
+  </div>
+  <div class="flecha">→</div>
+
+  <div class="paso">
+    <svg width="214" height="320" viewBox="0 0 214 320">
+      <rect x="4" y="4" width="206" height="312" rx="18" fill="none" stroke="#1b1d22" stroke-width="2.5"/>
+      <text x="18" y="26" font-size="11" font-weight="700">Sesión 13 · doc 1 de 6</text>
+      <rect x="16" y="34" width="180" height="7" rx="4" fill="none" stroke="#c9c6bd" stroke-width="1.5"/>
+      <rect x="16" y="34" width="30" height="7" rx="4" fill="#9a7a16"/>
+      <rect x="16" y="50" width="180" height="40" rx="7" fill="#f9f5ff" stroke="#6b3fa0" stroke-width="2"/>
+      <text x="24" y="64" font-size="7" fill="#6b3fa0" font-weight="700">VERIFICADO CONTRA EL CNEB</text>
+      <text x="24" y="76" font-size="7">Competencia · capacidad · desempeño 4°</text>
+      <text x="24" y="86" font-size="7" fill="#2f5bd3">Ver la fuente</text>
+      <text x="18" y="108" font-size="9" font-weight="700">Confirma estos 4 puntos</text>
+      <g font-size="9">
+        <rect x="16" y="116" width="180" height="26" rx="7" fill="none" stroke="#c9c6bd" stroke-width="1.8"/>
+        <rect x="24" y="122" width="13" height="13" rx="3" fill="none" stroke="#1b1d22" stroke-width="1.8"/>
+        <text x="44" y="132" font-size="8">El propósito corresponde al grado</text>
+        <rect x="16" y="146" width="180" height="26" rx="7" fill="none" stroke="#c9c6bd" stroke-width="1.8"/>
+        <rect x="24" y="152" width="13" height="13" rx="3" fill="none" stroke="#1b1d22" stroke-width="1.8"/>
+        <text x="44" y="162" font-size="8">La secuencia tiene sentido</text>
+        <rect x="16" y="176" width="180" height="38" rx="7" fill="#fffbee" stroke="#9a7a16" stroke-width="2.2"/>
+        <rect x="24" y="182" width="13" height="13" rx="3" fill="none" stroke="#9a7a16" stroke-width="2"/>
+        <text x="44" y="192" font-size="8" font-weight="700" fill="#9a7a16">El contexto es de tu aula</text>
+        <text x="44" y="204" font-size="7">Usa un mercado que no es del barrio</text>
+        <rect x="16" y="218" width="180" height="38" rx="7" fill="#fffbee" stroke="#9a7a16" stroke-width="2.2"/>
+        <rect x="24" y="224" width="13" height="13" rx="3" fill="none" stroke="#9a7a16" stroke-width="2"/>
+        <text x="44" y="234" font-size="8" font-weight="700" fill="#9a7a16">Cabe en 90 minutos</text>
+        <text x="44" y="246" font-size="7">Planificado: 105 minutos</text>
+      </g>
+      <text x="18" y="272" font-size="7" fill="#8a8d94">Lo estructural ya se validó. No te lo pregunto.</text>
+      <rect x="16" y="280" width="180" height="28" rx="9" fill="#c9c6bd"/>
+      <text x="40" y="299" font-size="10" font-weight="700" fill="#fff">Aprobar este documento</text>
+    </svg>
+    <p class="cap">C2 · Revisión por documento<small>Arriba lo verificado contra norma. Abajo lo que solo tú puedes juzgar</small></p>
+  </div>
+  <div class="flecha">→</div>
+
+  <div class="paso">
+    <svg width="214" height="320" viewBox="0 0 214 320">
+      <rect x="4" y="4" width="206" height="312" rx="18" fill="none" stroke="#1b1d22" stroke-width="2.5"/>
+      <text x="18" y="26" font-size="11" font-weight="700">Apoyo para 2 estudiantes</text>
+      <text x="18" y="42" font-size="8" fill="#8a8d94">Opciones, no un anexo obligatorio</text>
+      <text x="18" y="64" font-size="9" font-weight="600">Otra forma de representar</text>
+      <rect x="16" y="70" width="180" height="40" rx="7" fill="none" stroke="#c9c6bd" stroke-width="1.8"/>
+      <rect x="24" y="80" width="13" height="13" rx="3" fill="#9a7a16"/><text x="27" y="90" font-size="8" fill="#fff">✓</text>
+      <text x="44" y="86" font-size="8">Usar base diez antes del símbolo</text>
+      <text x="44" y="100" font-size="7" fill="#2f9e5e">disponible en tu aula</text>
+      <text x="18" y="130" font-size="9" font-weight="600">Otra forma de participar</text>
+      <rect x="16" y="136" width="180" height="40" rx="7" fill="none" stroke="#c9c6bd" stroke-width="1.8"/>
+      <rect x="24" y="146" width="13" height="13" rx="3" fill="#9a7a16"/><text x="27" y="156" font-size="8" fill="#fff">✓</text>
+      <text x="44" y="152" font-size="8">Resolver en pareja antes del grupo</text>
+      <text x="18" y="196" font-size="9" font-weight="600">Otra forma de expresar</text>
+      <rect x="16" y="202" width="180" height="40" rx="7" fill="none" stroke="#c9c6bd" stroke-width="1.8"/>
+      <rect x="24" y="212" width="13" height="13" rx="3" fill="none" stroke="#c9c6bd" stroke-width="1.8"/>
+      <text x="44" y="218" font-size="8" fill="#8a8d94">Explicar en voz alta en vez</text>
+      <text x="44" y="230" font-size="8" fill="#8a8d94">de escribir</text>
+      <rect x="16" y="254" width="180" height="40" rx="7" fill="#fdf2f1" stroke="#b3261e" stroke-width="1.8"/>
+      <text x="24" y="270" font-size="7" fill="#b3261e" font-weight="700">No decimos qué tiene cada estudiante.</text>
+      <text x="24" y="282" font-size="7">Solo cuántas requieren apoyo, y tú</text>
+      <text x="24" y="292" font-size="7">eliges qué usar.</text>
+    </svg>
+    <p class="cap">C3 · Apoyo (DUA)<small>Opciones de representación, participación y expresión. <b>Nunca etiquetas</b></small></p>
+  </div>
+</div>
+
+<h2>Qué cambió respecto de la v2, y por qué</h2>
+<table>
+<tr><th>Cambio</th><th>Origen</th></tr>
+<tr><td><b>Configuración inicial de 3 pasos</b></td><td>El bosquejo anterior no tenía "primera vez": asumía unidad existente y currículo cargado</td></tr>
+<tr><td><b>Inventario de material concreto</b></td><td>La norma promueve el material pero <i>"que haya sido distribuido no equivale a que toda IE lo tenga hoy"</i>. El sistema debe poder sustituirlo</td></tr>
+<tr><td><b>Plantilla por área</b></td><td>Matemática y Comunicación tienen procesos didácticos distintos. <i>"No debe generar una misma plantilla para ambas"</i></td></tr>
+<tr><td><b>Nº de sesiones "tentativo"</b></td><td><i>"No debes codificar 6 sesiones por unidad como regla normativa"</i></td></tr>
+<tr><td><b>Apoyo como 3 opciones, no casilla DUA</b></td><td>No hay norma que exija una casilla literal. Lo defendible: opciones de representación, participación y expresión, <i>"no un anexo decorativo"</i></td></tr>
+<tr><td><b>Morado = normativo · dorado = de tu IE</b></td><td>Las dos capas, visibles en la interfaz. El Minedu no impone ficha única</td></tr>
+<tr><td><b>"Verificado" en vez de "aprobado por el sistema"</b></td><td>Verificado contra el CNEB por tu validador, no "la IA confía". La confianza viene de la verificación, no del modelo</td></tr>
+</table>
+
+<div class="caja azul">
+<b>Lo que sigue sin poder afirmarse:</b> no existe evidencia revisada por pares sobre docentes revisando
+material generado por IA en 20 minutos. Esa cifra es <b>restricción de campo, no estándar validado</b>.
+En el testeo hay que medir tres cosas: tiempo, errores detectados y <b>tasa de aprobación sin lectura</b>.
+</div>
+
+</div></body></html>

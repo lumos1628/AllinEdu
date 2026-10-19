@@ -18,6 +18,10 @@ mobile/app/build/
 mobile/local.properties
 mobile/.gradle/
 
+# Python
+__pycache__/
+*.pyc
+
 # Sistema
 .DS_Store
 *.log
@@ -33,3 +37,14 @@ supabase/.temp/
 # Encuestas y documentos locales (evidencia de investigación, no va al repo)
 *.xlsx
 *.docx
+
+# Material crudo de investigación (voz y datos personales, no va al repo)
+investigacion/crudo/
+
+# Material real cedido por docentes: contiene nombres de estudiantes, de docentes
+# y de la institución. NUNCA se versiona, ni siquiera con git add -f
+investigacion/material docente/
+
+# PDF oficiales descargados (pesan cientos de MB). Se reproducen con
+# investigacion/normativa/descargar_fuentes.sh; el manifiesto sí se versiona.
+investigacion/normativa/fuentes/
