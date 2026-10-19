@@ -194,7 +194,25 @@ Hibernate valida el esquema, no lo modifica.
 
 ### Migraciones Supabase del esquema
 
-Con Supabase CLI instalado y Docker activo, ejecuta localmente:
+Hay dos semillas y se ejecutan en este orden: `seed.sql` crea la estructura de
+demostración genérica y `seed_primaria.sql` la convierte en una IE de primaria
+de 12 secciones con la docente de 4.º B como protagonista. `config.toml` deja
+`[db.seed] enabled = false` a propósito, porque las semillas leen parámetros del
+entorno local: `db reset` no las corre y hay que lanzarlas con `psql`.
+
+**Sin Supabase CLI** (solo Docker y `psql`), que es el camino corto para ver la
+base de datos funcionando:
+
+```bash
+./supabase/aplicar_local.sh
+```
+
+Levanta un Postgres 17 en el puerto 54322, aplica las migraciones en orden,
+corre las dos semillas y muestra un resumen de lo cargado. Las variables de la
+demo (`EDUFAST_DEMO_*`) tienen valores por defecto y se pueden sobreescribir
+desde el entorno. El script es reaplicable: no duplica filas.
+
+**Con Supabase CLI instalado** y Docker activo, para tener además Studio:
 
 ```bash
 cp backend/.env.example backend/.env
@@ -205,8 +223,11 @@ set +a
 supabase start
 supabase db reset
 psql 'postgresql://postgres:postgres@127.0.0.1:54322/postgres' \
-  -v ON_ERROR_STOP=1 -f supabase/seed.sql
+  -v ON_ERROR_STOP=1 -f supabase/seed.sql -f supabase/seed_primaria.sql
 ```
+
+Si `supabase` no está en el PATH, `npx supabase@latest <orden>` funciona igual
+sin instalar nada global.
 
 Para aplicar migraciones al proyecto Supabase compartido de desarrollo, autentícate y enlázalo:
 
@@ -220,7 +241,8 @@ cp backend/.env.example backend/.env
 set -a
 source backend/.env
 set +a
-psql "$SUPABASE_DB_URL" -v ON_ERROR_STOP=1 -f supabase/seed.sql
+psql "$SUPABASE_DB_URL" -v ON_ERROR_STOP=1 \
+  -f supabase/seed.sql -f supabase/seed_primaria.sql
 ```
 
 `db push` aplica el esquema; la semilla se ejecuta por separado con `psql` y solo en desarrollo, porque toma su configuración del entorno local. Genera 10 estudiantes por sección por defecto y una cuenta de apoderado por familia; las parejas de hermanos y el tamaño de cada sección son parámetros locales. También genera cuentas demo de docentes, directores y secretaría, con correos del dominio de prueba configurado y una contraseña que defines localmente. No se crean cuentas para estudiantes ni se guardan personas o contraseñas en Git. No cargues la semilla en producción. El backend se conecta a PostgreSQL con credenciales privadas; web y Android solo llaman a la API Spring.

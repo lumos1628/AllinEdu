@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Escritorio</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0;background:#0E0F12}
+a{text-decoration:none;color:inherit}
+.rot{font-size:13px;color:#A3A7B1;letter-spacing:.4px}
+.dia{flex:1;min-width:0;padding:14px;border-radius:14px;background:#17191E;border:1px solid #2A2E37}
+.chip{display:block;padding:11px 12px;border-radius:10px;margin-top:9px;font-size:14px;line-height:1.4}
+@media (max-width:900px){.semana{flex-wrap:wrap}.dia{min-width:160px}}
+</style>
+</helmet>
+<div style="width: 100%; min-height: 900px; box-sizing: border-box; background: #0E0F12; color: #F2EFE8; font-family: ui-sans-serif, system-ui, sans-serif">
+
+  <header style="display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 20px 40px; border-bottom: 1px solid #2A2E37; flex-wrap: wrap">
+    <div style="display: flex; align-items: center; gap: 14px">
+      <span style="width: 32px; height: 32px; border-radius: 9px; background: #E3B341; color: #16130A; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 15px">A</span>
+      <span style="font-size: 17px; font-weight: 600">AllinEdu</span>
+      <span style="font-size: 15px; color: #A3A7B1">4.º B · 26 estudiantes</span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 10px">
+      <span style="width: 9px; height: 9px; border-radius: 5px; background: #6EE7A0"></span>
+      <span style="font-size: 15px; color: #A3A7B1">Guardado en esta computadora</span>
+    </div>
+  </header>
+
+  <div style="max-width: 1360px; margin: 0 auto; padding: 32px 40px 48px">
+
+    <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap">
+      <div>
+        <div style="font-size: 28px; font-weight: 700; line-height: 1.2">Buenas noches, docente Zevallos</div>
+        <div style="font-size: 17px; color: #A3A7B1; margin-top: 7px">Miércoles 22 de octubre · 8:14 p.m.</div>
+      </div>
+      <div style="display: flex; gap: 12px; flex-wrap: wrap">
+        <a href="WHoy.dc.html" style="padding: 15px 22px; border-radius: 12px; background: #E3B341; color: #16130A; font-size: 16px; font-weight: 700">Mis clases de hoy</a>
+        <a href="WUnidad.dc.html" style="padding: 15px 22px; border-radius: 12px; border: 1px solid #5F6676; color: #F2EFE8; font-size: 16px">Preparar la semana que viene</a>
+      </div>
+    </div>
+
+    <div style="display: flex; gap: 28px; margin-top: 34px; align-items: flex-start; flex-wrap: wrap">
+
+      <section style="flex: 1 1 680px; min-width: 0">
+        <div class="rot">ESTA SEMANA</div>
+        <div class="semana" style="display: flex; gap: 14px; margin-top: 14px">
+
+          <div class="dia">
+            <div style="font-size: 15px; font-weight: 600">Lun 20</div>
+            <span class="chip" style="background:#141A16;border:1px solid #2F9E5E;color:#CDE8D6">Matemática<br><span style="font-size:13px;color:#8FC2A4">dictada</span></span>
+            <span class="chip" style="background:#141A16;border:1px solid #2F9E5E;color:#CDE8D6">Comunicación<br><span style="font-size:13px;color:#8FC2A4">dictada</span></span>
+          </div>
+
+          <div class="dia">
+            <div style="font-size: 15px; font-weight: 600">Mar 21</div>
+            <span class="chip" style="background:#141A16;border:1px solid #2F9E5E;color:#CDE8D6">Personal Social<br><span style="font-size:13px;color:#8FC2A4">dictada</span></span>
+            <span class="chip" style="background:#141A16;border:1px solid #2F9E5E;color:#CDE8D6">Matemática<br><span style="font-size:13px;color:#8FC2A4">dictada</span></span>
+          </div>
+
+          <div class="dia" style="border-color:#E3B341">
+            <div style="font-size: 15px; font-weight: 600; color:#E3B341">Hoy · Mié 22</div>
+            <a href="WHoy.dc.html" class="chip" style="background:#221C0B;border:1px solid #B8890F">Matemática<br><span style="font-size:13px;color:#E3B341">falta anotar logros</span></a>
+            <a href="WHoy.dc.html" class="chip" style="background:#141A16;border:1px solid #2F9E5E;color:#CDE8D6">Comunicación<br><span style="font-size:13px;color:#8FC2A4">dictada</span></a>
+          </div>
+
+          <div class="dia">
+            <div style="font-size: 15px; font-weight: 600">Jue 23</div>
+            <a href="WRevision.dc.html" class="chip" style="background:#221C0B;border:2px solid #E3B341">Matemática<br><span style="font-size:13px;color:#E3B341">2 cosas por revisar</span></a>
+            <a href="WRevision.dc.html" class="chip" style="background:#17191E;border:1px solid #5F6676">Comunicación<br><span style="font-size:13px;color:#A3A7B1">borrador listo</span></a>
+          </div>
+
+          <div class="dia">
+            <div style="font-size: 15px; font-weight: 600">Vie 24</div>
+            <span class="chip" style="background:#22252C;border:1px dashed #5F6676;color:#A3A7B1">Sin preparar<br><span style="font-size:13px">2 clases</span></span>
+          </div>
+
+        </div>
+
+        <div style="margin-top: 26px; padding: 20px 22px; border-radius: 14px; background: #17191E; border: 1px solid #2A2E37">
+          <div class="rot">PARA IMPRIMIR CUANDO VAYAS A LA ESCUELA</div>
+          <div style="font-size: 17px; line-height: 1.7; margin-top: 10px">7 hojas en total · 26 copias de la ficha de fracciones · 2 copias de la versión con material</div>
+          <a href="WHoy.dc.html" style="display: inline-block; font-size: 16px; color: #7AA2FF; margin-top: 11px">Ver el material de hoy →</a>
+        </div>
+      </section>
+
+      <aside style="flex: 0 1 380px; min-width: 300px">
+        <a href="WCierre.dc.html" style="display: block; padding: 22px; border-radius: 16px; background: #2E1416; border: 2px solid #C93B3B">
+          <div class="rot" style="color:#F58A8A">CIERRE DEL III BIMESTRE</div>
+          <div style="font-size: 34px; font-weight: 700; margin-top: 10px; line-height: 1">18</div>
+          <div style="font-size: 17px; margin-top: 6px; line-height: 1.5">comentarios por escribir, de 26</div>
+          <div style="height: 9px; border-radius: 5px; background: #4A2024; margin-top: 16px">
+            <div style="height: 9px; width: 31%; border-radius: 5px; background: #F58A8A"></div>
+          </div>
+          <div style="font-size: 15px; color: #F2EFE8; margin-top: 12px; line-height: 1.5">Vence el 28 de noviembre</div>
+          <div style="font-size: 16px; font-weight: 700; color: #F58A8A; margin-top: 14px">Escribirlos aquí es más rápido →</div>
+        </a>
+
+        <div style="margin-top: 18px; padding: 20px 22px; border-radius: 16px; background: #17191E; border: 1px solid #2A2E37">
+          <div class="rot">AVISOS</div>
+          <div style="font-size: 16px; line-height: 1.6; margin-top: 11px">3 niños llevan <strong style="color:#F58A8A">C</strong> dos bimestres seguidos en Matemática. En esos casos hay que explicar por qué no hubo avance.</div>
+          <a href="WCierre.dc.html" style="display: inline-block; font-size: 16px; color: #7AA2FF; margin-top: 11px">Ver esos tres →</a>
+        </div>
+
+        <div style="margin-top: 18px; padding: 20px 22px; border-radius: 16px; background: #141A24; border: 1px solid #3C5680">
+          <div style="font-size: 16px; line-height: 1.6; color: #9FB8E8">Lo que escribas aquí aparece en tu celular cuando se conecte. No necesitas internet ahora.</div>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1360,"height":900}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

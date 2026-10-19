@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Asistencia</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0}
+a{text-decoration:none;color:inherit}
+button{font-family:inherit}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #0E0F12; color: #F2EFE8; font-family: ui-sans-serif, system-ui, sans-serif; display: flex; flex-direction: column">
+
+  <div style="padding: 22px 24px 0">
+    <a href="Main.dc.html" style="font-size: 16px; color: #7AA2FF">← Inicio</a>
+    <div style="font-size: 26px; font-weight: 700; margin-top: 14px">Asistencia</div>
+    <div style="font-size: 16px; color: #A3A7B1; margin-top: 4px">Miércoles 22 · 4.º B</div>
+  </div>
+
+  <div style="padding: 22px 24px 0; flex: 1; overflow-y: auto">
+    <button type="button" onClick="{{ t1 }}" style="{{ s1 }}">
+      <span style="font-size: 18px">Ana Portocarrero</span>
+      <span style="{{ e1 }}">{{ r1 }}</span>
+    </button>
+    <button type="button" onClick="{{ t2 }}" style="{{ s2 }}">
+      <span style="font-size: 18px">Luz Valdivieso</span>
+      <span style="{{ e2 }}">{{ r2 }}</span>
+    </button>
+    <button type="button" onClick="{{ t3 }}" style="{{ s3 }}">
+      <span style="font-size: 18px">Sara Arriaga</span>
+      <span style="{{ e3 }}">{{ r3 }}</span>
+    </button>
+    <button type="button" onClick="{{ t4 }}" style="{{ s4 }}">
+      <span style="font-size: 18px">Rosa Larrea</span>
+      <span style="{{ e4 }}">{{ r4 }}</span>
+    </button>
+    <div style="font-size: 15px; color: #A3A7B1; text-align: center; margin-top: 18px">Toca el nombre para cambiar</div>
+  </div>
+
+  <div style="padding: 18px 24px 26px; border-top: 1px solid #2A2E37">
+    <div style="font-size: 16px; color: #A3A7B1; margin-bottom: 14px">{{ resumen }}</div>
+    <a href="Main.dc.html" style="display: block; text-align: center; padding: 19px; border-radius: 14px; background: #E3B341; color: #16130A; font-size: 18px; font-weight: 700">Guardar</a>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { a: 'vino', b: 'vino', c: 'tarde', d: 'falto' };
+  }
+  sig(v) { return v === 'vino' ? 'tarde' : (v === 'tarde' ? 'falto' : 'vino'); }
+  fila(v) {
+    return 'display: flex; justify-content: space-between; align-items: center; width: 100%; box-sizing: border-box;' +
+           ' margin-bottom: 12px; padding: 18px 18px; border-radius: 14px; background: #17191E; cursor: pointer; color: #F2EFE8;' +
+           ' border: 1px solid #2A2E37; min-height: 64px';
+  }
+  etiq(v) {
+    var c = v === 'vino' ? ['#10291C', '#6EE7A0'] : (v === 'tarde' ? ['#2A2210', '#F2C14E'] : ['#2E1416', '#F58A8A']);
+    return 'padding: 7px 16px; border-radius: 999px; font-size: 15px; font-weight: 600; background: ' + c[0] + '; color: ' + c[1];
+  }
+  rot(v) { return v === 'vino' ? 'Vino' : (v === 'tarde' ? 'Tarde' : 'No vino'); }
+  renderVals() {
+    var s = this.state;
+    var vals = [s.a, s.b, s.c, s.d];
+    var vino = vals.filter(function (v) { return v === 'vino'; }).length;
+    var tarde = vals.filter(function (v) { return v === 'tarde'; }).length;
+    var falto = vals.filter(function (v) { return v === 'falto'; }).length;
+    return {
+      t1: () => this.setState({ a: this.sig(s.a) }),
+      t2: () => this.setState({ b: this.sig(s.b) }),
+      t3: () => this.setState({ c: this.sig(s.c) }),
+      t4: () => this.setState({ d: this.sig(s.d) }),
+      s1: this.fila(s.a), s2: this.fila(s.b), s3: this.fila(s.c), s4: this.fila(s.d),
+      e1: this.etiq(s.a), e2: this.etiq(s.b), e3: this.etiq(s.c), e4: this.etiq(s.d),
+      r1: this.rot(s.a), r2: this.rot(s.b), r3: this.rot(s.c), r4: this.rot(s.d),
+      resumen: vino + ' vinieron · ' + tarde + ' tarde · ' + falto + ' no vino'
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>La lista de cotejo</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0}
+a{text-decoration:none;color:inherit}
+.hoja{background:#FDFCF9;color:#17150F;border-radius:12px;padding:24px 20px;box-sizing:border-box}
+.sub{font-size:12px;font-weight:700;color:#5C584C;letter-spacing:.4px;margin-top:18px}
+.crit{display:flex;gap:11px;margin-top:11px;font-size:14px;line-height:1.55}
+.cn{width:22px;height:22px;min-width:22px;border-radius:50%;background:#17150F;color:#FDFCF9;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700}
+table{width:100%;border-collapse:collapse;margin-top:12px}
+th,td{border:1px solid #C9C3B2;padding:7px 6px;font-size:13px;text-align:center}
+th{background:#EFEBE0;font-size:11px;font-weight:700;color:#3D3930}
+td.nm{text-align:left;font-size:13px}
+.si{font-weight:700;color:#14562F}
+.no{font-weight:700;color:#8A2A2A}
+</style>
+</helmet>
+<div style="width: 390px; height: 1380px; box-sizing: border-box; background: #0E0F12; color: #F2EFE8; font-family: ui-sans-serif, system-ui, sans-serif; overflow-y: auto">
+
+  <div style="padding: 22px 24px 0">
+    <a href="SesionesHoy.dc.html" style="font-size: 16px; color: #7AA2FF">← Clases de hoy</a>
+    <div style="font-size: 24px; font-weight: 700; margin-top: 12px">La lista de cotejo</div>
+    <div style="font-size: 16px; color: #A3A7B1; margin-top: 5px">Matemática · miércoles 22 · 4.º B</div>
+  </div>
+
+  <div style="margin: 18px 24px 0; padding: 16px 18px; border-radius: 14px; background: #141A24; border: 1px solid #3C5680">
+    <div style="font-size: 16px; line-height: 1.6; color: #9FB8E8">Es el instrumento que nombra tu sesión. Los tres criterios salen de los propósitos, no los invento aparte.</div>
+  </div>
+
+  <!-- EL INSTRUMENTO -->
+  <div style="margin: 18px 20px 0">
+    <div class="hoja">
+      <div style="font-size: 11px; color: #5C584C; letter-spacing: .5px">LISTA DE COTEJO</div>
+      <div style="font-size: 19px; font-weight: 700; margin-top: 7px; line-height: 1.35">Comparamos fracciones para saber si el reparto fue justo</div>
+      <div style="font-size: 13px; color: #5C584C; margin-top: 7px; line-height: 1.55">4.º B · 26 estudiantes · 22 de octubre de 2026<br>Competencia: Resuelve problemas de cantidad</div>
+
+      <div class="sub">LO QUE VAS A OBSERVAR</div>
+      <div class="crit"><span class="cn">1</span><span>Compara dos fracciones del mismo denominador e identifica cuál es mayor.</span></div>
+      <div class="crit"><span class="cn">2</span><span>Usa las tiras para comprobar su respuesta.</span></div>
+      <div class="crit"><span class="cn">3</span><span>Explica con sus palabras cómo lo supo.</span></div>
+
+      <div class="sub">REGISTRO</div>
+      <div style="font-size: 12px; color: #5C584C; margin-top: 6px; line-height: 1.5">Marca <strong>Sí</strong> o <strong>No</strong> en cada criterio. Una lista de cotejo no tiene niveles intermedios: lo hizo o no lo hizo.</div>
+      <table>
+        <thead>
+          <tr><th style="text-align:left">Estudiante</th><th>1</th><th>2</th><th>3</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="nm">Ana Portocarrero</td><td class="si">Sí</td><td class="si">Sí</td><td class="si">Sí</td></tr>
+          <tr><td class="nm">Luz Valdivieso</td><td class="si">Sí</td><td class="si">Sí</td><td class="no">No</td></tr>
+          <tr><td class="nm">Rosa Larrea</td><td class="si">Sí</td><td class="si">Sí</td><td class="no">No</td></tr>
+          <tr><td class="nm">Sara Arriaga</td><td class="no">No</td><td class="si">Sí</td><td class="no">No</td></tr>
+          <tr><td class="nm">Pedro Ocampo</td><td class="si">Sí</td><td class="no">No</td><td class="si">Sí</td></tr>
+          <tr><td class="nm" style="color:#5C584C">…21 más</td><td></td><td></td><td></td></tr>
+        </tbody>
+      </table>
+
+      <div style="margin-top: 16px; padding-top: 13px; border-top: 1px dashed #C9C3B2; font-size: 12px; color: #5C584C; line-height: 1.55">El criterio 3 es el que vale para el comentario del bimestre: ahí se ve si explican el por qué, no solo si aciertan.</div>
+    </div>
+  </div>
+
+  <!-- Paso 5 del CNEB VII: comunicar los criterios a los estudiantes -->
+  <div style="margin: 18px 24px 0; padding: 18px; border-radius: 14px; background: #17191E; border: 1px solid #2A2E37">
+    <div style="font-size: 14px; color: #A3A7B1; letter-spacing: .3px">PARA DECIRLES AL EMPEZAR</div>
+    <div style="font-size: 17px; line-height: 1.65; margin-top: 11px; padding: 15px; border-radius: 12px; background: #0E0F12; border: 1px solid #2A2E37">«Hoy vamos a comparar fracciones. Voy a mirar tres cosas: que sepan cuál es mayor, que lo comprueben con las tiras, y que me puedan explicar cómo lo supieron.»</div>
+    <div style="font-size: 15px; color: #A3A7B1; margin-top: 11px; line-height: 1.55">El currículo pide comunicarles los criterios antes de empezar. Puedes leerlo tal cual o decirlo a tu manera.</div>
+  </div>
+
+  <div style="padding: 20px 24px 36px">
+    <a href="Evidencias.dc.html" style="display: block; text-align: center; padding: 19px; border-radius: 14px; background: #E3B341; color: #16130A; font-size: 18px; font-weight: 700">Empezar a anotar</a>
+    <a href="Impresion.dc.html" style="display: block; text-align: center; padding: 18px; border-radius: 14px; border: 1px solid #5F6676; font-size: 17px; margin-top: 12px">Imprimirla para tenerla en mano</a>
+    <a href="SesionesHoy.dc.html" style="display: block; text-align: center; padding: 18px; border-radius: 14px; font-size: 17px; color: #A3A7B1; margin-top: 6px">Volver</a>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1380}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

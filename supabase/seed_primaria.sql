@@ -79,8 +79,10 @@ UPDATE public.secciones s
 
 -- Los estudiantes que seed.sql matriculó en secciones de otros niveles quedan
 -- cerrados: esta IE es de primaria. No se borra nada, se cierra la vigencia.
+-- GREATEST evita violar check (fecha_fin >= fecha_inicio) cuando la semilla de
+-- demo arranca el año en una fecha posterior al cierre nominal.
 UPDATE public.ubicaciones_matricula um
-   SET fecha_fin = DATE '2026-03-15'
+   SET fecha_fin = GREATEST(um.fecha_inicio, DATE '2026-03-15')
   FROM public.secciones s, public.grados_educativos g, ctx
  WHERE s.id = um.seccion_id AND g.id = s.grado_id
    AND s.anio_escolar_id = ctx.anio_escolar_id
@@ -132,10 +134,12 @@ BEGIN
     -- El dominio y el hash se toman de las cuentas que ya creó seed.sql, para que
     -- el personal nuevo entre con la misma contraseña de demostración y no haya
     -- ninguna credencial escrita en este archivo.
+    -- Cualquier cuenta activa sirve: al reaplicar la semilla los correos ya
+    -- estan renombrados y el prefijo personal.% ya no existe.
     SELECT split_part(correo, '@', 2), password_hash
       INTO v_dominio, v_hash
       FROM public.cuentas_usuario
-     WHERE correo LIKE 'personal.%' ORDER BY id LIMIT 1;
+     WHERE estado = 'ACTIVA' ORDER BY id LIMIT 1;
     IF v_dominio IS NULL THEN
         v_dominio := 'example.test';
         v_hash := 'sin-credencial-ejecuta-seed-sql-primero';
@@ -145,10 +149,9 @@ BEGIN
     -- seed.sql deja un docente de muestra como tutor; se le cierra la vigencia
     -- porque la restricción admite un solo tutor activo por sección.
     UPDATE public.asignaciones_docentes ad
-       SET vigente_hasta = DATE '2026-03-15'
+       SET vigente_hasta = GREATEST(ad.vigente_desde, DATE '2026-03-15')
      WHERE ad.es_tutor
        AND ad.vigente_hasta IS NULL
-       AND ad.vigente_desde < DATE '2026-03-16'
        AND ad.seccion_id IN (SELECT seccion_id FROM secciones_objetivo);
 
     -- una docente de aula por sección, tutora de la suya
@@ -165,7 +168,7 @@ BEGIN
         INSERT INTO public.cuentas_usuario (persona_id, correo, password_hash, estado)
         VALUES (v_persona, format('tutor.%s%s@%s', v_sec.grado, lower(v_sec.nombre), v_dominio),
                 v_hash, 'ACTIVA')
-        ON CONFLICT (correo) DO UPDATE SET estado = 'ACTIVA'
+        ON CONFLICT (persona_id) DO UPDATE SET estado = 'ACTIVA'
         RETURNING id INTO v_cuenta;
 
         INSERT INTO public.asignaciones_roles
@@ -197,7 +200,7 @@ BEGIN
         INSERT INTO public.cuentas_usuario (persona_id, correo, password_hash, estado)
         VALUES (v_persona, format('especialista.%s@%s', v_esp.slug, v_dominio),
                 v_hash, 'ACTIVA')
-        ON CONFLICT (correo) DO UPDATE SET estado = 'ACTIVA'
+        ON CONFLICT (persona_id) DO UPDATE SET estado = 'ACTIVA'
         RETURNING id INTO v_cuenta;
 
         INSERT INTO public.asignaciones_roles
@@ -228,7 +231,7 @@ BEGIN
 
         INSERT INTO public.cuentas_usuario (persona_id, correo, password_hash, estado)
         VALUES (v_persona, 'subdirector@' || v_dominio, v_hash, 'ACTIVA')
-        ON CONFLICT (correo) DO UPDATE SET estado = 'ACTIVA'
+        ON CONFLICT (persona_id) DO UPDATE SET estado = 'ACTIVA'
         RETURNING id INTO v_cuenta;
 
         INSERT INTO public.asignaciones_roles
@@ -298,25 +301,35 @@ COMMIT;
 
 BEGIN;
 
+-- La protagonista es la docente de 4.o B (entra como tutor.4b@). Todo lo que
+-- sigue -- planificacion, unidad, sesiones, conclusiones -- cuelga de ella y de
+-- su seccion, para que la simulacion sea la de una sola docente real.
 CREATE TEMP TABLE ctx2 AS
+WITH sec AS (
+    SELECT s.id, s.anio_escolar_id
+      FROM public.secciones s
+      JOIN public.grados_educativos g ON g.id = s.grado_id
+     WHERE g.numero = 4 AND s.nombre = 'B' AND s.activa
+       AND g.nivel_id = (SELECT id FROM public.niveles_educativos WHERE codigo='PRIMARIA')
+     ORDER BY s.id LIMIT 1
+)
 SELECT ae.id AS anio_escolar_id, ae.institucion_id,
        (SELECT id FROM public.periodos_evaluacion
          WHERE anio_escolar_id = ae.id AND tipo='BIMESTRE' AND numero=3) AS bimestre_iii,
-       (SELECT cu.id FROM public.asignaciones_docentes ad
-          JOIN public.cuentas_usuario cu ON cu.id = ad.cuenta_usuario_id
-         WHERE ad.es_tutor AND ad.vigente_hasta IS NULL ORDER BY ad.id LIMIT 1) AS tutora_id,
-       (SELECT s.id FROM public.secciones s
-          JOIN public.grados_educativos g ON g.id = s.grado_id
-         WHERE s.anio_escolar_id = ae.id AND g.numero = 4
-           AND g.nivel_id = (SELECT id FROM public.niveles_educativos WHERE codigo='PRIMARIA')
-         ORDER BY s.nombre LIMIT 1) AS seccion_id
+       (SELECT id FROM public.periodos_evaluacion
+         WHERE anio_escolar_id = ae.id AND tipo='BIMESTRE' AND numero=4) AS bimestre_iv,
+       (SELECT ad.cuenta_usuario_id FROM public.asignaciones_docentes ad
+         WHERE ad.seccion_id = (SELECT id FROM sec)
+           AND ad.es_tutor AND ad.vigente_hasta IS NULL
+         ORDER BY ad.id LIMIT 1) AS tutora_id,
+       (SELECT id FROM sec) AS seccion_id
 FROM public.anios_escolares ae WHERE ae.anio = 2026 ORDER BY ae.id LIMIT 1;
 
 -- 1. Planificación anual y su destino
 INSERT INTO public.planificaciones_anuales
     (institucion_id, anio_escolar_id, nombre, estado, creada_por)
 SELECT institucion_id, anio_escolar_id,
-       'Planificación anual 4.º · 2026', 'PUBLICADA', tutora_id
+       'Planificación anual 4.º B · 2026', 'PUBLICADA', tutora_id
 FROM ctx2 WHERE tutora_id IS NOT NULL
 ON CONFLICT (institucion_id, anio_escolar_id, nombre, version) DO NOTHING;
 
@@ -356,8 +369,11 @@ JOIN public.competencias c ON c.codigo = x.cod
 ON CONFLICT (experiencia_id, competencia_id) DO UPDATE
     SET proposito_especifico = excluded.proposito_especifico;
 
+-- La unidad va del 20-oct al 07-nov: cae en el IV bimestre (19-oct a 18-dic).
+-- Las conclusiones descriptivas de mas abajo si pertenecen al III, que es el
+-- bimestre que la docente arrastra sin cerrar.
 INSERT INTO public.experiencias_periodos (experiencia_id, periodo_evaluacion_id)
-SELECT u.experiencia_id, c.bimestre_iii FROM uni u, ctx2 c WHERE c.bimestre_iii IS NOT NULL
+SELECT u.experiencia_id, c.bimestre_iv FROM uni u, ctx2 c WHERE c.bimestre_iv IS NOT NULL
 ON CONFLICT DO NOTHING;
 
 -- 3. Criterios de evaluación de la competencia de Matemática
@@ -547,7 +563,7 @@ BEGIN;
 
 CREATE TEMP TABLE dom AS
 SELECT split_part(correo, '@', 2) AS dominio
-FROM public.cuentas_usuario WHERE correo LIKE 'personal.%' ORDER BY id LIMIT 1;
+FROM public.cuentas_usuario WHERE estado = 'ACTIVA' ORDER BY id LIMIT 1;
 
 UPDATE public.cuentas_usuario cu
    SET correo = 'director@' || d.dominio
@@ -578,5 +594,129 @@ UPDATE public.cuentas_usuario cu
    SET correo = format('apoderado.%s@%s', lpad(num.n::text, 4, '0'), d.dominio)
   FROM num, dom d
  WHERE cu.id = num.id;
+
+COMMIT;
+
+-- ============================================================================
+-- Cuentas de muestra que seed.sql deja y que esta IE no tiene.
+-- Es una IE solo de primaria: un director y un subdirector, sin docente
+-- auxiliar (figura de inicial) y sin el docente regular generico, cuya
+-- tutoria ya se cerro mas arriba. No se borran: se revoca el acceso y se
+-- cierra la vigencia del rol, para no romper las filas que las referencian.
+-- ============================================================================
+
+BEGIN;
+
+-- El prefijo revocada. entra tambien en la seleccion: al reaplicar la semilla,
+-- seed.sql vuelve a abrir estos roles y hay que cerrarlos otra vez, pero el
+-- correo ya no empieza por el nombre original.
+CREATE TEMP TABLE cuentas_muestra AS
+SELECT cu.id
+FROM public.cuentas_usuario cu
+WHERE split_part(cu.correo, '@', 1) IN
+      ('director.primaria', 'docente.muestra', 'auxiliar.muestra')
+   OR cu.correo LIKE 'revocada.%';
+
+UPDATE public.asignaciones_roles ar
+   SET vigente_hasta = GREATEST(ar.vigente_desde, DATE '2026-03-15')
+  FROM cuentas_muestra cm
+ WHERE ar.cuenta_usuario_id = cm.id
+   AND ar.vigente_hasta IS NULL;
+
+UPDATE public.asignaciones_docentes ad
+   SET vigente_hasta = GREATEST(ad.vigente_desde, DATE '2026-03-15')
+  FROM cuentas_muestra cm
+ WHERE ad.cuenta_usuario_id = cm.id
+   AND ad.vigente_hasta IS NULL;
+
+UPDATE public.asignaciones_docentes_areas ada
+   SET vigente_hasta = GREATEST(ada.vigente_desde, DATE '2026-03-15')
+  FROM cuentas_muestra cm
+ WHERE ada.cuenta_usuario_id = cm.id
+   AND ada.vigente_hasta IS NULL;
+
+UPDATE public.cuentas_usuario cu
+   SET correo = CASE WHEN cu.correo LIKE 'revocada.%'
+                     THEN cu.correo ELSE 'revocada.' || cu.correo END,
+       estado = 'REVOCADA'
+  FROM cuentas_muestra cm
+ WHERE cu.id = cm.id;
+
+COMMIT;
+
+-- ============================================================================
+-- Estudiantes y familias que esta IE no tiene.
+-- seed.sql genera dos secciones por grado de TODOS los niveles, porque es la
+-- demostracion genérica. Esta es una IE solo de primaria: los estudiantes de
+-- inicial y secundaria, cuyas matriculas quedaron cerradas mas arriba, no
+-- pertenecen a la institucion y aqui si se borran, junto con los apoderados
+-- que se quedan sin ningun estudiante. Si no, el recuento de la IE mentiria:
+-- apareceria con 550 estudiantes cuando tiene 12 secciones.
+-- Solo alcanza a filas sinteticas de la semilla y nunca a una matricula
+-- vigente, asi que no hay historico que preservar.
+-- ============================================================================
+
+BEGIN;
+
+CREATE TEMP TABLE mat_fuera AS
+SELECT m.id AS matricula_id, m.estudiante_id, e.persona_id
+FROM public.matriculas m
+JOIN public.estudiantes e ON e.id = m.estudiante_id
+WHERE NOT EXISTS (SELECT 1 FROM public.ubicaciones_matricula um
+                   WHERE um.matricula_id = m.id AND um.fecha_fin IS NULL);
+
+DELETE FROM public.registros_asistencia r
+ USING public.ubicaciones_matricula um, mat_fuera f
+ WHERE r.ubicacion_matricula_id = um.id AND um.matricula_id = f.matricula_id;
+
+DELETE FROM public.asignaciones_actividad x USING mat_fuera f WHERE x.matricula_id = f.matricula_id;
+DELETE FROM public.destinos_actividad    x USING mat_fuera f WHERE x.matricula_id = f.matricula_id;
+DELETE FROM public.evidencias_aprendizaje x USING mat_fuera f WHERE x.matricula_id = f.matricula_id;
+DELETE FROM public.movimientos_matricula x USING mat_fuera f WHERE x.matricula_id = f.matricula_id;
+DELETE FROM public.progreso_competencias x USING mat_fuera f WHERE x.matricula_id = f.matricula_id;
+DELETE FROM public.retroalimentaciones   x USING mat_fuera f WHERE x.matricula_id = f.matricula_id;
+DELETE FROM public.ubicaciones_matricula x USING mat_fuera f WHERE x.matricula_id = f.matricula_id;
+DELETE FROM public.matriculas            x USING mat_fuera f WHERE x.id = f.matricula_id;
+
+DELETE FROM public.vinculos_apoderado_estudiante v
+ USING mat_fuera f WHERE v.estudiante_id = f.estudiante_id;
+
+DELETE FROM public.estudiantes e USING mat_fuera f WHERE e.id = f.estudiante_id;
+
+-- Apoderados que se quedaron sin ningun estudiante
+CREATE TEMP TABLE apo_fuera AS
+SELECT a.id, a.persona_id, a.cuenta_usuario_id
+FROM public.apoderados a
+WHERE NOT EXISTS (SELECT 1 FROM public.vinculos_apoderado_estudiante v
+                   WHERE v.apoderado_id = a.id);
+
+DELETE FROM public.preferencias_notificacion x USING apo_fuera a WHERE x.cuenta_usuario_id = a.cuenta_usuario_id;
+DELETE FROM public.dispositivos_notificacion x USING apo_fuera a WHERE x.cuenta_usuario_id = a.cuenta_usuario_id;
+DELETE FROM public.notificaciones            x USING apo_fuera a WHERE x.cuenta_destinataria_id = a.cuenta_usuario_id;
+DELETE FROM public.asignaciones_roles        x USING apo_fuera a WHERE x.cuenta_usuario_id = a.cuenta_usuario_id;
+DELETE FROM public.apoderados                x USING apo_fuera a WHERE x.id = a.id;
+DELETE FROM public.cuentas_usuario           x USING apo_fuera a WHERE x.id = a.cuenta_usuario_id;
+
+-- Las personas que ya no sostienen ni un estudiante ni una cuenta
+DELETE FROM public.contactos_persona c
+ USING (SELECT persona_id FROM mat_fuera UNION SELECT persona_id FROM apo_fuera) q
+ WHERE c.persona_id = q.persona_id;
+
+DELETE FROM public.personas p
+ USING (SELECT persona_id FROM mat_fuera UNION SELECT persona_id FROM apo_fuera) q
+ WHERE p.id = q.persona_id
+   AND NOT EXISTS (SELECT 1 FROM public.estudiantes e WHERE e.persona_id = p.id)
+   AND NOT EXISTS (SELECT 1 FROM public.cuentas_usuario cu WHERE cu.persona_id = p.id)
+   AND NOT EXISTS (SELECT 1 FROM public.apoderados a WHERE a.persona_id = p.id);
+
+-- Renumera los correos de apoderado ya sin huecos
+WITH num AS (
+    SELECT cu.id, row_number() OVER (ORDER BY cu.id) AS n,
+           split_part(cu.correo, '@', 2) AS dominio
+    FROM public.cuentas_usuario cu WHERE cu.correo LIKE 'apoderado.%'
+)
+UPDATE public.cuentas_usuario cu
+   SET correo = format('apoderado.%s@%s', lpad(num.n::text, 4, '0'), num.dominio)
+  FROM num WHERE cu.id = num.id;
 
 COMMIT;

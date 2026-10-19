@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Comentario del bimestre</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0}
+a{text-decoration:none;color:inherit}
+button{font-family:inherit}
+.rot{font-size:14px;color:#A3A7B1;letter-spacing:.3px}
+</style>
+</helmet>
+<div style="width: 390px; height: 1240px; box-sizing: border-box; background: #0E0F12; color: #F2EFE8; font-family: ui-sans-serif, system-ui, sans-serif; overflow-y: auto">
+
+  <div style="padding: 20px 24px 0">
+    <a href="Cierre.dc.html" style="font-size: 16px; color: #7AA2FF">← Cierre</a>
+    <div style="font-size: 22px; font-weight: 700; margin-top: 12px">Rosa Larrea</div>
+    <div style="font-size: 16px; color: #A3A7B1; margin-top: 5px; line-height: 1.4">Resuelve problemas de cantidad · III bimestre</div>
+  </div>
+
+  <div style="padding: 22px 24px 0">
+    <div style="font-size: 18px; font-weight: 600">¿En qué nivel la ves?</div>
+    <div style="font-size: 16px; color: #A3A7B1; margin-top: 5px; line-height: 1.5">Esto lo decides tú. Yo no pongo niveles.</div>
+    <div style="display: flex; gap: 9px; margin-top: 14px">
+      <button type="button" onClick="{{ nAD }}" style="{{ sAD }}">AD</button>
+      <button type="button" onClick="{{ nA }}" style="{{ sA }}">A</button>
+      <button type="button" onClick="{{ nB }}" style="{{ sB }}">B</button>
+      <button type="button" onClick="{{ nC }}" style="{{ sC }}">C</button>
+    </div>
+    <div style="font-size: 15px; color: #A3A7B1; margin-top: 11px; line-height: 1.5">{{ nivelTxt }}</div>
+  </div>
+
+  <div style="{{ alertaC }}">
+    <div style="font-size: 17px; font-weight: 700; color: #F58A8A">El bimestre pasado también estuvo en C</div>
+    <div style="font-size: 17px; line-height: 1.55; margin-top: 8px">Cuando son dos seguidos, tienes que explicar por qué no hubo avance. No basta repetir lo mismo.</div>
+  </div>
+
+  <div style="margin: 22px 24px 0; padding: 18px; border-radius: 14px; background: #17191E; border: 1px solid #2A2E37">
+    <div class="rot">LO QUE ANOTASTE EN CLASE</div>
+    <div style="font-size: 17px; line-height: 1.65; margin-top: 11px">
+      <strong>12 oct</strong> — comparó bien con las tiras, no sin ellas<br>
+      <strong>24 oct</strong> — explicó al grupo cómo lo pensó<br>
+      <strong>3 nov</strong> — dejó incompleta la parte de los símbolos
+    </div>
+    <div style="font-size: 15px; color: #A3A7B1; margin-top: 11px">3 registros tuyos · ninguno lo inventé yo</div>
+  </div>
+
+  <div style="{{ borradorBox }}">
+    <div class="rot" style="color:#9FB8E8">BORRADOR — CORRÍGELO</div>
+    <div style="font-size: 17px; line-height: 1.65; margin-top: 11px; padding: 15px; border-radius: 12px; background: #0E0F12; border: 1px solid #2A2E37">{{ borrador }}</div>
+    <div style="font-size: 15px; color: #9FB8E8; margin-top: 11px; line-height: 1.5">Cámbialo todo si quieres. La que firma eres tú.</div>
+  </div>
+
+  <div style="{{ checkBox }}">
+    <div class="rot">TIENE QUE DECIR</div>
+    <div style="font-size: 17px; line-height: 2; margin-top: 9px">
+      <span style="color:#6EE7A0">✓</span> qué logró<br>
+      <span style="color:#6EE7A0">✓</span> qué le cuesta<br>
+      <span style="color:#6EE7A0">✓</span> qué hacer para que avance<br>
+      <span style="color:#6EE7A0">✓</span> los apoyos que le diste este bimestre
+    </div>
+    <div style="font-size: 15px; color: #A3A7B1; margin-top: 11px; line-height: 1.55">Lo último es obligatorio porque Rosa tiene apoyos registrados. Qué apoyos le diste lo escribes tú, yo no guardo nada sobre ella.</div>
+  </div>
+
+  <div style="padding: 24px 24px 36px">
+    <a href="{{ destino }}" style="{{ cta }}">Guardar como mía</a>
+    <div style="font-size: 15px; color: #A3A7B1; text-align: center; margin-top: 12px; line-height: 1.5">{{ pie }}</div>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1240}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { n: null };
+  }
+  chip(on, color) {
+    return 'flex: 1; padding: 17px 0; border-radius: 13px; font-size: 19px; font-weight: 700; cursor: pointer;' +
+           (on ? ' background: ' + color + '; color: #0E0F12; border: 2px solid ' + color
+               : ' background: #17191E; color: #F2EFE8; border: 1px solid #2A2E37');
+  }
+  renderVals() {
+    var n = this.state.n;
+    var obliga = n === 'B' || n === 'C';
+    var rotulos = {
+      AD: 'Logro destacado. El comentario es opcional.',
+      A:  'Logro esperado. El comentario es opcional.',
+      B:  'En proceso. El comentario es obligatorio.',
+      C:  'En inicio. El comentario es obligatorio.'
+    };
+    var borradores = {
+      B: 'Rosa compara fracciones del mismo denominador cuando usa las tiras, y sabe explicar al grupo cómo llegó a su respuesta. Le cuesta todavía hacerlo solo con números, sin tener el material delante. Para avanzar, conviene darle unas semanas más con las tiras y pedirle que escriba el símbolo recién después de haberlo armado.',
+      C: 'Rosa reconoce las partes de una fracción cuando trabaja con las tiras, pero aún no logra compararlas por sí sola. Este bimestre tampoco hubo avance respecto al anterior: en los tres registros necesitó que alguien le armara el material primero. Puede que el apoyo en pareja no esté siendo suficiente y convenga probar otra forma antes del siguiente corte.',
+      A:  'Rosa compara fracciones del mismo denominador con material y sin él, y justifica su respuesta.',
+      AD: 'Rosa compara fracciones del mismo denominador y además explica a sus compañeros cómo hacerlo.'
+    };
+    return {
+      nAD: () => this.setState({ n: 'AD' }),
+      nA:  () => this.setState({ n: 'A' }),
+      nB:  () => this.setState({ n: 'B' }),
+      nC:  () => this.setState({ n: 'C' }),
+      sAD: this.chip(n === 'AD', '#6EE7A0'),
+      sA:  this.chip(n === 'A',  '#6EE7A0'),
+      sB:  this.chip(n === 'B',  '#F2C14E'),
+      sC:  this.chip(n === 'C',  '#F58A8A'),
+      nivelTxt: n ? rotulos[n] : 'Toca un nivel para seguir.',
+      alertaC: 'margin: 18px 24px 0; padding: 18px; border-radius: 14px; background: #2E1416; border: 2px solid #C93B3B' +
+               (n === 'C' ? '' : '; display: none'),
+      borradorBox: 'margin: 18px 24px 0; padding: 18px; border-radius: 14px; background: #141A24; border: 1px solid #3C5680' +
+                   (n ? '' : '; display: none'),
+      borrador: n ? borradores[n] : '',
+      checkBox: 'margin: 16px 24px 0; padding: 18px; border-radius: 14px; background: #17191E; border: 1px solid #2A2E37' +
+                (obliga ? '' : '; display: none'),
+      destino: n ? 'Cierre.dc.html' : '#',
+      cta: 'display: block; text-align: center; padding: 20px; border-radius: 14px; font-size: 18px; font-weight: 700;' +
+           (n ? ' background: #E3B341; color: #16130A' : ' background: #22252C; color: #6F7480'),
+      pie: n ? (obliga ? 'Quedan 17 comentarios' : 'No era obligatorio, pero queda guardado')
+             : 'Primero dime en qué nivel la ves'
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Revisar el borrador</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0;background:#0E0F12}
+a{text-decoration:none;color:inherit}
+button{font-family:inherit}
+.rot{font-size:13px;color:#A3A7B1;letter-spacing:.4px}
+.bloque{padding:20px 22px;border-radius:14px;background:#17191E;border:1px solid #2A2E37;margin-top:16px}
+.fuente{padding:16px 18px;border-radius:12px;background:#17191E;border:1px solid #2A2E37;margin-top:12px}
+.cita{font-size:14px;line-height:1.6;color:#D9D5CC;font-style:italic;border-left:3px solid #2F9E5E;padding-left:12px;margin-top:9px}
+@media (max-width:1000px){.dos{flex-direction:column}}
+</style>
+</helmet>
+<div style="width: 100%; min-height: 1180px; box-sizing: border-box; background: #0E0F12; color: #F2EFE8; font-family: ui-sans-serif, system-ui, sans-serif">
+
+  <header style="display: flex; align-items: center; gap: 20px; padding: 18px 40px; border-bottom: 1px solid #2A2E37">
+    <a href="WEscritorio.dc.html" style="font-size: 16px; color: #7AA2FF">← Escritorio</a>
+    <span style="font-size: 16px; color: #A3A7B1">Jueves 23 · Matemática · 8:00</span>
+  </header>
+
+  <div style="max-width: 1360px; margin: 0 auto; padding: 28px 40px 48px">
+    <div class="dos" style="display: flex; gap: 28px; align-items: flex-start">
+
+      <!-- COLUMNA IZQUIERDA: el documento, en el orden del CNEB VII -->
+      <main style="flex: 1 1 720px; min-width: 0">
+        <div style="font-size: 30px; font-weight: 700; line-height: 1.2">Comparar fracciones</div>
+        <div style="font-size: 17px; color: #A3A7B1; margin-top: 7px">{{ total }} minutos · tu bloque es de 90</div>
+
+        <div class="bloque">
+          <div class="rot">1 · QUÉ COMPETENCIA ESTÁS TRABAJANDO</div>
+          <div style="font-size: 19px; font-weight: 600; margin-top: 9px">Resuelve problemas de cantidad</div>
+          <div style="font-size: 17px; line-height: 1.6; margin-top: 10px; color: #D9D5CC">Capacidad: usa estrategias y procedimientos de estimación y cálculo.</div>
+          <div style="font-size: 17px; line-height: 1.6; margin-top: 8px; color: #D9D5CC">Lo que se espera en 4.º: que compare fracciones usando material antes de pasar al símbolo.</div>
+        </div>
+
+        <div class="bloque" style="background:#141A24;border-color:#3C5680">
+          <div class="rot" style="color:#9FB8E8">2 · CÓMO VAS A SABER SI APRENDIERON</div>
+          <div style="font-size: 18px; line-height: 1.6; margin-top: 10px">Que comparen dos fracciones y <strong>expliquen con las tiras por qué una es mayor</strong>.</div>
+          <div style="display: flex; gap: 32px; margin-top: 16px; flex-wrap: wrap">
+            <div style="flex: 1 1 240px">
+              <div class="rot" style="color:#7D93BE">QUÉ TE QUEDA COMO PRUEBA</div>
+              <div style="font-size: 16px; line-height: 1.6; margin-top: 7px">La ficha resuelta y lo que dicen al grupo</div>
+            </div>
+            <div style="flex: 1 1 240px">
+              <div class="rot" style="color:#7D93BE">CON QUÉ LO MIRAS</div>
+              <div style="font-size: 16px; line-height: 1.6; margin-top: 7px">Lista de cotejo de 3 puntos</div>
+            </div>
+          </div>
+          <div style="margin-top: 16px; padding: 13px 16px; border-radius: 11px; background: #0E0F12">
+            <div style="font-size: 16px; line-height: 1.55; color: #9FB8E8">Esto se lo dices a los niños <strong>al empezar la clase</strong>. Es el paso 5 del currículo, y casi nadie lo hace.</div>
+          </div>
+        </div>
+
+        <div class="bloque">
+          <div class="rot">3 · LO QUE VAN A HACER</div>
+
+          <div style="margin-top: 16px">
+            <div style="font-size: 15px; color: #A3A7B1">INICIO · 15 min</div>
+            <div style="font-size: 17px; line-height: 1.6; margin-top: 6px">Les dices qué van a aprender y cómo lo vas a mirar. Preguntas cómo reparten algo en partes iguales en su casa.</div>
+          </div>
+
+          <div style="margin-top: 20px">
+            <div style="font-size: 15px; color: #A3A7B1">DESARROLLO · 60 min</div>
+            <div style="font-size: 17px; line-height: 1.6; margin-top: 6px">En grupos de cuatro, reparten las naranjas que se compran en {{ ctx }}. Comprueban con las tiras.</div>
+            <div style="{{ a1box }}">
+              <div style="font-size: 17px; line-height: 1.55">Puse <strong>el mercado de abastos</strong> porque es lo común. ¿Eso existe donde viven tus niños?</div>
+              <div style="display: flex; gap: 10px; margin-top: 13px">
+                <button type="button" onClick="{{ a1cambiar }}" style="padding: 13px 20px; border-radius: 11px; border: none; background: #E3B341; color: #16130A; font-size: 16px; font-weight: 700; cursor: pointer">No, cambiarlo</button>
+                <button type="button" onClick="{{ a1dejar }}" style="padding: 13px 20px; border-radius: 11px; border: 1px solid #5F6676; background: transparent; color: #F2EFE8; font-size: 16px; cursor: pointer">Sí, está bien</button>
+              </div>
+            </div>
+            <div style="{{ a1ok }}">{{ a1txt }}</div>
+          </div>
+
+          <div style="margin-top: 20px">
+            <div style="font-size: 15px; color: #A3A7B1">CIERRE · {{ minCierre }} min</div>
+            <div style="font-size: 17px; line-height: 1.6; margin-top: 6px">Cada grupo explica cómo lo pensó. {{ cierreExtra }}</div>
+            <div style="{{ a2box }}">
+              <div style="font-size: 17px; line-height: 1.55">Todo esto suma <strong>105 minutos</strong> y tu clase es de 90.</div>
+              <div style="display: flex; gap: 10px; margin-top: 13px">
+                <button type="button" onClick="{{ a2cambiar }}" style="padding: 13px 20px; border-radius: 11px; border: none; background: #E3B341; color: #16130A; font-size: 16px; font-weight: 700; cursor: pointer">Acórtalo</button>
+                <button type="button" onClick="{{ a2dejar }}" style="padding: 13px 20px; border-radius: 11px; border: 1px solid #5F6676; background: transparent; color: #F2EFE8; font-size: 16px; cursor: pointer">Yo lo manejo</button>
+              </div>
+            </div>
+            <div style="{{ a2ok }}">{{ a2txt }}</div>
+          </div>
+        </div>
+
+        <div class="bloque">
+          <div class="rot">4 · QUÉ NECESITAS</div>
+          <div style="margin-top: 12px; display: flex; gap: 12px; align-items: flex-start">
+            <span style="padding: 4px 11px; border-radius: 999px; background: #3A2E0C; color: #E3B341; font-size: 13px; font-weight: 700; white-space: nowrap">OBLIGATORIO</span>
+            <span style="font-size: 17px; line-height: 1.5">Tiras de fracciones — el desempeño de 4.º pide material concreto</span>
+          </div>
+          <div style="margin-top: 12px; display: flex; gap: 12px; align-items: flex-start">
+            <span style="padding: 4px 11px; border-radius: 999px; background: #22252C; color: #A3A7B1; font-size: 13px; white-space: nowrap">TÚ DECIDES</span>
+            <span style="font-size: 17px; line-height: 1.5">Ficha de trabajo, 26 copias</span>
+          </div>
+          <a href="Apoyo.dc.html" style="display: inline-block; font-size: 16px; color: #7AA2FF; margin-top: 14px">Dos niños necesitan otro camino →</a>
+        </div>
+
+        <div style="display: flex; gap: 14px; align-items: center; margin-top: 26px; flex-wrap: wrap">
+          <a href="{{ destino }}" style="{{ cta }}">Está bien, mándalo a imprimir</a>
+          <span style="font-size: 16px; color: #A3A7B1">{{ faltan }}</span>
+        </div>
+      </main>
+
+      <!-- COLUMNA DERECHA: trazabilidad. Esto es lo que el celular no puede dar -->
+      <aside style="flex: 0 1 400px; min-width: 320px">
+        <div style="padding: 20px 22px; border-radius: 16px; background: #141A16; border: 1px solid #2F9E5E">
+          <div class="rot" style="color:#8FC2A4">DE DÓNDE SAQUÉ CADA COSA</div>
+          <div style="font-size: 16px; line-height: 1.6; margin-top: 10px; color: #CDE8D6">Todo lo de la izquierda sale de aquí. Si algo no te cuadra, puedes ir a la página.</div>
+        </div>
+
+        <div class="fuente">
+          <div style="font-size: 15px; font-weight: 700; color: #6EE7A0">La competencia</div>
+          <div style="font-size: 15px; color: #A3A7B1; margin-top: 5px">Programa Curricular de Primaria, p. 139</div>
+          <div class="cita">«Resuelve problemas de cantidad»</div>
+          <a href="#fuente" style="display: inline-block; font-size: 15px; color: #7AA2FF; margin-top: 10px">Abrir esa página</a>
+        </div>
+
+        <div class="fuente">
+          <div style="font-size: 15px; font-weight: 700; color: #6EE7A0">Que use material concreto</div>
+          <div style="font-size: 15px; color: #A3A7B1; margin-top: 5px">Programa Curricular, desempeño de 4.º</div>
+          <div class="cita">«Emplea estrategias […] al construir objetos con material concreto»</div>
+          <div style="font-size: 15px; line-height: 1.55; margin-top: 10px; color: #D9D5CC">Por esto lo marqué obligatorio y no sugerido.</div>
+        </div>
+
+        <div class="fuente">
+          <div style="font-size: 15px; font-weight: 700; color: #6EE7A0">El orden de la sesión</div>
+          <div style="font-size: 15px; color: #A3A7B1; margin-top: 5px">Currículo Nacional, §VII, p. 177</div>
+          <div style="font-size: 15px; line-height: 1.6; margin-top: 9px; color: #D9D5CC">El currículo pide entender la competencia y el estándar primero, después definir cómo se evalúa, y recién después las actividades. Por eso el borrador va en ese orden y no al revés.</div>
+        </div>
+
+        <div class="fuente" style="background:#221C0B;border-color:#B8890F">
+          <div style="font-size: 15px; font-weight: 700; color: #E3B341">Esto NO lo pude verificar</div>
+          <div style="font-size: 16px; line-height: 1.6; margin-top: 9px">Los pasos de Matemática que usa tu escuela (familiarización, estrategias, formalización) <strong>no están en el currículo</strong>. Los tomé de la plantilla de tu IE.</div>
+          <a href="#plantilla" style="display: inline-block; font-size: 15px; color: #E3B341; margin-top: 10px">Cambiar la plantilla de la IE</a>
+        </div>
+
+        <div class="fuente" style="background:#141A24;border-color:#3C5680">
+          <div style="font-size: 16px; line-height: 1.6; color: #9FB8E8">Nada de esto sale de internet en el momento. Son los documentos del MINEDU que están guardados aquí.</div>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1360,"height":1180}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { a1: null, a2: null };
+  }
+  aviso() { return 'margin-top: 14px; padding: 18px; border-radius: 13px; background: #221C0B; border: 2px solid #E3B341'; }
+  resuelto(hay) {
+    return 'margin-top: 12px; padding: 13px 16px; border-radius: 11px; background: #141A16; border: 1px solid #2F9E5E;' +
+           ' font-size: 16px; line-height: 1.5; color: #CDE8D6' + (hay ? '' : '; display: none');
+  }
+  renderVals() {
+    var s = this.state;
+    var listo = s.a1 !== null && s.a2 !== null;
+    var corto = s.a2 === 'cambiar';
+    return {
+      a1cambiar: () => this.setState({ a1: 'cambiar' }),
+      a1dejar:   () => this.setState({ a1: 'dejar' }),
+      a2cambiar: () => this.setState({ a2: 'cambiar' }),
+      a2dejar:   () => this.setState({ a2: 'dejar' }),
+      a1box: this.aviso() + (s.a1 === null ? '' : '; display: none'),
+      a2box: this.aviso() + (s.a2 === null ? '' : '; display: none'),
+      a1ok: this.resuelto(s.a1 !== null),
+      a2ok: this.resuelto(s.a2 !== null),
+      a1txt: s.a1 === 'cambiar' ? 'Listo, ahora dice «la tienda del barrio».' : 'Bien, lo dejé con el mercado de abastos.',
+      a2txt: s.a2 === 'cambiar' ? 'Quité 15 minutos del cierre. Ahora entra en los 90.' : 'Bien, lo dejé en 105. Tú ves cuánto alcanzas.',
+      ctx: s.a1 === 'cambiar' ? 'la tienda del barrio' : 'el mercado de abastos',
+      minCierre: corto ? '15' : '30',
+      total: corto ? '90' : '105',
+      cierreExtra: corto ? '' : 'Luego escriben en su cuaderno qué aprendieron.',
+      destino: listo ? 'Impresion.dc.html' : '#',
+      cta: 'display: inline-block; padding: 17px 28px; border-radius: 12px; font-size: 17px; font-weight: 700;' +
+           (listo ? ' background: #E3B341; color: #16130A' : ' background: #22252C; color: #6F7480'),
+      faltan: listo ? 'Lo revisaste completo' : 'Primero responde los dos avisos'
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -265,7 +265,10 @@ BEGIN
         INSERT INTO public.cuentas_usuario
             (persona_id, correo, password_hash, estado)
         VALUES (person_id, guardian_email, cfg.password_hash, 'ACTIVA')
-        ON CONFLICT (correo) DO UPDATE
+        -- El conflicto se resuelve por persona, no por correo: seed_primaria.sql
+        -- renombra los correos y una segunda pasada chocaria contra
+        -- cuentas_usuario_persona_id_key si el objetivo fuera el correo.
+        ON CONFLICT (persona_id) DO UPDATE
             SET password_hash = excluded.password_hash
         RETURNING id INTO account_id;
 
@@ -325,6 +328,7 @@ DECLARE
     institution_id bigint;
     school_year_id bigint;
     section_id bigint;
+    is_tutor_libre boolean;
 BEGIN
     SELECT * INTO STRICT cfg FROM edufast_demo_config;
     SELECT id INTO STRICT institution_id
@@ -365,7 +369,10 @@ BEGIN
         INSERT INTO public.cuentas_usuario
             (persona_id, correo, password_hash, estado)
         VALUES (person_id, email, cfg.password_hash, 'ACTIVA')
-        ON CONFLICT (correo) DO UPDATE
+        -- El conflicto se resuelve por persona, no por correo: seed_primaria.sql
+        -- renombra los correos y una segunda pasada chocaria contra
+        -- cuentas_usuario_persona_id_key si el objetivo fuera el correo.
+        ON CONFLICT (persona_id) DO UPDATE
             SET password_hash = excluded.password_hash
         RETURNING id INTO account_id;
 
@@ -403,14 +410,25 @@ BEGIN
             SET cuenta_usuario_id = excluded.cuenta_usuario_id;
 
         IF staff.teacher_function IS NOT NULL THEN
+            -- Solo se reclama la tutoria si la seccion no tiene ya otra tutora
+            -- vigente: uq_tutor_vigente_seccion admite una sola. En una
+            -- reaplicacion, seed_primaria.sql ya puso a la tutora real.
+            is_tutor_libre := staff.is_tutor AND NOT EXISTS (
+                SELECT 1 FROM public.asignaciones_docentes ad
+                 WHERE ad.seccion_id = section_id
+                   AND ad.es_tutor
+                   AND ad.vigente_hasta IS NULL
+                   AND ad.cuenta_usuario_id <> account_id);
+
             INSERT INTO public.asignaciones_docentes
                 (cuenta_usuario_id, seccion_id, es_tutor, funcion, vigente_desde)
-            VALUES (account_id, section_id, staff.is_tutor,
+            VALUES (account_id, section_id, is_tutor_libre,
                     staff.teacher_function, cfg.start_date)
             ON CONFLICT (cuenta_usuario_id, seccion_id, vigente_desde) DO UPDATE
                 SET es_tutor = excluded.es_tutor,
                     funcion = excluded.funcion,
-                    vigente_hasta = NULL;
+                    vigente_hasta = CASE WHEN excluded.es_tutor THEN NULL
+                                         ELSE public.asignaciones_docentes.vigente_hasta END;
         END IF;
 
     END LOOP;

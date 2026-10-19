@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>La unidad</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0;background:#0E0F12}
+a{text-decoration:none;color:inherit}
+button{font-family:inherit}
+.rot{font-size:13px;color:#A3A7B1;letter-spacing:.4px}
+.fila{display:flex;gap:14px;align-items:center;padding:13px 16px;border-radius:12px;background:#17191E;border:1px solid #2A2E37;margin-top:10px}
+.num{width:28px;height:28px;min-width:28px;border-radius:9px;background:#22252C;color:#A3A7B1;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700}
+.comp{margin-top:18px;padding-top:18px;border-top:1px solid #2A2E37}
+@media (max-width:1000px){.dos{flex-direction:column}}
+</style>
+</helmet>
+<div style="width: 100%; min-height: 1340px; box-sizing: border-box; background: #0E0F12; color: #F2EFE8; font-family: ui-sans-serif, system-ui, sans-serif">
+
+  <header style="display: flex; align-items: center; gap: 20px; padding: 18px 40px; border-bottom: 1px solid #2A2E37">
+    <a href="WEscritorio.dc.html" style="font-size: 16px; color: #7AA2FF">← Escritorio</a>
+    <span style="font-size: 16px; color: #A3A7B1">Unidad 6 · del 20 de octubre al 7 de noviembre</span>
+  </header>
+
+  <div style="max-width: 1360px; margin: 0 auto; padding: 28px 40px 48px">
+
+    <div style="font-size: 30px; font-weight: 700; line-height: 1.2">Repartimos en partes iguales</div>
+    <div style="font-size: 17px; color: #A3A7B1; margin-top: 7px">3 semanas · 12 sesiones · 4.º B</div>
+
+    <div class="dos" style="display: flex; gap: 28px; margin-top: 28px; align-items: flex-start">
+
+      <section style="flex: 1 1 760px; min-width: 0">
+
+        <div style="padding: 20px 22px; border-radius: 14px; background: #141A24; border: 1px solid #3C5680">
+          <div class="rot" style="color:#9FB8E8">LA SITUACIÓN DE DONDE SALE TODO</div>
+          <div style="font-size: 18px; line-height: 1.6; margin-top: 10px">En el barrio hay una olla común los domingos. Los niños ayudan a repartir y discuten si a todos les tocó igual. ¿Cómo sabemos si el reparto fue justo?</div>
+        </div>
+
+        <div style="margin-top: 26px; padding: 22px; border-radius: 14px; background: #17191E; border: 1px solid #2A2E37">
+          <div class="rot">AQUÍ SE DECIDE LA COMPETENCIA</div>
+          <div style="font-size: 17px; line-height: 1.6; margin-top: 10px">Una vez por unidad, no una vez por sesión. Cada sesión la hereda de acá. Toca la etiqueta para cambiar la de una sesión y mira cómo se mueven los totales de la derecha.</div>
+
+          <div style="margin-top: 18px">
+            <div class="fila">
+              <span class="num">1</span>
+              <span style="flex:1;min-width:0">
+                <span style="display:block;font-size:16px;font-weight:600">¿Nos tocó igual a todos?</span>
+                <span style="display:block;font-size:14px;color:#A3A7B1;margin-top:2px">lunes 20 · dictada</span>
+              </span>
+              <button type="button" onClick="{{ c0 }}" style="{{ s0 }}">{{ r0 }}</button>
+            </div>
+            <div class="fila">
+              <span class="num">2</span>
+              <span style="flex:1;min-width:0">
+                <span style="display:block;font-size:16px;font-weight:600">Partimos la unidad con las tiras</span>
+                <span style="display:block;font-size:14px;color:#A3A7B1;margin-top:2px">martes 21 · dictada</span>
+              </span>
+              <button type="button" onClick="{{ c1 }}" style="{{ s1 }}">{{ r1 }}</button>
+            </div>
+            <a href="WRevision.dc.html" class="fila" style="border:2px solid #E3B341;background:#221C0B">
+              <span class="num" style="background:#3A2E0C;color:#E3B341">3</span>
+              <span style="flex:1;min-width:0">
+                <span style="display:block;font-size:16px;font-weight:600">Comparar fracciones</span>
+                <span style="display:block;font-size:14px;color:#E3B341;margin-top:2px">jueves 23 · 2 cosas por revisar</span>
+              </span>
+              <span style="{{ s2 }}">{{ r2 }}</span>
+            </a>
+            <div class="fila">
+              <span class="num">4</span>
+              <span style="flex:1;min-width:0">
+                <span style="display:block;font-size:16px;font-weight:600">Escribimos la receta de la olla</span>
+                <span style="display:block;font-size:14px;color:#A3A7B1;margin-top:2px">viernes 24 · borrador listo</span>
+              </span>
+              <button type="button" onClick="{{ c3 }}" style="{{ s3 }}">{{ r3 }}</button>
+            </div>
+            <div class="fila">
+              <span class="num">5</span>
+              <span style="flex:1;min-width:0">
+                <span style="display:block;font-size:16px;font-weight:600">¿Cuánto costó la olla común?</span>
+                <span style="display:block;font-size:14px;color:#6F7480;margin-top:2px">lunes 27 · sin preparar</span>
+              </span>
+              <button type="button" onClick="{{ c4 }}" style="{{ s4 }}">{{ r4 }}</button>
+            </div>
+            <div class="fila">
+              <span class="num">6</span>
+              <span style="flex:1;min-width:0">
+                <span style="display:block;font-size:16px;font-weight:600">Comparamos precios del mercado</span>
+                <span style="display:block;font-size:14px;color:#6F7480;margin-top:2px">martes 28 · sin preparar</span>
+              </span>
+              <button type="button" onClick="{{ c5 }}" style="{{ s5 }}">{{ r5 }}</button>
+            </div>
+            <div class="fila">
+              <span class="num">7</span>
+              <span style="flex:1;min-width:0">
+                <span style="display:block;font-size:16px;font-weight:600">Fracciones en la receta</span>
+                <span style="display:block;font-size:14px;color:#6F7480;margin-top:2px">jueves 30 · sin preparar</span>
+              </span>
+              <button type="button" onClick="{{ c6 }}" style="{{ s6 }}">{{ r6 }}</button>
+            </div>
+            <div class="fila">
+              <span class="num">8</span>
+              <span style="flex:1;min-width:0">
+                <span style="display:block;font-size:16px;font-weight:600">Contamos lo que aprendimos</span>
+                <span style="display:block;font-size:14px;color:#6F7480;margin-top:2px">viernes 31 · sin preparar</span>
+              </span>
+              <button type="button" onClick="{{ c7 }}" style="{{ s7 }}">{{ r7 }}</button>
+            </div>
+          </div>
+
+          <div style="font-size: 16px; color: #A3A7B1; margin-top: 16px">…4 sesiones más hasta el 7 de noviembre, ya repartidas</div>
+        </div>
+
+      </section>
+
+      <aside style="flex: 0 1 420px; min-width: 330px">
+
+        <div style="padding: 20px 22px; border-radius: 16px; background: #17191E; border: 1px solid #2A2E37">
+          <div class="rot">CÓMO VA EL REPARTO</div>
+
+          <div style="margin-top: 14px">
+            <div style="font-size: 16px; font-weight: 600; line-height: 1.4">Resuelve problemas de cantidad</div>
+            <div style="font-size: 15px; color: #A3A7B1; margin-top: 4px">Matemática</div>
+            <div style="{{ tA }}">{{ nA }}</div>
+            <div style="font-size: 15px; color: #A3A7B1; margin-top: 7px">También en el IV bimestre</div>
+          </div>
+
+          <div class="comp">
+            <div style="font-size: 16px; font-weight: 600; line-height: 1.4">Escribe diversos tipos de textos</div>
+            <div style="font-size: 15px; color: #A3A7B1; margin-top: 4px">Comunicación</div>
+            <div style="{{ tB }}">{{ nB }}</div>
+            <div style="font-size: 15px; color: #A3A7B1; margin-top: 7px">También en el II y IV bimestre</div>
+          </div>
+
+          <div class="comp">
+            <div style="font-size: 16px; font-weight: 600; line-height: 1.4">Gestiona responsablemente los recursos económicos</div>
+            <div style="font-size: 15px; color: #A3A7B1; margin-top: 4px">Personal Social</div>
+            <div style="{{ tC }}">{{ nC }}</div>
+            <div style="font-size: 15px; color: #F58A8A; margin-top: 7px">Solo aparece en este bimestre</div>
+          </div>
+        </div>
+
+        <div style="{{ avisoStyle }}">
+          <div style="font-size: 17px; font-weight: 700; color: #E3B341">{{ avisoTitulo }}</div>
+          <div style="font-size: 17px; line-height: 1.6; margin-top: 9px">{{ avisoTexto }}</div>
+        </div>
+
+        <div style="margin-top: 18px; padding: 20px 22px; border-radius: 16px; background: #141A16; border: 1px solid #2F9E5E">
+          <div style="font-size: 16px; line-height: 1.6; color: #CDE8D6">Al terminar el año, todas las competencias del grado tienen que tener un nivel asignado. Voy marcando las que te van quedando cortas.</div>
+        </div>
+
+        <div style="margin-top: 18px; padding: 20px 22px; border-radius: 16px; background: #141A24; border: 1px solid #3C5680">
+          <div class="rot" style="color:#9FB8E8">POR QUÉ NO LA ELIGES EN CADA SESIÓN</div>
+          <div style="font-size: 16px; line-height: 1.6; margin-top: 10px; color: #CFDAF0">Son 13 a 15 sesiones por semana. Elegir por sesión serían unas 500 decisiones al año; por unidad son 10.</div>
+          <div style="font-size: 16px; line-height: 1.6; margin-top: 10px; color: #9FB8E8">Y lo pide el currículo: los propósitos de la sesión se toman de la unidad didáctica. Cartilla DIGEBR, p. 16.</div>
+        </div>
+
+      </aside>
+
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1360,"height":1340}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { a: ['A', 'A', 'A', 'B', 'C', 'C', 'A', 'B'] };
+  }
+  paleta(k) {
+    if (k === 'A') return ['#10291C', '#6EE7A0', 'Cantidad'];
+    if (k === 'B') return ['#14213A', '#7AA2FF', 'Escribe'];
+    return ['#2A1A3A', '#B9A8F0', 'Recursos'];
+  }
+  chip(k, fijo) {
+    var p = this.paleta(k);
+    return 'width: 118px; min-width: 118px; padding: 9px 0; border-radius: 999px; font-size: 14px; font-weight: 700;' +
+           ' text-align: center; background: ' + p[0] + '; color: ' + p[1] + '; border: 1px solid ' + p[1] +
+           (fijo ? '; display: inline-block' : '; cursor: pointer');
+  }
+  total(k, fijo) {
+    var n = this.state.a.filter(function (x) { return x === k; }).length + fijo;
+    return n;
+  }
+  marcador(n) {
+    var c = n >= 4 ? ['#10291C', '#6EE7A0'] : (n >= 3 ? ['#22252C', '#F2EFE8'] : (n >= 1 ? ['#2A2210', '#F2C14E'] : ['#2E1416', '#F58A8A']));
+    return 'display: inline-block; margin-top: 9px; padding: 6px 14px; border-radius: 999px; font-size: 15px;' +
+           ' font-weight: 700; background: ' + c[0] + '; color: ' + c[1];
+  }
+  renderVals() {
+    var s = this.state;
+    var orden = ['A', 'B', 'C'];
+    var vals = {};
+    for (var i = 0; i < 8; i++) {
+      (function (self, i) {
+        var k = s.a[i];
+        vals['c' + i] = function () {
+          var n = s.a.slice();
+          n[i] = orden[(orden.indexOf(n[i]) + 1) % 3];
+          self.setState({ a: n });
+        };
+        vals['s' + i] = self.chip(k, i === 2);
+        vals['r' + i] = self.paleta(k)[2];
+      })(this, i);
+    }
+    var nA = this.total('A', 2), nB = this.total('B', 2), nC = this.total('C', 0);
+    vals.nA = nA + (nA === 1 ? ' sesión' : ' sesiones');
+    vals.nB = nB + (nB === 1 ? ' sesión' : ' sesiones');
+    vals.nC = nC + (nC === 1 ? ' sesión' : ' sesiones');
+    vals.tA = this.marcador(nA);
+    vals.tB = this.marcador(nB);
+    vals.tC = this.marcador(nC);
+
+    var vacia = [['Resuelve problemas de cantidad', nA], ['Escribe diversos tipos de textos', nB], ['Gestiona responsablemente los recursos económicos', nC]]
+      .filter(function (x) { return x[1] === 0; });
+    var floja = [['Resuelve problemas de cantidad', nA], ['Escribe diversos tipos de textos', nB], ['Gestiona responsablemente los recursos económicos', nC]]
+      .filter(function (x) { return x[1] > 0 && x[1] <= 2; });
+
+    var caja = function (color) {
+      return 'margin-top: 18px; padding: 20px 22px; border-radius: 16px; background: ' +
+             (color === 'rojo' ? '#2E1416; border: 2px solid #C93B3B' : '#221C0B; border: 2px solid #E3B341');
+    };
+
+    if (vacia.length > 0) {
+      vals.avisoStyle = caja('rojo');
+      vals.avisoTitulo = 'Una competencia quedó sin sesiones';
+      vals.avisoTexto = '«' + vacia[0][0] + '» no se trabaja en ninguna sesión de esta unidad. Si no entra en otra unidad del bimestre, al cerrar el año no tendrá nivel asignado, y la norma pide que todas lo tengan.';
+    } else if (floja.length > 0) {
+      vals.avisoStyle = caja('ambar');
+      vals.avisoTitulo = 'Una competencia queda con poca presencia';
+      vals.avisoTexto = '«' + floja[0][0] + '» tiene ' + floja[0][1] + (floja[0][1] === 1 ? ' sesión' : ' sesiones') + ' en esta unidad. La norma pide que cada competencia se trabaje en más de un periodo, para que el niño tenga otra oportunidad de avanzar.';
+    } else {
+      vals.avisoStyle = caja('ambar') + '; display: none';
+      vals.avisoTitulo = '';
+      vals.avisoTexto = '';
+    }
+    return vals;
+  }
+}
+</script>
+</body>
+</html>

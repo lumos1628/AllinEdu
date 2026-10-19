@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Hoy</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0;background:#0E0F12}
+a{text-decoration:none;color:inherit}
+button{font-family:inherit}
+.rot{font-size:13px;color:#A3A7B1;letter-spacing:.4px}
+.hoja{background:#FDFCF9;color:#17150F;border-radius:12px;padding:30px 32px;box-sizing:border-box}
+.sec{padding:16px 0;border-top:1px solid #D8D3C4}
+.cab{display:flex;align-items:center;gap:9px}
+.num{width:24px;height:24px;min-width:24px;border-radius:50%;background:#17150F;color:#FDFCF9;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700}
+.tit{font-size:12px;font-weight:700;letter-spacing:.5px}
+.est{margin-left:auto;font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.ok{background:#DCEFE1;color:#14562F}
+.rev{background:#F6E6BF;color:#6B5200}
+.tu{background:#E4E0D4;color:#4A4639}
+.p{font-size:14px;line-height:1.6;margin-top:8px}
+.sub{font-size:11px;font-weight:700;color:#5C584C;letter-spacing:.4px;margin-top:13px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:10px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:12px}
+.mom{padding:14px;border-radius:9px;background:#F4F1E8}
+.mint{font-size:11px;font-weight:700;color:#5C584C;letter-spacing:.4px}
+.avisop{margin-top:10px;padding:11px 13px;border-radius:8px;background:#FBF0D2;border-left:4px solid #B8890F;font-size:13px;line-height:1.55}
+.cita{font-size:12px;line-height:1.5;color:#3D3930;font-style:italic;border-left:3px solid #1F6B3F;padding-left:10px;margin-top:8px}
+.fila{display:flex;gap:10px;padding:6px 0;border-bottom:1px solid #EAE6DA;font-size:13px;line-height:1.5}
+.et{min-width:92px;color:#5C584C}
+.linea{border-bottom:1px solid #8A8678;display:inline-block;min-width:92px}
+.tira{display:flex;margin-top:7px;border:1.5px solid #17150F;border-radius:3px;overflow:hidden;width:280px}
+.c{flex:1;height:30px;border-right:1px solid #17150F;box-sizing:border-box}
+.c:last-child{border-right:none}
+.on{background:#17150F}
+table{width:100%;border-collapse:collapse;margin-top:12px}
+th,td{border:1px solid #C9C3B2;padding:8px;font-size:13px;text-align:center}
+th{background:#EFEBE0;font-size:11px;font-weight:700;color:#3D3930}
+td.nm,th.nm{text-align:left}
+.si{font-weight:700;color:#14562F}
+.no{font-weight:700;color:#8A2A2A}
+@media (max-width:1000px){.dos{flex-direction:column}.g2,.g3{grid-template-columns:1fr}}
+</style>
+</helmet>
+<div style="width: 100%; min-height: 1580px; box-sizing: border-box; background: #0E0F12; color: #F2EFE8; font-family: ui-sans-serif, system-ui, sans-serif">
+
+  <header style="display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 18px 40px; border-bottom: 1px solid #2A2E37; flex-wrap: wrap">
+    <div style="display: flex; align-items: center; gap: 14px">
+      <a href="WEscritorio.dc.html" style="font-size: 16px; color: #7AA2FF">← Escritorio</a>
+      <span style="font-size: 16px; color: #A3A7B1">4.º B · miércoles 22 de octubre</span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 10px">
+      <span style="width: 9px; height: 9px; border-radius: 5px; background: #6EE7A0"></span>
+      <span style="font-size: 15px; color: #A3A7B1">Guardado en esta computadora</span>
+    </div>
+  </header>
+
+  <div style="max-width: 1360px; margin: 0 auto; padding: 26px 40px 48px">
+    <div class="dos" style="display: flex; gap: 26px; align-items: flex-start">
+
+      <!-- RAIL: las clases del dia -->
+      <nav style="flex: 0 0 272px; min-width: 240px">
+        <div class="rot">MIS CLASES DE HOY</div>
+
+        <button type="button" onClick="{{ sel1 }}" style="{{ cl1 }}">
+          <span style="display: block; font-size: 14px; color: #A3A7B1">8:00 – 9:30</span>
+          <span style="display: block; font-size: 18px; font-weight: 700; margin-top: 4px">Matemática</span>
+          <span style="display: block; font-size: 15px; margin-top: 2px">Comparar fracciones</span>
+        </button>
+
+        <button type="button" onClick="{{ sel2 }}" style="{{ cl2 }}">
+          <span style="display: block; font-size: 14px; color: #A3A7B1">10:00 – 11:30</span>
+          <span style="display: block; font-size: 18px; font-weight: 700; margin-top: 4px">Comunicación</span>
+          <span style="display: block; font-size: 15px; margin-top: 2px">Escribimos una receta</span>
+        </button>
+
+        <div style="margin-top: 22px; padding: 16px 18px; border-radius: 13px; background: #17191E; border: 1px solid #2A2E37">
+          <div class="rot">DESPUÉS DE CLASE</div>
+          <a href="WCierre.dc.html" style="display: block; font-size: 16px; color: #7AA2FF; margin-top: 9px">Comentarios del bimestre →</a>
+          <a href="WUnidad.dc.html" style="display: block; font-size: 16px; color: #7AA2FF; margin-top: 9px">La unidad completa →</a>
+          <a href="WRevision.dc.html" style="display: block; font-size: 16px; color: #7AA2FF; margin-top: 9px">Revisar las de mañana →</a>
+        </div>
+      </nav>
+
+      <!-- PANEL: el material de la clase elegida -->
+      <main style="flex: 1 1 auto; min-width: 0">
+        <div style="font-size: 26px; font-weight: 700">{{ titulo }}</div>
+        <div style="font-size: 16px; color: #A3A7B1; margin-top: 6px">{{ bajada }}</div>
+
+        <div style="display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap">
+          <button type="button" onClick="{{ vSesion }}" style="{{ tSesion }}">Ver la sesión</button>
+          <button type="button" onClick="{{ vFicha }}" style="{{ tFicha }}">La ficha</button>
+          <button type="button" onClick="{{ vCotejo }}" style="{{ tCotejo }}">La lista de cotejo</button>
+          <button type="button" onClick="{{ vAnotar }}" style="{{ tAnotar }}">Anotar en clase</button>
+        </div>
+
+        <!-- ===== LA SESION ===== -->
+        <div style="{{ pSesion }}">
+          <div style="display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap">
+            <span style="padding: 6px 13px; border-radius: 999px; background: #10291C; color: #6EE7A0; font-size: 14px; font-weight: 700">4 verificadas</span>
+            <span style="padding: 6px 13px; border-radius: 999px; background: #2A2210; color: #F2C14E; font-size: 14px; font-weight: 700">3 por revisar</span>
+            <span style="padding: 6px 13px; border-radius: 999px; background: #22252C; color: #A3A7B1; font-size: 14px">1 la llenas tú</span>
+          </div>
+
+          <div class="hoja">
+            <div style="font-size: 11px; color: #5C584C; letter-spacing: .5px">SESIÓN DE APRENDIZAJE</div>
+            <div style="font-size: 22px; font-weight: 700; margin-top: 8px; line-height: 1.3">Comparamos fracciones para saber si el reparto fue justo</div>
+
+            <div class="sec" style="border-top:none">
+              <div class="cab"><span class="num">1</span><span class="tit">DATOS GENERALES</span><span class="est ok">verificado</span></div>
+              <div class="g2">
+                <div>
+                  <div class="fila"><span class="et">I. E.</span><span>[NOMBRE DE TU I. E.]</span></div>
+                  <div class="fila"><span class="et">Docente</span><span>Zevallos</span></div>
+                  <div class="fila"><span class="et">Área</span><span>Matemática</span></div>
+                </div>
+                <div>
+                  <div class="fila"><span class="et">Grado</span><span>4.º B · ciclo IV · 26 estudiantes</span></div>
+                  <div class="fila"><span class="et">Duración</span><span>90 min · 8:00 a 9:30</span></div>
+                  <div class="fila"><span class="et">Unidad</span><span>6, sesión 3 de 12</span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="sec">
+              <div class="cab"><span class="num">2</span><span class="tit">TÍTULO Y SITUACIÓN</span><span class="est ok">verificado</span></div>
+              <div class="p">Sale de la situación significativa de la unidad: la olla común del barrio y el reparto entre los vecinos.</div>
+            </div>
+
+            <div class="sec">
+              <div class="cab"><span class="num">3</span><span class="tit">PROPÓSITOS DE APRENDIZAJE</span><span class="est ok">verificado</span></div>
+              <div class="g2">
+                <div>
+                  <div class="sub">COMPETENCIA</div>
+                  <div class="p">Resuelve problemas de cantidad</div>
+                  <div class="sub">CAPACIDADES</div>
+                  <div class="p">Traduce cantidades a expresiones numéricas · Comunica su comprensión de los números · Usa estrategias y procedimientos de estimación y cálculo</div>
+                  <div class="sub">ENFOQUE TRANSVERSAL</div>
+                  <div class="p"><strong>Orientación al bien común.</strong> Los estudiantes discuten si el reparto fue justo y proponen cómo repartir mejor.</div>
+                </div>
+                <div>
+                  <div class="sub">DESEMPEÑO DE 4.º GRADO</div>
+                  <div class="p">Expresa con diversas representaciones y lenguaje numérico su comprensión de la fracción como parte de una unidad, usando material concreto y gráfico.</div>
+                  <div class="cita">Programa Curricular de Educación Primaria, p. 139 · RM N.º 649-2016-MINEDU</div>
+                  <div class="sub">ESTÁNDAR DEL CICLO IV</div>
+                  <div class="p" style="color:#3D3930">Resuelve problemas referidos a agregar, quitar, repartir y comparar, traduciéndolos a expresiones con fracciones usuales.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="sec">
+              <div class="cab"><span class="num">4</span><span class="tit">CRITERIOS, EVIDENCIAS E INSTRUMENTOS</span><span class="est ok">verificado</span></div>
+              <div class="p" style="color:#5C584C">El currículo pide definir esto <strong>antes</strong> de las actividades, y comunicárselo a los niños al empezar.</div>
+              <div class="g3">
+                <div>
+                  <div class="sub">CRITERIOS</div>
+                  <div class="p">1. Compara dos fracciones del mismo denominador e identifica cuál es mayor.<br>2. Usa las tiras para comprobar.<br>3. Explica con sus palabras cómo lo supo.</div>
+                </div>
+                <div>
+                  <div class="sub">EVIDENCIA</div>
+                  <div class="p">La ficha resuelta, en especial la pregunta 1c, y la explicación oral de cada grupo.</div>
+                </div>
+                <div>
+                  <div class="sub">INSTRUMENTO</div>
+                  <div class="p">Lista de cotejo de 3 criterios.</div>
+                  <div class="cita">CNEB, §VII, p. 177 · RM N.º 281-2016-MINEDU</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="sec">
+              <div class="cab"><span class="num">5</span><span class="tit">PREPARACIÓN DE LA SESIÓN</span><span class="est rev">revísalo</span></div>
+              <div class="g2">
+                <div>
+                  <div class="sub">QUÉ NECESITAS HACER ANTES</div>
+                  <div class="p">Sacar las tiras del armario y separar 26 copias de la ficha, más 2 de la versión con las tiras dibujadas.</div>
+                  <div class="sub">ORGANIZACIÓN</div>
+                  <div class="p">Grupo clase en inicio y cierre. Grupos de cuatro en el desarrollo.</div>
+                </div>
+                <div>
+                  <div class="sub">MATERIALES Y RECURSOS</div>
+                  <div style="margin-top: 9px; display: flex; gap: 9px; align-items: flex-start">
+                    <span style="padding: 3px 9px; border-radius: 999px; background: #F6E6BF; color: #6B5200; font-size: 11px; font-weight: 700; white-space: nowrap">OBLIGATORIO</span>
+                    <span style="font-size: 13px; line-height: 1.5">Tiras de fracciones — el desempeño de 4.º pide material concreto</span>
+                  </div>
+                  <div style="margin-top: 9px; display: flex; gap: 9px; align-items: flex-start">
+                    <span style="padding: 3px 9px; border-radius: 999px; background: #E4E0D4; color: #4A4639; font-size: 11px; font-weight: 700; white-space: nowrap">TÚ DECIDES</span>
+                    <span style="font-size: 13px; line-height: 1.5">Ficha impresa · pizarra y plumones</span>
+                  </div>
+                  <div class="avisop">No sé si las tiras están completas. Son 26 niños en grupos de cuatro: necesitas al menos 7 juegos.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="sec">
+              <div class="cab"><span class="num">6</span><span class="tit">MOMENTOS DE LA SESIÓN</span><span class="est rev">revísalo</span></div>
+              <div class="g3">
+                <div class="mom">
+                  <div class="mint">INICIO · 15 MIN</div>
+                  <div class="p"><strong>Tú:</strong> cuentas lo de la olla común y preguntas cómo saben si a todos les tocó igual. Les dices qué van a aprender y los tres criterios.</div>
+                  <div class="p"><strong>Ellos:</strong> cuentan cómo reparten en su casa. Dos anotan en la pizarra.</div>
+                </div>
+                <div class="mom">
+                  <div class="mint">DESARROLLO · 60 MIN</div>
+                  <div class="p"><strong>Ellos:</strong> en grupos de cuatro resuelven el reparto del queque en 8 partes. Comprueban con las tiras antes de escribir el símbolo.</div>
+                  <div class="p"><strong>Tú:</strong> pasas por los grupos. A los que ya comparan, les pides hacerlo sin material. A los que se trancan, les preguntas qué parte es mayor y por qué.</div>
+                </div>
+                <div class="mom">
+                  <div class="mint">CIERRE · 30 MIN</div>
+                  <div class="p"><strong>Ellos:</strong> cada grupo explica cómo supo cuál era mayor. Escriben la regla en su cuaderno.</div>
+                  <div class="p"><strong>Tú:</strong> recoges las fichas y anotas quién explicó el por qué.</div>
+                </div>
+              </div>
+              <div class="avisop">15 + 60 + 30 son <strong>105 minutos</strong> y tu bloque es de 90. Lo más fácil de recortar es escribir la regla en el cuaderno. · Puse «el mercado de abastos» en la ficha porque es lo común: si en tu zona no hay, cámbialo.</div>
+            </div>
+
+            <div class="sec">
+              <div class="g2">
+                <div>
+                  <div class="cab"><span class="num">7</span><span class="tit">ATENCIÓN A LA DIVERSIDAD</span><span class="est rev">revísalo</span></div>
+                  <div class="p">Dos estudiantes tienen apoyos registrados por ti. Hay otra versión de la ficha con las tiras dibujadas.</div>
+                  <div class="p">Tres caminos: armar con material antes de escribir · resolver en pareja antes del grupo · explicar en voz alta en lugar de escribir.</div>
+                  <div class="avisop">Cuál usas lo decides tú, y es lo que hay que mencionar en el comentario del bimestre. No guardo nada sobre ningún niño.</div>
+                </div>
+                <div>
+                  <div class="cab"><span class="num">8</span><span class="tit">REFLEXIONES</span><span class="est tu">tú, después</span></div>
+                  <div class="p" style="color:#5C584C">Se llena al terminar la clase:</div>
+                  <div class="p">¿Qué avances tuvieron?<br>¿Qué dificultades tuvieron?<br>¿Qué debo reforzar en la siguiente sesión?</div>
+                  <div style="margin-top: 11px; padding: 12px; border-radius: 8px; background: #F4F1E8; font-size: 13px; line-height: 1.55; color: #5C584C">Si anotas los logros durante la clase, esto se llena casi solo.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top: 16px; padding: 16px 18px; border-radius: 13px; background: #141A16; border: 1px solid #2F9E5E">
+            <div style="font-size: 16px; line-height: 1.6; color: #CDE8D6">Las partes 1 a 4 las comparé con el Programa Curricular y el CNEB, y te digo la página. Las partes 5 a 7 dependen de tu aula.</div>
+          </div>
+        </div>
+
+        <!-- ===== LA FICHA ===== -->
+        <div style="{{ pFicha }}">
+          <div style="font-size: 16px; color: #A3A7B1; margin-bottom: 14px">Hoja 1 de 2 · así la reciben los niños</div>
+          <div class="hoja" style="max-width: 720px">
+            <div style="display: flex; justify-content: space-between; font-size: 13px; color: #5C584C">
+              <span>Nombre: <span class="linea" style="min-width:220px"></span></span>
+              <span>4.º B</span>
+            </div>
+            <div style="font-size: 21px; font-weight: 700; margin-top: 22px">Comparamos fracciones</div>
+            <div style="font-size: 14px; color: #5C584C; margin-top: 5px">Usa tus tiras de cartón para comprobar cada respuesta.</div>
+
+            <div class="p" style="margin-top:20px"><strong>1.</strong> En la olla común del domingo partieron un queque en <strong>8 partes iguales</strong>. A Ana le tocaron 3 partes y a Luis le tocaron 5.</div>
+            <div style="font-size: 14px; margin-top: 14px">a) Pinta lo que le tocó a cada uno.</div>
+            <div style="font-size: 14px; margin-top: 12px">Ana</div>
+            <div class="tira"><span class="c on"></span><span class="c on"></span><span class="c on"></span><span class="c"></span><span class="c"></span><span class="c"></span><span class="c"></span><span class="c"></span></div>
+            <div style="font-size: 14px; margin-top: 12px">Luis</div>
+            <div class="tira"><span class="c"></span><span class="c"></span><span class="c"></span><span class="c"></span><span class="c"></span><span class="c"></span><span class="c"></span><span class="c"></span></div>
+
+            <div style="font-size: 14px; margin-top: 18px">b) ¿A quién le tocó más? <span class="linea" style="min-width:240px"></span></div>
+            <div style="font-size: 14px; margin-top: 14px">c) ¿Cómo lo sabes? Explícalo con tus palabras.</div>
+            <div style="margin-top:7px"><span class="linea" style="min-width:560px"></span></div>
+            <div style="margin-top:9px"><span class="linea" style="min-width:560px"></span></div>
+
+            <div class="p" style="margin-top:22px"><strong>2.</strong> Escribe <strong>&gt;</strong> o <strong>&lt;</strong> en el espacio.</div>
+            <div style="display: flex; gap: 40px; margin-top: 12px; font-size: 17px; flex-wrap: wrap">
+              <span>3/8 <span class="linea" style="min-width:34px"></span> 5/8</span>
+              <span>6/8 <span class="linea" style="min-width:34px"></span> 2/8</span>
+              <span>4/8 <span class="linea" style="min-width:34px"></span> 7/8</span>
+              <span>5/8 <span class="linea" style="min-width:34px"></span> 1/8</span>
+            </div>
+
+            <div class="p" style="margin-top:22px"><strong>3.</strong> Cuando dos fracciones tienen el mismo número de abajo, ¿cómo sabes cuál es más grande?</div>
+            <div style="margin-top:7px"><span class="linea" style="min-width:560px"></span></div>
+            <div style="margin-top:9px"><span class="linea" style="min-width:560px"></span></div>
+
+            <div style="margin-top: 24px; padding-top: 12px; border-top: 1px dashed #8A8678; font-size: 12px; color: #5C584C">Sigue en la hoja 2</div>
+          </div>
+          <div style="margin-top: 16px; padding: 16px 18px; border-radius: 13px; background: #141A24; border: 1px solid #3C5680; max-width: 720px">
+            <div style="font-size: 16px; line-height: 1.6; color: #9FB8E8">La pregunta <strong>1c</strong> es la que sirve para evaluar: ahí explican el por qué, que es el criterio 3.</div>
+          </div>
+          <div style="display: flex; gap: 12px; margin-top: 16px; flex-wrap: wrap">
+            <a href="Impresion.dc.html" style="padding: 15px 22px; border-radius: 12px; background: #E3B341; color: #16130A; font-size: 16px; font-weight: 700">Así sale en papel</a>
+            <a href="Apoyo.dc.html" style="padding: 15px 22px; border-radius: 12px; border: 1px solid #5F6676; font-size: 16px">La otra versión, para dos niños</a>
+          </div>
+        </div>
+
+        <!-- ===== LA LISTA DE COTEJO ===== -->
+        <div style="{{ pCotejo }}">
+          <div class="hoja" style="max-width: 860px">
+            <div style="font-size: 11px; color: #5C584C; letter-spacing: .5px">LISTA DE COTEJO</div>
+            <div style="font-size: 20px; font-weight: 700; margin-top: 7px">Comparamos fracciones para saber si el reparto fue justo</div>
+            <div style="font-size: 13px; color: #5C584C; margin-top: 7px; line-height: 1.55">4.º B · 26 estudiantes · 22 de octubre de 2026 · Competencia: Resuelve problemas de cantidad</div>
+
+            <div class="sub">LO QUE VAS A OBSERVAR</div>
+            <table>
+              <thead>
+                <tr>
+                  <th class="nm">Estudiante</th>
+                  <th>1 · Identifica<br>cuál es mayor</th>
+                  <th>2 · Comprueba<br>con las tiras</th>
+                  <th>3 · Explica<br>cómo lo supo</th>
+                  <th class="nm">Observación</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td class="nm">Ana Portocarrero</td><td class="si">Sí</td><td class="si">Sí</td><td class="si">Sí</td><td class="nm"></td></tr>
+                <tr><td class="nm">Luz Valdivieso</td><td class="si">Sí</td><td class="si">Sí</td><td class="no">No</td><td class="nm" style="color:#5C584C">acierta, no explica</td></tr>
+                <tr><td class="nm">Rosa Larrea</td><td class="si">Sí</td><td class="si">Sí</td><td class="no">No</td><td class="nm" style="color:#5C584C">depende del material</td></tr>
+                <tr><td class="nm">Sara Arriaga</td><td class="no">No</td><td class="si">Sí</td><td class="no">No</td><td class="nm"></td></tr>
+                <tr><td class="nm">Pedro Ocampo</td><td class="si">Sí</td><td class="no">No</td><td class="si">Sí</td><td class="nm"></td></tr>
+                <tr><td class="nm" style="color:#5C584C">…21 más</td><td></td><td></td><td></td><td class="nm"></td></tr>
+              </tbody>
+            </table>
+            <div style="font-size: 12px; color: #5C584C; margin-top: 11px; line-height: 1.5">Una lista de cotejo no tiene niveles intermedios: lo hizo o no lo hizo. El criterio 3 es el que vale para el comentario del bimestre.</div>
+          </div>
+
+          <div style="margin-top: 16px; padding: 18px 20px; border-radius: 13px; background: #17191E; border: 1px solid #2A2E37; max-width: 860px">
+            <div class="rot">PARA DECIRLES AL EMPEZAR</div>
+            <div style="font-size: 17px; line-height: 1.65; margin-top: 10px; padding: 15px; border-radius: 11px; background: #0E0F12; border: 1px solid #2A2E37">«Hoy vamos a comparar fracciones. Voy a mirar tres cosas: que sepan cuál es mayor, que lo comprueben con las tiras, y que me puedan explicar cómo lo supieron.»</div>
+            <div style="font-size: 15px; color: #A3A7B1; margin-top: 10px; line-height: 1.55">El currículo pide comunicarles los criterios antes de empezar. Puedes leerlo tal cual.</div>
+          </div>
+
+          <a href="Impresion.dc.html" style="display: inline-block; margin-top: 16px; padding: 15px 22px; border-radius: 12px; border: 1px solid #5F6676; font-size: 16px">Imprimirla para tenerla en mano</a>
+        </div>
+
+        <!-- ===== ANOTAR EN CLASE ===== -->
+        <div style="{{ pAnotar }}">
+          <div style="padding: 20px 22px; border-radius: 14px; background: #141A24; border: 1px solid #3C5680">
+            <div class="rot" style="color:#9FB8E8">LO QUE DIJISTE QUE IBAS A MIRAR</div>
+            <div style="font-size: 17px; line-height: 1.7; margin-top: 10px">1 · Identifica cuál fracción es mayor &nbsp;·&nbsp; 2 · Comprueba con las tiras &nbsp;·&nbsp; 3 · Explica cómo lo supo</div>
+          </div>
+
+          <div style="font-size: 17px; margin-top: 22px; line-height: 1.6">Marca lo que viste. No hace falta llegar a los 26: con los que te llamaron la atención alcanza.</div>
+
+          <div style="margin-top: 16px; border-radius: 14px; background: #17191E; border: 1px solid #2A2E37; overflow: hidden">
+            <div style="display: flex; align-items: center; gap: 14px; padding: 13px 18px; background: #1C1F26; font-size: 13px; color: #A3A7B1; letter-spacing: .3px">
+              <span style="flex: 1; min-width: 0">ESTUDIANTE</span>
+              <span style="width: 74px; text-align: center">1</span>
+              <span style="width: 74px; text-align: center">2</span>
+              <span style="width: 74px; text-align: center">3</span>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 14px; padding: 15px 18px; border-top: 1px solid #2A2E37">
+              <span style="flex: 1; min-width: 0; font-size: 17px">Rosa Larrea</span>
+              <button type="button" onClick="{{ r1a }}" style="{{ s1a }}">{{ t1a }}</button>
+              <button type="button" onClick="{{ r1b }}" style="{{ s1b }}">{{ t1b }}</button>
+              <button type="button" onClick="{{ r1c }}" style="{{ s1c }}">{{ t1c }}</button>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 14px; padding: 15px 18px; border-top: 1px solid #2A2E37">
+              <span style="flex: 1; min-width: 0; font-size: 17px">Sara Arriaga</span>
+              <button type="button" onClick="{{ r2a }}" style="{{ s2a }}">{{ t2a }}</button>
+              <button type="button" onClick="{{ r2b }}" style="{{ s2b }}">{{ t2b }}</button>
+              <button type="button" onClick="{{ r2c }}" style="{{ s2c }}">{{ t2c }}</button>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 14px; padding: 15px 18px; border-top: 1px solid #2A2E37">
+              <span style="flex: 1; min-width: 0; font-size: 17px">Pedro Ocampo</span>
+              <button type="button" onClick="{{ r3a }}" style="{{ s3a }}">{{ t3a }}</button>
+              <button type="button" onClick="{{ r3b }}" style="{{ s3b }}">{{ t3b }}</button>
+              <button type="button" onClick="{{ r3c }}" style="{{ s3c }}">{{ t3c }}</button>
+            </div>
+          </div>
+
+          <div style="font-size: 16px; color: #A3A7B1; margin-top: 14px">{{ resumen }}</div>
+
+          <div style="margin-top: 20px; padding: 18px 20px; border-radius: 13px; background: #141A16; border: 1px solid #2F9E5E">
+            <div style="font-size: 16px; line-height: 1.6; color: #CDE8D6">Esto es lo que vas a tener delante en el cierre del bimestre, y por criterio: así el borrador del comentario sabe <strong>qué</strong> le falta a cada niño, no solo que le falta algo.</div>
+          </div>
+
+          <div style="display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap; align-items: center">
+            <a href="WCierre.dc.html" style="padding: 16px 24px; border-radius: 12px; background: #E3B341; color: #16130A; font-size: 17px; font-weight: 700">Guardar</a>
+            <span style="font-size: 16px; color: #A3A7B1">Se guarda aquí y aparece en tu celular cuando se conecte</span>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1360,"height":1580}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = {
+      clase: 1, vista: 'sesion',
+      m: { '1a': true, '1b': true, '1c': null, '2a': null, '2b': true, '2c': null, '3a': true, '3b': false, '3c': null }
+    };
+  }
+  clase(on) {
+    return 'display: block; width: 100%; box-sizing: border-box; text-align: left; margin-top: 12px; padding: 17px 18px;' +
+           ' border-radius: 13px; cursor: pointer; color: #F2EFE8;' +
+           (on ? ' background: #221C0B; border: 2px solid #E3B341' : ' background: #17191E; border: 1px solid #2A2E37');
+  }
+  tab(on) {
+    return 'padding: 13px 20px; border-radius: 11px; font-size: 16px; cursor: pointer;' +
+           (on ? ' background: #E3B341; color: #16130A; border: none; font-weight: 700'
+               : ' background: #17191E; color: #F2EFE8; border: 1px solid #2A2E37');
+  }
+  pane(on) { return 'margin-top: 24px' + (on ? '' : '; display: none'); }
+  marca(v) {
+    var c = v === true ? ['#10291C', '#6EE7A0', '#2F9E5E'] : (v === false ? ['#2E1416', '#F58A8A', '#C93B3B'] : ['#17191E', '#6F7480', '#2A2E37']);
+    return 'width: 74px; min-width: 74px; padding: 12px 0; border-radius: 10px; font-size: 15px; font-weight: 700; cursor: pointer;' +
+           ' background: ' + c[0] + '; color: ' + c[1] + '; border: 1px solid ' + c[2];
+  }
+  rot(v) { return v === true ? 'Sí' : (v === false ? 'No' : '—'); }
+  sig(v) { return v === null ? true : (v === true ? false : null); }
+  renderVals() {
+    var s = this.state, v = s.vista, m = s.m;
+    var toca = (k) => () => { var n = Object.assign({}, this.state.m); n[k] = this.sig(n[k]); this.setState({ m: n }); };
+    var vals = {
+      sel1: () => this.setState({ clase: 1 }),
+      sel2: () => this.setState({ clase: 2 }),
+      cl1: this.clase(s.clase === 1),
+      cl2: this.clase(s.clase === 2),
+      titulo: s.clase === 1 ? 'Matemática · 8:00 – 9:30' : 'Comunicación · 10:00 – 11:30',
+      bajada: s.clase === 1 ? 'Comparar fracciones · unidad 6, sesión 3 de 12'
+                            : 'Escribimos una receta · unidad 6, sesión 4 de 12',
+      vSesion: () => this.setState({ vista: 'sesion' }),
+      vFicha:  () => this.setState({ vista: 'ficha' }),
+      vCotejo: () => this.setState({ vista: 'cotejo' }),
+      vAnotar: () => this.setState({ vista: 'anotar' }),
+      tSesion: this.tab(v === 'sesion'),
+      tFicha:  this.tab(v === 'ficha'),
+      tCotejo: this.tab(v === 'cotejo'),
+      tAnotar: this.tab(v === 'anotar'),
+      pSesion: this.pane(v === 'sesion'),
+      pFicha:  this.pane(v === 'ficha'),
+      pCotejo: this.pane(v === 'cotejo'),
+      pAnotar: this.pane(v === 'anotar')
+    };
+    var filas = ['1', '2', '3'], cols = ['a', 'b', 'c'], marcadas = 0;
+    for (var i = 0; i < filas.length; i++) {
+      for (var j = 0; j < cols.length; j++) {
+        var k = filas[i] + cols[j];
+        vals['r' + k] = toca(k);
+        vals['s' + k] = this.marca(m[k]);
+        vals['t' + k] = this.rot(m[k]);
+        if (m[k] !== null) marcadas++;
+      }
+    }
+    vals.resumen = marcadas + ' de 9 casillas marcadas · toca para cambiar entre Sí, No y sin marcar';
+    return vals;
+  }
+}
+</script>
+</body>
+</html>

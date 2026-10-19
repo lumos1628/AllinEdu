@@ -141,7 +141,23 @@ El registro de “no entregada” solo se crea al ser confirmado por un actor au
 
 - Aplicar migraciones con Supabase CLI (`supabase db push`), después de enlazar el proyecto local al proyecto Supabase.
 - Ejecutar `supabase/seed.sql` solo en desarrollo. El generador crea 2 secciones por grado y una cantidad configurable de estudiantes por sección (10 por defecto); genera una relación de apoderado para cada estudiante y agrupa hermanos mediante el parámetro `EDUFAST_DEMO_SIBLING_PAIRS`. Crea cuentas sintéticas solo para personal adulto y apoderados, nunca para estudiantes. Los correos de prueba usan `EDUFAST_DEMO_EMAIL_DOMAIN` y el hash de contraseña se deriva de `EDUFAST_DEMO_PASSWORD`, ambos definidos localmente en `backend/.env`. Las notificaciones de las relaciones demo quedan desactivadas mientras sus contactos ficticios no estén verificados.
-- La semilla dinámica no se ejecuta automáticamente desde Supabase CLI. En local, usa `supabase db reset` y luego ejecútala con `psql` contra el puerto local configurado. En un proyecto remoto de desarrollo, despliega primero las migraciones con `supabase db push` y ejecuta luego la semilla con `psql` usando la URI `SUPABASE_DB_URL`. No ejecutes la semilla en producción.
+- `supabase/seed_primaria.sql` se ejecuta **después** de `seed.sql` y convierte la demostración genérica en una IE de primaria: desactiva las secciones de otros niveles, crea una tutora por sección más los especialistas de Inglés y Educación Física, el subdirector y la secretaría, y desarrolla una unidad completa de 4.º B con sus doce sesiones. Renombra los correos para que el rol se lea en el prefijo (`tutor.4b@`, `especialista.ingles@`, `director@`, `subdirector@`, `secretaria@`, `apoderado.NNNN@`) y revoca las cuentas de muestra que esta IE no tiene. No escribe ninguna contraseña: reutiliza el hash que ya dejó `seed.sql`.
+- La IE que queda simulada, con los valores por omisión de `aplicar_local.sh`:
+
+| | |
+|---|---|
+| Secciones | 12 (dos por grado, 1.º a 6.º) |
+| Estudiantes | 300, 25 por sección |
+| Apoderados | 294 (menos que estudiantes por las 6 parejas de hermanos) |
+| Docentes | 14: una tutora por sección más Inglés y Educación Física |
+| Dirección | 1 director, 1 subdirector, 1 secretaría |
+
+  El tamaño de sección sale de las rondas de campo (`EVIDENCIA.md`: aulas de 24 a 25
+  estudiantes). Los estudiantes de inicial y secundaria que genera `seed.sql`, que es la
+  demostración genérica de todos los niveles, se eliminan: si se dejaran con la matrícula
+  cerrada el recuento de la institución diría 550 estudiantes para 12 secciones.
+- Ambas semillas son reaplicables: el conflicto de una cuenta se resuelve por persona y no por correo, precisamente porque `seed_primaria.sql` renombra los correos.
+- La semilla dinámica no se ejecuta automáticamente desde Supabase CLI. En local, usa `supabase db reset` y luego ejecútala con `psql` contra el puerto local configurado, o corre `./supabase/aplicar_local.sh`, que hace migraciones y semillas en un contenedor de Postgres sin necesidad de la CLI. En un proyecto remoto de desarrollo, despliega primero las migraciones con `supabase db push` y ejecuta luego las semillas con `psql` usando la URI `SUPABASE_DB_URL`. No ejecutes la semilla en producción.
 - La clave de conexión solo vive en variables de entorno del backend. No agregar `service_role`, contraseña ni JWT secreto al repositorio.
 - El backend se conecta con un rol de servicio que ignora RLS (equivalente al usuario `postgres` o `service_role` de Supabase, o a un rol local con `BYPASSRLS`). Las políticas RLS están pensadas para bloquear el acceso directo de clientes (`anon`/`authenticated`); el backend nunca publica credenciales a web/móvil.
 - Las entidades JPA mapean estas tablas y Hibernate valida el esquema al arrancar (`ddl-auto=validate`); las migraciones son la única fuente de verdad de la estructura.

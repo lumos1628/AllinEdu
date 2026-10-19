@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Mis clases de hoy</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0}
+a{text-decoration:none;color:inherit}
+button{font-family:inherit}
+.op{display:flex;align-items:center;gap:14px;padding:16px 16px;border-radius:12px;background:#0E0F12;border:1px solid #2A2E37;margin-top:10px;min-height:62px}
+.ico{width:40px;height:40px;min-width:40px;border-radius:11px;display:flex;align-items:center;justify-content:center}
+</style>
+</helmet>
+<div style="width: 390px; height: 1120px; box-sizing: border-box; background: #0E0F12; color: #F2EFE8; font-family: ui-sans-serif, system-ui, sans-serif; overflow-y: auto">
+
+  <div style="padding: 22px 24px 0">
+    <a href="Main.dc.html" style="font-size: 16px; color: #7AA2FF">← Inicio</a>
+    <div style="font-size: 26px; font-weight: 700; margin-top: 14px">Mis clases de hoy</div>
+    <div style="font-size: 16px; color: #A3A7B1; margin-top: 4px">Miércoles 22 de octubre</div>
+  </div>
+
+  <div style="padding: 22px 24px 36px">
+
+    <!-- CLASE 1 -->
+    <div style="{{ tarjeta1 }}">
+      <button type="button" onClick="{{ abrir1 }}" style="display: flex; align-items: center; gap: 14px; width: 100%; box-sizing: border-box; padding: 20px; background: transparent; border: none; cursor: pointer; color: #F2EFE8; text-align: left">
+        <span style="flex: 1; min-width: 0">
+          <span style="display: block; font-size: 15px; color: #A3A7B1">8:00 – 9:30</span>
+          <span style="display: block; font-size: 20px; font-weight: 700; margin-top: 5px">Matemática</span>
+          <span style="display: block; font-size: 16px; margin-top: 3px">Comparar fracciones</span>
+        </span>
+        <span style="{{ flecha1 }}">⌄</span>
+      </button>
+
+      <div style="{{ panel1 }}">
+        <a href="Sesion.dc.html" class="op">
+          <span class="ico" style="background:#14213A">
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#7AA2FF" stroke-width="2.1" aria-hidden="true"><path d="M5 4h14v16H5z"/><path d="M9 9h6M9 13h6M9 17h3"/></svg>
+          </span>
+          <span style="flex:1;min-width:0">
+            <span style="display:block;font-size:17px;font-weight:600">Ver la sesión</span>
+            <span style="display:block;font-size:14px;color:#A3A7B1;margin-top:2px">El documento completo · 8 partes</span>
+          </span>
+          <span style="font-size:19px;color:#6F7480">›</span>
+        </a>
+
+        <a href="Ficha.dc.html" class="op">
+          <span class="ico" style="background:#3A2E0C">
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#E3B341" stroke-width="2.1" aria-hidden="true"><path d="M7 3h10l3 3v15H7z"/><path d="M11 10h5M11 14h5"/></svg>
+          </span>
+          <span style="flex:1;min-width:0">
+            <span style="display:block;font-size:17px;font-weight:600">Ver la ficha</span>
+            <span style="display:block;font-size:14px;color:#A3A7B1;margin-top:2px">Lo que reciben los niños · 2 hojas</span>
+          </span>
+          <span style="font-size:19px;color:#6F7480">›</span>
+        </a>
+
+        <a href="Cotejo.dc.html" class="op">
+          <span class="ico" style="background:#2A1A3A">
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#B9A8F0" stroke-width="2.1" aria-hidden="true"><path d="M4 6h4v4H4zM4 14h4v4H4z"/><path d="M12 8h8M12 16h8"/></svg>
+          </span>
+          <span style="flex:1;min-width:0">
+            <span style="display:block;font-size:17px;font-weight:600">La lista de cotejo</span>
+            <span style="display:block;font-size:14px;color:#A3A7B1;margin-top:2px">Con qué vas a mirar · 3 criterios</span>
+          </span>
+          <span style="font-size:19px;color:#6F7480">›</span>
+        </a>
+
+        <a href="Evidencias.dc.html" class="op" style="border-color:#2F9E5E;background:#101614">
+          <span class="ico" style="background:#10291C">
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#6EE7A0" stroke-width="2.3" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+          </span>
+          <span style="flex:1;min-width:0">
+            <span style="display:block;font-size:17px;font-weight:600">Anotar en clase</span>
+            <span style="display:block;font-size:14px;color:#8FC2A4;margin-top:2px">Hazlo hoy y el bimestre se llena solo</span>
+          </span>
+          <span style="font-size:19px;color:#6F7480">›</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- CLASE 2 -->
+    <div style="{{ tarjeta2 }}">
+      <button type="button" onClick="{{ abrir2 }}" style="display: flex; align-items: center; gap: 14px; width: 100%; box-sizing: border-box; padding: 20px; background: transparent; border: none; cursor: pointer; color: #F2EFE8; text-align: left">
+        <span style="flex: 1; min-width: 0">
+          <span style="display: block; font-size: 15px; color: #A3A7B1">10:00 – 11:30</span>
+          <span style="display: block; font-size: 20px; font-weight: 700; margin-top: 5px">Comunicación</span>
+          <span style="display: block; font-size: 16px; margin-top: 3px">Escribimos una receta</span>
+        </span>
+        <span style="{{ flecha2 }}">⌄</span>
+      </button>
+
+      <div style="{{ panel2 }}">
+        <a href="Sesion.dc.html" class="op">
+          <span class="ico" style="background:#14213A">
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#7AA2FF" stroke-width="2.1" aria-hidden="true"><path d="M5 4h14v16H5z"/><path d="M9 9h6M9 13h6M9 17h3"/></svg>
+          </span>
+          <span style="flex:1;min-width:0">
+            <span style="display:block;font-size:17px;font-weight:600">Ver la sesión</span>
+            <span style="display:block;font-size:14px;color:#A3A7B1;margin-top:2px">El documento completo · 8 partes</span>
+          </span>
+          <span style="font-size:19px;color:#6F7480">›</span>
+        </a>
+
+        <a href="Ficha.dc.html" class="op">
+          <span class="ico" style="background:#3A2E0C">
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#E3B341" stroke-width="2.1" aria-hidden="true"><path d="M7 3h10l3 3v15H7z"/><path d="M11 10h5M11 14h5"/></svg>
+          </span>
+          <span style="flex:1;min-width:0">
+            <span style="display:block;font-size:17px;font-weight:600">Ver la ficha</span>
+            <span style="display:block;font-size:14px;color:#A3A7B1;margin-top:2px">Lo que reciben los niños · 1 hoja</span>
+          </span>
+          <span style="font-size:19px;color:#6F7480">›</span>
+        </a>
+
+        <a href="Cotejo.dc.html" class="op">
+          <span class="ico" style="background:#2A1A3A">
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#B9A8F0" stroke-width="2.1" aria-hidden="true"><path d="M4 6h4v4H4zM4 14h4v4H4z"/><path d="M12 8h8M12 16h8"/></svg>
+          </span>
+          <span style="flex:1;min-width:0">
+            <span style="display:block;font-size:17px;font-weight:600">La lista de cotejo</span>
+            <span style="display:block;font-size:14px;color:#A3A7B1;margin-top:2px">Con qué vas a mirar · 3 criterios</span>
+          </span>
+          <span style="font-size:19px;color:#6F7480">›</span>
+        </a>
+
+        <a href="Evidencias.dc.html" class="op" style="border-color:#2F9E5E;background:#101614">
+          <span class="ico" style="background:#10291C">
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#6EE7A0" stroke-width="2.3" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+          </span>
+          <span style="flex:1;min-width:0">
+            <span style="display:block;font-size:17px;font-weight:600">Anotar en clase</span>
+            <span style="display:block;font-size:14px;color:#8FC2A4;margin-top:2px">Hazlo hoy y el bimestre se llena solo</span>
+          </span>
+          <span style="font-size:19px;color:#6F7480">›</span>
+        </a>
+      </div>
+    </div>
+
+    <div style="font-size: 15px; color: #A3A7B1; text-align: center; margin-top: 18px">{{ pista }}</div>
+
+    <a href="Colas.dc.html" style="display: block; text-align: center; margin-top: 22px; padding: 19px; border-radius: 14px; background: #221C0B; border: 2px solid #E3B341; color: #E3B341; font-size: 18px; font-weight: 700">Preparar las de mañana</a>
+
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1120}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { abierta: 1 };
+  }
+  tarjeta(on) {
+    return 'border-radius: 16px; background: #17191E; margin-bottom: 16px; overflow: hidden;' +
+           ' border: ' + (on ? '2px solid #E3B341' : '1px solid #2A2E37');
+  }
+  panel(on) {
+    return 'padding: 0 16px 18px' + (on ? '' : '; display: none');
+  }
+  flecha(on) {
+    return 'font-size: 22px; color: #A3A7B1; line-height: 1; display: inline-block;' +
+           ' transform: rotate(' + (on ? '180deg' : '0deg') + ')';
+  }
+  renderVals() {
+    var a = this.state.abierta;
+    return {
+      abrir1: () => this.setState({ abierta: a === 1 ? null : 1 }),
+      abrir2: () => this.setState({ abierta: a === 2 ? null : 2 }),
+      tarjeta1: this.tarjeta(a === 1),
+      tarjeta2: this.tarjeta(a === 2),
+      panel1: this.panel(a === 1),
+      panel2: this.panel(a === 2),
+      flecha1: this.flecha(a === 1),
+      flecha2: this.flecha(a === 2),
+      pista: a === null ? 'Toca una clase para ver sus cosas' : 'Toca el título para cerrarla'
+    };
+  }
+}
+</script>
+</body>
+</html>

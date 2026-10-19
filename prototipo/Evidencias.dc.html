@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Anotar en clase</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0}
+a{text-decoration:none;color:inherit}
+button{font-family:inherit}
+.rot{font-size:14px;color:#A3A7B1;letter-spacing:.3px}
+</style>
+</helmet>
+<div style="width: 390px; height: 920px; box-sizing: border-box; background: #0E0F12; color: #F2EFE8; font-family: ui-sans-serif, system-ui, sans-serif; overflow-y: auto">
+
+  <div style="padding: 22px 24px 0">
+    <a href="SesionesHoy.dc.html" style="font-size: 16px; color: #7AA2FF">← Clases de hoy</a>
+    <div style="font-size: 24px; font-weight: 700; margin-top: 12px">Anotar en clase</div>
+    <div style="font-size: 16px; color: #A3A7B1; margin-top: 5px">Matemática · miércoles 22</div>
+  </div>
+
+  <div style="margin: 20px 24px 0; padding: 16px 18px; border-radius: 14px; background: #141A24; border: 1px solid #3C5680">
+    <div class="rot" style="color:#9FB8E8">LO QUE DIJISTE QUE IBAS A MIRAR</div>
+    <div style="font-size: 17px; line-height: 1.6; margin-top: 9px">Que comparen dos fracciones y expliquen con las tiras por qué una es mayor.</div>
+  </div>
+
+  <div style="padding: 22px 24px 0">
+    <div style="font-size: 17px; font-weight: 600">¿Quién lo logró hoy?</div>
+    <div style="font-size: 16px; color: #A3A7B1; margin-top: 5px; line-height: 1.5">Toca solo a los que te llamaron la atención. No hace falta marcar a los 26.</div>
+  </div>
+
+  <div style="padding: 16px 24px 0">
+    <button type="button" onClick="{{ t1 }}" style="{{ s1 }}">
+      <span style="font-size: 18px">Ana Portocarrero</span><span style="{{ e1 }}">{{ r1 }}</span>
+    </button>
+    <button type="button" onClick="{{ t2 }}" style="{{ s2 }}">
+      <span style="font-size: 18px">Luz Valdivieso</span><span style="{{ e2 }}">{{ r2 }}</span>
+    </button>
+    <button type="button" onClick="{{ t3 }}" style="{{ s3 }}">
+      <span style="font-size: 18px">Rosa Larrea</span><span style="{{ e3 }}">{{ r3 }}</span>
+    </button>
+    <div style="font-size: 15px; color: #A3A7B1; text-align: center; margin-top: 14px">Toca para cambiar: lo logró · con ayuda · todavía no</div>
+  </div>
+
+  <div style="margin: 22px 24px 0; padding: 18px; border-radius: 14px; background: #141A16; border: 1px solid #2F9E5E">
+    <div style="font-size: 16px; line-height: 1.6; color: #CDE8D6">Esto es lo que vas a tener delante en el cierre del bimestre. Si lo anotas hoy, en noviembre no tienes que acordarte de nada.</div>
+  </div>
+
+  <div style="padding: 22px 24px 30px">
+    <a href="SesionesHoy.dc.html" style="display: block; text-align: center; padding: 20px; border-radius: 14px; background: #E3B341; color: #16130A; font-size: 18px; font-weight: 700">Guardar</a>
+    <div style="font-size: 15px; color: #A3A7B1; text-align: center; margin-top: 12px">{{ resumen }}</div>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":920}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { a: null, b: 'logro', c: 'ayuda' };
+  }
+  sig(v) { return v === null ? 'logro' : (v === 'logro' ? 'ayuda' : (v === 'ayuda' ? 'noaun' : null)); }
+  fila() {
+    return 'display: flex; justify-content: space-between; align-items: center; width: 100%; box-sizing: border-box;' +
+           ' margin-bottom: 12px; padding: 18px; border-radius: 14px; background: #17191E; cursor: pointer; color: #F2EFE8;' +
+           ' border: 1px solid #2A2E37; min-height: 64px';
+  }
+  etiq(v) {
+    if (v === null) return 'font-size: 15px; color: #6F7480';
+    var c = v === 'logro' ? ['#10291C', '#6EE7A0'] : (v === 'ayuda' ? ['#2A2210', '#F2C14E'] : ['#2E1416', '#F58A8A']);
+    return 'padding: 7px 16px; border-radius: 999px; font-size: 15px; font-weight: 600; background: ' + c[0] + '; color: ' + c[1];
+  }
+  rot(v) { return v === null ? 'sin anotar' : (v === 'logro' ? 'Lo logró' : (v === 'ayuda' ? 'Con ayuda' : 'Todavía no')); }
+  renderVals() {
+    var s = this.state;
+    var n = [s.a, s.b, s.c].filter(function (v) { return v !== null; }).length;
+    return {
+      t1: () => this.setState({ a: this.sig(s.a) }),
+      t2: () => this.setState({ b: this.sig(s.b) }),
+      t3: () => this.setState({ c: this.sig(s.c) }),
+      s1: this.fila(), s2: this.fila(), s3: this.fila(),
+      e1: this.etiq(s.a), e2: this.etiq(s.b), e3: this.etiq(s.c),
+      r1: this.rot(s.a), r2: this.rot(s.b), r3: this.rot(s.c),
+      resumen: n + (n === 1 ? ' anotación de hoy' : ' anotaciones de hoy')
+    };
+  }
+}
+</script>
+</body>
+</html>
