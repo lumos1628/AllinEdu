@@ -9,19 +9,20 @@
 <x-dc>
 <helmet>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 body{margin:0;background:#0E0F12}
 a{text-decoration:none;color:inherit}
 button{font-family:inherit}
-.rot{font-size:13px;color:#A3A7B1;letter-spacing:.4px}
-.fila{display:flex;gap:14px;align-items:center;padding:13px 16px;border-radius:12px;background:#17191E;border:1px solid #2A2E37;margin-top:10px}
+.rot{font-size:12px;color:#78818F;font-weight:600}
+.fila{display:flex;gap:14px;align-items:center;padding:13px 16px;border-radius:12px;background:#15171C;border:1px solid #24272F;margin-top:10px}
 .num{width:28px;height:28px;min-width:28px;border-radius:9px;background:#22252C;color:#A3A7B1;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700}
-.comp{margin-top:18px;padding-top:18px;border-top:1px solid #2A2E37}
+.comp{margin-top:18px;padding-top:18px;border-top:1px solid #24272F}
 @media (max-width:1000px){.dos{flex-direction:column}}
 </style>
 </helmet>
-<div style="width: 100%; min-height: 1340px; box-sizing: border-box; background: #0E0F12; color: #F2EFE8; font-family: ui-sans-serif, system-ui, sans-serif">
+<div style="width: 100%; min-height: 1340px; box-sizing: border-box; background: #0E0F12; color: #F2EFE8; font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif">
 
-  <header style="display: flex; align-items: center; gap: 20px; padding: 18px 40px; border-bottom: 1px solid #2A2E37">
+  <header style="display: flex; align-items: center; gap: 20px; padding: 18px 40px; border-bottom: 1px solid #24272F">
     <a href="WEscritorio.dc.html" style="font-size: 16px; color: #7AA2FF">← Escritorio</a>
     <span style="font-size: 16px; color: #A3A7B1">Unidad 6 · del 20 de octubre al 7 de noviembre</span>
   </header>
@@ -35,13 +36,13 @@ button{font-family:inherit}
 
       <section style="flex: 1 1 760px; min-width: 0">
 
-        <div style="padding: 20px 22px; border-radius: 14px; background: #141A24; border: 1px solid #3C5680">
-          <div class="rot" style="color:#9FB8E8">LA SITUACIÓN DE DONDE SALE TODO</div>
+        <div style="padding: 20px 22px; border-radius: 10px; background: #141A24; border: 1px solid #3C5680">
+          <div class="rot" style="color:#9FB8E8">La situación de donde sale todo</div>
           <div style="font-size: 18px; line-height: 1.6; margin-top: 10px">En el barrio hay una olla común los domingos. Los niños ayudan a repartir y discuten si a todos les tocó igual. ¿Cómo sabemos si el reparto fue justo?</div>
         </div>
 
-        <div style="margin-top: 26px; padding: 22px; border-radius: 14px; background: #17191E; border: 1px solid #2A2E37">
-          <div class="rot">AQUÍ SE DECIDE LA COMPETENCIA</div>
+        <div style="margin-top: 26px; padding: 22px; border-radius: 10px; background: #15171C; border: 1px solid #24272F">
+          <div class="rot">Aquí se decide la competencia</div>
           <div style="font-size: 17px; line-height: 1.6; margin-top: 10px">Una vez por unidad, no una vez por sesión. Cada sesión la hereda de acá. Toca la etiqueta para cambiar la de una sesión y mira cómo se mueven los totales de la derecha.</div>
 
           <div style="margin-top: 18px">
@@ -118,8 +119,8 @@ button{font-family:inherit}
 
       <aside style="flex: 0 1 420px; min-width: 330px">
 
-        <div style="padding: 20px 22px; border-radius: 16px; background: #17191E; border: 1px solid #2A2E37">
-          <div class="rot">CÓMO VA EL REPARTO</div>
+        <div style="padding: 20px 22px; border-radius: 12px; background: #15171C; border: 1px solid #24272F">
+          <div class="rot">Cómo va el reparto</div>
 
           <div style="margin-top: 14px">
             <div style="font-size: 16px; font-weight: 600; line-height: 1.4">Resuelve problemas de cantidad</div>
@@ -148,12 +149,12 @@ button{font-family:inherit}
           <div style="font-size: 17px; line-height: 1.6; margin-top: 9px">{{ avisoTexto }}</div>
         </div>
 
-        <div style="margin-top: 18px; padding: 20px 22px; border-radius: 16px; background: #141A16; border: 1px solid #2F9E5E">
+        <div style="margin-top: 18px; padding: 20px 22px; border-radius: 12px; background: #141A16; border: 1px solid #2F9E5E">
           <div style="font-size: 16px; line-height: 1.6; color: #CDE8D6">Al terminar el año, todas las competencias del grado tienen que tener un nivel asignado. Voy marcando las que te van quedando cortas.</div>
         </div>
 
-        <div style="margin-top: 18px; padding: 20px 22px; border-radius: 16px; background: #141A24; border: 1px solid #3C5680">
-          <div class="rot" style="color:#9FB8E8">POR QUÉ NO LA ELIGES EN CADA SESIÓN</div>
+        <div style="margin-top: 18px; padding: 20px 22px; border-radius: 12px; background: #141A24; border: 1px solid #3C5680">
+          <div class="rot" style="color:#9FB8E8">Por qué no la eliges en cada sesión</div>
           <div style="font-size: 16px; line-height: 1.6; margin-top: 10px; color: #CFDAF0">Son 13 a 15 sesiones por semana. Elegir por sesión serían unas 500 decisiones al año; por unidad son 10.</div>
           <div style="font-size: 16px; line-height: 1.6; margin-top: 10px; color: #9FB8E8">Y lo pide el currículo: los propósitos de la sesión se toman de la unidad didáctica. Cartilla DIGEBR, p. 16.</div>
         </div>
@@ -171,7 +172,7 @@ class Component extends DCLogic {
     this.state = { a: ['A', 'A', 'A', 'B', 'C', 'C', 'A', 'B'] };
   }
   paleta(k) {
-    if (k === 'A') return ['#10291C', '#6EE7A0', 'Cantidad'];
+    if (k === 'A') return ['#10291C', '#22A95C', 'Cantidad'];
     if (k === 'B') return ['#14213A', '#7AA2FF', 'Escribe'];
     return ['#2A1A3A', '#B9A8F0', 'Recursos'];
   }
@@ -186,7 +187,7 @@ class Component extends DCLogic {
     return n;
   }
   marcador(n) {
-    var c = n >= 4 ? ['#10291C', '#6EE7A0'] : (n >= 3 ? ['#22252C', '#F2EFE8'] : (n >= 1 ? ['#2A2210', '#F2C14E'] : ['#2E1416', '#F58A8A']));
+    var c = n >= 4 ? ['#10291C', '#22A95C'] : (n >= 3 ? ['#22252C', '#F2EFE8'] : (n >= 1 ? ['#2A2210', '#F2C14E'] : ['#2E1416', '#F58A8A']));
     return 'display: inline-block; margin-top: 9px; padding: 6px 14px; border-radius: 999px; font-size: 15px;' +
            ' font-weight: 700; background: ' + c[0] + '; color: ' + c[1];
   }
@@ -220,7 +221,7 @@ class Component extends DCLogic {
       .filter(function (x) { return x[1] > 0 && x[1] <= 2; });
 
     var caja = function (color) {
-      return 'margin-top: 18px; padding: 20px 22px; border-radius: 16px; background: ' +
+      return 'margin-top: 18px; padding: 20px 22px; border-radius: 12px; background: ' +
              (color === 'rojo' ? '#2E1416; border: 2px solid #C93B3B' : '#221C0B; border: 2px solid #E3B341');
     };
 

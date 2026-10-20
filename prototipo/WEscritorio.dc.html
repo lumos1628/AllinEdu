@@ -8,107 +8,114 @@
 <body>
 <x-dc>
 <helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&display=swap">
 <style>
 body{margin:0;background:#0E0F12}
 a{text-decoration:none;color:inherit}
-.rot{font-size:13px;color:#A3A7B1;letter-spacing:.4px}
-.dia{flex:1;min-width:0;padding:14px;border-radius:14px;background:#17191E;border:1px solid #2A2E37}
-.chip{display:block;padding:11px 12px;border-radius:10px;margin-top:9px;font-size:14px;line-height:1.4}
-@media (max-width:900px){.semana{flex-wrap:wrap}.dia{min-width:160px}}
+.disp{font-family:'Bricolage Grotesque',system-ui,sans-serif}
+.horario{display:grid;grid-template-columns:72px repeat(5,minmax(120px,1fr));min-width:720px;border:1px solid #2A2D35;border-radius:8px;overflow:hidden}
+.horario > *{border-right:1px solid #2A2D35;border-bottom:1px solid #2A2D35;box-sizing:border-box}
+.dia{padding:12px 14px;font-size:15px;color:#9AA0AB;background:#121318}
+.hora{padding:14px 10px;font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:600;font-size:15px;color:#9AA0AB;font-variant-numeric:tabular-nums;background:#121318}
+.celda{display:block;padding:14px;min-height:96px;font-size:16px;line-height:1.35}
+.celda small{display:block;font-size:14px;margin-top:6px}
+.hecha{background:#122019;color:#CFE6D7}
+.hecha small{color:#7CC79A}
+.revisar{background:#2A2108;color:#F2EFE8;box-shadow:inset 0 0 0 2px #E3B341}
+.revisar small{color:#E3B341}
+.lista{background:#15171C;color:#F2EFE8}
+.lista small{color:#9AA0AB}
+.vacia{background:repeating-linear-gradient(135deg,#121318 0 8px,#181A20 8px 16px);color:#9AA0AB}
+.hoy{background:#1C1A12}
+.muestra{display:inline-block;width:14px;height:14px;border-radius:3px;vertical-align:-2px;margin-right:7px}
+.wrap{overflow-x:auto}
+@media (max-width:1000px){.cols{flex-direction:column}}
 </style>
 </helmet>
-<div style="width: 100%; min-height: 900px; box-sizing: border-box; background: #0E0F12; color: #F2EFE8; font-family: ui-sans-serif, system-ui, sans-serif">
+<div style="width: 100%; min-height: 900px; box-sizing: border-box; background: #0E0F12; color: #F2EFE8; font-family: 'Atkinson Hyperlegible', system-ui, sans-serif">
 
-  <header style="display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 20px 40px; border-bottom: 1px solid #2A2E37; flex-wrap: wrap">
-    <div style="display: flex; align-items: center; gap: 14px">
-      <span style="width: 32px; height: 32px; border-radius: 9px; background: #E3B341; color: #16130A; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 15px">A</span>
-      <span style="font-size: 17px; font-weight: 600">AllinEdu</span>
-      <span style="font-size: 15px; color: #A3A7B1">4.º B · 26 estudiantes</span>
+  <header style="display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 16px 40px; border-bottom: 1px solid #24272F; flex-wrap: wrap">
+    <div style="display: flex; align-items: center; gap: 12px">
+      <span class="disp" style="font-size: 20px; font-weight: 800; color: #E3B341">allin</span>
+      <span style="font-size: 15px; color: #9AA0AB">4.º B · 26 estudiantes</span>
     </div>
-    <div style="display: flex; align-items: center; gap: 10px">
-      <span style="width: 9px; height: 9px; border-radius: 5px; background: #6EE7A0"></span>
-      <span style="font-size: 15px; color: #A3A7B1">Guardado en esta computadora</span>
-    </div>
+    <span style="font-size: 14px; color: #9AA0AB">Guardado en esta computadora</span>
   </header>
 
   <div style="max-width: 1360px; margin: 0 auto; padding: 32px 40px 48px">
 
     <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap">
       <div>
-        <div style="font-size: 28px; font-weight: 700; line-height: 1.2">Buenas noches, docente Zevallos</div>
-        <div style="font-size: 17px; color: #A3A7B1; margin-top: 7px">Miércoles 22 de octubre · 8:14 p.m.</div>
+        <div style="font-size: 16px; color: #9AA0AB">Miércoles 22 de octubre, 8:14 p.m.</div>
+        <div class="disp" style="font-size: 40px; font-weight: 800; line-height: 1.1; letter-spacing: -1px; margin-top: 6px">Te quedan 3 cosas esta semana</div>
       </div>
-      <div style="display: flex; gap: 12px; flex-wrap: wrap">
-        <a href="WHoy.dc.html" style="padding: 15px 22px; border-radius: 12px; background: #E3B341; color: #16130A; font-size: 16px; font-weight: 700">Mis clases de hoy</a>
-        <a href="WUnidad.dc.html" style="padding: 15px 22px; border-radius: 12px; border: 1px solid #5F6676; color: #F2EFE8; font-size: 16px">Preparar la semana que viene</a>
+      <div style="display: flex; gap: 10px; flex-wrap: wrap">
+        <a href="WRevision.dc.html" style="padding: 14px 22px; border-radius: 10px; background: #E3B341; color: #16130A; font-size: 16px; font-weight: 700">Revisar lo de mañana</a>
+        <a href="WUnidad.dc.html" style="padding: 14px 22px; border-radius: 10px; border: 1px solid #3A3F4B; font-size: 16px">Preparar la semana que viene</a>
       </div>
     </div>
 
-    <div style="display: flex; gap: 28px; margin-top: 34px; align-items: flex-start; flex-wrap: wrap">
+    <div class="cols" style="display: flex; gap: 32px; margin-top: 32px; align-items: flex-start">
 
-      <section style="flex: 1 1 680px; min-width: 0">
-        <div class="rot">ESTA SEMANA</div>
-        <div class="semana" style="display: flex; gap: 14px; margin-top: 14px">
+      <section style="flex: 1 1 760px; min-width: 0">
+        <div class="wrap">
+          <div class="horario">
+            <span class="dia"></span>
+            <span class="dia">Lun 20</span>
+            <span class="dia">Mar 21</span>
+            <span class="dia hoy" style="color:#E3B341;font-weight:700">Hoy, mié 22</span>
+            <span class="dia">Jue 23</span>
+            <span class="dia">Vie 24</span>
 
-          <div class="dia">
-            <div style="font-size: 15px; font-weight: 600">Lun 20</div>
-            <span class="chip" style="background:#141A16;border:1px solid #2F9E5E;color:#CDE8D6">Matemática<br><span style="font-size:13px;color:#8FC2A4">dictada</span></span>
-            <span class="chip" style="background:#141A16;border:1px solid #2F9E5E;color:#CDE8D6">Comunicación<br><span style="font-size:13px;color:#8FC2A4">dictada</span></span>
+            <span class="hora">8:00</span>
+            <span class="celda hecha">Matemática<small>dictada</small></span>
+            <span class="celda hecha">Personal Social<small>dictada</small></span>
+            <a href="WHoy.dc.html" class="celda revisar">Matemática<small>falta anotar logros</small></a>
+            <a href="WRevision.dc.html" class="celda revisar">Matemática<small>2 cosas por revisar</small></a>
+            <span class="celda vacia">Sin preparar</span>
+
+            <span class="hora">10:00</span>
+            <span class="celda hecha">Comunicación<small>dictada</small></span>
+            <span class="celda hecha">Matemática<small>dictada</small></span>
+            <a href="WHoy.dc.html" class="celda hecha">Comunicación<small>dictada</small></a>
+            <a href="WRevision.dc.html" class="celda lista">Comunicación<small>borrador listo</small></a>
+            <span class="celda vacia">Sin preparar</span>
           </div>
-
-          <div class="dia">
-            <div style="font-size: 15px; font-weight: 600">Mar 21</div>
-            <span class="chip" style="background:#141A16;border:1px solid #2F9E5E;color:#CDE8D6">Personal Social<br><span style="font-size:13px;color:#8FC2A4">dictada</span></span>
-            <span class="chip" style="background:#141A16;border:1px solid #2F9E5E;color:#CDE8D6">Matemática<br><span style="font-size:13px;color:#8FC2A4">dictada</span></span>
-          </div>
-
-          <div class="dia" style="border-color:#E3B341">
-            <div style="font-size: 15px; font-weight: 600; color:#E3B341">Hoy · Mié 22</div>
-            <a href="WHoy.dc.html" class="chip" style="background:#221C0B;border:1px solid #B8890F">Matemática<br><span style="font-size:13px;color:#E3B341">falta anotar logros</span></a>
-            <a href="WHoy.dc.html" class="chip" style="background:#141A16;border:1px solid #2F9E5E;color:#CDE8D6">Comunicación<br><span style="font-size:13px;color:#8FC2A4">dictada</span></a>
-          </div>
-
-          <div class="dia">
-            <div style="font-size: 15px; font-weight: 600">Jue 23</div>
-            <a href="WRevision.dc.html" class="chip" style="background:#221C0B;border:2px solid #E3B341">Matemática<br><span style="font-size:13px;color:#E3B341">2 cosas por revisar</span></a>
-            <a href="WRevision.dc.html" class="chip" style="background:#17191E;border:1px solid #5F6676">Comunicación<br><span style="font-size:13px;color:#A3A7B1">borrador listo</span></a>
-          </div>
-
-          <div class="dia">
-            <div style="font-size: 15px; font-weight: 600">Vie 24</div>
-            <span class="chip" style="background:#22252C;border:1px dashed #5F6676;color:#A3A7B1">Sin preparar<br><span style="font-size:13px">2 clases</span></span>
-          </div>
-
         </div>
 
-        <div style="margin-top: 26px; padding: 20px 22px; border-radius: 14px; background: #17191E; border: 1px solid #2A2E37">
-          <div class="rot">PARA IMPRIMIR CUANDO VAYAS A LA ESCUELA</div>
-          <div style="font-size: 17px; line-height: 1.7; margin-top: 10px">7 hojas en total · 26 copias de la ficha de fracciones · 2 copias de la versión con material</div>
-          <a href="WHoy.dc.html" style="display: inline-block; font-size: 16px; color: #7AA2FF; margin-top: 11px">Ver el material de hoy →</a>
+        <div style="display: flex; gap: 22px; margin-top: 14px; font-size: 14px; color: #9AA0AB; flex-wrap: wrap">
+          <span><span class="muestra" style="background:#122019;border:1px solid #2D5A3F"></span>Dictada</span>
+          <span><span class="muestra" style="background:#2A2108;border:2px solid #E3B341"></span>Te toca hacer algo</span>
+          <span><span class="muestra" style="background:#15171C;border:1px solid #3A3F4B"></span>Borrador listo</span>
+          <span><span class="muestra" style="background:repeating-linear-gradient(135deg,#121318 0 3px,#2A2D35 3px 6px);border:1px solid #3A3F4B"></span>Sin preparar</span>
+        </div>
+
+        <div style="margin-top: 28px; padding-top: 20px; border-top: 1px solid #24272F">
+          <div style="font-size: 15px; color: #9AA0AB">Para imprimir cuando vayas a la escuela</div>
+          <div style="font-size: 18px; line-height: 1.55; margin-top: 8px">7 hojas: 26 copias de la ficha de fracciones y 2 de la versión con material.</div>
+          <a href="WHoy.dc.html" style="display: inline-block; font-size: 16px; color: #7AA2FF; margin-top: 8px">Ver el material de hoy</a>
         </div>
       </section>
 
       <aside style="flex: 0 1 380px; min-width: 300px">
-        <a href="WCierre.dc.html" style="display: block; padding: 22px; border-radius: 16px; background: #2E1416; border: 2px solid #C93B3B">
-          <div class="rot" style="color:#F58A8A">CIERRE DEL III BIMESTRE</div>
-          <div style="font-size: 34px; font-weight: 700; margin-top: 10px; line-height: 1">18</div>
-          <div style="font-size: 17px; margin-top: 6px; line-height: 1.5">comentarios por escribir, de 26</div>
-          <div style="height: 9px; border-radius: 5px; background: #4A2024; margin-top: 16px">
-            <div style="height: 9px; width: 31%; border-radius: 5px; background: #F58A8A"></div>
+        <a href="WCierre.dc.html" style="display: block; padding: 24px; border-radius: 12px; background: #1E1315; border: 1px solid #4A2629">
+          <div style="font-size: 15px; color: #E87878">Cierre del III bimestre · vence el 28 de noviembre</div>
+          <div style="display: flex; align-items: baseline; gap: 10px; margin-top: 10px">
+            <span class="disp" style="font-size: 64px; font-weight: 800; line-height: 1; letter-spacing: -2px">18</span>
+            <span style="font-size: 17px; line-height: 1.35">comentarios por escribir, de 26</span>
           </div>
-          <div style="font-size: 15px; color: #F2EFE8; margin-top: 12px; line-height: 1.5">Vence el 28 de noviembre</div>
-          <div style="font-size: 16px; font-weight: 700; color: #F58A8A; margin-top: 14px">Escribirlos aquí es más rápido →</div>
+          <div style="height: 6px; border-radius: 3px; background: #3D1A1E; margin-top: 16px">
+            <div style="height: 6px; width: 31%; border-radius: 3px; background: #E87878"></div>
+          </div>
+          <div style="font-size: 16px; font-weight: 700; color: #F2EFE8; margin-top: 16px">Escribirlos aquí, con teclado</div>
         </a>
 
-        <div style="margin-top: 18px; padding: 20px 22px; border-radius: 16px; background: #17191E; border: 1px solid #2A2E37">
-          <div class="rot">AVISOS</div>
-          <div style="font-size: 16px; line-height: 1.6; margin-top: 11px">3 niños llevan <strong style="color:#F58A8A">C</strong> dos bimestres seguidos en Matemática. En esos casos hay que explicar por qué no hubo avance.</div>
-          <a href="WCierre.dc.html" style="display: inline-block; font-size: 16px; color: #7AA2FF; margin-top: 11px">Ver esos tres →</a>
+        <div style="margin-top: 20px; padding: 20px 0; border-top: 1px solid #24272F">
+          <div style="font-size: 17px; line-height: 1.55">3 niños llevan <strong style="color:#E87878">C</strong> dos bimestres seguidos en Matemática. En esos casos el comentario tiene que explicar por qué no hubo avance.</div>
+          <a href="WCierre.dc.html" style="display: inline-block; font-size: 16px; color: #7AA2FF; margin-top: 10px">Ver esos tres</a>
         </div>
 
-        <div style="margin-top: 18px; padding: 20px 22px; border-radius: 16px; background: #141A24; border: 1px solid #3C5680">
-          <div style="font-size: 16px; line-height: 1.6; color: #9FB8E8">Lo que escribas aquí aparece en tu celular cuando se conecte. No necesitas internet ahora.</div>
-        </div>
+        <div style="padding-top: 18px; border-top: 1px solid #24272F; font-size: 15px; line-height: 1.55; color: #9AA0AB">Lo que escribas aquí aparece en tu celular cuando se conecte. No necesitas internet ahora.</div>
       </aside>
 
     </div>

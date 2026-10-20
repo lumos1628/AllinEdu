@@ -9,19 +9,20 @@
 <x-dc>
 <helmet>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 body{margin:0;background:#0E0F12}
 a{text-decoration:none;color:inherit}
 button{font-family:inherit}
-.rot{font-size:13px;color:#A3A7B1;letter-spacing:.4px}
-.bloque{padding:20px 22px;border-radius:14px;background:#17191E;border:1px solid #2A2E37;margin-top:16px}
-.fuente{padding:16px 18px;border-radius:12px;background:#17191E;border:1px solid #2A2E37;margin-top:12px}
+.rot{font-size:12px;color:#78818F;font-weight:600}
+.bloque{padding:20px 22px;border-radius:10px;background:#15171C;border:1px solid #24272F;margin-top:16px}
+.fuente{padding:16px 18px;border-radius:12px;background:#15171C;border:1px solid #24272F;margin-top:12px}
 .cita{font-size:14px;line-height:1.6;color:#D9D5CC;font-style:italic;border-left:3px solid #2F9E5E;padding-left:12px;margin-top:9px}
 @media (max-width:1000px){.dos{flex-direction:column}}
 </style>
 </helmet>
-<div style="width: 100%; min-height: 1180px; box-sizing: border-box; background: #0E0F12; color: #F2EFE8; font-family: ui-sans-serif, system-ui, sans-serif">
+<div style="width: 100%; min-height: 1180px; box-sizing: border-box; background: #0E0F12; color: #F2EFE8; font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif">
 
-  <header style="display: flex; align-items: center; gap: 20px; padding: 18px 40px; border-bottom: 1px solid #2A2E37">
+  <header style="display: flex; align-items: center; gap: 20px; padding: 18px 40px; border-bottom: 1px solid #24272F">
     <a href="WEscritorio.dc.html" style="font-size: 16px; color: #7AA2FF">← Escritorio</a>
     <span style="font-size: 16px; color: #A3A7B1">Jueves 23 · Matemática · 8:00</span>
   </header>
@@ -35,22 +36,22 @@ button{font-family:inherit}
         <div style="font-size: 17px; color: #A3A7B1; margin-top: 7px">{{ total }} minutos · tu bloque es de 90</div>
 
         <div class="bloque">
-          <div class="rot">1 · QUÉ COMPETENCIA ESTÁS TRABAJANDO</div>
+          <div class="rot">1 · Qué competencia estás trabajando</div>
           <div style="font-size: 19px; font-weight: 600; margin-top: 9px">Resuelve problemas de cantidad</div>
           <div style="font-size: 17px; line-height: 1.6; margin-top: 10px; color: #D9D5CC">Capacidad: usa estrategias y procedimientos de estimación y cálculo.</div>
           <div style="font-size: 17px; line-height: 1.6; margin-top: 8px; color: #D9D5CC">Lo que se espera en 4.º: que compare fracciones usando material antes de pasar al símbolo.</div>
         </div>
 
         <div class="bloque" style="background:#141A24;border-color:#3C5680">
-          <div class="rot" style="color:#9FB8E8">2 · CÓMO VAS A SABER SI APRENDIERON</div>
+          <div class="rot" style="color:#9FB8E8">2 · Cómo vas a saber si aprendieron</div>
           <div style="font-size: 18px; line-height: 1.6; margin-top: 10px">Que comparen dos fracciones y <strong>expliquen con las tiras por qué una es mayor</strong>.</div>
           <div style="display: flex; gap: 32px; margin-top: 16px; flex-wrap: wrap">
             <div style="flex: 1 1 240px">
-              <div class="rot" style="color:#7D93BE">QUÉ TE QUEDA COMO PRUEBA</div>
+              <div class="rot" style="color:#7D93BE">Qué te queda como prueba</div>
               <div style="font-size: 16px; line-height: 1.6; margin-top: 7px">La ficha resuelta y lo que dicen al grupo</div>
             </div>
             <div style="flex: 1 1 240px">
-              <div class="rot" style="color:#7D93BE">CON QUÉ LO MIRAS</div>
+              <div class="rot" style="color:#7D93BE">Con qué lo miras</div>
               <div style="font-size: 16px; line-height: 1.6; margin-top: 7px">Lista de cotejo de 3 puntos</div>
             </div>
           </div>
@@ -60,15 +61,15 @@ button{font-family:inherit}
         </div>
 
         <div class="bloque">
-          <div class="rot">3 · LO QUE VAN A HACER</div>
+          <div class="rot">3 · Lo que van a hacer</div>
 
           <div style="margin-top: 16px">
-            <div style="font-size: 15px; color: #A3A7B1">INICIO · 15 min</div>
+            <div style="font-size: 15px; color: #A3A7B1">Inicio · 15 min</div>
             <div style="font-size: 17px; line-height: 1.6; margin-top: 6px">Les dices qué van a aprender y cómo lo vas a mirar. Preguntas cómo reparten algo en partes iguales en su casa.</div>
           </div>
 
           <div style="margin-top: 20px">
-            <div style="font-size: 15px; color: #A3A7B1">DESARROLLO · 60 min</div>
+            <div style="font-size: 15px; color: #A3A7B1">Desarrollo · 60 min</div>
             <div style="font-size: 17px; line-height: 1.6; margin-top: 6px">En grupos de cuatro, reparten las naranjas que se compran en {{ ctx }}. Comprueban con las tiras.</div>
             <div style="{{ a1box }}">
               <div style="font-size: 17px; line-height: 1.55">Puse <strong>el mercado de abastos</strong> porque es lo común. ¿Eso existe donde viven tus niños?</div>
@@ -81,7 +82,7 @@ button{font-family:inherit}
           </div>
 
           <div style="margin-top: 20px">
-            <div style="font-size: 15px; color: #A3A7B1">CIERRE · {{ minCierre }} min</div>
+            <div style="font-size: 15px; color: #A3A7B1">Cierre · {{ minCierre }} min</div>
             <div style="font-size: 17px; line-height: 1.6; margin-top: 6px">Cada grupo explica cómo lo pensó. {{ cierreExtra }}</div>
             <div style="{{ a2box }}">
               <div style="font-size: 17px; line-height: 1.55">Todo esto suma <strong>105 minutos</strong> y tu clase es de 90.</div>
@@ -95,13 +96,13 @@ button{font-family:inherit}
         </div>
 
         <div class="bloque">
-          <div class="rot">4 · QUÉ NECESITAS</div>
+          <div class="rot">4 · Qué necesitas</div>
           <div style="margin-top: 12px; display: flex; gap: 12px; align-items: flex-start">
-            <span style="padding: 4px 11px; border-radius: 999px; background: #3A2E0C; color: #E3B341; font-size: 13px; font-weight: 700; white-space: nowrap">OBLIGATORIO</span>
+            <span style="padding: 4px 11px; border-radius: 999px; background: #3A2E0C; color: #E3B341; font-size: 13px; font-weight: 700; white-space: nowrap">Obligatorio</span>
             <span style="font-size: 17px; line-height: 1.5">Tiras de fracciones — el desempeño de 4.º pide material concreto</span>
           </div>
           <div style="margin-top: 12px; display: flex; gap: 12px; align-items: flex-start">
-            <span style="padding: 4px 11px; border-radius: 999px; background: #22252C; color: #A3A7B1; font-size: 13px; white-space: nowrap">TÚ DECIDES</span>
+            <span style="padding: 4px 11px; border-radius: 999px; background: #22252C; color: #A3A7B1; font-size: 13px; white-space: nowrap">Tú decides</span>
             <span style="font-size: 17px; line-height: 1.5">Ficha de trabajo, 26 copias</span>
           </div>
           <a href="Apoyo.dc.html" style="display: inline-block; font-size: 16px; color: #7AA2FF; margin-top: 14px">Dos niños necesitan otro camino →</a>
@@ -115,27 +116,27 @@ button{font-family:inherit}
 
       <!-- COLUMNA DERECHA: trazabilidad. Esto es lo que el celular no puede dar -->
       <aside style="flex: 0 1 400px; min-width: 320px">
-        <div style="padding: 20px 22px; border-radius: 16px; background: #141A16; border: 1px solid #2F9E5E">
-          <div class="rot" style="color:#8FC2A4">DE DÓNDE SAQUÉ CADA COSA</div>
+        <div style="padding: 20px 22px; border-radius: 12px; background: #141A16; border: 1px solid #2F9E5E">
+          <div class="rot" style="color:#8FC2A4">De dónde saqué cada cosa</div>
           <div style="font-size: 16px; line-height: 1.6; margin-top: 10px; color: #CDE8D6">Todo lo de la izquierda sale de aquí. Si algo no te cuadra, puedes ir a la página.</div>
         </div>
 
         <div class="fuente">
-          <div style="font-size: 15px; font-weight: 700; color: #6EE7A0">La competencia</div>
+          <div style="font-size: 15px; font-weight: 700; color: #22A95C">La competencia</div>
           <div style="font-size: 15px; color: #A3A7B1; margin-top: 5px">Programa Curricular de Primaria, p. 139</div>
           <div class="cita">«Resuelve problemas de cantidad»</div>
           <a href="#fuente" style="display: inline-block; font-size: 15px; color: #7AA2FF; margin-top: 10px">Abrir esa página</a>
         </div>
 
         <div class="fuente">
-          <div style="font-size: 15px; font-weight: 700; color: #6EE7A0">Que use material concreto</div>
+          <div style="font-size: 15px; font-weight: 700; color: #22A95C">Que use material concreto</div>
           <div style="font-size: 15px; color: #A3A7B1; margin-top: 5px">Programa Curricular, desempeño de 4.º</div>
           <div class="cita">«Emplea estrategias […] al construir objetos con material concreto»</div>
           <div style="font-size: 15px; line-height: 1.55; margin-top: 10px; color: #D9D5CC">Por esto lo marqué obligatorio y no sugerido.</div>
         </div>
 
         <div class="fuente">
-          <div style="font-size: 15px; font-weight: 700; color: #6EE7A0">El orden de la sesión</div>
+          <div style="font-size: 15px; font-weight: 700; color: #22A95C">El orden de la sesión</div>
           <div style="font-size: 15px; color: #A3A7B1; margin-top: 5px">Currículo Nacional, §VII, p. 177</div>
           <div style="font-size: 15px; line-height: 1.6; margin-top: 9px; color: #D9D5CC">El currículo pide entender la competencia y el estándar primero, después definir cómo se evalúa, y recién después las actividades. Por eso el borrador va en ese orden y no al revés.</div>
         </div>

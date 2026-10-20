@@ -9,20 +9,22 @@
 <x-dc>
 <helmet>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 body{margin:0;background:#0E0F12}
 a{text-decoration:none;color:inherit}
 button{font-family:inherit}
-.rot{font-size:13px;color:#A3A7B1;letter-spacing:.4px}
-.hoja{background:#FDFCF9;color:#17150F;border-radius:12px;padding:30px 32px;box-sizing:border-box}
-.rom{font-size:13px;font-weight:700;letter-spacing:.6px;color:#17150F;padding-bottom:7px;border-bottom:1.5px solid #17150F}
+.rot{font-size:12px;color:#78818F;font-weight:600}
+.hoja{background:#FDFCF9;color:#1C1A15;border-radius:4px;padding:30px 32px;box-sizing:border-box;border-top:3px solid #D4A843;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.hoja-h{font-family:'EB Garamond',Georgia,serif;font-size:22px;font-weight:600;line-height:1.3}
+.rom{font-size:14px;font-weight:600;color:#1C1A15;padding-bottom:7px;border-bottom:1.5px solid #17150F}
 .blq{margin-top:26px}
-.sub{font-size:11px;font-weight:700;color:#5C584C;letter-spacing:.4px;margin-top:14px}
+.sub{font-size:12px;font-weight:600;color:#78736A;margin-top:14px}
 .p{font-size:14px;line-height:1.6;margin-top:7px}
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:10px}
 .g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:10px}
 .mom{margin-top:12px;padding:14px 16px;border-radius:9px;background:#F4F1E8}
-.mint{font-size:11px;font-weight:700;color:#5C584C;letter-spacing:.4px}
-.avisop{margin-top:11px;padding:12px 14px;border-radius:8px;background:#FBF0D2;border-left:4px solid #B8890F;font-size:14px;line-height:1.55}
+.mint{font-size:12px;font-weight:600;color:#78736A}
+.aviso{margin-top:12px;padding:12px 14px;border-radius:6px;background:#FFF8E6;border-left:3px solid #D4A843;font-size:13px;line-height:1.55;color:#5C4E1A}
 .cita{font-size:12px;line-height:1.5;color:#3D3930;font-style:italic;border-left:3px solid #1F6B3F;padding-left:10px;margin-top:8px}
 .fila{display:flex;gap:10px;padding:6px 0;border-bottom:1px solid #EAE6DA;font-size:13px;line-height:1.5}
 .et{min-width:84px;color:#5C584C}
@@ -36,15 +38,15 @@ td.nm,th.nm{text-align:left}
 @media (max-width:1000px){.dos{flex-direction:column}.g2,.g3{grid-template-columns:1fr}}
 </style>
 </helmet>
-<div style="width: 100%; min-height: 2080px; box-sizing: border-box; background: #0E0F12; color: #F2EFE8; font-family: ui-sans-serif, system-ui, sans-serif">
+<div style="width: 100%; min-height: 2080px; box-sizing: border-box; background: #0E0F12; color: #F2EFE8; font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif">
 
-  <header style="display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 18px 40px; border-bottom: 1px solid #2A2E37; flex-wrap: wrap">
+  <header style="display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 18px 40px; border-bottom: 1px solid #24272F; flex-wrap: wrap">
     <div style="display: flex; align-items: center; gap: 16px">
       <a href="WUnidad.dc.html" style="font-size: 16px; color: #7AA2FF">← La unidad</a>
       <span style="font-size: 16px; color: #A3A7B1">Unidad 6 · sesión 3 de 12 · 4.º B</span>
     </div>
     <div style="display: flex; align-items: center; gap: 10px">
-      <span style="width: 9px; height: 9px; border-radius: 5px; background: #6EE7A0"></span>
+      <span style="width: 9px; height: 9px; border-radius: 5px; background: #22A95C"></span>
       <span style="font-size: 15px; color: #A3A7B1">Guardado en esta computadora</span>
     </div>
   </header>
@@ -65,42 +67,42 @@ td.nm,th.nm{text-align:left}
     <div class="dos" style="display: flex; gap: 26px; margin-top: 26px; align-items: flex-start">
 
       <nav style="flex: 0 0 312px; min-width: 280px">
-        <div class="rot">LOS BLOQUES</div>
+        <div class="rot">Los bloques</div>
         <div style="margin-top: 10px">
-          <span class="ix" style="background:#17191E;border:1px solid #2A2E37">
+          <span class="ix" style="background:#15171C;border:1px solid #24272F">
             <span style="flex:1;min-width:0;font-size:15px">I · Datos informativos</span>
             <span style="padding:3px 10px;border-radius:999px;background:#22252C;color:#A3A7B1;font-size:12px;font-weight:700">tú</span>
           </span>
           <span class="ix" style="background:#101614;border:1px solid #2F9E5E">
             <span style="flex:1;min-width:0;font-size:15px">II · Propósitos y evidencias</span>
-            <span style="padding:3px 10px;border-radius:999px;background:#10291C;color:#6EE7A0;font-size:12px;font-weight:700">{{ e2 }}</span>
+            <span style="padding:3px 10px;border-radius:999px;background:#10291C;color:#22A95C;font-size:12px;font-weight:700">{{ e2 }}</span>
           </span>
-          <span class="ix" style="background:#17191E;border:1px solid #2A2E37">
+          <span class="ix" style="background:#15171C;border:1px solid #24272F">
             <span style="flex:1;min-width:0;font-size:15px">III · Preparación · DUA</span>
             <span style="padding:3px 10px;border-radius:999px;background:#2A2210;color:#F2C14E;font-size:12px;font-weight:700">revísalo</span>
           </span>
-          <span class="ix" style="background:#17191E;border:1px solid #2A2E37">
+          <span class="ix" style="background:#15171C;border:1px solid #24272F">
             <span style="flex:1;min-width:0;font-size:15px">IV · Secuencia didáctica</span>
             <span style="padding:3px 10px;border-radius:999px;background:#2A2210;color:#F2C14E;font-size:12px;font-weight:700">revísalo</span>
           </span>
-          <span class="ix" style="background:#17191E;border:1px solid #2A2E37">
+          <span class="ix" style="background:#15171C;border:1px solid #24272F">
             <span style="flex:1;min-width:0;font-size:15px">V · Escala valorativa</span>
-            <span style="padding:3px 10px;border-radius:999px;background:#10291C;color:#6EE7A0;font-size:12px;font-weight:700">lista</span>
+            <span style="padding:3px 10px;border-radius:999px;background:#10291C;color:#22A95C;font-size:12px;font-weight:700">lista</span>
           </span>
         </div>
 
-        <div style="margin-top: 20px; padding: 18px 20px; border-radius: 14px; background: #221C0B; border: 2px solid #E3B341">
+        <div style="margin-top: 20px; padding: 18px 20px; border-radius: 10px; background: #221C0B; border: 2px solid #E3B341">
           <div style="font-size: 16px; font-weight: 700; color: #E3B341">{{ nAvisos }}</div>
           <div style="font-size: 16px; line-height: 1.6; margin-top: 8px">Están marcados dentro del documento, junto a la frase que los causa.</div>
         </div>
 
-        <div style="margin-top: 18px; padding: 18px 20px; border-radius: 14px; background: #141A24; border: 1px solid #3C5680">
-          <div class="rot" style="color:#9FB8E8">DE DÓNDE SALE EL FORMATO</div>
+        <div style="margin-top: 18px; padding: 18px 20px; border-radius: 10px; background: #141A24; border: 1px solid #3C5680">
+          <div class="rot" style="color:#9FB8E8">De dónde sale el formato</div>
           <div style="font-size: 15px; line-height: 1.6; margin-top: 9px; color: #CFDAF0">Los cinco bloques y sus nombres son los de tu institución, no un formato genérico. La secuencia del desarrollo cambia según el área.</div>
         </div>
 
-        <div style="margin-top: 18px; padding: 18px 20px; border-radius: 14px; background: #17191E; border: 1px solid #2A2E37">
-          <div class="rot">LA COMPETENCIA VIENE DE LA UNIDAD</div>
+        <div style="margin-top: 18px; padding: 18px 20px; border-radius: 10px; background: #15171C; border: 1px solid #24272F">
+          <div class="rot">La competencia viene de la unidad</div>
           <div style="font-size: 15px; line-height: 1.6; margin-top: 9px">No se elige acá. <a href="WUnidad.dc.html" style="color:#7AA2FF">Cambiarla en la unidad →</a></div>
         </div>
       </nav>
@@ -108,11 +110,11 @@ td.nm,th.nm{text-align:left}
       <main style="flex: 1 1 auto; min-width: 0">
         <div class="hoja">
 
-          <div style="font-size: 12px; letter-spacing: .5px; color: #5C584C">SESIÓN DE APRENDIZAJE DE {{ areaUp }}</div>
+          <div style="font-size: 12px; letter-spacing: .5px; color: #5C584C">Sesión de aprendizaje de {{ areaUp }}</div>
           <div style="font-size: 22px; font-weight: 700; margin-top: 8px; line-height: 1.3">{{ titulo }}</div>
 
           <div class="blq">
-            <div class="rom">I. DATOS INFORMATIVOS</div>
+            <div class="hoja-h">I. Datos informativos</div>
             <div class="g2">
               <div>
                 <div class="fila"><span class="et">I. E.</span><span>[NOMBRE Y NÚMERO DE TU I. E.]</span></div>
@@ -127,30 +129,30 @@ td.nm,th.nm{text-align:left}
           </div>
 
           <div class="blq">
-            <div class="rom">II. PROPÓSITOS DE APRENDIZAJE Y EVIDENCIAS</div>
+            <div class="hoja-h">II. Propósitos de aprendizaje y evidencias</div>
             <div class="g3">
               <div>
-                <div class="sub">COMPETENCIA Y CAPACIDADES</div>
+                <div class="sub">Competencia y capacidades</div>
                 <div class="p"><strong>{{ competencia }}</strong></div>
                 <div class="p" style="color:#3D3930">{{ capacidades }}</div>
               </div>
               <div>
-                <div class="sub">DESEMPEÑO DE 4.º</div>
+                <div class="sub">Desempeño de 4.º</div>
                 <div class="p">{{ desempeno }}</div>
                 <div class="cita">{{ fuente }}</div>
               </div>
               <div>
-                <div class="sub">CRITERIOS DE EVALUACIÓN</div>
+                <div class="sub">Criterios de evaluación</div>
                 <div class="p">{{ criterios }}</div>
               </div>
             </div>
             <div class="g2">
               <div>
-                <div class="sub">EVIDENCIA DE APRENDIZAJE</div>
+                <div class="sub">Evidencia de aprendizaje</div>
                 <div class="p">{{ evidencia }}</div>
               </div>
               <div>
-                <div class="sub">INSTRUMENTO DE EVALUACIÓN</div>
+                <div class="sub">Instrumento de evaluación</div>
                 <div class="p">Escala valorativa · ver bloque V</div>
               </div>
             </div>
@@ -158,43 +160,43 @@ td.nm,th.nm{text-align:left}
           </div>
 
           <div class="blq">
-            <div class="rom">III. PREPARACIÓN DE LA SESIÓN</div>
-            <div class="sub">DUA APLICADO</div>
+            <div class="hoja-h">III. Preparación de la sesión</div>
+            <div class="sub">DUA aplicado</div>
             <div class="p"><strong>Representación.</strong> {{ duaRep }}</div>
             <div class="p"><strong>Acción y expresión.</strong> Se permite que resuelvan de distintas maneras y comuniquen de forma oral o escrita.</div>
             <div class="p"><strong>Compromiso.</strong> La situación parte de algo que ya conocen del barrio.</div>
 
             <div class="g2">
               <div>
-                <div class="sub">MATERIALES Y RECURSOS</div>
+                <div class="sub">Materiales y recursos</div>
                 <div class="p">{{ materiales }}</div>
               </div>
               <div>
-                <div class="sub">ATENCIÓN A LA DIVERSIDAD</div>
+                <div class="sub">Atención a la diversidad</div>
                 <div class="p">Acompañamiento personalizado a dos estudiantes con apoyos registrados por ti. <a href="Apoyo.dc.html" style="color:#1F5EA8;font-weight:600">ver los tres caminos</a></div>
               </div>
             </div>
 
-            <div class="sub">ENFOQUE TRANSVERSAL</div>
+            <div class="sub">Enfoque transversal</div>
             <div class="p"><strong>Orientación al bien común.</strong> {{ enfoque }}</div>
             <div style="{{ avEnf }}">{{ avEnfTxt }}</div>
           </div>
 
           <div class="blq">
-            <div class="rom">IV. SECUENCIA DIDÁCTICA</div>
+            <div class="hoja-h">IV. Secuencia didáctica</div>
 
             <div class="mom">
-              <div class="mint">INICIO · 15 MIN</div>
+              <div class="mint">Inicio · 15 min</div>
               <div class="p">Actividad permanente: saludo, marcar la asistencia y la oración del día.</div>
               <div class="p">{{ inicioDin }}</div>
               <div class="p"><strong>Saberes previos</strong> y <strong>conflicto cognitivo</strong> con preguntas de alta demanda.</div>
               <div class="p"><strong>Se presenta el propósito</strong> y <strong>se socializan los tres criterios de evaluación.</strong></div>
               <div class="p">Acuerdo de las normas de convivencia del día.</div>
-              <div class="avisop" style="background:#E7F0E9;border-left-color:#1F6B3F">Socializar los criterios al empezar es el paso 5 del CNEB, §VII, p. 177. Tu formato ya lo trae.</div>
+              <div class="aviso" style="background:#E7F0E9;border-left-color:#1F6B3F">Socializar los criterios al empezar es el paso 5 del CNEB, §VII, p. 177. Tu formato ya lo trae.</div>
             </div>
 
             <div class="mom">
-              <div class="mint">DESARROLLO · 60 MIN · {{ nPasos }}</div>
+              <div class="mint">Desarrollo · 60 min · {{ nPasos }}</div>
               <div class="p" style="color:#5C584C">{{ pasosNota }}</div>
               <div style="{{ v1 }}"><div class="paso"><span class="pn">1</span><span>{{ p1 }}</span></div></div>
               <div style="{{ v2 }}"><div class="paso"><span class="pn">2</span><span>{{ p2 }}</span></div></div>
@@ -202,20 +204,20 @@ td.nm,th.nm{text-align:left}
               <div style="{{ v4 }}"><div class="paso"><span class="pn">4</span><span>{{ p4 }}</span></div></div>
               <div style="{{ v5 }}"><div class="paso"><span class="pn">5</span><span>{{ p5 }}</span></div></div>
               <div style="{{ v6 }}"><div class="paso"><span class="pn">6</span><span>{{ p6 }}</span></div></div>
-              <div class="avisop">Esta secuencia <strong>no está en el Currículo Nacional</strong> — lo verifiqué: la expresión «procesos didácticos» aparece cero veces en sus 212 páginas. Es la plantilla de tu institución, y la puedes cambiar. <a href="#plantilla" style="color:#6B5200;font-weight:700">Editar la plantilla del área</a></div>
+              <div class="aviso">Esta secuencia <strong>no está en el Currículo Nacional</strong> — lo verifiqué: la expresión «procesos didácticos» aparece cero veces en sus 212 páginas. Es la plantilla de tu institución, y la puedes cambiar. <a href="#plantilla" style="color:#6B5200;font-weight:700">Editar la plantilla del área</a></div>
             </div>
 
             <div class="mom">
-              <div class="mint">CIERRE · 15 MIN</div>
+              <div class="mint">Cierre · 15 min</div>
               <div class="p">Resuelven la ficha de aplicación. <a href="Ficha.dc.html" style="color:#1F5EA8;font-weight:600">ver la ficha</a></div>
               <div class="p">Metacognición: ¿qué hicimos hoy?, ¿cómo te sentiste?, ¿para qué nos será útil?</div>
             </div>
 
-            <div class="avisop">15 + 60 + 15 son <strong>90 minutos</strong> y tu bloque es de 90. Entra justo.</div>
+            <div class="aviso">15 + 60 + 15 son <strong>90 minutos</strong> y tu bloque es de 90. Entra justo.</div>
           </div>
 
           <div class="blq">
-            <div class="rom">V. ESCALA VALORATIVA</div>
+            <div class="hoja-h">V. Escala valorativa</div>
             <div class="p" style="color:#5C584C">Un nivel por criterio y por estudiante. Es escala valorativa, no lista de cotejo: tiene niveles intermedios.</div>
             <table>
               <thead>
@@ -229,7 +231,7 @@ td.nm,th.nm{text-align:left}
                 <tr><td class="nm" style="color:#5C584C">…</td><td class="nm" style="color:#5C584C">21 estudiantes más</td><td></td><td></td><td></td></tr>
               </tbody>
             </table>
-            <div class="avisop" style="background:#E7F0E9;border-left-color:#1F6B3F">Los nombres salen de tu nómina y no se guardan en ningún servidor. En esta vista van numerados a propósito.</div>
+            <div class="aviso" style="background:#E7F0E9;border-left-color:#1F6B3F">Los nombres salen de tu nómina y no se guardan en ningún servidor. En esta vista van numerados a propósito.</div>
           </div>
 
         </div>
@@ -254,7 +256,7 @@ class Component extends DCLogic {
   tab(on) {
     return 'padding: 13px 22px; border-radius: 11px; font-size: 16px; cursor: pointer;' +
            (on ? ' background: #E3B341; color: #16130A; border: none; font-weight: 700'
-               : ' background: #17191E; color: #F2EFE8; border: 1px solid #2A2E37');
+               : ' background: #15171C; color: #F2EFE8; border: 1px solid #24272F');
   }
   renderVals() {
     var mat = this.state.area === 'mat';

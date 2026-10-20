@@ -9,12 +9,13 @@
 <x-dc>
 <helmet>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 body{margin:0}
 a{text-decoration:none;color:inherit}
 button{font-family:inherit}
 </style>
 </helmet>
-<div style="width: 390px; height: 844px; box-sizing: border-box; background: #0E0F12; color: #F2EFE8; font-family: ui-sans-serif, system-ui, sans-serif; display: flex; flex-direction: column">
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #0E0F12; color: #F2EFE8; font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif; display: flex; flex-direction: column">
 
   <div style="padding: 22px 24px 0">
     <a href="Main.dc.html" style="font-size: 16px; color: #7AA2FF">← Inicio</a>
@@ -42,9 +43,9 @@ button{font-family:inherit}
     <div style="font-size: 15px; color: #A3A7B1; text-align: center; margin-top: 18px">Toca el nombre para cambiar</div>
   </div>
 
-  <div style="padding: 18px 24px 26px; border-top: 1px solid #2A2E37">
+  <div style="padding: 18px 24px 26px; border-top: 1px solid #24272F">
     <div style="font-size: 16px; color: #A3A7B1; margin-bottom: 14px">{{ resumen }}</div>
-    <a href="Main.dc.html" style="display: block; text-align: center; padding: 19px; border-radius: 14px; background: #E3B341; color: #16130A; font-size: 18px; font-weight: 700">Guardar</a>
+    <a href="Main.dc.html" style="display: block; text-align: center; padding: 19px; border-radius: 10px; background: #E3B341; color: #16130A; font-size: 18px; font-weight: 700">Guardar</a>
   </div>
 
 </div>
@@ -58,11 +59,11 @@ class Component extends DCLogic {
   sig(v) { return v === 'vino' ? 'tarde' : (v === 'tarde' ? 'falto' : 'vino'); }
   fila(v) {
     return 'display: flex; justify-content: space-between; align-items: center; width: 100%; box-sizing: border-box;' +
-           ' margin-bottom: 12px; padding: 18px 18px; border-radius: 14px; background: #17191E; cursor: pointer; color: #F2EFE8;' +
-           ' border: 1px solid #2A2E37; min-height: 64px';
+           ' margin-bottom: 12px; padding: 18px 18px; border-radius: 10px; background: #15171C; cursor: pointer; color: #F2EFE8;' +
+           ' border: 1px solid #24272F; min-height: 64px';
   }
   etiq(v) {
-    var c = v === 'vino' ? ['#10291C', '#6EE7A0'] : (v === 'tarde' ? ['#2A2210', '#F2C14E'] : ['#2E1416', '#F58A8A']);
+    var c = v === 'vino' ? ['#10291C', '#22A95C'] : (v === 'tarde' ? ['#2A2210', '#F2C14E'] : ['#2E1416', '#F58A8A']);
     return 'padding: 7px 16px; border-radius: 999px; font-size: 15px; font-weight: 600; background: ' + c[0] + '; color: ' + c[1];
   }
   rot(v) { return v === 'vino' ? 'Vino' : (v === 'tarde' ? 'Tarde' : 'No vino'); }
