@@ -53,7 +53,7 @@ pedagógica no hay insumo para la parte administrativa.
 
 | Funcionalidad | Sustento | Estado |
 |---|---|---|
-| Pipeline de preparación: unidad → sesión → ficha diferenciada → instrumento → imprimible | 2.5–4 h/día (I-1) | Por construir |
+| Pipeline de preparación: unidad → sesión → ficha diferenciada → instrumento → imprimible | 2.5–4 h/día (I-1) | **Parcial (web):** escritorio con horario semanal, unidad con sus sesiones y sesión como documento con aprobación docente. Falta elaborar/editar, ficha diferenciada e imprimible |
 | Asistencia digital en el aula, sin fotografía ni volcado posterior | I-2 | **Parcial: ya existe** |
 | Captura de evidencia por criterio durante la clase | I-3 | Por construir |
 | Banco de ítems por competencia, grado y nivel de dificultad | Sustrato de todo lo demás | Por construir |
@@ -78,7 +78,7 @@ operativa y roto el ODS 8. Regla permanente: **la IA propone borradores, el doce
 
 | Funcionalidad | Por qué no entra ahora |
 |---|---|
-| Conclusiones descriptivas asistidas | Alto valor (2–10 h/bimestre), pero requiere que el ciclo de evidencia ya funcione |
+| Conclusiones descriptivas asistidas | Alto valor (2–10 h/bimestre), pero requiere que el ciclo de evidencia ya funcione. Desde 2026-10-19 la web permite **escribirlas a mano** en el cierre de bimestre (sin borrador generado); la parte asistida sigue aquí |
 | Registro de notas | Depende de poder exportar al formato de SIAGIE. Ver decisión pendiente D-1 |
 | Repositorio de material digital y videos **enlazados** | Bajo costo técnico, alto costo de contenido |
 
@@ -151,6 +151,8 @@ No se fija de antemano un porcentaje de mejora.
 | 2026-10-12 | La asistencia pasa de **fuera del alcance** a **eslabón del núcleo** | Es un dolor real y confirmado (I-2), y habilita la captura de evidencia |
 | 2026-10-12 | "Centralizar actividades que coordinación asigna a docentes" deja de ser el eje central | No apareció como dolor prioritario en la investigación |
 | 2026-10-12 | Los simulacros dejan de ser co-protagonistas y pasan a ser una función del ciclo | Son un módulo con cuatro modos de uso, no cuatro módulos |
+| 2026-10-19 | La web incorpora el escritorio semanal, la unidad, la sesión (lectura y aprobación del borrador) y el cierre de bimestre, siguiendo el prototipo | Llevar a la app real el flujo validado en el prototipo con los datos que ya existen en la base. La aprobación cumple la Regla 0a; el nivel de logro lo elige siempre el docente (Regla 0b) |
+| 2026-10-19 | El cierre de bimestre registra nivel de logro, conclusión y recomendación por estudiante. **No resuelve D-1**: queda como captura para el cierre, no como registro oficial de notas | Lo pide el prototipo y la RVM 048-2024 obliga a conclusión en B y C. Si D-1 se decide en contra, la pantalla se limita a redactar las conclusiones para copiarlas a SIAGIE |
 
 > Re-delimitar después de empatizar es Design Thinking funcionando, no un retroceso. Cada
 > cambio queda registrado aquí con su motivo.

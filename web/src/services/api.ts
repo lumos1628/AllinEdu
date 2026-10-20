@@ -50,6 +50,104 @@ export interface Section {
   descripcion: string
 }
 
+export interface WeekBlock {
+  dayOfWeek: number
+  date: string
+  start: string
+  end: string
+  area: string
+  mine: boolean
+}
+
+export interface LearningUnit {
+  id: number
+  title: string
+  situation: string | null
+  startDate: string
+  endDate: string
+  approvedSessions: number
+  totalSessions: number
+}
+
+export interface Week {
+  sectionId: number
+  weekStart: string
+  today: string
+  blocks: WeekBlock[]
+  unit: LearningUnit | null
+}
+
+export interface UnitDetail {
+  id: number
+  title: string
+  situation: string | null
+  purpose: string | null
+  startDate: string | null
+  endDate: string | null
+  competencies: { id: number; name: string; purpose: string | null; sessions: number }[]
+  sessions: {
+    id: number
+    number: number
+    title: string
+    purpose: string | null
+    approved: boolean
+    competencies: string[]
+    activities: number
+  }[]
+}
+
+export interface SessionDetail {
+  id: number
+  unitId: number
+  unitTitle: string
+  number: number
+  title: string
+  purpose: string | null
+  durationMinutes: number | null
+  approved: boolean
+  competencies: string[]
+  criteria: string[]
+  evidences: { description: string; format: string | null }[]
+  instrument: {
+    name: string
+    type: string
+    criteria: { description: string; levels: { code: string; description: string }[] }[]
+  } | null
+  dua: { title: string; text: string | null }[]
+  approaches: { title: string; text: string | null }[]
+  materials: { name: string; quantity: number | null; required: boolean; description: string | null }[]
+  activities: { order: number; moment: string | null; title: string | null; instructions: string; minutes: number | null }[]
+}
+
+export type Level = 'AD' | 'A' | 'B' | 'C'
+
+export interface ClosureMark {
+  competencyId: number
+  level: Level
+  previousLevel: Level | null
+  conclusion: string | null
+  recommendation: string | null
+  missingConclusion: boolean
+}
+
+export interface Closure {
+  periodId: number
+  periodName: string
+  startDate: string
+  endDate: string
+  competencies: { id: number; name: string }[]
+  students: { enrollmentId: number; name: string; code: string; marks: ClosureMark[] }[]
+  pendingConclusions: number
+}
+
+export interface MarkInput {
+  enrollmentId: number
+  competencyId: number
+  level: Level
+  conclusion: string
+  recommendation: string
+}
+
 export interface Student {
   id: number
   name: string
@@ -106,6 +204,54 @@ export async function getMySections(): Promise<Section[]> {
   const res = await fetch(`${BASE}/sections/me`, { headers: authHeaders() })
   handleUnauthorized(res)
   if (!res.ok) throw new Error('Error al cargar secciones')
+  return res.json()
+}
+
+export async function getWeek(sectionId: number): Promise<Week> {
+  const res = await fetch(`${BASE}/sections/${sectionId}/week`, { headers: authHeaders() })
+  handleUnauthorized(res)
+  if (!res.ok) throw new Error('Error al cargar el horario')
+  return res.json()
+}
+
+async function authGet<T>(path: string, what: string): Promise<T> {
+  const res = await fetch(`${BASE}${path}`, { headers: authHeaders() })
+  handleUnauthorized(res)
+  if (!res.ok) throw new Error(`Error al cargar ${what}`)
+  return res.json()
+}
+
+export function getUnit(unitId: number): Promise<UnitDetail> {
+  return authGet(`/units/${unitId}`, 'la unidad')
+}
+
+export function getSession(sessionId: number): Promise<SessionDetail> {
+  return authGet(`/sessions/${sessionId}`, 'la sesión')
+}
+
+export async function approveSession(sessionId: number): Promise<SessionDetail> {
+  const res = await fetch(`${BASE}/sessions/${sessionId}/approval`, { method: 'POST', headers: authHeaders() })
+  handleUnauthorized(res)
+  if (!res.ok) throw new Error('No se pudo aprobar la sesión')
+  return res.json()
+}
+
+export function getClosure(sectionId: number): Promise<Closure> {
+  return authGet(`/sections/${sectionId}/closure`, 'el cierre del bimestre')
+}
+
+// El backend explica en `message` qué regla no se cumplió; se muestra tal cual.
+export async function saveMark(sectionId: number, mark: MarkInput): Promise<Closure> {
+  const res = await fetch(`${BASE}/sections/${sectionId}/closure/marks`, {
+    method: 'PUT',
+    headers: { ...authHeaders(), 'Content-Type': 'application/json' },
+    body: JSON.stringify(mark),
+  })
+  handleUnauthorized(res)
+  if (!res.ok) {
+    const body = await res.json().catch(() => null)
+    throw new Error(body?.message ?? 'No se pudo guardar')
+  }
   return res.json()
 }
 

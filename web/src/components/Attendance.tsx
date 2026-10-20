@@ -243,7 +243,7 @@ export default function Attendance({ section, onBack }: Props) {
     <div>
       <div className="topbar">
         <button className="link" onClick={onBack}>
-          ← Mis secciones
+          ← Inicio
         </button>
         <h2>{section.descripcion}</h2>
       </div>
