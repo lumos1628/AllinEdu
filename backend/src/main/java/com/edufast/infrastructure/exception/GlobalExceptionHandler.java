@@ -1,5 +1,6 @@
 package com.edufast.infrastructure.exception;
 
+import com.edufast.domain.exception.BusinessRuleException;
 import com.edufast.domain.exception.DomainException;
 import com.edufast.domain.exception.ForbiddenException;
 import com.edufast.domain.exception.NotFoundException;
@@ -12,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -28,6 +30,17 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(NotFoundException.class)
     public ResponseEntity<Map<String, Object>> handleNotFound(NotFoundException ex) {
         return build(HttpStatus.NOT_FOUND, ex.getMessage());
+    }
+
+    @ExceptionHandler(BusinessRuleException.class)
+    public ResponseEntity<Map<String, Object>> handleBusinessRule(BusinessRuleException ex) {
+        return build(HttpStatus.BAD_REQUEST, ex.getMessage());
+    }
+
+    // Una ruta que no existe es un 404, no un error interno.
+    @ExceptionHandler(NoResourceFoundException.class)
+    public ResponseEntity<Map<String, Object>> handleNoResource(NoResourceFoundException ex) {
+        return build(HttpStatus.NOT_FOUND, "Recurso no encontrado");
     }
 
     @ExceptionHandler(ForbiddenException.class)
