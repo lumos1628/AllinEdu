@@ -1,5 +1,6 @@
 package com.edufast.domain.model;
 
+import java.time.Instant;
 import java.util.List;
 
 /**
@@ -16,6 +17,9 @@ public record SessionDetail(
         String purpose,
         Integer durationMinutes,
         String status,
+        boolean generated,
+        Instant editedAt,
+        Instant approvedAt,
         List<String> competencies,
         List<String> criteria,
         List<Evidence> evidences,
@@ -50,6 +54,8 @@ public record SessionDetail(
     public record Material(String name, Integer quantity, String character, String description) {
     }
 
-    public record Activity(int order, String moment, String title, String instructions, Integer minutes) {
+    /** generated: la propuso un generador y el docente todavía no la cambió. */
+    public record Activity(Long id, int order, String moment, String title, String instructions, Integer minutes,
+                           boolean generated) {
     }
 }

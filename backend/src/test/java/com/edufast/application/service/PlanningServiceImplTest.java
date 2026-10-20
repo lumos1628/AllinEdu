@@ -1,12 +1,15 @@
 package com.edufast.application.service;
 
+import com.edufast.application.dto.SessionUpdateRequest;
 import com.edufast.application.dto.WeekResponse;
+import com.edufast.domain.exception.BusinessRuleException;
 import com.edufast.domain.exception.NotFoundException;
 import com.edufast.domain.model.LearningUnit;
 import com.edufast.domain.model.Role;
 import com.edufast.domain.model.ScheduleBlock;
 import com.edufast.domain.model.Section;
 import com.edufast.domain.model.SessionDetail;
+import com.edufast.domain.model.SessionEdit;
 import com.edufast.domain.model.UnitDetail;
 import com.edufast.domain.model.User;
 import com.edufast.domain.port.PlanningRepository;
@@ -90,7 +93,7 @@ class PlanningServiceImplTest {
 
     private static SessionDetail session(String status) {
         return new SessionDetail(3L, 1L, "Repartimos en partes iguales", 3, "Comparamos fracciones", "Comparar",
-                90, status, List.of("Resuelve problemas de cantidad"), List.of(), List.of(), null,
+                90, status, false, null, null, List.of("Resuelve problemas de cantidad"), List.of(), List.of(), null,
                 List.of(), List.of(), List.of(), List.of());
     }
 
@@ -122,33 +125,59 @@ class PlanningServiceImplTest {
 
     @Test
     void aprobarUnBorradorLoMarcaComoAprobado() {
-        when(planningRepository.findSession(3L))
-                .thenReturn(Optional.of(session("BORRADOR")))
-                .thenReturn(Optional.of(session("PUBLICADA")));
+        when(planningRepository.findSessionUnitId(3L)).thenReturn(Optional.of(1L));
         when(planningRepository.isUnitAssignedToTeacher(1L, 7L)).thenReturn(true);
+        when(planningRepository.findSession(3L)).thenReturn(Optional.of(session("PUBLICADA")));
 
         var result = planningService.approveSession(teacher, 3L);
 
-        verify(planningRepository).approveSession(3L);
+        verify(planningRepository).approveSession(3L, 7L);
         assertTrue(result.approved());
     }
 
     @Test
-    void aprobarUnaSesionYaAprobadaNoLaVuelveAEscribir() {
-        when(planningRepository.findSession(3L)).thenReturn(Optional.of(session("PUBLICADA")));
-        when(planningRepository.isUnitAssignedToTeacher(1L, 7L)).thenReturn(true);
-
-        planningService.approveSession(teacher, 3L);
-
-        verify(planningRepository, never()).approveSession(any());
-    }
-
-    @Test
     void noSePuedeAprobarLaSesionDeOtroDocente() {
-        when(planningRepository.findSession(3L)).thenReturn(Optional.of(session("BORRADOR")));
+        when(planningRepository.findSessionUnitId(3L)).thenReturn(Optional.of(1L));
         when(planningRepository.isUnitAssignedToTeacher(1L, 7L)).thenReturn(false);
 
         assertThrows(NotFoundException.class, () -> planningService.approveSession(teacher, 3L));
-        verify(planningRepository, never()).approveSession(any());
+        verify(planningRepository, never()).approveSession(any(), any());
+    }
+
+    private static SessionUpdateRequest edit(SessionUpdateRequest.Activity... activities) {
+        return new SessionUpdateRequest("  Comparamos fracciones  ", " ", 90, "Ficha resuelta", List.of(activities));
+    }
+
+    @Test
+    void guardaLaEdicionDelDocenteLimpiandoLosTextos() {
+        when(planningRepository.findSessionUnitId(3L)).thenReturn(Optional.of(1L));
+        when(planningRepository.findSession(3L)).thenReturn(Optional.of(session("PUBLICADA")));
+        when(planningRepository.isUnitAssignedToTeacher(1L, 7L)).thenReturn(true);
+
+        planningService.updateSession(teacher, 3L,
+                edit(new SessionUpdateRequest.Activity(10L, "INICIO", " ", " Saludo y asistencia ", 5)));
+
+        verify(planningRepository).updateSession(3L, 1L, new SessionEdit("Comparamos fracciones", null, 90,
+                "Ficha resuelta", List.of(new SessionEdit.ActivityEdit(10L, "INICIO", null, "Saludo y asistencia", 5))),
+                7L);
+    }
+
+    @Test
+    void rechazaUnaActividadFueraDeLosMomentosDeLaSesion() {
+        when(planningRepository.findSessionUnitId(3L)).thenReturn(Optional.of(1L));
+        when(planningRepository.isUnitAssignedToTeacher(1L, 7L)).thenReturn(true);
+
+        assertThrows(BusinessRuleException.class, () -> planningService.updateSession(teacher, 3L,
+                edit(new SessionUpdateRequest.Activity(null, "RECREO", null, "Jugar", 10))));
+        verify(planningRepository, never()).updateSession(any(), any(), any(), any());
+    }
+
+    @Test
+    void noSePuedeEditarLaSesionDeOtroDocente() {
+        when(planningRepository.findSessionUnitId(3L)).thenReturn(Optional.of(1L));
+        when(planningRepository.isUnitAssignedToTeacher(1L, 7L)).thenReturn(false);
+
+        assertThrows(NotFoundException.class, () -> planningService.updateSession(teacher, 3L, edit()));
+        verify(planningRepository, never()).updateSession(any(), any(), any(), any());
     }
 }

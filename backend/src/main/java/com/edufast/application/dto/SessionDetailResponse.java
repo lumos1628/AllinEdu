@@ -2,6 +2,7 @@ package com.edufast.application.dto;
 
 import com.edufast.domain.model.SessionDetail;
 
+import java.time.Instant;
 import java.util.List;
 
 public record SessionDetailResponse(
@@ -13,6 +14,9 @@ public record SessionDetailResponse(
         String purpose,
         Integer durationMinutes,
         boolean approved,
+        boolean generated,
+        Instant editedAt,
+        Instant approvedAt,
         List<String> competencies,
         List<String> criteria,
         List<Evidence> evidences,
@@ -40,7 +44,8 @@ public record SessionDetailResponse(
     public record Material(String name, Integer quantity, boolean required, String description) {
     }
 
-    public record Activity(int order, String moment, String title, String instructions, Integer minutes) {
+    public record Activity(Long id, int order, String moment, String title, String instructions, Integer minutes,
+                           boolean generated) {
     }
 
     public static SessionDetailResponse from(SessionDetail s) {
@@ -52,7 +57,7 @@ public record SessionDetailResponse(
                         .toList());
         return new SessionDetailResponse(
                 s.id(), s.unitId(), s.unitTitle(), s.number(), s.title(), s.purpose(), s.durationMinutes(),
-                !s.isDraft(), s.competencies(), s.criteria(),
+                !s.isDraft(), s.generated(), s.editedAt(), s.approvedAt(), s.competencies(), s.criteria(),
                 s.evidences().stream().map(e -> new Evidence(e.description(), e.format())).toList(),
                 instrument,
                 s.dua().stream().map(n -> new Note(n.title(), n.text())).toList(),
@@ -61,7 +66,8 @@ public record SessionDetailResponse(
                         .map(m -> new Material(m.name(), m.quantity(), "OBLIGATORIO".equals(m.character()), m.description()))
                         .toList(),
                 s.activities().stream()
-                        .map(a -> new Activity(a.order(), a.moment(), a.title(), a.instructions(), a.minutes()))
+                        .map(a -> new Activity(a.id(), a.order(), a.moment(), a.title(), a.instructions(), a.minutes(),
+                                a.generated()))
                         .toList());
     }
 }

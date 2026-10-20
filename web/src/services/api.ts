@@ -105,6 +105,9 @@ export interface SessionDetail {
   purpose: string | null
   durationMinutes: number | null
   approved: boolean
+  generated: boolean
+  editedAt: string | null
+  approvedAt: string | null
   competencies: string[]
   criteria: string[]
   evidences: { description: string; format: string | null }[]
@@ -116,7 +119,27 @@ export interface SessionDetail {
   dua: { title: string; text: string | null }[]
   approaches: { title: string; text: string | null }[]
   materials: { name: string; quantity: number | null; required: boolean; description: string | null }[]
-  activities: { order: number; moment: string | null; title: string | null; instructions: string; minutes: number | null }[]
+  activities: SessionActivity[]
+}
+
+export type Moment = 'INICIO' | 'DESARROLLO' | 'CIERRE' | 'OTRO'
+
+export interface SessionActivity {
+  id: number
+  order: number
+  moment: Moment | null
+  title: string | null
+  instructions: string
+  minutes: number | null
+  generated: boolean
+}
+
+export interface SessionUpdate {
+  title: string
+  purpose: string
+  durationMinutes: number | null
+  evidence: string
+  activities: { id: number | null; moment: Moment; title: string; instructions: string; minutes: number | null }[]
 }
 
 export type Level = 'AD' | 'A' | 'B' | 'C'
@@ -227,6 +250,20 @@ export function getUnit(unitId: number): Promise<UnitDetail> {
 
 export function getSession(sessionId: number): Promise<SessionDetail> {
   return authGet(`/sessions/${sessionId}`, 'la sesión')
+}
+
+export async function updateSession(sessionId: number, body: SessionUpdate): Promise<SessionDetail> {
+  const res = await fetch(`${BASE}/sessions/${sessionId}`, {
+    method: 'PUT',
+    headers: { ...authHeaders(), 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
+  })
+  handleUnauthorized(res)
+  if (!res.ok) {
+    const err = await res.json().catch(() => null)
+    throw new Error(err?.message ?? 'No se pudo guardar la sesión')
+  }
+  return res.json()
 }
 
 export async function approveSession(sessionId: number): Promise<SessionDetail> {

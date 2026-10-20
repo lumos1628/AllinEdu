@@ -1,10 +1,12 @@
 package com.edufast.infrastructure.controller;
 
 import com.edufast.application.dto.SessionDetailResponse;
+import com.edufast.application.dto.SessionUpdateRequest;
 import com.edufast.application.dto.UnitDetailResponse;
 import com.edufast.application.dto.WeekResponse;
 import com.edufast.application.service.PlanningService;
 import com.edufast.domain.model.User;
+import jakarta.validation.Valid;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
@@ -37,6 +39,12 @@ public class PlanningController {
     @GetMapping("/sessions/{sessionId}")
     public SessionDetailResponse session(@AuthenticationPrincipal User user, @PathVariable Long sessionId) {
         return planningService.getSession(user, sessionId);
+    }
+
+    @PutMapping("/sessions/{sessionId}")
+    public SessionDetailResponse update(@AuthenticationPrincipal User user, @PathVariable Long sessionId,
+                                        @Valid @RequestBody SessionUpdateRequest request) {
+        return planningService.updateSession(user, sessionId, request);
     }
 
     @PostMapping("/sessions/{sessionId}/approval")

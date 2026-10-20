@@ -1,10 +1,12 @@
 package com.edufast.application.service;
 
 import com.edufast.application.dto.SessionDetailResponse;
+import com.edufast.application.dto.SessionUpdateRequest;
 import com.edufast.application.dto.UnitDetailResponse;
 import com.edufast.application.dto.WeekResponse;
 import com.edufast.domain.exception.NotFoundException;
 import com.edufast.domain.model.SessionDetail;
+import com.edufast.domain.model.SessionEdit;
 import com.edufast.domain.model.User;
 import com.edufast.domain.port.PlanningRepository;
 import org.springframework.stereotype.Service;
@@ -64,12 +66,20 @@ public class PlanningServiceImpl implements PlanningService {
     @Override
     @Transactional
     public SessionDetailResponse approveSession(User user, Long sessionId) {
-        SessionDetail session = getAccessibleSession(user, sessionId);
-        if (session.isDraft()) {
-            planningRepository.approveSession(sessionId);
-            session = planningRepository.findSession(sessionId).orElseThrow();
-        }
-        return SessionDetailResponse.from(session);
+        checkSessionAccess(user, sessionId);
+        // Solo cambia si es borrador: aprobar dos veces no reescribe quién ni cuándo.
+        planningRepository.approveSession(sessionId, user.getId());
+        return SessionDetailResponse.from(planningRepository.findSession(sessionId).orElseThrow());
+    }
+
+    @Override
+    @Transactional
+    public SessionDetailResponse updateSession(User user, Long sessionId, SessionUpdateRequest request) {
+        Long unitId = checkSessionAccess(user, sessionId);
+        SessionEdit edit = request.toDomain();
+        edit.validate();
+        planningRepository.updateSession(sessionId, unitId, edit, user.getId());
+        return SessionDetailResponse.from(planningRepository.findSession(sessionId).orElseThrow());
     }
 
     private SessionDetail getAccessibleSession(User user, Long sessionId) {
@@ -77,6 +87,13 @@ public class PlanningServiceImpl implements PlanningService {
                 .orElseThrow(() -> new NotFoundException("Sesión no encontrada"));
         checkUnitAccess(user, session.unitId());
         return session;
+    }
+
+    private Long checkSessionAccess(User user, Long sessionId) {
+        Long unitId = planningRepository.findSessionUnitId(sessionId)
+                .orElseThrow(() -> new NotFoundException("Sesión no encontrada"));
+        checkUnitAccess(user, unitId);
+        return unitId;
     }
 
     // Una unidad ajena responde igual que una inexistente: no se revela que existe.

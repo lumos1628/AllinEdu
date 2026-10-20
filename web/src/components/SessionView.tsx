@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { approveSession, getSession } from '../services/api'
 import type { SessionDetail } from '../services/api'
+import SessionEditor from './SessionEditor'
 
 interface Props {
   sessionId: number
@@ -30,6 +31,12 @@ const EVIDENCE_FORMAT: Record<string, string> = {
   PRODUCTO: 'producto',
 }
 
+function editedLabel(iso: string): string {
+  return new Intl.DateTimeFormat('es-PE', { day: 'numeric', month: 'long', hour: 'numeric', minute: '2-digit' }).format(
+    new Date(iso),
+  )
+}
+
 function Empty({ children }: { children: string }) {
   return <p className="doc-empty">{children}</p>
 }
@@ -51,7 +58,8 @@ function Sequence({ session }: { session: SessionDetail }) {
             </h4>
             <ol className="doc-steps">
               {acts.map((a) => (
-                <li key={a.order}>
+                <li key={a.id}>
+                  {a.generated && <span className="doc-tag is-required">Propuesta, sin revisar</span>}
                   {a.title && <strong>{a.title}. </strong>}
                   {a.instructions}
                 </li>
@@ -73,6 +81,8 @@ export default function SessionView({ sessionId, onBack }: Props) {
   const [session, setSession] = useState<SessionDetail | null>(null)
   const [error, setError] = useState('')
   const [approving, setApproving] = useState(false)
+  const [editing, setEditing] = useState(false)
+  const [savedNote, setSavedNote] = useState('')
 
   useEffect(() => {
     getSession(sessionId)
@@ -109,12 +119,35 @@ export default function SessionView({ sessionId, onBack }: Props) {
             <h1 className="doc-title">{session.title}</h1>
           </div>
 
-          {session.approved ? (
-            <p className="status-dot is-ok doc-status">Aprobada por ti</p>
+          {editing ? (
+            <SessionEditor
+              session={session}
+              onCancel={() => setEditing(false)}
+              onSaved={(saved) => {
+                setSession(saved)
+                setEditing(false)
+                setSavedNote('Cambios guardados. Quedan registrados como tuyos.')
+              }}
+            />
           ) : (
+          <>
+          <div className="doc-toolbar">
+            <span className="doc-meta">
+              {session.approved && <span className="status-dot is-ok">Aprobada por ti</span>}
+              {session.editedAt && <span>Editada el {editedLabel(session.editedAt)}</span>}
+              {savedNote && <span className="ok" role="status">{savedNote}</span>}
+            </span>
+            <button className="editor-cancel" onClick={() => { setSavedNote(''); setEditing(true) }}>
+              Editar la sesión
+            </button>
+          </div>
+
+          {!session.approved && (
             <div className="doc-draft" role="status">
               <div>
-                <p className="doc-draft-title">Es un borrador</p>
+                <p className="doc-draft-title">
+                  {session.generated && !session.editedAt ? 'Lo propuso el sistema y nadie lo ha revisado' : 'Es un borrador'}
+                </p>
                 <p className="doc-draft-text">
                   No llega a tus estudiantes ni se imprime hasta que lo apruebes. Revísalo completo antes de aprobarlo.
                 </p>
@@ -260,6 +293,8 @@ export default function SessionView({ sessionId, onBack }: Props) {
               )}
             </section>
           </article>
+          </>
+          )}
         </>
       )}
     </div>

@@ -27,7 +27,7 @@ Falta modelar el sustrato del refuerzo. Requiere una migración nueva y aprobada
 
 ### Lo que el esquema ya resuelve y conviene no duplicar
 
-- La **generación con IA** no necesita tablas nuevas de contenido: las sesiones, actividades e instrumentos se guardan donde ya corresponde. Lo que sí hace falta es el estado de aprobación y la distinción entre contenido generado y contenido editado por una persona (Regla 0a de `AGENTS.md`).
+- La **generación con IA** no necesita tablas nuevas de contenido: las sesiones, actividades e instrumentos se guardan donde ya corresponde. El estado de aprobación y la distinción entre contenido generado y editado por una persona (Regla 0a de `AGENTS.md`) viven en `sesiones_planificadas` (`origen`, `editada_por/_at`, `aprobada_por/_at`) y `actividades_sesion` (`origen`, `editada_at`), desde `20261020000100_autoria_sesiones.sql`. Una actividad generada que el docente cambia pasa a `origen = 'DOCENTE'`.
 - La **justificación de ausencias** se apoya en `registros_asistencia` más `archivos`; no crea un flujo paralelo.
 
 La app/web nunca accede directamente a la base: ambos clientes usan la API Spring. Las claves privadas de PostgreSQL y de proveedores push no se distribuyen a los clientes.
@@ -123,6 +123,11 @@ El registro de “no entregada” solo se crea al ser confirmado por un actor au
 - `asignaciones_roles.reporta_a_cuenta_usuario_id` registra la relación de supervisión de una asignación, por ejemplo, una secretaria que reporta a la dirección general.
 - `asignaciones_docentes.funcion` distingue a un docente regular de un auxiliar. Ambos usan el rol de acceso `DOCENTE`.
 - Habilita `pgcrypto` para que el generador de datos de desarrollo convierta la contraseña configurada en un hash BCrypt sin guardarla en los archivos del repositorio.
+
+### `20261020000100_autoria_sesiones.sql`
+
+- `sesiones_planificadas`: `origen` (`DOCENTE` o `GENERADA`), `editada_por`, `editada_at`, `aprobada_por`, `aprobada_at`.
+- `actividades_sesion`: `origen` y `editada_at`. Lo existente queda como `DOCENTE`.
 
 ## Restricciones críticas
 

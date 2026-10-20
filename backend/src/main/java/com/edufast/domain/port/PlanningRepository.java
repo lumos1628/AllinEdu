@@ -3,6 +3,7 @@ package com.edufast.domain.port;
 import com.edufast.domain.model.LearningUnit;
 import com.edufast.domain.model.ScheduleBlock;
 import com.edufast.domain.model.SessionDetail;
+import com.edufast.domain.model.SessionEdit;
 import com.edufast.domain.model.UnitDetail;
 
 import java.time.LocalDate;
@@ -27,6 +28,12 @@ public interface PlanningRepository {
 
     Optional<SessionDetail> findSession(Long sessionId);
 
-    /** Marca la sesión como aprobada por el docente. */
-    void approveSession(Long sessionId);
+    /** Solo la unidad de la sesión: basta para verificar el acceso sin cargarla entera. */
+    Optional<Long> findSessionUnitId(Long sessionId);
+
+    /** Marca la sesión como aprobada por el docente y guarda quién y cuándo. */
+    void approveSession(Long sessionId, Long teacherId);
+
+    /** Guarda los cambios del docente; lo que él escribe queda con origen DOCENTE. */
+    void updateSession(Long sessionId, Long unitId, SessionEdit edit, Long teacherId);
 }
