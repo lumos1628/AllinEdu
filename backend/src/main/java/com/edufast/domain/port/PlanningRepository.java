@@ -1,5 +1,7 @@
 package com.edufast.domain.port;
 
+import com.edufast.domain.model.DraftContext;
+import com.edufast.domain.model.GeneratedDraft;
 import com.edufast.domain.model.LearningUnit;
 import com.edufast.domain.model.ScheduleBlock;
 import com.edufast.domain.model.SessionDetail;
@@ -36,4 +38,13 @@ public interface PlanningRepository {
 
     /** Guarda los cambios del docente; lo que él escribe queda con origen DOCENTE. */
     void updateSession(Long sessionId, Long unitId, SessionEdit edit, Long teacherId);
+
+    /** Currículo y planificación que necesita el generador para esta sesión. */
+    Optional<DraftContext> findDraftContext(Long sessionId);
+
+    /**
+     * Guarda el borrador generado: actividades con origen GENERADA y la sesión
+     * vuelve a BORRADOR sin aprobación, para que el docente la revise.
+     */
+    void saveGeneratedDraft(Long sessionId, Long unitId, GeneratedDraft draft);
 }

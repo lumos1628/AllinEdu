@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { approveSession, getSession } from '../services/api'
+import { approveSession, generateDraft, getSession } from '../services/api'
 import type { SessionDetail } from '../services/api'
 import SessionEditor from './SessionEditor'
 
@@ -83,12 +83,27 @@ export default function SessionView({ sessionId, onBack }: Props) {
   const [approving, setApproving] = useState(false)
   const [editing, setEditing] = useState(false)
   const [savedNote, setSavedNote] = useState('')
+  const [generating, setGenerating] = useState(false)
+  const [draftError, setDraftError] = useState('')
 
   useEffect(() => {
     getSession(sessionId)
       .then(setSession)
       .catch(() => setError('No se pudo cargar la sesión.'))
   }, [sessionId])
+
+  async function handleGenerate() {
+    setGenerating(true)
+    setDraftError('')
+    try {
+      setSession(await generateDraft(sessionId))
+      setSavedNote('')
+    } catch (e) {
+      setDraftError(e instanceof Error ? e.message : 'No se pudo preparar el borrador')
+    } finally {
+      setGenerating(false)
+    }
+  }
 
   async function handleApprove() {
     setApproving(true)
@@ -101,6 +116,8 @@ export default function SessionView({ sessionId, onBack }: Props) {
       setApproving(false)
     }
   }
+
+  const pendingReview = session?.activities.filter((a) => a.generated).length ?? 0
 
   return (
     <div className="home">
@@ -142,6 +159,22 @@ export default function SessionView({ sessionId, onBack }: Props) {
             </button>
           </div>
 
+          {session.activities.length === 0 && (
+            <div className="doc-generate">
+              <div>
+                <p className="doc-draft-title">Esta sesión todavía no tiene secuencia</p>
+                <p className="doc-draft-text">
+                  Puedo proponerte un borrador a partir de la unidad, los desempeños del grado y los pasos de tu
+                  institución. Llega sin aprobar: lo revisas, lo cambias y decides tú.
+                </p>
+                {draftError && <p className="error" role="alert">{draftError}</p>}
+              </div>
+              <button className="home-take" onClick={handleGenerate} disabled={generating}>
+                {generating ? 'Preparando el borrador…' : 'Proponer un borrador'}
+              </button>
+            </div>
+          )}
+
           {!session.approved && (
             <div className="doc-draft" role="status">
               <div>
@@ -150,6 +183,8 @@ export default function SessionView({ sessionId, onBack }: Props) {
                 </p>
                 <p className="doc-draft-text">
                   No llega a tus estudiantes ni se imprime hasta que lo apruebes. Revísalo completo antes de aprobarlo.
+                  {pendingReview > 0 &&
+                    ` Quedan ${pendingReview} ${pendingReview === 1 ? 'actividad propuesta' : 'actividades propuestas'} que no has cambiado.`}
                 </p>
               </div>
               <button className="home-take" onClick={handleApprove} disabled={approving}>

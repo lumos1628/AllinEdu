@@ -266,6 +266,17 @@ export async function updateSession(sessionId: number, body: SessionUpdate): Pro
   return res.json()
 }
 
+// La generación tarda unos segundos; el backend responde 503 si el modelo está ocupado.
+export async function generateDraft(sessionId: number): Promise<SessionDetail> {
+  const res = await fetch(`${BASE}/sessions/${sessionId}/draft`, { method: 'POST', headers: authHeaders() })
+  handleUnauthorized(res)
+  if (!res.ok) {
+    const err = await res.json().catch(() => null)
+    throw new Error(err?.message ?? 'No se pudo preparar el borrador')
+  }
+  return res.json()
+}
+
 export async function approveSession(sessionId: number): Promise<SessionDetail> {
   const res = await fetch(`${BASE}/sessions/${sessionId}/approval`, { method: 'POST', headers: authHeaders() })
   handleUnauthorized(res)

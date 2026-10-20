@@ -3,6 +3,7 @@ package com.edufast.infrastructure.exception;
 import com.edufast.domain.exception.BusinessRuleException;
 import com.edufast.domain.exception.DomainException;
 import com.edufast.domain.exception.ForbiddenException;
+import com.edufast.domain.exception.GeneratorUnavailableException;
 import com.edufast.domain.exception.NotFoundException;
 import com.edufast.domain.exception.UnauthorizedException;
 import org.slf4j.Logger;
@@ -35,6 +36,11 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(BusinessRuleException.class)
     public ResponseEntity<Map<String, Object>> handleBusinessRule(BusinessRuleException ex) {
         return build(HttpStatus.BAD_REQUEST, ex.getMessage());
+    }
+
+    @ExceptionHandler(GeneratorUnavailableException.class)
+    public ResponseEntity<Map<String, Object>> handleGenerator(GeneratorUnavailableException ex) {
+        return build(HttpStatus.SERVICE_UNAVAILABLE, ex.getMessage());
     }
 
     // Una ruta que no existe es un 404, no un error interno.

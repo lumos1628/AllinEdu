@@ -2042,3 +2042,25 @@ h2 {
     flex: 1;
   }
 }
+
+/* Proponer un borrador generado */
+.doc-generate {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+  padding: 18px 20px;
+  border-radius: 12px;
+  background: var(--card);
+  border: 1px dashed var(--accent);
+}
+
+.doc-generate .doc-draft-title {
+  color: var(--text);
+}
+
+.doc-generate > div {
+  flex: 1 1 360px;
+}

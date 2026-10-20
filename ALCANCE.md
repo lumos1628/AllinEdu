@@ -61,7 +61,7 @@ pedagógica no hay insumo para la parte administrativa.
 | Práctica progresiva por nivel de dificultad | I-5 | Por construir |
 | Repaso espaciado | Agarwal 2021, Latimier 2021 | Por construir |
 | Canal con familias: constancia de respuesta y horario de atención visible | I-4 | Por construir |
-| Generación asistida de ítems y borradores, con revisión docente obligatoria | I-1, NFER 2024 | Por construir |
+| Generación asistida de ítems y borradores, con revisión docente obligatoria | I-1, NFER 2024 | **Parcial:** borrador de la secuencia de una sesión vacía (Gemini, plan gratuito), marcado como propuesto y sin aprobar hasta que el docente lo revise. Faltan ítems, fichas e instrumentos |
 
 **Sobre la generación con IA:** no es un extra, es lo que evita que el proyecto se contradiga.
 Si el docente tuviera que redactar a mano los ítems y las fichas, le habríamos *agregado* carga
@@ -153,6 +153,7 @@ No se fija de antemano un porcentaje de mejora.
 | 2026-10-12 | Los simulacros dejan de ser co-protagonistas y pasan a ser una función del ciclo | Son un módulo con cuatro modos de uso, no cuatro módulos |
 | 2026-10-19 | La web incorpora el escritorio semanal, la unidad, la sesión (lectura y aprobación del borrador) y el cierre de bimestre, siguiendo el prototipo | Llevar a la app real el flujo validado en el prototipo con los datos que ya existen en la base. La aprobación cumple la Regla 0a; el nivel de logro lo elige siempre el docente (Regla 0b) |
 | 2026-10-19 | El cierre de bimestre registra nivel de logro, conclusión y recomendación por estudiante. **No resuelve D-1**: queda como captura para el cierre, no como registro oficial de notas | Lo pide el prototipo y la RVM 048-2024 obliga a conclusión en B y C. Si D-1 se decide en contra, la pantalla se limita a redactar las conclusiones para copiarlas a SIAGIE |
+| 2026-10-20 | Entra la generación del borrador de secuencia de una sesión, con edición y registro de autoría (generado vs. escrito por el docente) | Es el ahorro de tiempo de la prioridad 1. Solo se genera sobre sesiones vacías y con currículo y planificación como contexto, nunca datos de estudiantes; el resultado nace sin aprobar (Regla 0a) |
 
 > Re-delimitar después de empatizar es Design Thinking funcionando, no un retroceso. Cada
 > cambio queda registrado aquí con su motivo.
