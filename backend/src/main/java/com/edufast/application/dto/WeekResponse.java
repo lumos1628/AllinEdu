@@ -16,12 +16,20 @@ public record WeekResponse(
 
     private static final DateTimeFormatter HOUR = DateTimeFormatter.ofPattern("H:mm");
 
-    public record Block(int dayOfWeek, LocalDate date, String start, String end, String area, boolean mine) {
+    public record Block(Long slotId, int dayOfWeek, LocalDate date, String start, String end, String area,
+                        boolean mine, Session session) {
 
         public static Block from(ScheduleBlock b, LocalDate weekStart) {
-            return new Block(b.dayOfWeek(), weekStart.plusDays(b.dayOfWeek() - 1L),
-                    b.start().format(HOUR), b.end().format(HOUR), b.area(), b.taughtByTeacher());
+            var s = b.session();
+            return new Block(b.slotId(), b.dayOfWeek(), weekStart.plusDays(b.dayOfWeek() - 1L),
+                    b.start().format(HOUR), b.end().format(HOUR), b.area(), b.taughtByTeacher(),
+                    s == null ? null : new Session(s.id(), s.unitId(), s.title(), "PUBLICADA".equals(s.status()),
+                            s.activities()));
         }
+    }
+
+    /** La sesión asignada al bloque en esa fecha. activities = 0 significa "sin secuencia". */
+    public record Session(Long id, Long unitId, String title, boolean approved, int activities) {
     }
 
     public record Unit(Long id, String title, String situation, LocalDate startDate, LocalDate endDate,

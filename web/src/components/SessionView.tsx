@@ -5,6 +5,7 @@ import SessionEditor from './SessionEditor'
 
 interface Props {
   sessionId: number
+  backLabel: string
   onBack: () => void
 }
 
@@ -77,7 +78,7 @@ function Sequence({ session }: { session: SessionDetail }) {
   )
 }
 
-export default function SessionView({ sessionId, onBack }: Props) {
+export default function SessionView({ sessionId, backLabel, onBack }: Props) {
   const [session, setSession] = useState<SessionDetail | null>(null)
   const [error, setError] = useState('')
   const [approving, setApproving] = useState(false)
@@ -121,7 +122,7 @@ export default function SessionView({ sessionId, onBack }: Props) {
 
   return (
     <div className="home">
-      <button className="link back-link" onClick={onBack}>← La unidad</button>
+      <button className="link back-link" onClick={onBack}>← {backLabel}</button>
 
       {error && <p className="error">{error}</p>}
       {!session && !error && <p className="muted">Cargando la sesión…</p>}

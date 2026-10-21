@@ -6,6 +6,7 @@ import com.edufast.domain.model.LearningUnit;
 import com.edufast.domain.model.ScheduleBlock;
 import com.edufast.domain.model.SessionDetail;
 import com.edufast.domain.model.SessionEdit;
+import com.edufast.domain.model.Slot;
 import com.edufast.domain.model.UnitDetail;
 import com.edufast.domain.port.PlanningRepository;
 import org.springframework.jdbc.core.simple.JdbcClient;
@@ -40,15 +41,21 @@ public class PlanningRepositoryAdapter implements PlanningRepository {
 
     @Override
     public List<ScheduleBlock> findSchedule(Long sectionId, Long teacherId, LocalDate date) {
+        // La fecha de cada bloque en esa semana: lunes ISO + (día - 1).
         return jdbc.sql("""
-                        SELECT h.dia_semana, h.hora_inicio, h.hora_fin, a.nombre AS area,
+                        SELECT h.id, h.dia_semana, h.hora_inicio, h.hora_fin, a.nombre AS area,
                                EXISTS (SELECT 1 FROM public.asignaciones_docentes_areas ada
                                        WHERE ada.oferta_curricular_id = h.oferta_curricular_id
                                          AND ada.cuenta_usuario_id = :teacher
-                                         AND ada.vigente_hasta IS NULL) AS mine
+                                         AND ada.vigente_hasta IS NULL) AS mine,
+                               sp.id AS sesion_id, sp.experiencia_id, sp.titulo, sp.estado,
+                               (SELECT count(*) FROM public.actividades_sesion ac WHERE ac.sesion_id = sp.id) AS actividades
                         FROM public.horarios_seccion h
                         JOIN public.ofertas_curriculares oc ON oc.id = h.oferta_curricular_id
                         JOIN public.areas_curriculares a ON a.id = oc.area_curricular_id
+                        LEFT JOIN public.sesiones_planificadas sp
+                               ON sp.horario_id = h.id
+                              AND sp.fecha = date_trunc('week', CAST(:date AS date))::date + (h.dia_semana - 1)
                         WHERE h.seccion_id = :section
                           AND h.vigente_desde <= :date
                           AND (h.vigente_hasta IS NULL OR h.vigente_hasta >= :date)
@@ -57,12 +64,15 @@ public class PlanningRepositoryAdapter implements PlanningRepository {
                 .param("section", sectionId)
                 .param("teacher", teacherId)
                 .param("date", date)
-                .query((rs, i) -> new ScheduleBlock(
-                        rs.getInt("dia_semana"),
-                        rs.getTime("hora_inicio").toLocalTime(),
-                        rs.getTime("hora_fin").toLocalTime(),
-                        rs.getString("area"),
-                        rs.getBoolean("mine")))
+                .query((rs, i) -> {
+                    Long sessionId = rs.getObject("sesion_id", Long.class);
+                    var session = sessionId == null ? null : new ScheduleBlock.ScheduledSession(sessionId,
+                            rs.getObject("experiencia_id", Long.class), rs.getString("titulo"),
+                            rs.getString("estado"), rs.getInt("actividades"));
+                    return new ScheduleBlock(rs.getLong("id"), rs.getInt("dia_semana"),
+                            rs.getTime("hora_inicio").toLocalTime(), rs.getTime("hora_fin").toLocalTime(),
+                            rs.getString("area"), rs.getBoolean("mine"), session);
+                })
                 .list();
     }
 
@@ -519,6 +529,106 @@ public class PlanningRepositoryAdapter implements PlanningRepository {
                         WHERE id = :id
                         """)
                 .param("id", sessionId).update();
+    }
+
+    @Override
+    public Optional<Slot> findSlot(Long slotId, Long sectionId, Long teacherId) {
+        return jdbc.sql("""
+                        SELECT h.id, h.seccion_id, h.dia_semana, h.hora_inicio, h.hora_fin, a.id AS area_id, a.nombre,
+                               EXISTS (SELECT 1 FROM public.asignaciones_docentes_areas ada
+                                       WHERE ada.oferta_curricular_id = h.oferta_curricular_id
+                                         AND ada.cuenta_usuario_id = :teacher
+                                         AND ada.vigente_hasta IS NULL) AS mine
+                        FROM public.horarios_seccion h
+                        JOIN public.ofertas_curriculares oc ON oc.id = h.oferta_curricular_id
+                        JOIN public.areas_curriculares a ON a.id = oc.area_curricular_id
+                        WHERE h.id = :slot AND h.seccion_id = :section
+                        """)
+                .param("slot", slotId).param("section", sectionId).param("teacher", teacherId)
+                .query((rs, i) -> new Slot(rs.getLong("id"), rs.getLong("seccion_id"), rs.getInt("dia_semana"),
+                        rs.getTime("hora_inicio").toLocalTime(), rs.getTime("hora_fin").toLocalTime(),
+                        rs.getLong("area_id"), rs.getString("nombre"), rs.getBoolean("mine")))
+                .optional();
+    }
+
+    @Override
+    public Optional<Long> findUnitCovering(Long sectionId, LocalDate date) {
+        return jdbc.sql("""
+                        SELECT e.id FROM public.experiencias_aprendizaje e
+                        JOIN public.destinos_planificacion dp ON dp.planificacion_anual_id = e.planificacion_anual_id
+                        WHERE dp.seccion_id = :section AND e.estado NOT IN ('ARCHIVADA')
+                          AND :date BETWEEN e.fecha_inicio AND e.fecha_fin
+                        ORDER BY e.fecha_inicio DESC
+                        LIMIT 1
+                        """)
+                .param("section", sectionId).param("date", date)
+                .query(Long.class).optional();
+    }
+
+    @Override
+    public Optional<Long> findSessionAt(Long slotId, LocalDate date) {
+        return jdbc.sql("SELECT id FROM public.sesiones_planificadas WHERE horario_id = :slot AND fecha = :date")
+                .param("slot", slotId).param("date", date)
+                .query(Long.class).optional();
+    }
+
+    @Override
+    public List<UnitDetail.SessionSummary> findUnscheduledSessions(Long unitId, Long areaId) {
+        return jdbc.sql("""
+                        SELECT s.id, s.numero_orden, s.titulo, s.proposito, s.estado,
+                               ARRAY(SELECT c.nombre FROM public.sesiones_competencias sc
+                                     JOIN public.competencias c ON c.id = sc.competencia_id
+                                     WHERE sc.sesion_id = s.id ORDER BY c.nombre) AS competencias,
+                               (SELECT count(*) FROM public.actividades_sesion a WHERE a.sesion_id = s.id) AS actividades
+                        FROM public.sesiones_planificadas s
+                        WHERE s.experiencia_id = :unit AND s.fecha IS NULL AND s.estado <> 'ARCHIVADA'
+                          AND EXISTS (SELECT 1 FROM public.sesiones_competencias sc
+                                      JOIN public.competencias_areas ca ON ca.competencia_id = sc.competencia_id
+                                      WHERE sc.sesion_id = s.id AND ca.area_curricular_id = :area)
+                        ORDER BY s.numero_orden
+                        """)
+                .param("unit", unitId).param("area", areaId)
+                .query((rs, i) -> new UnitDetail.SessionSummary(
+                        rs.getLong("id"), rs.getInt("numero_orden"), rs.getString("titulo"),
+                        rs.getString("proposito"), rs.getString("estado"),
+                        strings(rs.getArray("competencias")), rs.getInt("actividades")))
+                .list();
+    }
+
+    @Override
+    public void scheduleSession(Long sessionId, Long slotId, LocalDate date) {
+        jdbc.sql("UPDATE public.sesiones_planificadas SET horario_id = :slot, fecha = :date WHERE id = :id AND fecha IS NULL")
+                .param("id", sessionId).param("slot", slotId).param("date", date)
+                .update();
+    }
+
+    @Override
+    public Long createScheduledSession(Long unitId, Slot slot, LocalDate date, String title, Long teacherId) {
+        Long id = jdbc.sql("""
+                        INSERT INTO public.sesiones_planificadas
+                            (experiencia_id, numero_orden, titulo, duracion_minutos, estado, origen,
+                             horario_id, fecha, editada_por, editada_at)
+                        VALUES (:unit,
+                                (SELECT coalesce(max(numero_orden), 0) + 1 FROM public.sesiones_planificadas
+                                 WHERE experiencia_id = :unit),
+                                :title, :minutes, 'BORRADOR', 'DOCENTE', :slot, :date, :teacher, now())
+                        RETURNING id
+                        """)
+                .param("unit", unitId).param("title", title).param("minutes", slot.minutes())
+                .param("slot", slot.id()).param("date", date).param("teacher", teacherId)
+                .query(Long.class).single();
+        // Hereda las competencias de la unidad que son del área del bloque.
+        jdbc.sql("""
+                        INSERT INTO public.sesiones_competencias (sesion_id, competencia_id)
+                        SELECT :id, ec.competencia_id
+                        FROM public.experiencias_competencias ec
+                        JOIN public.competencias_areas ca ON ca.competencia_id = ec.competencia_id
+                        WHERE ec.experiencia_id = :unit AND ca.area_curricular_id = :area
+                        ON CONFLICT DO NOTHING
+                        """)
+                .param("id", id).param("unit", unitId).param("area", slot.areaId())
+                .update();
+        return id;
     }
 
     private static Instant instant(OffsetDateTime t) {

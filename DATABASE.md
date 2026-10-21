@@ -129,6 +129,11 @@ El registro de “no entregada” solo se crea al ser confirmado por un actor au
 - `sesiones_planificadas`: `origen` (`DOCENTE` o `GENERADA`), `editada_por`, `editada_at`, `aprobada_por`, `aprobada_at`.
 - `actividades_sesion`: `origen` y `editada_at`. Lo existente queda como `DOCENTE`.
 
+### `20261020000200_sesiones_en_horario.sql`
+
+- `sesiones_planificadas`: `horario_id` y `fecha`, ambos nulos o ambos presentes. Un bloque del horario tiene a lo sumo una sesión por fecha (`uq_sesion_en_bloque_y_fecha`).
+- Las sesiones sin fecha siguen siendo válidas: son las de la unidad que el docente aún no ubicó en su horario. El backend valida que la fecha caiga en el día del bloque y que el bloque lo dicte el propio docente.
+
 ## Restricciones críticas
 
 - `UNIQUE(institucion_id, anio_escolar_id, grado_id, nombre)` en secciones.

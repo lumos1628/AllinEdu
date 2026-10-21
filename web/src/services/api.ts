@@ -51,12 +51,26 @@ export interface Section {
 }
 
 export interface WeekBlock {
+  slotId: number
   dayOfWeek: number
   date: string
   start: string
   end: string
   area: string
   mine: boolean
+  session: { id: number; unitId: number; title: string; approved: boolean; activities: number } | null
+}
+
+export interface SlotOptions {
+  slotId: number
+  date: string
+  area: string
+  start: string
+  end: string
+  unitId: number | null
+  unitTitle: string | null
+  existingSessionId: number | null
+  candidates: UnitDetail['sessions']
 }
 
 export interface LearningUnit {
@@ -230,8 +244,9 @@ export async function getMySections(): Promise<Section[]> {
   return res.json()
 }
 
-export async function getWeek(sectionId: number): Promise<Week> {
-  const res = await fetch(`${BASE}/sections/${sectionId}/week`, { headers: authHeaders() })
+export async function getWeek(sectionId: number, date?: string): Promise<Week> {
+  const query = date ? `?date=${date}` : ''
+  const res = await fetch(`${BASE}/sections/${sectionId}/week${query}`, { headers: authHeaders() })
   handleUnauthorized(res)
   if (!res.ok) throw new Error('Error al cargar el horario')
   return res.json()
@@ -273,6 +288,30 @@ export async function generateDraft(sessionId: number): Promise<SessionDetail> {
   if (!res.ok) {
     const err = await res.json().catch(() => null)
     throw new Error(err?.message ?? 'No se pudo preparar el borrador')
+  }
+  return res.json()
+}
+
+export function getSlotOptions(sectionId: number, slotId: number, date: string): Promise<SlotOptions> {
+  return authGet(`/sections/${sectionId}/slots/${slotId}?date=${date}`, 'la clase')
+}
+
+// sessionId null: crear una sesión nueva para ese bloque y esa fecha.
+export async function prepareSlot(
+  sectionId: number,
+  slotId: number,
+  date: string,
+  sessionId: number | null,
+): Promise<SessionDetail> {
+  const res = await fetch(`${BASE}/sections/${sectionId}/slots/${slotId}/session`, {
+    method: 'POST',
+    headers: { ...authHeaders(), 'Content-Type': 'application/json' },
+    body: JSON.stringify({ date, sessionId }),
+  })
+  handleUnauthorized(res)
+  if (!res.ok) {
+    const err = await res.json().catch(() => null)
+    throw new Error(err?.message ?? 'No se pudo preparar la clase')
   }
   return res.json()
 }

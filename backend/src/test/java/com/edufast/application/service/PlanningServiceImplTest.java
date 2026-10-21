@@ -53,8 +53,9 @@ class PlanningServiceImplTest {
     void laSemanaEmpiezaEnLunesYCadaBloqueLlevaSuFecha() {
         when(sectionService.getAssignedSection(teacher, 8L)).thenReturn(new Section(8L, "B", "4.º de primaria", "PRI-04"));
         when(planningRepository.findSchedule(8L, 7L, WEDNESDAY)).thenReturn(List.of(
-                new ScheduleBlock(1, LocalTime.of(8, 0), LocalTime.of(9, 30), "Matemática", true),
-                new ScheduleBlock(4, LocalTime.of(11, 30), LocalTime.of(13, 0), "Inglés", false)));
+                new ScheduleBlock(10L, 1, LocalTime.of(8, 0), LocalTime.of(9, 30), "Matemática", true,
+                        new ScheduleBlock.ScheduledSession(3L, 1L, "Comparamos fracciones", "PUBLICADA", 10)),
+                new ScheduleBlock(11L, 4, LocalTime.of(11, 30), LocalTime.of(13, 0), "Inglés", false, null)));
         when(planningRepository.findCurrentOrNextUnit(8L, WEDNESDAY)).thenReturn(Optional.empty());
 
         WeekResponse week = planningService.getWeek(teacher, 8L, WEDNESDAY);
@@ -64,6 +65,9 @@ class PlanningServiceImplTest {
         assertEquals("8:00", week.blocks().get(0).start());
         assertEquals(LocalDate.of(2026, 10, 22), week.blocks().get(1).date());
         assertFalse(week.blocks().get(1).mine());
+        assertEquals(3L, week.blocks().get(0).session().id());
+        assertTrue(week.blocks().get(0).session().approved());
+        assertNull(week.blocks().get(1).session());
         assertNull(week.unit());
     }
 

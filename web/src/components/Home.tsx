@@ -1,12 +1,16 @@
 import { useEffect, useState } from 'react'
+import type { ReactNode } from 'react'
 import { getClosure, getMySections, getWeek } from '../services/api'
 import type { Closure, Section, Week, WeekBlock } from '../services/api'
+import type { ClassInfo } from './ClassView'
 
 interface Props {
   userName: string
   onTakeAttendance: (section: Section) => void
   onOpenUnit: (unitId: number) => void
   onOpenClosure: (section: Section) => void
+  onOpenClass: (section: Section, info: ClassInfo, sessionId: number) => void
+  onPrepareClass: (section: Section, slotId: number, date: string) => void
 }
 
 // Eslabones de la cadena de AllinEdu (ver ALCANCE.md §2). Solo "Aplicar en clase"
@@ -32,6 +36,17 @@ function longDate(iso: string): string {
 
 function shortDate(iso: string): string {
   return new Intl.DateTimeFormat('es-PE', { day: 'numeric', month: 'short' }).format(parseDate(iso))
+}
+
+function isoDate(d: Date): string {
+  const pad = (n: number) => String(n).padStart(2, '0')
+  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`
+}
+
+function addDays(iso: string, days: number): string {
+  const d = parseDate(iso)
+  d.setDate(d.getDate() + days)
+  return isoDate(d)
 }
 
 function minutes(hhmm: string): number {
@@ -61,40 +76,87 @@ function stateOf(block: WeekBlock, nowMin: number, nextStart: string | null): Bl
 
 const STATE_LABEL: Record<BlockState, string> = { past: 'Terminó', now: 'Ahora', next: 'Sigue', later: '' }
 
-function Today({ week, section, onTakeAttendance }: { week: Week; section: Section; onTakeAttendance: () => void }) {
+type Prep = { label: string; tone: 'ready' | 'draft' | 'empty' }
+
+// Qué tan lista está la sesión de esa clase. Dice lo que existe, no lo inventa.
+function prepOf(b: WeekBlock): Prep {
+  if (!b.session) return { label: 'Sin preparar', tone: 'empty' }
+  if (b.session.activities === 0) return { label: 'Sin secuencia', tone: 'empty' }
+  if (!b.session.approved) return { label: 'Borrador por revisar', tone: 'draft' }
+  return { label: 'Lista', tone: 'ready' }
+}
+
+interface ClassCardProps {
+  block: WeekBlock
+  timeState?: BlockState
+  onOpen: (block: WeekBlock) => void
+}
+
+function ClassCard({ block, timeState, onOpen }: ClassCardProps) {
+  const prep = prepOf(block)
+  const time = timeState && STATE_LABEL[timeState]
+  const body = (
+    <>
+      <span className="class-card-time">{block.start}</span>
+      <span className="class-card-text">
+        <span className="class-card-area">{block.area}</span>
+        <span className="class-card-sub">
+          {block.mine ? (block.session ? block.session.title : 'Todavía no tiene sesión') : 'La dicta otro docente'}
+        </span>
+      </span>
+      <span className="class-card-side">
+        {time && <span className={`class-time is-${timeState}`}>{time}</span>}
+        {block.mine && <span className={`class-state is-${prep.tone}`}>{prep.label}</span>}
+      </span>
+    </>
+  )
+  if (!block.mine) return <div className="class-card is-other">{body}</div>
+  return (
+    <button
+      className={`class-card${timeState === 'now' ? ' is-now' : ''}`}
+      onClick={() => onOpen(block)}
+      aria-label={`${block.area}, ${block.start} a ${block.end}: ${prep.label}. ${block.session ? 'Abrir la clase' : 'Preparar la clase'}`}
+    >
+      {body}
+    </button>
+  )
+}
+
+interface DayProps {
+  title: string
+  blocks: WeekBlock[]
+  isToday: boolean
+  empty: string
+  onOpen: (block: WeekBlock) => void
+  action?: ReactNode
+}
+
+function DayClasses({ title, blocks, isToday, empty, onOpen, action }: DayProps) {
   const now = new Date()
   const nowMin = now.getHours() * 60 + now.getMinutes()
-  const blocks = week.blocks.filter((b) => b.date === week.today)
   const upcoming = blocks.find((b) => minutes(b.start) > nowMin)
-
+  const id = `day-${title.replace(/\W+/g, '-')}`
+  const pending = blocks.filter((b) => b.mine && prepOf(b).tone !== 'ready').length
   return (
-    <section className="desk-today" aria-labelledby="desk-today-title">
+    <section className="desk-day-block" aria-labelledby={id}>
       <div className="desk-head">
-        <h2 id="desk-today-title" className="home-label">Hoy en {sectionLabel(section)}</h2>
+        <h2 id={id} className="home-label">{title}</h2>
+        {!isToday && blocks.length > 0 && (
+          <span className={pending ? 'class-state is-draft' : 'class-state is-ready'}>
+            {pending ? `${pending} por preparar` : 'Todo listo'}
+          </span>
+        )}
       </div>
-      <button className="home-take desk-take" onClick={onTakeAttendance}>
-        Tomar asistencia
-      </button>
+      {action}
       {blocks.length === 0 ? (
-        <p className="home-empty">Hoy no hay clases en el horario de esta sección.</p>
+        <p className="home-empty">{empty}</p>
       ) : (
-        <ol className="desk-day">
-          {blocks.map((b) => {
-            const st = stateOf(b, nowMin, upcoming?.start ?? null)
-            return (
-              <li key={b.start} className={`desk-slot is-${st}${b.mine ? '' : ' is-other'}`}>
-                <span className="desk-slot-time">{b.start}</span>
-                <span className="desk-slot-text">
-                  <span className="desk-slot-area">{b.area}</span>
-                  <span className="desk-slot-sub">
-                    {b.start} a {b.end}
-                    {!b.mine && ' · la dicta otro docente'}
-                  </span>
-                </span>
-                {STATE_LABEL[st] && <span className="desk-slot-state">{STATE_LABEL[st]}</span>}
-              </li>
-            )
-          })}
+        <ol className="class-list">
+          {blocks.map((b) => (
+            <li key={`${b.date}-${b.start}`}>
+              <ClassCard block={b} timeState={isToday ? stateOf(b, nowMin, upcoming?.start ?? null) : undefined} onOpen={onOpen} />
+            </li>
+          ))}
         </ol>
       )}
     </section>
@@ -166,7 +228,7 @@ function ClosureCard({ closure, onOpen }: { closure: Closure; onOpen: () => void
   )
 }
 
-function WeekGrid({ week }: { week: Week }) {
+function WeekGrid({ week, onOpen }: { week: Week; onOpen: (block: WeekBlock) => void }) {
   const days = [...new Set(week.blocks.map((b) => b.dayOfWeek))].sort()
   const starts = [...new Set(week.blocks.map((b) => b.start))].sort((a, b) => minutes(a) - minutes(b))
   if (days.length === 0) return null
@@ -204,11 +266,17 @@ function WeekGrid({ week }: { week: Week }) {
                     .join(' ')
                   return (
                     <td key={d} className={cls}>
-                      {b && (
+                      {b && !b.mine && (
                         <>
                           <span className="desk-cell-area">{b.area}</span>
-                          {!b.mine && <span className="desk-cell-sub">otro docente</span>}
+                          <span className="desk-cell-sub">otro docente</span>
                         </>
+                      )}
+                      {b && b.mine && (
+                        <button className="desk-cell-btn" onClick={() => onOpen(b)}>
+                          <span className="desk-cell-area">{b.area}</span>
+                          <span className={`desk-cell-sub is-${prepOf(b).tone}`}>{prepOf(b).label}</span>
+                        </button>
                       )}
                     </td>
                   )
@@ -239,10 +307,12 @@ function ChainTrack() {
   )
 }
 
-export default function Home({ userName, onTakeAttendance, onOpenUnit, onOpenClosure }: Props) {
+export default function Home({ userName, onTakeAttendance, onOpenUnit, onOpenClosure, onOpenClass, onPrepareClass }: Props) {
   const [sections, setSections] = useState<Section[]>([])
   const [current, setCurrent] = useState<Section | null>(null)
   const [week, setWeek] = useState<Week | null>(null)
+  // La semana siguiente solo se pide si hoy ya no quedan días con clases (p. ej. viernes).
+  const [nextWeek, setNextWeek] = useState<Week | null>(null)
   const [closure, setClosure] = useState<Closure | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
@@ -265,7 +335,16 @@ export default function Home({ userName, onTakeAttendance, onOpenUnit, onOpenClo
     if (!current) return
     let alive = true
     getWeek(current.id)
-      .then((w) => alive && setWeek(w))
+      .then((w) => {
+        if (!alive) return
+        setWeek(w)
+        const laterThisWeek = w.blocks.some((b) => b.date > w.today)
+        if (!laterThisWeek) {
+          getWeek(current.id, addDays(w.weekStart, 7))
+            .then((n) => alive && setNextWeek(n))
+            .catch(() => alive && setNextWeek(null))
+        }
+      })
       .catch(() => alive && setError('No se pudo cargar el horario de la sección.'))
       .finally(() => alive && setLoading(false))
     // El cierre es opcional en el inicio: si no hay bimestre abierto, no se muestra.
@@ -276,6 +355,19 @@ export default function Home({ userName, onTakeAttendance, onOpenUnit, onOpenClo
       alive = false
     }
   }, [current])
+
+  const todayBlocks = week ? week.blocks.filter((b) => b.date === week.today) : []
+  const nextDate = week
+    ? [...week.blocks, ...(nextWeek?.blocks ?? [])].map((b) => b.date).filter((d) => d > week.today).sort()[0]
+    : undefined
+  const nextBlocks = nextDate ? [...week!.blocks, ...(nextWeek?.blocks ?? [])].filter((b) => b.date === nextDate) : []
+
+  function openClass(block: WeekBlock) {
+    if (!current) return
+    const info = { slotId: block.slotId, date: block.date, start: block.start, end: block.end, area: block.area }
+    if (block.session) onOpenClass(current, info, block.session.id)
+    else onPrepareClass(current, block.slotId, block.date)
+  }
 
   const dateLabel = week ? longDate(week.today) : new Intl.DateTimeFormat('es-PE', { weekday: 'long', day: 'numeric', month: 'long' }).format(now)
 
@@ -297,6 +389,7 @@ export default function Home({ userName, onTakeAttendance, onOpenUnit, onOpenClo
               onClick={() => {
                 if (current?.id === s.id) return
                 setWeek(null)
+                setNextWeek(null)
                 setClosure(null)
                 setLoading(true)
                 setCurrent(s)
@@ -317,13 +410,33 @@ export default function Home({ userName, onTakeAttendance, onOpenUnit, onOpenClo
       {week && current && (
         <>
           <div className="desk-top">
-            <Today week={week} section={current} onTakeAttendance={() => onTakeAttendance(current)} />
+            <div className="desk-days">
+              <DayClasses
+                title={`Hoy en ${sectionLabel(current)}`}
+                blocks={todayBlocks}
+                isToday
+                empty="Hoy no hay clases en el horario de esta sección."
+                onOpen={openClass}
+                action={
+                  <button className="home-take desk-take" onClick={() => onTakeAttendance(current)}>
+                    Tomar asistencia
+                  </button>
+                }
+              />
+              <DayClasses
+                title={nextDate ? `Para preparar: ${longDate(nextDate)}` : 'Próximas clases'}
+                blocks={nextBlocks}
+                isToday={false}
+                empty="No hay más clases en el horario cercano."
+                onOpen={openClass}
+              />
+            </div>
             <div className="unit-side">
               <UnitCard week={week} onOpen={onOpenUnit} />
               {closure && <ClosureCard closure={closure} onOpen={() => onOpenClosure(current)} />}
             </div>
           </div>
-          <WeekGrid week={week} />
+          <WeekGrid week={week} onOpen={openClass} />
         </>
       )}
 
