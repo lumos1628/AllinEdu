@@ -88,9 +88,18 @@ fun AttendanceScreen(
     LaunchedEffect(section.id) {
         try {
             students = repository.getSectionStudents(section.id)
-            statuses = students.associate { it.id to AttendanceStatus.PRESENTE }
         } catch (e: Exception) {
             error = "No se pudieron cargar los alumnos. Revisa la conexión."
+            return@LaunchedEffect
+        }
+        val allPresent = students.associate { it.id to AttendanceStatus.PRESENTE }
+        // Si ya se tomó asistencia hoy (desde la web u otro dispositivo), se muestra esa;
+        // si no, todos parten como presentes. Igual que Attendance.tsx en la web.
+        statuses = try {
+            allPresent + repository.getAttendance(section.id, today())
+                .associate { it.studentId to it.status }
+        } catch (e: Exception) {
+            allPresent
         }
     }
 
