@@ -45,7 +45,7 @@ public class SlotServiceImpl implements SlotService {
             unitTitle = planningRepository.findUnit(unitId).map(UnitDetail::title).orElse(null);
             candidates = planningRepository.findUnscheduledSessions(unitId, slot.areaId()).stream()
                     .map(s -> new UnitDetailResponse.Session(s.id(), s.number(), s.title(), s.purpose(),
-                            "PUBLICADA".equals(s.status()), s.competencies(), s.activities()))
+                            "PUBLICADA".equals(s.status()), s.competencies(), s.activities(), s.openKnots()))
                     .toList();
         }
         return new SlotOptionsResponse(slot.id(), date, slot.area(), slot.start().format(HOUR),

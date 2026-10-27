@@ -52,7 +52,7 @@ class SlotServiceImplTest {
 
     private static SessionDetail session(Long id) {
         return new SessionDetail(id, 1L, "Repartimos", 13, "Matemática del martes 20", null, 90, "BORRADOR", false,
-                null, null, List.of(), List.of(), List.of(), null, List.of(), List.of(), List.of(), List.of());
+                null, null, List.of(), List.of(), List.of(), null, List.of(), List.of(), List.of(), List.of(), List.of());
     }
 
     @Test
@@ -86,7 +86,7 @@ class SlotServiceImplTest {
         when(planningRepository.findSessionAt(10L, TUESDAY)).thenReturn(Optional.empty());
         when(planningRepository.findUnitCovering(8L, TUESDAY)).thenReturn(Optional.of(1L));
         when(planningRepository.findUnscheduledSessions(1L, 1L)).thenReturn(List.of(
-                new UnitDetail.SessionSummary(7L, 7, "Fracciones en la receta", null, "BORRADOR", List.of(), 0)));
+                new UnitDetail.SessionSummary(7L, 7, "Fracciones en la receta", null, "BORRADOR", List.of(), 0, 0)));
         when(planningRepository.findSession(7L)).thenReturn(Optional.of(session(7L)));
 
         slotService.prepare(teacher, 8L, 10L, new PrepareSlotRequest(TUESDAY, 7L));

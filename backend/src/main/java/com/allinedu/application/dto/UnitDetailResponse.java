@@ -19,13 +19,13 @@ public record UnitDetailResponse(
     }
 
     public record Session(Long id, int number, String title, String purpose, boolean approved,
-                          List<String> competencies, int activities) {
+                          List<String> competencies, int activities, int openKnots) {
     }
 
     public static UnitDetailResponse from(UnitDetail u) {
         var sessions = u.sessions().stream()
                 .map(s -> new Session(s.id(), s.number(), s.title(), s.purpose(),
-                        "PUBLICADA".equals(s.status()), s.competencies(), s.activities()))
+                        "PUBLICADA".equals(s.status()), s.competencies(), s.activities(), s.openKnots()))
                 .toList();
         var competencies = u.competencies().stream()
                 .map(c -> new Competency(c.id(), c.name(), c.purpose(),

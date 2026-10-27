@@ -1,7 +1,5 @@
 package com.allinedu.domain.port;
 
-import com.allinedu.domain.model.DraftContext;
-import com.allinedu.domain.model.GeneratedDraft;
 import com.allinedu.domain.model.LearningUnit;
 import com.allinedu.domain.model.ScheduleBlock;
 import com.allinedu.domain.model.SessionDetail;
@@ -42,15 +40,6 @@ public interface PlanningRepository {
 
     /** Guarda los cambios del docente; lo que él escribe queda con origen DOCENTE. */
     void updateSession(Long sessionId, Long unitId, SessionEdit edit, Long teacherId);
-
-    /** Currículo y planificación que necesita el generador para esta sesión. */
-    Optional<DraftContext> findDraftContext(Long sessionId);
-
-    /**
-     * Guarda el borrador generado: actividades con origen GENERADA y la sesión
-     * vuelve a BORRADOR sin aprobación, para que el docente la revise.
-     */
-    void saveGeneratedDraft(Long sessionId, Long unitId, GeneratedDraft draft);
 
     /** El bloque solo si pertenece a la sección; mine según el docente. */
     Optional<Slot> findSlot(Long slotId, Long sectionId, Long teacherId);

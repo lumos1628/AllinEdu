@@ -24,7 +24,9 @@ public record SessionDetailResponse(
         List<Note> dua,
         List<Note> approaches,
         List<Material> materials,
-        List<Activity> activities) {
+        List<Activity> activities,
+        boolean regenerable,
+        List<Knot> knots) {
 
     public record Evidence(String description, String format) {
     }
@@ -38,10 +40,14 @@ public record SessionDetailResponse(
     public record Level(String code, String description) {
     }
 
-    public record Note(String title, String text) {
+    public record Note(String title, String text, boolean generated) {
     }
 
-    public record Material(String name, Integer quantity, boolean required, String description) {
+    public record Material(String name, Integer quantity, boolean required, String description, boolean generated) {
+    }
+
+    /** Un nudo del borrador: state PENDIENTE, ACEPTADO o CAMBIO. */
+    public record Knot(Long id, String type, String question, String fragment, String state, String answer) {
     }
 
     public record Activity(Long id, int order, String moment, String title, String instructions, Integer minutes,
@@ -60,14 +66,19 @@ public record SessionDetailResponse(
                 !s.isDraft(), s.generated(), s.editedAt(), s.approvedAt(), s.competencies(), s.criteria(),
                 s.evidences().stream().map(e -> new Evidence(e.description(), e.format())).toList(),
                 instrument,
-                s.dua().stream().map(n -> new Note(n.title(), n.text())).toList(),
-                s.approaches().stream().map(n -> new Note(n.title(), n.text())).toList(),
+                s.dua().stream().map(n -> new Note(n.title(), n.text(), n.generated())).toList(),
+                s.approaches().stream().map(n -> new Note(n.title(), n.text(), n.generated())).toList(),
                 s.materials().stream()
-                        .map(m -> new Material(m.name(), m.quantity(), "OBLIGATORIO".equals(m.character()), m.description()))
+                        .map(m -> new Material(m.name(), m.quantity(), "OBLIGATORIO".equals(m.character()), m.description(),
+                                m.generated()))
                         .toList(),
                 s.activities().stream()
                         .map(a -> new Activity(a.id(), a.order(), a.moment(), a.title(), a.instructions(), a.minutes(),
                                 a.generated()))
+                        .toList(),
+                !s.hasTeacherWriting(),
+                s.knots().stream()
+                        .map(k -> new Knot(k.id(), k.type(), k.question(), k.fragment(), k.state(), k.answer()))
                         .toList());
     }
 }

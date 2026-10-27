@@ -27,13 +27,19 @@ public record SessionDetail(
         List<Note> dua,
         List<Note> approaches,
         List<Material> materials,
-        List<Activity> activities) {
+        List<Activity> activities,
+        List<Knot> knots) {
 
     public static final String DRAFT = "BORRADOR";
     public static final String APPROVED = "PUBLICADA";
 
     public boolean isDraft() {
         return DRAFT.equals(status);
+    }
+
+    /** true si alguna actividad la escribió o cambió el docente: un borrador nuevo no la pisa. */
+    public boolean hasTeacherWriting() {
+        return activities.stream().anyMatch(a -> !a.generated());
     }
 
     public record Evidence(String description, String format) {
@@ -48,10 +54,11 @@ public record SessionDetail(
     public record Level(String code, String description) {
     }
 
-    public record Note(String title, String text) {
+    /** generated: lo propuso un generador (el DUA puede serlo; los enfoques todavía no). */
+    public record Note(String title, String text, boolean generated) {
     }
 
-    public record Material(String name, Integer quantity, String character, String description) {
+    public record Material(String name, Integer quantity, String character, String description, boolean generated) {
     }
 
     /** generated: la propuso un generador y el docente todavía no la cambió. */

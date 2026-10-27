@@ -19,7 +19,8 @@ public record UnitDetail(
     public record Competency(Long id, String name, String purpose) {
     }
 
+    /** openKnots: preguntas del último borrador que el docente todavía no respondió. */
     public record SessionSummary(Long id, int number, String title, String purpose, String status,
-                                 List<String> competencies, int activities) {
+                                 List<String> competencies, int activities, int openKnots) {
     }
 }

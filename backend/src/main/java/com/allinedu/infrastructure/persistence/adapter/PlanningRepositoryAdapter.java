@@ -1,7 +1,5 @@
 package com.allinedu.infrastructure.persistence.adapter;
 
-import com.allinedu.domain.model.DraftContext;
-import com.allinedu.domain.model.GeneratedDraft;
 import com.allinedu.domain.model.LearningUnit;
 import com.allinedu.domain.model.ScheduleBlock;
 import com.allinedu.domain.model.SessionDetail;
@@ -142,7 +140,11 @@ public class PlanningRepositoryAdapter implements PlanningRepository {
                                ARRAY(SELECT c.nombre FROM public.sesiones_competencias sc
                                      JOIN public.competencias c ON c.id = sc.competencia_id
                                      WHERE sc.sesion_id = s.id ORDER BY c.nombre) AS competencias,
-                               (SELECT count(*) FROM public.actividades_sesion a WHERE a.sesion_id = s.id) AS actividades
+                               (SELECT count(*) FROM public.actividades_sesion a WHERE a.sesion_id = s.id) AS actividades,
+                               (SELECT count(*) FROM public.nudos_sesion n
+                                WHERE n.sesion_id = s.id AND n.estado = 'PENDIENTE'
+                                  AND n.generacion_id = (SELECT max(g.id) FROM public.generaciones_sesion g
+                                                         WHERE g.sesion_id = s.id)) AS nudos
                         FROM public.sesiones_planificadas s
                         WHERE s.experiencia_id = :unit AND s.estado <> 'ARCHIVADA'
                         ORDER BY s.numero_orden
@@ -151,7 +153,7 @@ public class PlanningRepositoryAdapter implements PlanningRepository {
                 .query((rs, i) -> new UnitDetail.SessionSummary(
                         rs.getLong("id"), rs.getInt("numero_orden"), rs.getString("titulo"),
                         rs.getString("proposito"), rs.getString("estado"),
-                        strings(rs.getArray("competencias")), rs.getInt("actividades")))
+                        strings(rs.getArray("competencias")), rs.getInt("actividades"), rs.getInt("nudos")))
                 .list();
 
         return jdbc.sql("""
@@ -218,12 +220,13 @@ public class PlanningRepositoryAdapter implements PlanningRepository {
                 .list();
 
         var dua = jdbc.sql("""
-                        SELECT p.nombre, sd.descripcion FROM public.sesiones_dua sd
+                        SELECT p.nombre, sd.descripcion, sd.origen FROM public.sesiones_dua sd
                         JOIN public.pautas_dua p ON p.id = sd.pauta_dua_id
                         WHERE sd.sesion_id = :id ORDER BY p.orden
                         """)
                 .param("id", sessionId)
-                .query((rs, i) -> new SessionDetail.Note(rs.getString("nombre"), rs.getString("descripcion")))
+                .query((rs, i) -> new SessionDetail.Note(rs.getString("nombre"), rs.getString("descripcion"),
+                        "GENERADA".equals(rs.getString("origen"))))
                 .list();
 
         var approaches = jdbc.sql("""
@@ -232,19 +235,21 @@ public class PlanningRepositoryAdapter implements PlanningRepository {
                         WHERE se.sesion_id = :id ORDER BY e.nombre
                         """)
                 .param("id", sessionId)
-                .query((rs, i) -> new SessionDetail.Note(rs.getString("nombre"), rs.getString("accion_observable")))
+                .query((rs, i) -> new SessionDetail.Note(rs.getString("nombre"), rs.getString("accion_observable"), false))
                 .list();
 
+        // Un material propuesto por el generador no está en el catálogo: su nombre va en la descripción.
         var materials = jdbc.sql("""
-                        SELECT m.nombre, sm.cantidad, sm.caracter, sm.descripcion
+                        SELECT COALESCE(m.nombre, sm.descripcion) AS nombre, sm.cantidad, sm.caracter,
+                               CASE WHEN m.id IS NULL THEN NULL ELSE sm.descripcion END AS descripcion, sm.origen
                         FROM public.sesiones_materiales sm
-                        JOIN public.materiales_educativos m ON m.id = sm.material_id
+                        LEFT JOIN public.materiales_educativos m ON m.id = sm.material_id
                         WHERE sm.sesion_id = :id ORDER BY sm.id
                         """)
                 .param("id", sessionId)
                 .query((rs, i) -> new SessionDetail.Material(rs.getString("nombre"),
                         (Integer) rs.getObject("cantidad", Integer.class), rs.getString("caracter"),
-                        rs.getString("descripcion")))
+                        rs.getString("descripcion"), "GENERADA".equals(rs.getString("origen"))))
                 .list();
 
         var activities = jdbc.sql("""
@@ -259,7 +264,8 @@ public class PlanningRepositoryAdapter implements PlanningRepository {
 
         return Optional.of(new SessionDetail(h.id(), h.unitId(), h.unitTitle(), h.number(), h.title(),
                 h.purpose(), h.minutes(), h.status(), h.generated(), h.editedAt(), h.approvedAt(), competencies, criteria, evidences,
-                findInstrument(sessionId, h.unitId()), dua, approaches, materials, activities));
+                findInstrument(sessionId, h.unitId()), dua, approaches, materials, activities,
+                KnotRows.latest(jdbc, sessionId)));
     }
 
     @Override
@@ -414,124 +420,6 @@ public class PlanningRepositoryAdapter implements PlanningRepository {
     }
 
     @Override
-    public Optional<DraftContext> findDraftContext(Long sessionId) {
-        record Head(Long unitId, String grade, String unitTitle, String situation, String unitPurpose,
-                    String title, String purpose, Integer minutes) {
-        }
-        Optional<Head> head = jdbc.sql("""
-                        SELECT e.id AS unidad, e.titulo AS unidad_titulo, e.situacion_significativa,
-                               e.proposito AS unidad_proposito, s.titulo, s.proposito, s.duracion_minutos,
-                               (SELECT g.nombre FROM public.destinos_planificacion dp
-                                JOIN public.secciones sec ON sec.id = dp.seccion_id
-                                JOIN public.grados_educativos g ON g.id = sec.grado_id
-                                WHERE dp.planificacion_anual_id = e.planificacion_anual_id
-                                LIMIT 1) AS grado
-                        FROM public.sesiones_planificadas s
-                        JOIN public.experiencias_aprendizaje e ON e.id = s.experiencia_id
-                        WHERE s.id = :id
-                        """)
-                .param("id", sessionId)
-                .query((rs, i) -> new Head(rs.getLong("unidad"), rs.getString("grado"), rs.getString("unidad_titulo"),
-                        rs.getString("situacion_significativa"), rs.getString("unidad_proposito"),
-                        rs.getString("titulo"), rs.getString("proposito"),
-                        rs.getObject("duracion_minutos", Integer.class)))
-                .optional();
-        if (head.isEmpty()) {
-            return Optional.empty();
-        }
-        Head h = head.get();
-
-        record Comp(Long id, String name) {
-        }
-        List<Comp> comps = jdbc.sql("""
-                        SELECT c.id, c.nombre FROM public.sesiones_competencias sc
-                        JOIN public.competencias c ON c.id = sc.competencia_id
-                        WHERE sc.sesion_id = :id ORDER BY c.nombre
-                        """)
-                .param("id", sessionId)
-                .query((rs, i) -> new Comp(rs.getLong("id"), rs.getString("nombre")))
-                .list();
-
-        List<DraftContext.Competency> competencies = comps.stream().map(c -> new DraftContext.Competency(
-                c.name(),
-                jdbc.sql("SELECT nombre FROM public.capacidades WHERE competencia_id = :c ORDER BY orden")
-                        .param("c", c.id()).query(String.class).list(),
-                jdbc.sql("""
-                                SELECT dg.descripcion, dg.fuente_pagina, dg.exige_material_concreto
-                                FROM public.desempenos_grado dg
-                                JOIN public.grados_educativos g ON g.id = dg.grado_id
-                                WHERE dg.competencia_id = :c AND g.nombre = :grade
-                                ORDER BY dg.id
-                                """)
-                        .param("c", c.id()).param("grade", h.grade())
-                        .query((rs, i) -> new DraftContext.Performance(rs.getString("descripcion"),
-                                rs.getObject("fuente_pagina", Integer.class), rs.getBoolean("exige_material_concreto")))
-                        .list()))
-                .toList();
-
-        List<String> areas = jdbc.sql("""
-                        SELECT DISTINCT a.nombre FROM public.sesiones_competencias sc
-                        JOIN public.competencias_areas ca ON ca.competencia_id = sc.competencia_id
-                        JOIN public.areas_curriculares a ON a.id = ca.area_curricular_id
-                        WHERE sc.sesion_id = :id ORDER BY a.nombre
-                        """)
-                .param("id", sessionId).query(String.class).list();
-
-        List<String> criteria = jdbc.sql("""
-                        SELECT ce.descripcion FROM public.criterios_evaluacion ce
-                        JOIN public.sesiones_competencias sc
-                             ON sc.competencia_id = ce.competencia_id AND sc.sesion_id = :id
-                        WHERE ce.experiencia_id = :unit ORDER BY ce.orden
-                        """)
-                .param("id", sessionId).param("unit", h.unitId()).query(String.class).list();
-
-        // Los pasos de la institución para esas competencias: es su plantilla, no norma.
-        List<String> steps = jdbc.sql("""
-                        SELECT pp.nombre FROM public.pasos_proceso_didactico pp
-                        JOIN public.procesos_didacticos pd ON pd.id = pp.proceso_id
-                        JOIN public.sesiones_competencias sc ON sc.competencia_id = pd.competencia_id
-                        WHERE sc.sesion_id = :id AND pd.activo
-                        ORDER BY pd.id, pp.orden
-                        """)
-                .param("id", sessionId).query(String.class).list();
-
-        return Optional.of(new DraftContext(h.grade(), areas, h.unitTitle(), h.situation(), h.unitPurpose(),
-                h.title(), h.purpose(), h.minutes() == null ? 90 : h.minutes(), competencies, criteria, steps));
-    }
-
-    @Override
-    public void saveGeneratedDraft(Long sessionId, Long unitId, GeneratedDraft draft) {
-        jdbc.sql("DELETE FROM public.actividades_sesion WHERE sesion_id = :id").param("id", sessionId).update();
-        int order = 1;
-        for (GeneratedDraft.Activity a : draft.activities()) {
-            jdbc.sql("""
-                            INSERT INTO public.actividades_sesion
-                                (sesion_id, numero_orden, momento, titulo, instrucciones, duracion_minutos, origen)
-                            VALUES (:session, :order, :moment, :title, :instructions, :minutes, 'GENERADA')
-                            """)
-                    .param("session", sessionId).param("order", order++).param("moment", a.moment())
-                    .param("title", a.title()).param("instructions", a.instructions()).param("minutes", a.minutes())
-                    .update();
-        }
-        boolean hasEvidence = jdbc.sql("SELECT EXISTS (SELECT 1 FROM public.evidencias_previstas WHERE sesion_id = :id)")
-                .param("id", sessionId).query(Boolean.class).single();
-        if (!hasEvidence && draft.evidence() != null && !draft.evidence().isBlank()) {
-            jdbc.sql("""
-                            INSERT INTO public.evidencias_previstas (experiencia_id, sesion_id, descripcion)
-                            VALUES (:unit, :id, :d)
-                            """)
-                    .param("unit", unitId).param("id", sessionId).param("d", draft.evidence().trim()).update();
-        }
-        jdbc.sql("""
-                        UPDATE public.sesiones_planificadas
-                        SET origen = 'GENERADA', estado = 'BORRADOR',
-                            aprobada_por = NULL, aprobada_at = NULL, editada_por = NULL, editada_at = NULL
-                        WHERE id = :id
-                        """)
-                .param("id", sessionId).update();
-    }
-
-    @Override
     public Optional<Slot> findSlot(Long slotId, Long sectionId, Long teacherId) {
         return jdbc.sql("""
                         SELECT h.id, h.seccion_id, h.dia_semana, h.hora_inicio, h.hora_fin, a.id AS area_id, a.nombre,
@@ -591,7 +479,7 @@ public class PlanningRepositoryAdapter implements PlanningRepository {
                 .query((rs, i) -> new UnitDetail.SessionSummary(
                         rs.getLong("id"), rs.getInt("numero_orden"), rs.getString("titulo"),
                         rs.getString("proposito"), rs.getString("estado"),
-                        strings(rs.getArray("competencias")), rs.getInt("actividades")))
+                        strings(rs.getArray("competencias")), rs.getInt("actividades"), 0))
                 .list();
     }
 

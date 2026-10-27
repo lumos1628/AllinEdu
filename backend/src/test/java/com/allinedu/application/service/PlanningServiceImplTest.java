@@ -98,7 +98,7 @@ class PlanningServiceImplTest {
     private static SessionDetail session(String status) {
         return new SessionDetail(3L, 1L, "Repartimos en partes iguales", 3, "Comparamos fracciones", "Comparar",
                 90, status, false, null, null, List.of("Resuelve problemas de cantidad"), List.of(), List.of(), null,
-                List.of(), List.of(), List.of(), List.of());
+                List.of(), List.of(), List.of(), List.of(), List.of());
     }
 
     @Test
@@ -116,8 +116,8 @@ class PlanningServiceImplTest {
                 null, null,
                 List.of(new UnitDetail.Competency(20L, "Resuelve problemas de cantidad", null),
                         new UnitDetail.Competency(21L, "Escribe diversos tipos de textos", null)),
-                List.of(new UnitDetail.SessionSummary(1L, 1, "S1", null, "PUBLICADA", List.of("Resuelve problemas de cantidad"), 0),
-                        new UnitDetail.SessionSummary(2L, 2, "S2", null, "BORRADOR", List.of("Resuelve problemas de cantidad"), 0)))));
+                List.of(new UnitDetail.SessionSummary(1L, 1, "S1", null, "PUBLICADA", List.of("Resuelve problemas de cantidad"), 0, 0),
+                        new UnitDetail.SessionSummary(2L, 2, "S2", null, "BORRADOR", List.of("Resuelve problemas de cantidad"), 0, 0)))));
 
         var unit = planningService.getUnit(teacher, 1L);
 
