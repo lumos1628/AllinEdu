@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react'
+import type { ReactNode } from 'react'
 import { approveSession, generateDraft, getSession } from '../services/api'
 import type { SessionDetail } from '../services/api'
 import SessionEditor from './SessionEditor'
+import KnotList from './KnotList'
+import Weaving from './Weaving'
 
 interface Props {
   sessionId: number
@@ -42,7 +45,22 @@ function Empty({ children }: { children: string }) {
   return <p className="doc-empty">{children}</p>
 }
 
+// Señala dentro del texto la frase que causa un nudo todavía sin responder.
+function marked(text: string, marks: string[]): ReactNode {
+  const mark = marks.find((m) => text.includes(m))
+  if (!mark) return text
+  const at = text.indexOf(mark)
+  return (
+    <>
+      {text.slice(0, at)}
+      <mark className="knot-mark">{mark}</mark>
+      {marked(text.slice(at + mark.length), marks)}
+    </>
+  )
+}
+
 function Sequence({ session }: { session: SessionDetail }) {
+  const marks = session.knots.filter((k) => k.state === 'PENDIENTE' && k.fragment).map((k) => k.fragment!)
   if (session.activities.length === 0) return <Empty>Esta sesión todavía no tiene secuencia didáctica.</Empty>
   const total = session.activities.reduce((sum, a) => sum + (a.minutes ?? 0), 0)
   return (
@@ -60,9 +78,9 @@ function Sequence({ session }: { session: SessionDetail }) {
             <ol className="doc-steps">
               {acts.map((a) => (
                 <li key={a.id}>
-                  {a.generated && <span className="doc-tag is-required">Propuesta, sin revisar</span>}
+                  {a.generated && <span className="doc-tag is-draft">Propuesta, sin revisar</span>}
                   {a.title && <strong>{a.title}. </strong>}
-                  {a.instructions}
+                  {marked(a.instructions, marks)}
                 </li>
               ))}
             </ol>
@@ -86,6 +104,8 @@ export default function SessionView({ sessionId, backLabel, onBack }: Props) {
   const [savedNote, setSavedNote] = useState('')
   const [generating, setGenerating] = useState(false)
   const [draftError, setDraftError] = useState('')
+  const [asking, setAsking] = useState(false)
+  const [indications, setIndications] = useState('')
 
   useEffect(() => {
     getSession(sessionId)
@@ -93,12 +113,14 @@ export default function SessionView({ sessionId, backLabel, onBack }: Props) {
       .catch(() => setError('No se pudo cargar la sesión.'))
   }, [sessionId])
 
-  async function handleGenerate() {
+  async function handleGenerate(extra?: string) {
     setGenerating(true)
     setDraftError('')
     try {
-      setSession(await generateDraft(sessionId))
+      setSession(await generateDraft(sessionId, extra))
       setSavedNote('')
+      setAsking(false)
+      setIndications('')
     } catch (e) {
       setDraftError(e instanceof Error ? e.message : 'No se pudo preparar el borrador')
     } finally {
@@ -119,6 +141,8 @@ export default function SessionView({ sessionId, backLabel, onBack }: Props) {
   }
 
   const pendingReview = session?.activities.filter((a) => a.generated).length ?? 0
+  const openKnots = session?.knots.filter((k) => k.state === 'PENDIENTE').length ?? 0
+  const changes = session?.knots.filter((k) => k.state === 'CAMBIO').length ?? 0
 
   return (
     <div className="home">
@@ -131,8 +155,8 @@ export default function SessionView({ sessionId, backLabel, onBack }: Props) {
         <>
           <div className="doc-hero">
             <p className="home-greet">
-              {session.unitTitle} · sesión {session.number}
-              {session.durationMinutes ? ` · ${session.durationMinutes} min` : ''}
+              Sesión {session.number} de «{session.unitTitle}»
+              {session.durationMinutes ? `, ${session.durationMinutes} minutos` : ''}
             </p>
             <h1 className="doc-title">{session.title}</h1>
           </div>
@@ -151,45 +175,94 @@ export default function SessionView({ sessionId, backLabel, onBack }: Props) {
           <>
           <div className="doc-toolbar">
             <span className="doc-meta">
-              {session.approved && <span className="status-dot is-ok">Aprobada por ti</span>}
+              {session.approved && <span className="seal">Aprobada por ti</span>}
               {session.editedAt && <span>Editada el {editedLabel(session.editedAt)}</span>}
               {savedNote && <span className="ok" role="status">{savedNote}</span>}
             </span>
-            <button className="editor-cancel" onClick={() => { setSavedNote(''); setEditing(true) }}>
-              Editar la sesión
-            </button>
+            <span className="doc-toolbar-actions">
+              {session.regenerable && session.activities.length > 0 && !generating && (
+                <button className="editor-cancel" onClick={() => setAsking((v) => !v)} aria-expanded={asking}>
+                  Pedir otro borrador
+                </button>
+              )}
+              <button className="editor-cancel" onClick={() => { setSavedNote(''); setEditing(true) }}>
+                Editar la sesión
+              </button>
+            </span>
           </div>
 
-          {session.activities.length === 0 && (
+          {generating && (
+            <Weaving
+              label={session.activities.length ? 'Tejiendo otro borrador…' : 'Tejiendo el borrador…'}
+              sub="Lo reviso con las reglas de tu institución antes de mostrártelo. Tarda unos segundos."
+            />
+          )}
+
+          {!generating && session.activities.length === 0 && (
             <div className="doc-generate">
               <div>
                 <p className="doc-draft-title">Esta sesión todavía no tiene secuencia</p>
                 <p className="doc-draft-text">
-                  Puedo proponerte un borrador a partir de la unidad, los desempeños del grado y los pasos de tu
-                  institución. Llega sin aprobar: lo revisas, lo cambias y decides tú.
+                  Te propongo la sesión completa: secuencia, DUA y materiales, a partir de la unidad, los desempeños
+                  del grado, los pasos de tu institución y lo que me contaste de tu aula. Llega como borrador, con unas
+                  pocas preguntas para ti.
                 </p>
                 {draftError && <p className="error" role="alert">{draftError}</p>}
               </div>
-              <button className="home-take" onClick={handleGenerate} disabled={generating}>
-                {generating ? 'Preparando el borrador…' : 'Proponer un borrador'}
+              <button className="home-take" onClick={() => handleGenerate()}>
+                Proponer un borrador
               </button>
             </div>
           )}
 
-          {!session.approved && (
+          {!generating && asking && (
+            <div className="doc-ask">
+              <label className="closure-field">
+                <span>¿Qué quieres distinto?</span>
+                <span className="closure-field-hint">
+                  Con tus palabras: «más corta», «sin salir del aula», «con chapitas en vez de tiras».
+                </span>
+                <textarea value={indications} onChange={(e) => setIndications(e.target.value)} rows={2} maxLength={1000} />
+              </label>
+              {draftError && <p className="error" role="alert">{draftError}</p>}
+              <button className="home-take" onClick={() => handleGenerate(indications)} disabled={!indications.trim()}>
+                Tejer otro borrador
+              </button>
+            </div>
+          )}
+
+          {!generating && !session.approved && session.activities.length > 0 && (
             <div className="doc-draft" role="status">
               <div>
                 <p className="doc-draft-title">
-                  {session.generated && !session.editedAt ? 'Lo propuso el sistema y nadie lo ha revisado' : 'Es un borrador'}
+                  {session.generated && !session.editedAt ? 'Es un borrador que propuse yo' : 'Es un borrador'}
                 </p>
                 <p className="doc-draft-text">
-                  No llega a tus estudiantes ni se imprime hasta que lo apruebes. Revísalo completo antes de aprobarlo.
-                  {pendingReview > 0 &&
-                    ` Quedan ${pendingReview} ${pendingReview === 1 ? 'actividad propuesta' : 'actividades propuestas'} que no has cambiado.`}
+                  No llega a tus estudiantes ni se imprime hasta que lo apruebes.
+                  {openKnots > 0
+                    ? ` Responde ${openKnots === 1 ? 'la pregunta de abajo' : `las ${openKnots} preguntas de abajo`} y apruébalo cuando te convenza.`
+                    : pendingReview > 0
+                      ? ' No quedan preguntas: pasó las reglas de tu institución. Dale una mirada y apruébalo si te convence.'
+                      : ''}
                 </p>
               </div>
-              <button className="home-take" onClick={handleApprove} disabled={approving}>
+              <button className="home-take" onClick={handleApprove} disabled={approving || generating}>
                 {approving ? 'Aprobando…' : 'Aprobar la sesión'}
+              </button>
+            </div>
+          )}
+
+          {!generating && <KnotList session={session} onChange={setSession} />}
+
+          {!generating && changes > 0 && session.regenerable && (
+            <div className="knot-redo">
+              <p>
+                Pediste {changes === 1 ? 'un cambio' : `${changes} cambios`}. Rehago el borrador con tus respuestas;
+                lo que ya estaba bien se mantiene.
+              </p>
+              {draftError && <p className="error" role="alert">{draftError}</p>}
+              <button className="home-take" onClick={() => handleGenerate()}>
+                Rehacer con tus respuestas
               </button>
             </div>
           )}
@@ -255,7 +328,10 @@ export default function SessionView({ sessionId, backLabel, onBack }: Props) {
               <p className="doc-field">DUA aplicado</p>
               {session.dua.length ? (
                 session.dua.map((n) => (
-                  <p key={n.title} className="doc-text"><strong>{n.title}.</strong> {n.text}</p>
+                  <p key={n.title} className="doc-text">
+                    {n.generated && <span className="doc-tag is-draft">Propuesta</span>}
+                    <strong>{n.title}.</strong> {n.text}
+                  </p>
                 ))
               ) : (
                 <Empty>Todavía no tiene pautas DUA.</Empty>
@@ -270,6 +346,7 @@ export default function SessionView({ sessionId, backLabel, onBack }: Props) {
                           <span className={m.required ? 'doc-tag is-required' : 'doc-tag'}>
                             {m.required ? 'Obligatorio' : 'Sugerido'}
                           </span>
+                          {m.generated && <span className="doc-tag is-draft">Propuesta</span>}
                           {m.name}
                           {m.quantity ? <span className="doc-soft"> · {m.quantity}</span> : null}
                         </li>

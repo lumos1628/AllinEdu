@@ -68,7 +68,7 @@ decisiones pedagógicas automáticas.
 | Login con JWT y roles | Funcionando |
 | Consultar secciones y estudiantes | Funcionando |
 | Registrar y consultar asistencia (web y móvil) | Funcionando |
-| Pipeline de preparación de clases | Por construir — **prioridad 1** |
+| Pipeline de preparación de clases | **Parcial** — escritorio, unidad, sesión editable con aprobación, instrumento imprimible y **el telar**: la unidad completa se prepara en lote y se revisa respondiendo pocas preguntas («Está bien» / «Cámbialo»). Falta la ficha diferenciada |
 | Captura de evidencia por criterio | Por construir |
 | Banco de ítems, diagnóstico y repaso | Por construir |
 | Canal con familias | Por construir |

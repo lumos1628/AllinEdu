@@ -24,14 +24,24 @@ Una persona puede tener más de un rol: por ejemplo, ser docente y apoderada.
 
 Prioridad 1. Ataca el dolor más costoso: 2.5 a 4 horas diarias de trabajo no remunerado.
 
-### UC-01 — Generar borrador de sesión de aprendizaje
+### UC-01 — Preparar las sesiones de la unidad **[EXISTE]**
 
 - **Actor:** docente.
-- **Precondición:** existe la unidad o experiencia de aprendizaje y la competencia elegida.
-- **Flujo:** el docente selecciona grado, área, competencia y tema; el sistema propone un
-  borrador de sesión con sus momentos pedagógicos.
+- **Precondición:** la unidad existe con sus sesiones, competencias y criterios.
+- **Flujo:** desde la unidad, el docente pulsa «Preparar las N sesiones». El sistema genera en
+  segundo plano, en orden, la sesión completa de cada sesión en borrador que no tiene secuencia:
+  secuencia didáctica (cada actividad del desarrollo ligada a un paso de la institución),
+  evidencia, DUA y materiales. Cada borrador ve a las sesiones anteriores, a «Mi aula» (UC-22) y
+  a los desempeños del grado. La faja de la unidad se teje en pantalla mientras llegan, y el
+  docente puede cerrar la pantalla.
+- **Variante:** dentro de una sesión vacía, «Proponer un borrador» genera solo esa.
 - **Regla:** el borrador nace en estado **no aprobado**. Nada generado se publica ni se imprime
-  sin aprobación explícita del docente.
+  sin aprobación explícita del docente. Una sesión aprobada o en la que el docente ya escribió
+  no entra al lote.
+- **Regla:** antes de mostrar un borrador, las reglas fijas de UC-04 lo revisan; si encuentran
+  algo, el generador tiene un segundo intento con esas correcciones.
+- **Excepción:** si el generador no responde, esa sesión queda vacía y las demás siguen; volver a
+  pulsar reintenta solo las que faltan.
 
 ### UC-02 — Generar ficha de trabajo diferenciada por niveles
 
@@ -50,11 +60,26 @@ Prioridad 1. Ataca el dolor más costoso: 2.5 a 4 horas diarias de trabajo no re
 - **Regla:** los criterios quedan vinculados a la competencia, para que la evidencia registrada
   en clase (UC-09) pueda valorarse contra ellos.
 
-### UC-04 — Revisar, corregir y aprobar un borrador
+### UC-04 — Revisar un borrador respondiendo sus nudos **[EXISTE]**
 
 - **Actor:** docente.
-- **Flujo:** revisa el contenido propuesto, edita lo que haga falta y lo aprueba.
-- **Regla:** el sistema conserva qué fue generado y qué fue editado por una persona.
+- **Flujo:** el borrador llega con sus **nudos**: las pocas cosas que necesitan la mirada del
+  docente. Cada uno se responde con «Está bien» o «Cámbialo» (con lo que quiere en su lugar).
+  Con los cambios pedidos, «Rehacer con tus respuestas» teje otro borrador que cambia solo lo
+  pedido. Cuando le convence, lo aprueba. También puede editarlo a mano o pedir otro borrador con
+  sus palabras («más corta», «sin salir del aula»).
+- **De dónde salen los nudos:**
+  - Reglas fijas, sin IA: los minutos no suman la duración de la clase; falta un paso didáctico
+    de la institución o van en otro orden; el inicio no comunica los criterios; el desempeño pide
+    material concreto y no hay ninguno.
+  - El generador: lo que tuvo que suponer de la comunidad o los recursos («supuse que hay un
+    mercado cerca»), como máximo tres, con la frase del borrador, que se señala en el documento.
+    Lo que el docente ya contó en «Mi aula» no se pregunta.
+- **Regla:** el sistema conserva qué fue generado y qué fue editado por una persona, y guarda cada
+  borrador tal como llegó (modelo, versión del prompt, intentos, duración) para medir la tasa de
+  edición.
+- **Regla:** un borrador nuevo nunca pisa lo que el docente escribió: si editó la sesión, se
+  cambia desde el editor.
 - **Excepción:** un borrador rechazado no se descarta en silencio; queda disponible para
   regenerarse con indicaciones nuevas.
 
@@ -63,6 +88,16 @@ Prioridad 1. Ataca el dolor más costoso: 2.5 a 4 horas diarias de trabajo no re
 - **Actor:** docente.
 - **Flujo:** descarga o manda a imprimir la sesión, la ficha y el instrumento ya aprobados.
 - **Regla:** solo se exporta material aprobado.
+
+### UC-22 — Contar cómo es mi aula **[EXISTE]**
+
+- **Actor:** docente.
+- **Flujo:** en la unidad, el docente escribe una vez y con sus palabras lo que los borradores
+  deben saber: qué hay cerca de la escuela, qué materiales tienen, cómo trabajan. Todos sus
+  borradores lo usan. Al responder «Cámbialo» a un supuesto, puede marcar «Recordarlo en Mi aula»
+  y la respuesta se agrega ahí.
+- **Regla:** nunca lleva datos de estudiantes. La pantalla lo advierte y el texto se envía al
+  generador, por eso se limita a la comunidad y el aula. Hasta 2000 caracteres.
 
 ---
 

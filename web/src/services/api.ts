@@ -107,6 +107,7 @@ export interface UnitDetail {
     approved: boolean
     competencies: string[]
     activities: number
+    openKnots: number
   }[]
 }
 
@@ -130,10 +131,36 @@ export interface SessionDetail {
     type: string
     criteria: { description: string; levels: { code: string; description: string }[] }[]
   } | null
-  dua: { title: string; text: string | null }[]
+  dua: { title: string; text: string | null; generated: boolean }[]
   approaches: { title: string; text: string | null }[]
-  materials: { name: string; quantity: number | null; required: boolean; description: string | null }[]
+  materials: { name: string; quantity: number | null; required: boolean; description: string | null; generated: boolean }[]
   activities: SessionActivity[]
+  // false si el docente ya escribió parte de la sesión: entonces no se pide otro borrador
+  regenerable: boolean
+  knots: Knot[]
+}
+
+// Nudo: algo del borrador que necesita la mirada del docente (ver USE_CASES.md UC-04)
+export type KnotType = 'MINUTOS' | 'PASOS' | 'CRITERIOS' | 'MATERIAL' | 'SUPUESTO'
+export type KnotState = 'PENDIENTE' | 'ACEPTADO' | 'CAMBIO'
+
+export interface Knot {
+  id: number
+  type: KnotType
+  question: string
+  fragment: string | null
+  state: KnotState
+  answer: string | null
+}
+
+// Cómo va la preparación de la unidad en lote
+export interface DraftJob {
+  running: boolean
+  total: number
+  done: number
+  failed: number
+  currentSessionId: number | null
+  pending: number
 }
 
 export type Moment = 'INICIO' | 'DESARROLLO' | 'CIERRE' | 'OTRO'
@@ -281,15 +308,54 @@ export async function updateSession(sessionId: number, body: SessionUpdate): Pro
   return res.json()
 }
 
-// La generación tarda unos segundos; el backend responde 503 si el modelo está ocupado.
-export async function generateDraft(sessionId: number): Promise<SessionDetail> {
-  const res = await fetch(`${BASE}/sessions/${sessionId}/draft`, { method: 'POST', headers: authHeaders() })
+async function authSend<T>(method: string, path: string, body: unknown, fallback: string): Promise<T> {
+  const res = await fetch(`${BASE}${path}`, {
+    method,
+    headers: { ...authHeaders(), 'Content-Type': 'application/json' },
+    body: body === undefined ? undefined : JSON.stringify(body),
+  })
   handleUnauthorized(res)
   if (!res.ok) {
     const err = await res.json().catch(() => null)
-    throw new Error(err?.message ?? 'No se pudo preparar el borrador')
+    throw new Error(err?.message ?? fallback)
   }
   return res.json()
+}
+
+// La generación tarda unos segundos; el backend responde 503 si el modelo está ocupado.
+// indications: lo que el docente quiere distinto; sus respuestas "Cámbialo" ya van solas.
+export function generateDraft(sessionId: number, indications?: string): Promise<SessionDetail> {
+  return authSend('POST', `/sessions/${sessionId}/draft`, { indications: indications ?? null }, 'No se pudo preparar el borrador')
+}
+
+export function answerKnot(
+  sessionId: number,
+  knotId: number,
+  answer: 'ACEPTADO' | 'CAMBIO',
+  text: string,
+  remember: boolean,
+): Promise<SessionDetail> {
+  return authSend('PUT', `/sessions/${sessionId}/knots/${knotId}`, { answer, text, remember }, 'No se pudo guardar tu respuesta')
+}
+
+// Prepara en segundo plano todas las sesiones de la unidad que no tienen secuencia.
+export function prepareUnit(unitId: number): Promise<DraftJob> {
+  return authSend('POST', `/units/${unitId}/drafts`, undefined, 'No se pudo empezar a preparar la unidad')
+}
+
+export function getUnitJob(unitId: number): Promise<DraftJob> {
+  return authGet(`/units/${unitId}/drafts`, 'el avance de la unidad')
+}
+
+// "Mi aula": lo que el docente cuenta de su comunidad y sus materiales, para todos sus borradores.
+export async function getClassroom(): Promise<string> {
+  const data = await authGet<{ text: string }>('/me/classroom', 'tu aula')
+  return data.text
+}
+
+export async function saveClassroom(text: string): Promise<string> {
+  const data = await authSend<{ text: string }>('PUT', '/me/classroom', { text }, 'No se pudo guardar')
+  return data.text
 }
 
 export function getSlotOptions(sectionId: number, slotId: number, date: string): Promise<SlotOptions> {

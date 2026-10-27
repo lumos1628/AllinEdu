@@ -53,7 +53,7 @@ pedagógica no hay insumo para la parte administrativa.
 
 | Funcionalidad | Sustento | Estado |
 |---|---|---|
-| Pipeline de preparación: unidad → sesión → ficha diferenciada → instrumento → imprimible | 2.5–4 h/día (I-1) | **Parcial (web):** escritorio con horario semanal, unidad con sus sesiones y sesión como documento con aprobación docente. Falta elaborar/editar, ficha diferenciada e imprimible |
+| Pipeline de preparación: unidad → sesión → ficha diferenciada → instrumento → imprimible | 2.5–4 h/día (I-1) | **Parcial (web):** escritorio con horario semanal, unidad con sus sesiones, sesión como documento editable con aprobación docente, instrumento imprimible y **el telar** (ver abajo). Falta la ficha diferenciada y el paquete imprimible del día |
 | Asistencia digital en el aula, sin fotografía ni volcado posterior | I-2 | **Parcial: ya existe** |
 | Captura de evidencia por criterio durante la clase | I-3 | Por construir |
 | Banco de ítems por competencia, grado y nivel de dificultad | Sustrato de todo lo demás | Por construir |
@@ -61,11 +61,46 @@ pedagógica no hay insumo para la parte administrativa.
 | Práctica progresiva por nivel de dificultad | I-5 | Por construir |
 | Repaso espaciado | Agarwal 2021, Latimier 2021 | Por construir |
 | Canal con familias: constancia de respuesta y horario de atención visible | I-4 | Por construir |
-| Generación asistida de ítems y borradores, con revisión docente obligatoria | I-1, NFER 2024 | **Parcial:** borrador de la secuencia de una sesión vacía (Gemini, plan gratuito), marcado como propuesto y sin aprobar hasta que el docente lo revise. Faltan ítems, fichas e instrumentos |
+| Generación asistida de ítems y borradores, con revisión docente obligatoria | I-1, NFER 2024 | **Parcial: el telar.** La sesión completa (secuencia ligada a los pasos de la institución, evidencia, DUA y materiales) para todas las sesiones de la unidad en lote, revisión por nudos y «Mi aula». Todo nace sin aprobar. Faltan ítems, fichas e instrumentos |
 
 **Sobre la generación con IA:** no es un extra, es lo que evita que el proyecto se contradiga.
 Si el docente tuviera que redactar a mano los ítems y las fichas, le habríamos *agregado* carga
 operativa y roto el ODS 8. Regla permanente: **la IA propone borradores, el docente aprueba.**
+
+### El telar: cómo se genera y se revisa una sesión
+
+Una IA genérica le resuelve el texto al docente y lo deja solo con el resto (I-1). El telar es
+la respuesta de AllinEdu, y descansa en tres decisiones pensadas para que sea fácil:
+
+1. **Se prepara la unidad de una vez, no sesión por sesión.** Un botón en la unidad genera en
+   segundo plano todas las sesiones en borrador que no tienen secuencia, en orden y cada una
+   sabiendo qué hicieron las anteriores. La faja de la unidad se va tejiendo en pantalla mientras
+   llegan. El docente puede cerrar la pantalla: cuando se siente a revisar, el material ya existe
+   (`EPICAS.md` §3: generar por unidad, revisar por día).
+2. **Se revisa respondiendo preguntas, no leyendo todo.** Cada borrador llega con sus **nudos**:
+   las pocas cosas que necesitan la mirada del docente.
+   - Unos los detectan **reglas fijas, sin IA**: los minutos no cuadran con la clase, falta un
+     paso didáctico de la institución, el inicio no comunica los criterios, el desempeño pide
+     material concreto y no hay ninguno. Antes de mostrar el borrador, el sistema le da al
+     generador un segundo intento con esas correcciones.
+   - Otros los **declara el generador**: lo que tuvo que suponer de la comunidad («supuse que hay
+     un mercado cerca»), con la frase exacta, que se señala en el documento.
+
+   Cada nudo se responde con **«Está bien»** o **«Cámbialo»**. Con los cambios pedidos, el
+   borrador se rehace. Es la aprobación por excepción que exige `EPICAS.md` §2.
+3. **Mi aula: el contexto se escribe una vez.** El docente cuenta con sus palabras cómo es su
+   comunidad y qué materiales tiene. Lo usan todos sus borradores, y cada «Cámbialo» de un
+   supuesto puede quedar guardado ahí, así el siguiente borrador ya no supone lo mismo. **Nunca
+   lleva datos de estudiantes**: la pantalla lo advierte y el generador no recibe ninguno.
+
+El sistema guarda cada borrador tal como llegó, con el modelo, la versión del prompt, los
+intentos y la duración (`generaciones_sesion`). Es lo que permite medir la **tasa de edición**,
+la métrica que dice si la generación ayuda o estorba.
+
+Límites que conviene decir: la preparación en lote vive en la memoria del servidor (si se
+reinicia, lo generado queda guardado y basta con volver a pulsar), y la generación usa el plan
+gratuito de Gemini, que puede usar lo enviado para entrenar. Por eso el contexto se limita a
+currículo, planificación y lo que el docente escribe en «Mi aula».
 
 ### Si alcanza el tiempo
 
@@ -154,6 +189,7 @@ No se fija de antemano un porcentaje de mejora.
 | 2026-10-19 | El cierre de bimestre registra nivel de logro, conclusión y recomendación por estudiante. **No resuelve D-1**: queda como captura para el cierre, no como registro oficial de notas | Lo pide el prototipo y la RVM 048-2024 obliga a conclusión en B y C. Si D-1 se decide en contra, la pantalla se limita a redactar las conclusiones para copiarlas a SIAGIE |
 | 2026-10-20 | Entra la generación del borrador de secuencia de una sesión, con edición y registro de autoría (generado vs. escrito por el docente) | Es el ahorro de tiempo de la prioridad 1. Solo se genera sobre sesiones vacías y con currículo y planificación como contexto, nunca datos de estudiantes; el resultado nace sin aprobar (Regla 0a) |
 | 2026-10-21 | Se cierra D-2: el código se renombra de `EduFast` a `AllinEdu` (paquetes Java/Kotlin, clases, propiedades `allinedu.*`, variables `ALLINEDU_DEMO_*`, claves de `localStorage`). Se conservan el rol `edufast` de la BD y el código `DEMO-EDUFAST` de la IE demo | Un nombre técnico distinto del producto confundía; el rol y los datos viven en el Supabase compartido y renombrarlos exige migrar la base |
+| 2026-10-25 | La generación pasa de «secuencia de una sesión vacía, a pedido» a **el telar**: la sesión completa (secuencia ligada a los pasos de la institución, evidencia, DUA y materiales), preparada en lote para toda la unidad, revisada por nudos («Está bien» / «Cámbialo») y con «Mi aula» como contexto que el docente escribe una vez | La versión anterior generaba en el camino crítico de la revisión y solo la mitad del documento, en contra de `EPICAS.md` §3. Las tres piezas apuntan a que generar sea fácil para el docente y a que su revisión quepa en minutos |
 
 > Re-delimitar después de empatizar es Design Thinking funcionando, no un retroceso. Cada
 > cambio queda registrado aquí con su motivo.

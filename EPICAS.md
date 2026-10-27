@@ -105,6 +105,12 @@ excepción: el sistema señala lo que requiere atención —lo que no pudo conte
 contradice la unidad, lo que quedó fuera del nivel de la sección— y el resto se aprueba en bloque.
 Un editor de texto con el borrador completo garantiza fallar el criterio 2.
 
+**Cómo quedó construido (2026-10-25): los nudos.** Cada borrador llega con pocas preguntas que se
+responden con «Está bien» o «Cámbialo» (UC-04). Unas las detectan reglas fijas (minutos, pasos de
+la institución, criterios al inicio, material concreto) y otras las declara el generador: lo que
+tuvo que suponer de la comunidad. En la prueba con la unidad de 4.º B, diez sesiones llegaron con
+cero a dos nudos cada una. Es un dato de funcionamiento, no un resultado con docentes.
+
 ---
 
 ## 3. Dónde entra el LLM, y dónde no
@@ -113,7 +119,7 @@ Un editor de texto con el borrador completo garantiza fallar el criterio 2.
 
 | Uso | Caso de uso | Cuándo se ejecuta |
 |---|---|---|
-| Borrador de sesión | UC-01 | Al aprobar la unidad, en lote para el mes |
+| Borrador de sesión | UC-01 | En lote para la unidad, en segundo plano, cuando el docente pulsa «Preparar las sesiones» (todavía no hay aprobación de unidad en la app) |
 | Ejercicios de ficha, agrupados por nivel | UC-02 | Igual, en lote |
 | Criterios de evaluación e instrumento | UC-03 | Igual, en lote |
 | Ítems candidatos del banco (E0) | habilitador | Fuera de línea, una vez, revisión masiva |
@@ -245,3 +251,4 @@ E5 familias — independiente, se puede hacer en cualquier momento
 | Fecha | Cambio |
 |---|---|
 | 2026-10-16 | Documento creado. Épicas E0–E5 formalizadas sobre los grupos de `USE_CASES.md`. E1b (replanificación) añadida con respaldo de la ronda del 16-10-2026. Historia principal de E1 fijada en 20 min para el paquete diario completo |
+| 2026-10-25 | E1 incorpora el telar: generación en lote por unidad, revisión por nudos y «Mi aula» (UC-01, UC-04, UC-22). La decisión «generar por unidad, revisar por día» de §3 pasa de diseño a código |

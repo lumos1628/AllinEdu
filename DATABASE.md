@@ -27,7 +27,7 @@ Falta modelar el sustrato del refuerzo. Requiere una migración nueva y aprobada
 
 ### Lo que el esquema ya resuelve y conviene no duplicar
 
-- La **generación con IA** no necesita tablas nuevas de contenido: las sesiones, actividades e instrumentos se guardan donde ya corresponde. El estado de aprobación y la distinción entre contenido generado y editado por una persona (Regla 0a de `AGENTS.md`) viven en `sesiones_planificadas` (`origen`, `editada_por/_at`, `aprobada_por/_at`) y `actividades_sesion` (`origen`, `editada_at`), desde `20261020000100_autoria_sesiones.sql`. Una actividad generada que el docente cambia pasa a `origen = 'DOCENTE'`.
+- La **generación con IA** guarda su contenido donde ya corresponde: actividades (con su paso didáctico en `paso_proceso_id`), evidencias, DUA y materiales. El estado de aprobación y la distinción entre contenido generado y editado por una persona (Regla 0a de `AGENTS.md`) viven en `sesiones_planificadas` (`origen`, `editada_por/_at`, `aprobada_por/_at`), `actividades_sesion` (`origen`, `editada_at`), `sesiones_dua` y `sesiones_materiales` (`origen`). Una actividad generada que el docente cambia pasa a `origen = 'DOCENTE'`. Lo único nuevo que necesita el telar son tres tablas de proceso, no de contenido: el registro de cada generación, sus nudos y «Mi aula» (`20261025000100_telar_borradores.sql`).
 - La **justificación de ausencias** se apoya en `registros_asistencia` más `archivos`; no crea un flujo paralelo.
 
 La app/web nunca accede directamente a la base: ambos clientes usan la API Spring. Las claves privadas de PostgreSQL y de proveedores push no se distribuyen a los clientes.
@@ -133,6 +133,16 @@ El registro de “no entregada” solo se crea al ser confirmado por un actor au
 
 - `sesiones_planificadas`: `horario_id` y `fecha`, ambos nulos o ambos presentes. Un bloque del horario tiene a lo sumo una sesión por fecha (`uq_sesion_en_bloque_y_fecha`).
 - Las sesiones sin fecha siguen siendo válidas: son las de la unidad que el docente aún no ubicó en su horario. El backend valida que la fecha caiga en el día del bloque y que el bloque lo dicte el propio docente.
+
+### `20261025000100_telar_borradores.sql`
+
+El telar (`ALCANCE.md` §3, UC-01, UC-04 y UC-22).
+
+- `contextos_aula`: «Mi aula», un texto por docente (`cuenta_usuario_id` como clave, hasta 2000 caracteres). Se envía al generador, por eso no debe contener datos de estudiantes.
+- `generaciones_sesion`: cada borrador tal como llegó del generador (`salida` en `jsonb`), con `modelo`, `version_prompt`, `indicaciones` del docente, `intentos` y `duracion_ms`. Es la base de la tasa de edición: compara lo generado con lo que el docente terminó aprobando, aunque haya reescrito las actividades.
+- `nudos_sesion`: lo que el docente revisa de un borrador. `tipo` es `MINUTOS`, `PASOS`, `CRITERIOS`, `MATERIAL` (reglas fijas) o `SUPUESTO` (lo declara el generador); `estado` es `PENDIENTE`, `ACEPTADO` («Está bien») o `CAMBIO` («Cámbialo», con `respuesta`). Cuelgan de una generación: los vigentes son los de la última.
+- `sesiones_dua` y `sesiones_materiales`: `origen` (`DOCENTE` o `GENERADA`). Un borrador nuevo reemplaza solo lo generado; lo del docente se respeta.
+- Las tres tablas nuevas activan RLS y revocan el acceso a `anon` y `authenticated`, como el resto del esquema base.
 
 ## Restricciones críticas
 

@@ -155,7 +155,9 @@ repositorio. `ALCANCE.md` cubre qué se construye, no cómo se sostiene. Hay que
 quién paga (¿la IE? ¿la UGEL? ¿el docente?), qué pasa con el costo por generación de LLM, y por
 qué un colegio público podría adoptarlo. **No se improvisa en S15.**
 
-**2. Factor diferencial, con cinco diferencias.** Tienes una fuerte y sin escribir: I-1 dice que
+**2. Factor diferencial, con cinco diferencias.** Para la demo del pitch, el momento más
+llamativo ya existe: pulsar «Preparar las sesiones» y ver la faja de la unidad tejerse en vivo,
+y después revisar una sesión respondiendo dos preguntas. Tienes una diferencia fuerte y sin escribir: I-1 dice que
 el dolor no es la falta de IA, es que la IA genérica resuelve el texto y deja sola a la docente
 con el pegado, la corrección, las imágenes, el instrumento y la impresión. **Tu diferencial es el
 pipeline integrado y anclado al currículo, no "usamos IA".** Las otras cuatro salen de I-7
@@ -201,15 +203,19 @@ no se arrastra deuda.
 
 Hacerlo sin IA primero es deliberado: si el dominio depende del generador, no se puede probar.
 
-### S12 — El generador en lote
+### S12 — El generador en lote ✅ (el telar, 2026-10-25)
 
 - Ensamblado de contexto: competencia + capacidades + desempeños + estándar + situación
-  significativa de la unidad + sesiones previas.
-- Salida **estructurada y validada** contra el esquema: filas de `sesiones_planificadas`,
-  `actividades_sesion` (con `momento`) y `criterios_evaluacion`. No prosa.
-- Se dispara **al aprobar la unidad**, nunca durante la revisión (`EPICAS.md` §3).
-- **Cierre:** aprobar una unidad genera las sesiones del mes, todas en estado no aprobado y
-  marcadas como `GENERADA_IA`.
+  significativa de la unidad + **sesiones previas** + **«Mi aula»** del docente.
+- Salida **estructurada y validada**: actividades con su `momento` y su **paso didáctico**
+  (`paso_proceso_id`), evidencia, DUA y materiales ligados al desempeño. No prosa.
+- Se dispara con **«Preparar las sesiones»** en la unidad (todavía no existe aprobar la unidad en
+  la app), en segundo plano y nunca durante la revisión (`EPICAS.md` §3). La faja de la unidad se
+  teje en pantalla mientras llegan.
+- Reglas fijas revisan cada borrador y el generador tiene un segundo intento con sus correcciones.
+- **Cierre logrado:** en la base local, las 10 sesiones vacías de la unidad de 4.º B se generaron
+  en menos de un minuto, todas sumando la duración de la clase y sin aprobar. Cada generación
+  queda registrada con modelo, versión del prompt, intentos y duración.
 
 ### S13 — Ficha diferenciada, instrumento e imprimible
 
@@ -218,12 +224,15 @@ Hacerlo sin IA primero es deliberado: si el dominio depende del generador, no se
 - Exportable imprimible. Solo material aprobado (UC-05).
 - **Cierre:** el paquete completo de un día sale en PDF listo para fotocopiar.
 
-### S14 — Revisión por excepción y validaciones
+### S14 — Revisión por excepción y validaciones (adelantada en parte)
 
-- Validaciones **determinísticas**: ¿la sesión cubre una competencia de la unidad? ¿los criterios
-  derivan de una capacidad? ¿la duración cabe en el horario de la sección?
-- Pantalla de revisión que muestra **solo lo señalado** y permite aprobar el resto en bloque.
-  Son ~3 minutos por artefacto: no puede ser un editor de texto (`EPICAS.md` §2).
+- ✅ Validaciones **determinísticas** como nudos: minutos contra la duración, pasos de la
+  institución y su orden, criterios comunicados al inicio, material concreto que pide el desempeño.
+- ✅ Revisión que muestra **solo lo señalado**: cada nudo se responde con «Está bien» o
+  «Cámbialo», y «Rehacer con tus respuestas» cambia solo lo pedido.
+- Pendiente: ¿la sesión cubre una competencia de la unidad? ¿los criterios derivan de una
+  capacidad? ¿la duración cabe en el bloque del horario? Y **aprobar en bloque** las sesiones del
+  día que ya no tienen nudos.
 - **Cierre:** revisar y aprobar el paquete de un día en ≤ 20 min, cronometrado.
 
 ### S15 — Captura de evidencia y medición
