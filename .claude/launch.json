@@ -11,6 +11,27 @@
         "dev"
       ],
       "port": 5173
+    },
+    {
+      "name": "backend",
+      "runtimeExecutable": "./backend/gradlew",
+      "runtimeArgs": [
+        "-p",
+        "backend",
+        "bootRun"
+      ],
+      "port": 8080
+    },
+    {
+      "name": "backend-local",
+      "runtimeExecutable": "./backend/gradlew",
+      "runtimeArgs": [
+        "-p",
+        "backend",
+        "bootRun",
+        "--args=--spring.datasource.url=jdbc:postgresql://127.0.0.1:54333/postgres --spring.datasource.username=postgres --spring.datasource.password=postgres"
+      ],
+      "port": 8080
     }
   ]
 }
