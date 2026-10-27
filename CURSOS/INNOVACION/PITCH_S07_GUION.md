@@ -1,86 +1,166 @@
-# Pitch AllinEdu: guion para grabar (3 minutos)
+# Pitch AllinEdu: guion para grabar (Taller 07)
 
-Duración objetivo: **2:50**. Así quedan 10 segundos de margen; los videos de más de 3:00 no se revisan.
-Se lee a ritmo tranquilo: unas 420 palabras en total.
-Formato: video horizontal 16:9, exportado en MP4 y subido **solo a la carpeta de Drive** que indicó el profesor.
+Basado en la teoría de la sesión 7 (`PPT-TAL-S07-OMEDINA-2026-02`): el orden de las escenas sigue la
+**plantilla de pitch del profesor** (diap. 13–24) y el análisis previo usa el **Power Pitch Method** (diap. 12).
 
-## Reparto
+**Restricciones del taller:**
+- El video dura **3:00 como máximo**. Si pasa de 3:00, no se revisa. La meta es **2:50**, que deja 10 s de margen.
+- **Formato de la Imagen 1:** fondo negro en 16:9. A la izquierda va quien habla, en plano medio y con el fondo recortado. A la derecha va la diapositiva, con el logo de AllinEdu arriba. En la franja inferior van el logo de Tecsup, *#INVEINTEC – Curso de Investigación e Innovación Tecnológica*, el QR y `https://www.tecsup.edu.pe/`.
+- Se exporta en MP4 y se sube **solo a la carpeta de Drive**. No se aceptan YouTube ni otros enlaces.
+- Herramientas: Canva para armar el video y OBS o el grabador del celular para la demo.
 
-| Bloque | Quién habla | Tiempo |
-|---|---|---|
-| 1. Gancho | Heidi | 0:00 – 0:20 |
-| 2. Problema | Heidi | 0:20 – 0:50 |
-| 3. Lo que descubrimos | Daniela | 0:50 – 1:10 |
-| 4. Solución + demo | Tomás | 1:10 – 1:55 |
-| 5. Diferencial | Tomás | 1:55 – 2:10 |
-| 6. Modelo de negocio | Pernel | 2:10 – 2:35 |
-| 7. Cierre | Los cuatro | 2:35 – 2:50 |
+---
 
-Cambien el reparto si quieren; lo importante es que hablen al menos dos personas y que la demo la narre quien maneja el prototipo.
+## 0. Análisis pre-guion (Power Pitch Method)
+
+| Campo | AllinEdu |
+|---|---|
+| **Interlocutor(es)** | El profesor del curso y los compañeros, que actúan como jurado. Saben de software, pero no conocen la escuela pública. |
+| **Metas del pitch** | 1) Que crean el problema. 2) Que entiendan que el diferencial no es "usar IA". 3) Conseguir retroalimentación y docentes que prueben el prototipo. |
+| **Lugar y situación** | Un video de 3 min que se ve sin nosotros delante. No hay espacio para preguntas, así que cada dato tiene que defenderse solo, con su fuente en pantalla. |
+
+| Escena Power Pitch | Dónde aparece en este guion |
+|---|---|
+| Dolor | Escenas 2 y 3 (¿qué te preocupa? y el problema) |
+| Analgésico | Escena 4 (desafío) |
+| Solución | Escenas 5 y 8 (demostración y detalles) |
+| Ambición | Escena 7 (modelo de negocio) |
+| Mapa de ejecución | Escena 8 (detalles: qué está hecho y qué sigue) |
+| Cierre | Escena 10 |
+
+**Estándares que buscamos** (barra inferior de la plantilla): *irrefutable*, porque toda cifra va con su fuente y su `n` (recomendación 4 del PPT: "sé honesto y transparente"), y *confiable*, porque el docente aprueba todo lo que el sistema genera.
+
+---
+
+## Reparto y tiempos
+
+| # | Escena (plantilla del profesor) | Quién habla | Tiempo |
+|---|---|---|---|
+| 1 | Portada | Tomás | 0:00 – 0:08 |
+| 2 | ¿Qué te preocupa? | Heidi | 0:08 – 0:25 |
+| 3 | El problema | Heidi | 0:25 – 0:55 |
+| 4 | Desafío | Daniela | 0:55 – 1:10 |
+| 5 | Demostración de alto nivel | Tomás | 1:10 – 1:45 |
+| 6 | Factor diferencial | Tomás | 1:45 – 2:00 |
+| 7 | Modelo de negocio | Pernel | 2:00 – 2:20 |
+| 8 | Detalles del proyecto + uso de IA | Pernel | 2:20 – 2:32 |
+| 9 | Equipo | Daniela | 2:32 – 2:42 |
+| 10 | Cierre | Los cuatro | 2:42 – 2:50 |
+
+La escena "Uso de datos de la NASA" de la plantilla se omite porque es un ejemplo opcional y no aplica. "Uso de IA" sí aplica y va dentro de la escena 8.
 
 ---
 
 ## Guion
 
-### 1. Gancho (0:00 – 0:20)
-**En pantalla:** fondo negro y texto que aparece por líneas: *5:00 a.m. · 12:35 p.m. · 4:30 p.m. · 8:00 p.m.*
+### 1. Portada (0:00 – 0:08)
+**Diapositiva:** logo de AllinEdu, el eslogan *"Que la profesora llegue a clase con todo listo"*, el nombre del proyecto, el nombre y la responsabilidad de quien presenta y el correo del equipo.
 
-> Una profesora de primaria nos contó su día. Se levanta a las cinco, enseña hasta el mediodía, y a las cuatro y media de la tarde se sienta a preparar las clases de mañana. Termina a las ocho de la noche. Y recién ahí, nos dijo, "empiezo a hacer mis actividades de casa".
+> Hola, somos AllinEdu. Les vamos a mostrar cómo devolverle las noches a los docentes de primaria.
 
-### 2. Problema (0:20 – 0:50)
-**En pantalla:** tabla simple con *sesión 30–40 min · ficha diferenciada 40–60 min · ×2 sesiones al día*. Abajo, en letra pequeña: *Fuente: entrevistas a docentes de primaria pública, Arequipa, 2026.*
+### 2. ¿Qué te preocupa? (0:08 – 0:25)
+**Diapositiva:** una imagen que **ocupa todo el panel**: un escritorio de noche con fichas impresas, una lámpara y un reloj que marca las 11. En una esquina, el ícono del **ODS 4 – Educación de calidad** (y el del ODS 8 si cabe).
 
-> Cada día prepara dos sesiones, dos fichas adaptadas al nivel de cada grupo y los instrumentos para evaluar. Son entre dos horas y media y cuatro horas diarias fuera de su jornada. Y la norma le da, como mucho, unos cincuenta minutos por sesión para todo eso. Conversamos con doce docentes de dos colegios públicos de Arequipa, y la mayoría describe lo mismo: el trabajo de preparar no cabe en la jornada, entonces se va a la casa.
+> Nos preocupa que preparar las clases de mañana le cueste a una profesora su noche. Una docente nos dijo: "me siento a las cuatro para hacer material, y terminé a las doce".
 
-### 3. Lo que descubrimos (0:50 – 1:10)
-**En pantalla:** logos genéricos de "chat de IA" tachados con una línea, o tres ventanas de chat abiertas a la vez.
+### 3. El problema (0:25 – 0:55)
+**Diapositiva:** tres datos en tarjetas, como en la plantilla:
+- **Problema central:** *2.5 a 4 h diarias* preparando sesiones, fichas e instrumentos fuera de la jornada.
+- **Efecto:** *entre 2 y 3.5 h de sueño* en los días de preparación.
+- **Causa:** cada sesión debe adaptarse a varios niveles: *"en una sesión, hacer como 8 sesiones"*.
 
-> Lo que no esperábamos es que ellas ya usan inteligencia artificial, y aun así siguen terminando a la misma hora. La IA les devuelve un texto genérico que tienen que corregir, adaptar y armar. El problema no es escribir rápido. Es que todo sigue dependiendo de ellas. Una docente lo resumió así: separar planificar de enseñar, "ese es el sueño".
+Abajo, en letra pequeña: *Fuentes: entrevista en profundidad a una docente de primaria pública (n=1) y una ronda de entrevistas a docentes de al menos dos instituciones públicas de Arequipa, octubre de 2026. Datos de autorreporte.*
 
-### 4. Solución + demo (1:10 – 1:55)
-**En pantalla:** grabación de pantalla del prototipo, en este orden:
-1. Unidad aprobada → aparecen las sesiones del mes (`WUnidad`, `SesionesHoy`).
-2. Abrir una sesión → pantalla de revisión con lo marcado para revisar (`Revision`).
-3. Botón de aprobar → estado "Aprobada" → vista de impresión (`Impresion`).
-4. Celular: asistencia y evidencia por criterio en clase (`Asistencia`, `Evidencias`).
+> Cada día prepara dos sesiones, sus fichas adaptadas a cada nivel y los instrumentos para evaluar. Una docente nos lo midió en dos horas y media a cuatro horas diarias, fuera de su jornada, y en esos días duerme entre dos y tres horas. No es un caso aislado: otras docentes, en más de un colegio, nos describieron lo mismo: "terminamos a las diez, once de la noche". La causa es que cada clase debe adaptarse a niveles distintos y nadie le da herramientas para hacerlo.
 
-> AllinEdu cambia el orden. La docente aprueba su unidad, y el sistema le prepara las sesiones del mes con su ficha diferenciada y su instrumento, basados en el Currículo Nacional. Ella no redacta: revisa. El sistema le señala solo lo que necesita su atención, ella corrige lo que quiera y aprueba. Nada se imprime sin su aprobación. Y en clase, desde el celular, marca la asistencia y la evidencia de cada estudiante, así al final del bimestre no tiene que evaluar de memoria.
+### 4. Desafío (0:55 – 1:10)
+**Diapositiva:** una sola frase grande, *"Ella revisa. No redacta."*, junto a una imagen de la docente frente a tres ventanas de chat de IA abiertas, como imagen de su frustración.
 
-### 5. Diferencial (1:55 – 2:10)
-**En pantalla:** tabla de tres columnas: *Chat de IA · Sistema escolar · AllinEdu*. Filas con ✓ / ✗: cita el currículo, genera por unidad, el docente aprueba, la evidencia alimenta la evaluación.
+> Lo sorprendente: ya usan inteligencia artificial y aun así terminan a la misma hora, porque la IA les da un texto genérico que ellas corrigen y arman solas. Nuestro desafío es que la docente deje de redactar y solo revise.
 
-> Un chat de IA no conoce el currículo ni su unidad. Un sistema escolar solo registra. AllinEdu une las dos cosas: cada sesión cita la competencia y el desempeño de donde sale, y lo que pasa en clase alimenta la evaluación.
+### 5. Demostración de alto nivel (1:10 – 1:45)
+**Diapositiva:** la grabación de pantalla del prototipo **dentro del panel derecho**, en este orden:
+1. Se aprueba la unidad y aparecen las sesiones del mes.
+2. Se abre una sesión y se ve la pantalla de revisión, con lo marcado para revisar.
+3. Se aprueba, el estado pasa a "Aprobada" y se abre la vista de impresión.
+4. En el celular: asistencia y evidencia por criterio durante la clase.
 
-### 6. Modelo de negocio (2:10 – 2:35)
-**En pantalla:** dos tarjetas. *Gratis: asistencia y registro auxiliar.* *Plan Docente: S/ XX al mes, sesiones, fichas e instrumentos.* Abajo: *Los datos de los estudiantes no se venden.*
+> AllinEdu cambia el orden. La docente aprueba su unidad y el sistema le prepara las sesiones del mes con su ficha diferenciada y su instrumento, basados en el Currículo Nacional. Le señala solo lo que necesita su atención; ella corrige y aprueba. Nada se imprime sin su aprobación. Y en clase, desde el celular, registra la asistencia y la evidencia de cada estudiante, para no evaluar de memoria.
 
-> El modelo es una suscripción mensual para el docente. El registro de asistencia y el registro auxiliar son gratuitos, para que lo use desde el primer día. La generación de sesiones, fichas e instrumentos es el plan pagado. Más adelante ofreceremos un plan institucional para colegios. Y algo que no negociamos: los datos de los estudiantes y de los docentes no se venden.
+### 6. Factor diferencial (1:45 – 2:00)
+**Diapositiva:** la tabla de la plantilla, con ✔ / ✘:
 
-### 7. Cierre (2:35 – 2:50)
-**En pantalla:** los cuatro a cámara o sus fotos con nombres. Logo AllinEdu y la frase final.
+| Factor | Chat de IA genérico | Sistema de registro escolar | AllinEdu |
+|---|---|---|---|
+| Cita la competencia y el desempeño del currículo | ✘ | ✘ | ✔ |
+| Genera por unidad, no sesión por sesión | ✘ | ✘ | ✔ |
+| Ficha diferenciada por niveles | ✘ | ✘ | ✔ |
+| El docente aprueba antes de imprimir | ✘ | ✘ | ✔ |
+| La evidencia de clase alimenta la evaluación | ✘ | ✔ (solo registra) | ✔ |
 
-> Hoy tenemos el prototipo y el registro de asistencia funcionando en web y en Android. Lo que buscamos ahora son docentes que lo prueben con nosotros. Somos AllinEdu: que la profesora llegue a clase con todo listo, sin haberlo preparado de noche.
+> Un chat de IA no conoce el currículo ni su unidad. Un sistema escolar solo registra. AllinEdu une las dos cosas en un solo flujo: de la planificación a la evidencia.
+
+*Nota:* en la última fila, el sistema escolar lleva ✔ con la aclaración "solo registra". Ponerle ✘ sería exagerar, y el jurado lo notaría.
+
+### 7. Modelo de negocio (2:00 – 2:20)
+**Diapositiva:** un Business Model Canvas resumido, con 4 casillas resaltadas:
+- **Segmento:** docentes de primaria pública.
+- **Propuesta de valor:** el material del día ya hecho, para revisar y aprobar.
+- **Ingresos:** gratis la asistencia y el registro auxiliar; **Plan Docente** mensual para sesiones, fichas e instrumentos (*precio en validación*); más adelante, un plan institucional.
+- **Costo clave:** la generación con IA por unidad.
+
+Abajo: *Los datos de estudiantes y docentes no se venden.*
+
+> El registro de asistencia es gratuito, para que lo use desde el primer día. La generación de sesiones, fichas e instrumentos es una suscripción mensual del docente, y luego un plan para colegios. Y algo que no negociamos: los datos de los estudiantes no se venden.
+
+### 8. Detalles del proyecto + uso de IA (2:20 – 2:32)
+**Diapositiva:** una infografía de la cadena en 5 pasos, siguiendo el formato de la diapositiva 20 del PPT:
+1. Planificar → 2. Revisar y aprobar → 3. Aplicar en clase → 4. Evaluar por competencia → 5. Refuerzo.
+
+Un sello sobre los pasos 1 y 3: *"Hecho: prototipo web + asistencia en web y Android"*. Un ícono de IA en el paso 1, con el texto *"La IA propone borradores; el docente decide"*.
+
+> Hoy tenemos el prototipo y la asistencia funcionando en web y en Android. La IA solo propone borradores; las decisiones las toma siempre el docente.
+
+### 9. Equipo (2:32 – 2:42)
+**Diapositiva:** cuatro fotos, cada una con su nombre, su responsabilidad y sus habilidades técnicas:
+- **Tomás Cary**: coordinador. _Habilidades: completar._
+- **Heidi Zela**: _responsabilidad y habilidades: completar._
+- **Pernel Rosas**: _completar._
+- **Daniela Apaza**: _completar._
+
+> Somos Tomás, Heidi, Pernel y Daniela, estudiantes de Diseño y Desarrollo de Software de Tecsup.
+
+### 10. Cierre (2:42 – 2:50)
+**Diapositiva:** la frase de cierre, el logo, el correo y el enlace del proyecto.
+
+> Buscamos docentes que lo prueben con nosotros. AllinEdu: que la profesora llegue a clase con todo listo, sin haberlo preparado de noche.
+
+---
+
+## Versión Twitter pitch (280 caracteres, por si se pide)
+
+> Las docentes de primaria pública preparan sus clases de noche: hasta 4 h diarias. AllinEdu genera las sesiones, fichas e instrumentos del mes desde el Currículo Nacional; la docente solo revisa y aprueba. Ella revisa, no redacta. #INVEINTEC #ODS4
 
 ---
 
 ## Antes de grabar
 
-- [ ] **Precio:** reemplacen `S/ XX` por un número que puedan defender. Si no lo han preguntado, digan "precio en validación" o pregúntenle a 3 o 4 docentes cuánto pagarían.
-- [ ] **"Doce docentes de dos colegios":** confirmen el número con quien hizo las entrevistas (`EVIDENCIA.md` §1). Si no es seguro, digan "conversamos con docentes de colegios públicos de Arequipa".
-- [ ] **Graben la demo de pantalla por separado** (OBS o el grabador del celular) y monten la voz encima en Canva o CapCut. Es mucho más fácil que narrar en vivo.
-- [ ] **Audio:** graben la voz en un lugar sin eco, con el celular cerca de la boca. El audio malo hunde un pitch más que la imagen mala.
-- [ ] **Cronometren la lectura** antes de grabar. Si pasa de 2:50, recorten primero el bloque 5.
-- [ ] Exporten en MP4 y súbanlo a Drive. No vale YouTube ni otros enlaces.
+- [ ] **Cronometrar la lectura en voz alta.** Si pasa de 2:50, recorten primero la escena 8 y luego la 6.
+- [ ] **Completar la escena 9:** la responsabilidad y las habilidades de cada uno. La plantilla las pide explícitamente.
+- [ ] **No decir "doce docentes".** El `n` exacto de la ronda del 16-10 sigue sin confirmar (`EVIDENCIA.md` §1). El guion dice "otras docentes, en más de un colegio", que sí está respaldado.
+- [ ] **Precio:** si no lo validan con 3 o 4 docentes, se queda como "precio en validación".
+- [ ] **Postura (diap. 26–27):** contacto visual con la cámara, gestos que acompañen lo que dicen y nada de brazos cruzados, manos en la cintura ni mirar al piso. La plantilla pone al presentador de pie, en plano medio.
+- [ ] **Grabar la demo por separado** y montarla en el panel derecho. La voz se graba en un lugar sin eco, con el celular cerca.
+- [ ] Exportar en MP4 y subir a Drive.
 
-## Por qué el modelo de negocio no incluye vender datos
+## Trazabilidad de las cifras (`EVIDENCIA.md`)
 
-Vender información de "alumnos destacados" o de docentes **no es viable**. Si sale en el pitch, el jurado lo puede usar contra el proyecto:
-
-1. **Es ilegal sin consentimiento.** La Ley N.º 29733 (Protección de Datos Personales) exige consentimiento para tratar y ceder datos personales. Los estudiantes son menores, así que serían sus padres quienes tendrían que autorizarlo, uno por uno.
-2. **Rompe el principio del proyecto.** El sistema entrega evidencia al docente y no vigila ni etiqueta estudiantes (Regla 0b de `AGENTS.md`, filtro de novedad del Taller 05).
-3. **Mata la adopción.** La docente que registra a sus estudiantes deja de hacerlo si sospecha que esos datos se venden. Los colegios no autorizarían el piloto.
-
-Lo que sí se puede ofrecer sin vender datos:
-- **Plan institucional.** El colegio paga por sus docentes y la dirección ve el avance de **su propio** colegio.
-- **Reportes agregados y anónimos para la propia institución**, sin nombres y sin salir del colegio.
-- **Banco de sesiones aprobadas** que los docentes deciden compartir voluntariamente.
+| Lo que se dice | Fuente |
+|---|---|
+| "Me siento a las 4… terminé a las 12" | §5, `R03 [02:26]` |
+| 2.5–4 h diarias | §3, Docente 1 (n=1) |
+| 2–3.5 h de sueño | §3, Docente 1 (n=1) |
+| "Terminamos a las 10, 11 de la noche" | §5, `R04 [01:19]` |
+| "En una sesión hacer como 8 sesiones" | I-8 |
+| Ya usan IA y la IA genérica no basta | I-1 |
+| Más de un colegio | §5: R02/R04 y R14 son de instituciones distintas |
