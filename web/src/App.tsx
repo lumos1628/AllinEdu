@@ -11,6 +11,7 @@ import InstrumentView from './components/InstrumentView'
 import Login from './components/Login'
 import Wordmark from './components/Wordmark'
 import ThemeToggle from './components/ThemeToggle'
+import { Chumpi } from './components/Tocapu'
 import { SESSION_EXPIRED_EVENT, loggedName, logout } from './services/api'
 import type { Section } from './services/api'
 
@@ -56,6 +57,7 @@ export default function App() {
         <div className="login-topbar">
           <ThemeToggle />
         </div>
+        <Chumpi className="login-chumpi" cell={3} />
         <Login
           onLogin={(name) => {
             setToken(localStorage.getItem('allinedu_token'))
@@ -80,10 +82,12 @@ export default function App() {
           <Wordmark size={20} />
         </button>
         <span className="header-actions">
+          <span className="header-user">{userName}</span>
+          <button className="link" onClick={handleLogout}>Salir</button>
           <ThemeToggle />
-          {userName} · <button className="link" onClick={handleLogout}>Salir</button>
         </span>
       </header>
+      <Chumpi className="header-chumpi" />
 
       {view.kind === 'attendance' && <Attendance section={view.section} onBack={() => setView(HOME)} />}
       {view.kind === 'unit' && (

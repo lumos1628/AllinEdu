@@ -118,7 +118,7 @@ export default function ClosureView({ section, onBack }: Props) {
           <div className="doc-hero closure-hero">
             <div>
               <p className="home-greet">
-                {section.grado} {section.nombre} · del {shortDate(closure.startDate)} al {shortDate(closure.endDate)}
+                {section.grado.split(' ')[0]} {section.nombre}, del {shortDate(closure.startDate)} al {shortDate(closure.endDate)}
               </p>
               <h1 className="doc-title">Cierre del {closure.periodName}</h1>
               <p className="closure-rule">

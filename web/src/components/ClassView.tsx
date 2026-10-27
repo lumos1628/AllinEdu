@@ -2,6 +2,9 @@ import { useEffect, useState } from 'react'
 import type { ReactNode } from 'react'
 import { getSession } from '../services/api'
 import type { Section, SessionDetail } from '../services/api'
+import Tocapu from './Tocapu'
+import { threadOf } from './tejido'
+import type { Weave } from './tejido'
 
 export interface ClassInfo {
   slotId: number
@@ -80,29 +83,33 @@ export default function ClassView({
       .catch(() => setError('No se pudo cargar la clase.'))
   }, [sessionId])
 
-  const status = !session
+  const status: { label: string; tone: string; weave: Weave } | null = !session
     ? null
     : session.activities.length === 0
-      ? { label: 'Sin secuencia', tone: 'empty' }
+      ? { label: 'Sin secuencia', tone: 'empty', weave: 'bare' }
       : session.approved
-        ? { label: 'Lista', tone: 'ready' }
-        : { label: 'Borrador por revisar', tone: 'draft' }
+        ? { label: 'Lista', tone: 'ready', weave: 'woven' }
+        : { label: 'Borrador por revisar', tone: 'draft', weave: 'drawn' }
+  const thread = threadOf(info.area)
 
   return (
     <div className="home">
       <button className="link back-link" onClick={onBack}>← Inicio</button>
 
-      <div className="doc-hero">
-        <p className="home-greet">
-          {longDate(info.date)} · {info.start} a {info.end} · {section.grado.split(' ')[0]} {section.nombre}
-        </p>
-        <h1 className="doc-title">{info.area}</h1>
-        {session && (
-          <p className="class-hero-sub">
-            {session.title}
-            {status && <span className={`class-state is-${status.tone}`}>{status.label}</span>}
+      <div className="doc-hero class-hero">
+        <Tocapu motif={thread.motif} dye={thread.dye} weave={status?.weave ?? 'bare'} size={64} className="class-hero-knot" />
+        <div>
+          <p className="home-greet">
+            {longDate(info.date)}, de {info.start} a {info.end} en {section.grado.split(' ')[0]} {section.nombre}
           </p>
-        )}
+          <h1 className="doc-title">{info.area}</h1>
+          {session && (
+            <p className="class-hero-sub">
+              {session.title}
+              {status && <span className={`class-state is-${status.tone}`}>{status.label}</span>}
+            </p>
+          )}
+        </div>
       </div>
 
       {error && <p className="error">{error}</p>}

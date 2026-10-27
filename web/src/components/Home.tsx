@@ -3,6 +3,10 @@ import type { ReactNode } from 'react'
 import { getClosure, getMySections, getWeek } from '../services/api'
 import type { Closure, Section, Week, WeekBlock } from '../services/api'
 import type { ClassInfo } from './ClassView'
+import Chain from './Chain'
+import Tocapu from './Tocapu'
+import { BAND_MOTIFS, threadOf } from './tejido'
+import type { Weave } from './tejido'
 
 interface Props {
   userName: string
@@ -12,15 +16,6 @@ interface Props {
   onOpenClass: (section: Section, info: ClassInfo, sessionId: number) => void
   onPrepareClass: (section: Section, slotId: number, date: string) => void
 }
-
-// Eslabones de la cadena de AllinEdu (ver ALCANCE.md §2). Solo "Aplicar en clase"
-// está construido; el resto se muestra como próximo para no prometer lo que no existe.
-const CHAIN = [
-  { id: 'plan', label: 'Planificar', hint: 'Sesión, ficha e instrumento', ready: false },
-  { id: 'apply', label: 'Aplicar en clase', hint: 'Asistencia', ready: true },
-  { id: 'evaluate', label: 'Evaluar', hint: 'Criterios por competencia', ready: false },
-  { id: 'reinforce', label: 'Reforzar', hint: 'Práctica y repaso', ready: false },
-] as const
 
 const DAY_SHORT = ['', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom']
 
@@ -78,12 +73,21 @@ const STATE_LABEL: Record<BlockState, string> = { past: 'Terminó', now: 'Ahora'
 
 type Prep = { label: string; tone: 'ready' | 'draft' | 'empty' }
 
+// Lo aprobado está tejido, el borrador solo dibujado y lo que falta es telar vacío.
+const WEAVE: Record<Prep['tone'], Weave> = { ready: 'woven', draft: 'drawn', empty: 'bare' }
+
 // Qué tan lista está la sesión de esa clase. Dice lo que existe, no lo inventa.
 function prepOf(b: WeekBlock): Prep {
   if (!b.session) return { label: 'Sin preparar', tone: 'empty' }
   if (b.session.activities === 0) return { label: 'Sin secuencia', tone: 'empty' }
   if (!b.session.approved) return { label: 'Borrador por revisar', tone: 'draft' }
   return { label: 'Lista', tone: 'ready' }
+}
+
+// El hilo del área con la textura de su preparación. El texto del estado va al lado.
+function AreaKnot({ block, size }: { block: WeekBlock; size: number }) {
+  const thread = threadOf(block.area)
+  return <Tocapu motif={thread.motif} dye={thread.dye} weave={WEAVE[prepOf(block).tone]} size={size} />
 }
 
 interface ClassCardProps {
@@ -98,6 +102,7 @@ function ClassCard({ block, timeState, onOpen }: ClassCardProps) {
   const body = (
     <>
       <span className="class-card-time">{block.start}</span>
+      <span className="class-card-knot">{block.mine && <AreaKnot block={block} size={26} />}</span>
       <span className="class-card-text">
         <span className="class-card-area">{block.area}</span>
         <span className="class-card-sub">
@@ -174,7 +179,6 @@ function UnitCard({ week, onOpen }: { week: Week; onOpen: (unitId: number) => vo
     )
   }
   const upcoming = unit.startDate > week.today
-  const pct = unit.totalSessions ? Math.round((unit.approvedSessions / unit.totalSessions) * 100) : 0
   return (
     <section className="desk-unit" aria-labelledby="desk-unit-title">
       <h2 id="desk-unit-title" className="home-label">
@@ -186,14 +190,22 @@ function UnitCard({ week, onOpen }: { week: Week; onOpen: (unitId: number) => vo
         Del {shortDate(unit.startDate)} al {shortDate(unit.endDate)}
       </p>
       <div
-        className="desk-bar"
+        className="unit-band"
         role="progressbar"
         aria-valuemin={0}
         aria-valuemax={unit.totalSessions}
         aria-valuenow={unit.approvedSessions}
         aria-label="Sesiones aprobadas"
       >
-        <span style={{ width: `${pct}%` }} />
+        {Array.from({ length: unit.totalSessions }, (_, i) => (
+          <Tocapu
+            key={i}
+            motif={BAND_MOTIFS[i % BAND_MOTIFS.length]}
+            dye="maiz"
+            weave={i < unit.approvedSessions ? 'woven' : 'drawn'}
+            size={22}
+          />
+        ))}
       </div>
       <p className="desk-unit-meta">
         <strong>{unit.approvedSessions}</strong> de {unit.totalSessions} sesiones aprobadas por ti
@@ -274,6 +286,7 @@ function WeekGrid({ week, onOpen }: { week: Week; onOpen: (block: WeekBlock) => 
                       )}
                       {b && b.mine && (
                         <button className="desk-cell-btn" onClick={() => onOpen(b)}>
+                          <AreaKnot block={b} size={16} />
                           <span className="desk-cell-area">{b.area}</span>
                           <span className={`desk-cell-sub is-${prepOf(b).tone}`}>{prepOf(b).label}</span>
                         </button>
@@ -294,15 +307,7 @@ function ChainTrack() {
   return (
     <section className="home-chain" aria-labelledby="home-chain-title">
       <h2 id="home-chain-title" className="home-label">Lo que hace AllinEdu por tu clase</h2>
-      <ol className="home-chain-list">
-        {CHAIN.map((step) => (
-          <li key={step.id} className={step.ready ? 'home-step ready' : 'home-step'}>
-            <span className="home-step-dot" aria-hidden="true" />
-            <span className="home-step-label">{step.label}</span>
-            <span className="home-step-hint">{step.ready ? `${step.hint} · disponible` : 'Próximamente'}</span>
-          </li>
-        ))}
-      </ol>
+      <Chain size={32} hints />
     </section>
   )
 }

@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from 'react'
 import { getSlotOptions, prepareSlot } from '../services/api'
 import type { Section, SlotOptions } from '../services/api'
 import type { ClassInfo } from './ClassView'
+import Tocapu from './Tocapu'
+import { BAND_MOTIFS } from './tejido'
 
 interface Props {
   section: Section
@@ -60,7 +62,7 @@ export default function SlotView({ section, slotId, date, onBack, onReady }: Pro
         <>
           <div className="doc-hero">
             <p className="home-greet">
-              {longDate(options.date)} · {options.start} a {options.end}
+              {longDate(options.date)}, de {options.start} a {options.end}
             </p>
             <h1 className="doc-title">Preparar {options.area}</h1>
           </div>
@@ -83,6 +85,14 @@ export default function SlotView({ section, slotId, date, onBack, onReady }: Pro
                       <li key={s.id}>
                         <button className="class-card" onClick={() => choose(s.id)} disabled={busy !== null}>
                           <span className="class-card-time">{s.number}</span>
+                          <span className="class-card-knot">
+                            <Tocapu
+                              motif={BAND_MOTIFS[(s.number - 1) % BAND_MOTIFS.length]}
+                              dye="maiz"
+                              weave={s.approved ? 'woven' : s.activities > 0 ? 'drawn' : 'bare'}
+                              size={26}
+                            />
+                          </span>
                           <span className="class-card-text">
                             <span className="class-card-area">{s.title}</span>
                             <span className="class-card-sub">

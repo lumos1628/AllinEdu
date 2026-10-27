@@ -176,7 +176,7 @@ export default function SessionEditor({ session, onSaved, onCancel }: Props) {
                         />
                       </label>
                       <div className="editor-act-tools">
-                        {a.generated && <span className="doc-tag is-required">Propuesta, sin revisar</span>}
+                        {a.generated && <span className="doc-tag is-draft">Propuesta, sin revisar</span>}
                         <button type="button" className="editor-tool" onClick={() => move(a.key, -1)} disabled={i === 0}>
                           Subir
                         </button>
