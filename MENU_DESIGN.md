@@ -1,6 +1,6 @@
 # Diseño del Menú Principal — AllinEdu Mobile
 
-**Archivo:** `mobile/app/src/main/java/com/edufast/mobile/presentation/HomeScreen.kt`
+**Archivo:** `mobile/app/src/main/java/com/allinedu/mobile/presentation/HomeScreen.kt`
 
 ---
 
@@ -219,6 +219,6 @@ ModuleItem(
 
 ---
 
-**Archivo:** [HomeScreen.kt](mobile/app/src/main/java/com/edufast/mobile/presentation/HomeScreen.kt)
+**Archivo:** [HomeScreen.kt](mobile/app/src/main/java/com/allinedu/mobile/presentation/HomeScreen.kt)
 
 **Última actualización:** 2026-10-12

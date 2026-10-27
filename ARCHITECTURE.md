@@ -22,7 +22,7 @@ Cada rol tiene **un solo trabajo** y conoce **solo lo que necesita**. Si cambias
 
 ### Código espagueti vs. código en capas
 
-Sin estructura, todo queda mezclado (por eso se le dice "código espagueti": tiras de un fideo y viene todo pegado). En EduFast, la versión espagueti sería que el botón "Guardar asistencia" de React tuviera adentro el SQL, la validación de permisos y el envío de emails. Parece rápido hoy, pero:
+Sin estructura, todo queda mezclado (por eso se le dice "código espagueti": tiras de un fideo y viene todo pegado). En AllinEdu, la versión espagueti sería que el botón "Guardar asistencia" de React tuviera adentro el SQL, la validación de permisos y el envío de emails. Parece rápido hoy, pero:
 
 - ¿Cambiar de base de datos? Tendrías que editar botones.
 - ¿Probar la validación sin abrir el navegador? Imposible.
@@ -38,7 +38,7 @@ Con capas, cada pieza se puede **cambiar, probar y entender por separado**.
 >
 > Este documento usa la **asistencia** como ejemplo didáctico en todas sus secciones porque es el flujo que ya está implementado de punta a punta: web, móvil, API, servicio, dominio y base de datos. Sirve como plantilla para construir el resto de la cadena, empezando por el pipeline de preparación de clases, que es la prioridad 1.
 >
-> Los identificadores del código dicen `EduFast`, de una iteración anterior del proyecto. Renombrarlos es la decisión pendiente D-2 de `ALCANCE.md`.
+> El proyecto se llamó EduFast en una iteración anterior. El código ya usa `AllinEdu`; solo el rol `edufast` de la base de datos conserva el nombre viejo (decisión D-2 de `ALCANCE.md`).
 
 ### Estado del esquema escolar
 
@@ -48,7 +48,7 @@ Las migraciones SQL son infraestructura: describen la estructura física y se ma
 
 ### El patrón: Clean Architecture (Puertos y Adaptadores)
 
-EduFast sigue **Clean Architecture**, también llamada "Hexagonal" o "Puertos y Adaptadores". Su regla de oro:
+AllinEdu sigue **Clean Architecture**, también llamada "Hexagonal" o "Puertos y Adaptadores". Su regla de oro:
 
 > **Las dependencias solo apuntan hacia adentro.** El centro (el negocio) no sabe nada del exterior (web, base de datos, frameworks).
 
@@ -76,7 +76,7 @@ EduFast sigue **Clean Architecture**, también llamada "Hexagonal" o "Puertos y 
 
 **Traducción restaurante → código:**
 
-| Restaurante | EduFast | Archivos de ejemplo |
+| Restaurante | AllinEdu | Archivos de ejemplo |
 |---|---|---|
 | Recetas e ingredientes | `domain/model/` | `Section.java`, `Student.java`, `Attendance.java` |
 | Contratos con proveedores | `domain/port/` | `AttendanceRepository.java`, `EmailSender` (futuro) |
@@ -130,7 +130,7 @@ Sigamos el clic del profesor hasta PostgreSQL y de vuelta. Cada pieza se define 
 
 ### ¿Y el móvil?
 
-Misma idea en Kotlin: `ApiEduFastRepository.kt` equivale a `api.ts` (el único que habla HTTP) y las pantallas Compose (`AttendanceScreen.kt`) equivalen a los componentes React. El backend no sabe si le habla la web o el móvil: para él todo son peticiones HTTP con JSON.
+Misma idea en Kotlin: `ApiAllinEduRepository.kt` equivale a `api.ts` (el único que habla HTTP) y las pantallas Compose (`AttendanceScreen.kt`) equivalen a los componentes React. El backend no sabe si le habla la web o el móvil: para él todo son peticiones HTTP con JSON.
 
 ---
 
@@ -192,7 +192,7 @@ Misma idea en Kotlin: `ApiEduFastRepository.kt` equivale a `api.ts` (el único q
 ¿Por qué primero el contrato? Porque al negocio le da igual *qué* empresa envía el email (Gmail, SendGrid...). Solo necesita que **alguien** lo envíe.
 
 ```java
-package com.edufast.domain.port;
+package com.allinedu.domain.port;
 
 public interface EmailSender {
     void send(String to, String subject, String body);
@@ -256,7 +256,7 @@ Fíjate en el orden: **contrato → lógica → adaptador → conexión → test
 
 ## 5. El guardián automático: ArchUnit 🤖
 
-`backend/src/test/java/com/edufast/ArchitectureTest.java` tiene las reglas de la arquitectura escritas **como tests**:
+`backend/src/test/java/com/allinedu/ArchitectureTest.java` tiene las reglas de la arquitectura escritas **como tests**:
 
 - `domain` no puede importar `jakarta.*`, `org.springframework.*` ni `infrastructure`
 - `application` no puede importar `infrastructure`
@@ -291,5 +291,5 @@ Si tú (o un agente de IA) rompes una regla, `./gradlew test` **falla con un men
 | CORS | Reglas de qué páginas web pueden llamar a tu API | `SecurityConfig.corsConfigurationSource` |
 | Seeder | Código que carga datos de ejemplo al arrancar | `infrastructure/config/DataSeeder.java` |
 | Endpoint | Una URL + método HTTP que expone el backend | `POST /api/v1/sections/{id}/attendance` |
-| ArchUnit | Librería que testea reglas de arquitectura | `src/test/java/com/edufast/ArchitectureTest.java` |
+| ArchUnit | Librería que testea reglas de arquitectura | `src/test/java/com/allinedu/ArchitectureTest.java` |
 | Proxy (Vite) | Redirección de `/api` del frontend al backend en desarrollo | `web/vite.config.ts` |

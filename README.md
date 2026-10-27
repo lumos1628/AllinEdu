@@ -73,9 +73,9 @@ decisiones pedagógicas automáticas.
 | Banco de ítems, diagnóstico y repaso | Por construir |
 | Canal con familias | Por construir |
 
-El código usa el identificador técnico `EduFast` de una iteración anterior (paquetes, nombre de
-base de datos, cuentas de prueba). Renombrarlo es la decisión pendiente D-2 de
-[`ALCANCE.md`](ALCANCE.md).
+El código usa el identificador `AllinEdu` (paquetes `com.allinedu`). Solo el rol `edufast` de
+la base de datos y el código de la IE demo (`DEMO-EDUFAST`) conservan el nombre anterior, porque
+viven en el Supabase compartido (decisión D-2 de [`ALCANCE.md`](ALCANCE.md)).
 
 El esquema de base de datos ya anticipa buena parte de la cadena: las tablas de currículo,
 planificación, actividades y notificaciones existen en `supabase/migrations/` aunque el código
@@ -162,7 +162,7 @@ AllinEdu/
    ```bash
    set -a && source backend/.env && set +a
    ```
-2. El backend ya apunta por defecto al **Supabase de desarrollo** (el host y el usuario no son secretos y viven en `application.properties`). La plantilla trae los **valores compartidos** (`EDUFAST_DEMO_EMAIL_DOMAIN=example.test`, `EDUFAST_DEMO_PASSWORD=demo123`). Solo debes completar los campos **privados** en `backend/.env`:
+2. El backend ya apunta por defecto al **Supabase de desarrollo** (el host y el usuario no son secretos y viven en `application.properties`). La plantilla trae los **valores compartidos** (`ALLINEDU_DEMO_EMAIL_DOMAIN=example.test`, `ALLINEDU_DEMO_PASSWORD=demo123`). Solo debes completar los campos **privados** en `backend/.env`:
    - `DB_PASSWORD`: contraseña del Supabase de desarrollo, que se comparte por un canal privado. El `clone` del repositorio **no** concede acceso al proyecto.
    - `SUPABASE_DB_URL`: URI para `psql` (supabase/seed.sql), también privada.
    - `JWT_SECRET`: genera uno propio con `openssl rand -hex 32`.
@@ -209,7 +209,7 @@ base de datos funcionando:
 
 Levanta un Postgres 17 en el puerto 54322, aplica las migraciones en orden,
 corre las dos semillas y muestra un resumen de lo cargado. Las variables de la
-demo (`EDUFAST_DEMO_*`) tienen valores por defecto y se pueden sobreescribir
+demo (`ALLINEDU_DEMO_*`) tienen valores por defecto y se pueden sobreescribir
 desde el entorno. El script es reaplicable: no duplica filas.
 
 **Con Supabase CLI instalado** y Docker activo, para tener además Studio:
@@ -256,10 +256,10 @@ psql "$SUPABASE_DB_URL" -v ON_ERROR_STOP=1 \
 | `DB_PASSWORD` | Privado | Contraseña de la BD | canal privado (obligatoria) |
 | `SUPABASE_DB_URL` | Privado | URI para ejecutar la semilla | Supabase → Connect |
 | `JWT_SECRET` | Privado | Clave para firmar tokens | `openssl rand -hex 32` |
-| `EDUFAST_DEMO_EMAIL_DOMAIN` | Compartido | Dominio de correos demo | `example.test` |
-| `EDUFAST_DEMO_PASSWORD` | Compartido | Contraseña de las cuentas demo | `demo123` |
-| `EDUFAST_DEMO_STUDENTS_PER_SECTION` | Compartido | Alumnos por sección en la semilla | `10` |
-| `EDUFAST_DEMO_SIBLING_PAIRS` | Compartido | Pares de hermanos en la semilla | `10` |
+| `ALLINEDU_DEMO_EMAIL_DOMAIN` | Compartido | Dominio de correos demo | `example.test` |
+| `ALLINEDU_DEMO_PASSWORD` | Compartido | Contraseña de las cuentas demo | `demo123` |
+| `ALLINEDU_DEMO_STUDENTS_PER_SECTION` | Compartido | Alumnos por sección en la semilla | `10` |
+| `ALLINEDU_DEMO_SIBLING_PAIRS` | Compartido | Pares de hermanos en la semilla | `10` |
 
 Inicia el backend (Gradle carga `backend/.env` automáticamente):
 
@@ -289,7 +289,7 @@ npm run dev
 ### 3. Móvil (Kotlin + Android)
 Requiere **Android Studio** y **JDK 21** para compilar. Abrir la carpeta `mobile/`, sincronizar Gradle y correr en un emulador.
 
-- La URL de la API vive en `BuildConfig.API_BASE_URL` (no está en el código). En debug apunta a `http://10.0.2.2:8080`; se puede sobreescribir con la propiedad Gradle `edufast.debugApiBaseUrl`. Para release, define `edufast.apiBaseUrl`.
+- La URL de la API vive en `BuildConfig.API_BASE_URL` (no está en el código). En debug apunta a `http://10.0.2.2:8080`; se puede sobreescribir con la propiedad Gradle `allinedu.debugApiBaseUrl`. Para release, define `allinedu.apiBaseUrl`.
 - El HTTP en claro al backend local solo se habilita en debug (`mobile/app/src/debug/AndroidManifest.xml`); release no lo incluye.
 
 ### Datos de prueba

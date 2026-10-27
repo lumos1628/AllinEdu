@@ -29,7 +29,7 @@ export type View =
 const HOME: View = { kind: 'home' }
 
 export default function App() {
-  const [token, setToken] = useState(() => localStorage.getItem('edufast_token'))
+  const [token, setToken] = useState(() => localStorage.getItem('allinedu_token'))
   const [userName, setUserName] = useState(loggedName())
   const [view, setView] = useState<View>(HOME)
 
@@ -58,7 +58,7 @@ export default function App() {
         </div>
         <Login
           onLogin={(name) => {
-            setToken(localStorage.getItem('edufast_token'))
+            setToken(localStorage.getItem('allinedu_token'))
             setUserName(name)
           }}
         />

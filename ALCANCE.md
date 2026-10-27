@@ -137,7 +137,6 @@ No se fija de antemano un porcentaje de mejora.
 | ID | Decisión | Bloqueada por |
 |---|---|---|
 | D-1 | ¿Entra el registro de notas? | Saber si se puede exportar al formato que SIAGIE importa. Si no se puede, queda fuera: una app que registra notas sin alimentar SIAGIE agrega un **tercer** lugar donde tipear y empeora el problema |
-| D-2 | ¿Se renombra el código de `EduFast` a `AllinEdu`? | Decisión del equipo. Afecta paquetes Java/Kotlin, nombre de BD, clases, claves de `localStorage` y cuentas de prueba. Desde 2026-10-14 el nombre **visible** en web y Android ya es AllinEdu; el renombrado interno sigue pendiente |
 | D-3 | ¿Hay piloto con estudiantes? | Autorización institucional y consentimiento |
 | D-4 | ¿Coordinación/dirección entra como rol? | Entrevistas de semana 9 |
 
@@ -154,6 +153,7 @@ No se fija de antemano un porcentaje de mejora.
 | 2026-10-19 | La web incorpora el escritorio semanal, la unidad, la sesión (lectura y aprobación del borrador) y el cierre de bimestre, siguiendo el prototipo | Llevar a la app real el flujo validado en el prototipo con los datos que ya existen en la base. La aprobación cumple la Regla 0a; el nivel de logro lo elige siempre el docente (Regla 0b) |
 | 2026-10-19 | El cierre de bimestre registra nivel de logro, conclusión y recomendación por estudiante. **No resuelve D-1**: queda como captura para el cierre, no como registro oficial de notas | Lo pide el prototipo y la RVM 048-2024 obliga a conclusión en B y C. Si D-1 se decide en contra, la pantalla se limita a redactar las conclusiones para copiarlas a SIAGIE |
 | 2026-10-20 | Entra la generación del borrador de secuencia de una sesión, con edición y registro de autoría (generado vs. escrito por el docente) | Es el ahorro de tiempo de la prioridad 1. Solo se genera sobre sesiones vacías y con currículo y planificación como contexto, nunca datos de estudiantes; el resultado nace sin aprobar (Regla 0a) |
+| 2026-10-21 | Se cierra D-2: el código se renombra de `EduFast` a `AllinEdu` (paquetes Java/Kotlin, clases, propiedades `allinedu.*`, variables `ALLINEDU_DEMO_*`, claves de `localStorage`). Se conservan el rol `edufast` de la BD y el código `DEMO-EDUFAST` de la IE demo | Un nombre técnico distinto del producto confundía; el rol y los datos viven en el Supabase compartido y renombrarlos exige migrar la base |
 
 > Re-delimitar después de empatizar es Design Thinking funcionando, no un retroceso. Cada
 > cambio queda registrado aquí con su motivo.

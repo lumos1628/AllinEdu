@@ -16,5 +16,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "eduFast-mobile"
+rootProject.name = "allinEdu-mobile"
 include(":app")

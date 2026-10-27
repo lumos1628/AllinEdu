@@ -29,8 +29,8 @@ fi
 # institucion.
 set -a; source "$ENTORNO"; set +a
 
-if [[ -z "${EDUFAST_DEMO_PASSWORD:-}" ]]; then
-  echo "Falta EDUFAST_DEMO_PASSWORD. Definela en $ENTORNO antes de continuar." >&2
+if [[ -z "${ALLINEDU_DEMO_PASSWORD:-}" ]]; then
+  echo "Falta ALLINEDU_DEMO_PASSWORD. Definela en $ENTORNO antes de continuar." >&2
   exit 1
 fi
 
@@ -40,16 +40,16 @@ export PGPASSWORD="${PGPASSWORD:-postgres}"
 # ---- La IE simulada: 12 secciones de 25, como la del prototipo ----
 # Cada constante se puede sobreescribir desde la linea de ordenes, p. ej.
 #   ESTUDIANTES_POR_SECCION=10 ./supabase/aplicar_local.sh
-export EDUFAST_DEMO_STUDENTS_PER_SECTION="${ESTUDIANTES_POR_SECCION:-25}"
-export EDUFAST_DEMO_SIBLING_PAIRS="${PAREJAS_DE_HERMANOS:-6}"
-export EDUFAST_DEMO_EMAIL_DOMAIN="${DOMINIO_CORREO:-allinedu.test}"
-export EDUFAST_DEMO_SCHOOL_YEAR="${ANIO_ESCOLAR:-2026}"
-export EDUFAST_DEMO_START_DATE="${INICIO_ANIO:-2026-03-16}"
-export EDUFAST_DEMO_END_DATE="${FIN_ANIO:-2026-12-18}"
+export ALLINEDU_DEMO_STUDENTS_PER_SECTION="${ESTUDIANTES_POR_SECCION:-25}"
+export ALLINEDU_DEMO_SIBLING_PAIRS="${PAREJAS_DE_HERMANOS:-6}"
+export ALLINEDU_DEMO_EMAIL_DOMAIN="${DOMINIO_CORREO:-allinedu.test}"
+export ALLINEDU_DEMO_SCHOOL_YEAR="${ANIO_ESCOLAR:-2026}"
+export ALLINEDU_DEMO_START_DATE="${INICIO_ANIO:-2026-03-16}"
+export ALLINEDU_DEMO_END_DATE="${FIN_ANIO:-2026-12-18}"
 
 paso() { printf '\n\033[1;33m==> %s\033[0m\n' "$*"; }
 
-paso "IE simulada: 12 secciones de $EDUFAST_DEMO_STUDENTS_PER_SECTION, dominio $EDUFAST_DEMO_EMAIL_DOMAIN"
+paso "IE simulada: 12 secciones de $ALLINEDU_DEMO_STUDENTS_PER_SECTION, dominio $ALLINEDU_DEMO_EMAIL_DOMAIN"
 
 paso "Contenedor $CONTENEDOR ($IMAGEN) en el puerto $PUERTO"
 docker rm -f "$CONTENEDOR" >/dev/null 2>&1 || true
@@ -110,8 +110,8 @@ select r.codigo as rol, count(*) as cuentas,
 
 cat <<FIN
 
-Entran con los correos de arriba y la EDUFAST_DEMO_PASSWORD de $ENTORNO.
-La docente protagonista del prototipo es tutor.4b@$EDUFAST_DEMO_EMAIL_DOMAIN.
+Entran con los correos de arriba y la ALLINEDU_DEMO_PASSWORD de $ENTORNO.
+La docente protagonista del prototipo es tutor.4b@$ALLINEDU_DEMO_EMAIL_DOMAIN.
 
 Cadena de conexión:
   postgresql://postgres:$PGPASSWORD@127.0.0.1:$PUERTO/$BD

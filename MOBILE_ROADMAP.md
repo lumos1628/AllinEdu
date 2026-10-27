@@ -225,7 +225,7 @@
                   Room.databaseBuilder(
                       context.applicationContext,
                       AppDatabase::class.java,
-                      "edufast.db"
+                      "allinedu.db"
                   ).build().also { INSTANCE = it }
               }
           }
@@ -725,7 +725,7 @@ cd /home/gabriel/Escritorio/Repos/AllinEdu/mobile
 #    (Copiar dependencia de arriba)
 
 # 2. Crear carpeta navigation/
-mkdir -p app/src/main/kotlin/com/edufast/mobile/navigation
+mkdir -p app/src/main/kotlin/com/allinedu/mobile/navigation
 
 # 3. Crear NavigationRoutes.kt y NavGraph.kt
 #    (Usar código del checklist de Semana 5)

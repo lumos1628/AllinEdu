@@ -1,18 +1,18 @@
 -- Semilla sintética de desarrollo. La configuración y la contraseña vienen del
 -- entorno local; este archivo no contiene correos ni contraseñas reales o fijas.
 \set ON_ERROR_STOP on
-\getenv demo_students_per_section EDUFAST_DEMO_STUDENTS_PER_SECTION
-\getenv demo_sibling_pairs EDUFAST_DEMO_SIBLING_PAIRS
-\getenv demo_email_domain EDUFAST_DEMO_EMAIL_DOMAIN
-\getenv demo_password EDUFAST_DEMO_PASSWORD
-\getenv demo_school_year EDUFAST_DEMO_SCHOOL_YEAR
-\getenv demo_start_date EDUFAST_DEMO_START_DATE
-\getenv demo_end_date EDUFAST_DEMO_END_DATE
+\getenv demo_students_per_section ALLINEDU_DEMO_STUDENTS_PER_SECTION
+\getenv demo_sibling_pairs ALLINEDU_DEMO_SIBLING_PAIRS
+\getenv demo_email_domain ALLINEDU_DEMO_EMAIL_DOMAIN
+\getenv demo_password ALLINEDU_DEMO_PASSWORD
+\getenv demo_school_year ALLINEDU_DEMO_SCHOOL_YEAR
+\getenv demo_start_date ALLINEDU_DEMO_START_DATE
+\getenv demo_end_date ALLINEDU_DEMO_END_DATE
 
 SELECT length(:'demo_password') > 0 AS demo_password_configured \gset
 \if :demo_password_configured
 \else
-\echo 'Configura EDUFAST_DEMO_PASSWORD en tu entorno local antes de ejecutar la semilla.'
+\echo 'Configura ALLINEDU_DEMO_PASSWORD en tu entorno local antes de ejecutar la semilla.'
 \quit
 \endif
 
@@ -21,7 +21,7 @@ SELECT extensions.crypt(:'demo_password', extensions.gen_salt('bf', 10)) AS demo
 
 BEGIN;
 
-CREATE TEMP TABLE edufast_demo_config (
+CREATE TEMP TABLE allinedu_demo_config (
     students_per_section integer not null,
     sibling_pairs integer not null,
     email_domain text not null,
@@ -31,7 +31,7 @@ CREATE TEMP TABLE edufast_demo_config (
     password_hash text not null
 ) ON COMMIT DROP;
 
-INSERT INTO edufast_demo_config
+INSERT INTO allinedu_demo_config
     (students_per_section, sibling_pairs, email_domain, school_year,
      start_date, end_date, password_hash)
 VALUES
@@ -43,7 +43,7 @@ VALUES
      :'demo_end_date'::date,
      :'demo_password_hash');
 
-CREATE TEMP TABLE edufast_demo_students (
+CREATE TEMP TABLE allinedu_demo_students (
     student_id bigint primary key,
     grade_code text not null,
     section_name text not null,
@@ -51,31 +51,31 @@ CREATE TEMP TABLE edufast_demo_students (
     student_code text not null unique
 ) ON COMMIT DROP;
 
-CREATE TEMP TABLE edufast_demo_sibling_map (
+CREATE TEMP TABLE allinedu_demo_sibling_map (
     student_code text primary key,
     family_key text not null
 ) ON COMMIT DROP;
 
-CREATE TEMP TABLE edufast_demo_families (
+CREATE TEMP TABLE allinedu_demo_families (
     student_id bigint primary key,
     family_key text not null
 ) ON COMMIT DROP;
 
-CREATE TEMP TABLE edufast_demo_guardians (
+CREATE TEMP TABLE allinedu_demo_guardians (
     family_key text primary key,
     apoderado_id bigint not null,
     cuenta_usuario_id bigint not null,
     correo text not null unique
 ) ON COMMIT DROP;
 
-CREATE TEMP TABLE edufast_demo_staff (
+CREATE TEMP TABLE allinedu_demo_staff (
     staff_code text primary key,
     cuenta_usuario_id bigint not null unique
 ) ON COMMIT DROP;
 
 DO $$
 DECLARE
-    cfg edufast_demo_config%rowtype;
+    cfg allinedu_demo_config%rowtype;
     institution_id bigint;
     school_year_id bigint;
     section record;
@@ -86,16 +86,16 @@ DECLARE
     enrollment_id bigint;
     max_sibling_pairs integer;
 BEGIN
-    SELECT * INTO STRICT cfg FROM edufast_demo_config;
+    SELECT * INTO STRICT cfg FROM allinedu_demo_config;
 
     IF cfg.students_per_section < 1 OR cfg.students_per_section > 100 THEN
-        RAISE EXCEPTION 'EDUFAST_DEMO_STUDENTS_PER_SECTION debe estar entre 1 y 100';
+        RAISE EXCEPTION 'ALLINEDU_DEMO_STUDENTS_PER_SECTION debe estar entre 1 y 100';
     END IF;
     IF cfg.sibling_pairs < 0 THEN
-        RAISE EXCEPTION 'EDUFAST_DEMO_SIBLING_PAIRS no puede ser negativo';
+        RAISE EXCEPTION 'ALLINEDU_DEMO_SIBLING_PAIRS no puede ser negativo';
     END IF;
     IF cfg.email_domain !~ '^[a-z0-9.-]+$' THEN
-        RAISE EXCEPTION 'EDUFAST_DEMO_EMAIL_DOMAIN no tiene un formato válido';
+        RAISE EXCEPTION 'ALLINEDU_DEMO_EMAIL_DOMAIN no tiene un formato válido';
     END IF;
     IF cfg.end_date < cfg.start_date THEN
         RAISE EXCEPTION 'La fecha de fin del año escolar debe ser posterior a la de inicio';
@@ -176,7 +176,7 @@ BEGIN
             VALUES (enrollment_id, section.section_id, cfg.start_date, 'MATRICULA_INICIAL')
             ON CONFLICT (matricula_id, fecha_inicio) DO NOTHING;
 
-            INSERT INTO edufast_demo_students
+            INSERT INTO allinedu_demo_students
                 (student_id, grade_code, section_name, student_number, student_code)
             VALUES (student_id, section.grade_code,
                     section.section_name, student_number, student_code);
@@ -185,7 +185,7 @@ BEGIN
 END $$;
 
 WITH cfg AS (
-    SELECT sibling_pairs, students_per_section FROM edufast_demo_config
+    SELECT sibling_pairs, students_per_section FROM allinedu_demo_config
 ), grades AS (
     SELECT g.codigo,
            row_number() OVER (ORDER BY n.id, g.numero)::integer AS grade_order
@@ -208,7 +208,7 @@ WITH cfg AS (
     FROM candidates
     WHERE pair_number <= (SELECT sibling_pairs FROM cfg)
 )
-INSERT INTO edufast_demo_sibling_map (student_code, family_key)
+INSERT INTO allinedu_demo_sibling_map (student_code, family_key)
 SELECT format('DEMO-%s-%s-%s', older_grade, section_name, lpad(student_number::text, 3, '0')),
        family_key
 FROM selected
@@ -217,15 +217,15 @@ SELECT format('DEMO-%s-%s-%s', younger_grade, section_name, lpad(student_number:
        family_key
 FROM selected;
 
-INSERT INTO edufast_demo_families (student_id, family_key)
+INSERT INTO allinedu_demo_families (student_id, family_key)
 SELECT student.student_id,
        coalesce(sibling.family_key, 'ALUMNO-' || student.student_code)
-FROM edufast_demo_students student
-LEFT JOIN edufast_demo_sibling_map sibling ON sibling.student_code = student.student_code;
+FROM allinedu_demo_students student
+LEFT JOIN allinedu_demo_sibling_map sibling ON sibling.student_code = student.student_code;
 
 DO $$
 DECLARE
-    cfg edufast_demo_config%rowtype;
+    cfg allinedu_demo_config%rowtype;
     family record;
     person_id bigint;
     account_id bigint;
@@ -237,7 +237,7 @@ DECLARE
     institution_id bigint;
     school_year_id bigint;
 BEGIN
-    SELECT * INTO STRICT cfg FROM edufast_demo_config;
+    SELECT * INTO STRICT cfg FROM allinedu_demo_config;
     SELECT id INTO STRICT institution_id
     FROM public.instituciones_educativas WHERE codigo_modular = 'DEMO-EDUFAST';
     SELECT id INTO STRICT school_year_id
@@ -246,7 +246,7 @@ BEGIN
     SELECT id INTO STRICT apoderado_role_id FROM public.roles WHERE codigo = 'APODERADO';
 
     FOR family IN
-        SELECT family_key FROM edufast_demo_families GROUP BY family_key ORDER BY family_key
+        SELECT family_key FROM allinedu_demo_families GROUP BY family_key ORDER BY family_key
     LOOP
         family_number := family_number + 1;
         guardian_email := format('apoderado.%s@%s',
@@ -295,7 +295,7 @@ BEGIN
               AND ar.vigente_hasta IS NULL
         );
 
-        INSERT INTO edufast_demo_guardians (family_key, apoderado_id, cuenta_usuario_id, correo)
+        INSERT INTO allinedu_demo_guardians (family_key, apoderado_id, cuenta_usuario_id, correo)
         VALUES (family.family_key, guardian_id, account_id, guardian_email)
         ON CONFLICT (family_key) DO UPDATE
             SET apoderado_id = excluded.apoderado_id,
@@ -309,14 +309,14 @@ INSERT INTO public.vinculos_apoderado_estudiante
      vigente_desde, verificado_at)
 SELECT guardian.apoderado_id, family.student_id, 'FAMILIAR', true, false,
        cfg.start_date, now()
-FROM edufast_demo_families family
-JOIN edufast_demo_guardians guardian USING (family_key)
-CROSS JOIN edufast_demo_config cfg
+FROM allinedu_demo_families family
+JOIN allinedu_demo_guardians guardian USING (family_key)
+CROSS JOIN allinedu_demo_config cfg
 ON CONFLICT (apoderado_id, estudiante_id, vigente_desde) DO NOTHING;
 
 DO $$
 DECLARE
-    cfg edufast_demo_config%rowtype;
+    cfg allinedu_demo_config%rowtype;
     staff record;
     person_id bigint;
     account_id bigint;
@@ -330,7 +330,7 @@ DECLARE
     section_id bigint;
     is_tutor_libre boolean;
 BEGIN
-    SELECT * INTO STRICT cfg FROM edufast_demo_config;
+    SELECT * INTO STRICT cfg FROM allinedu_demo_config;
     SELECT id INTO STRICT institution_id
     FROM public.instituciones_educativas WHERE codigo_modular = 'DEMO-EDUFAST';
     SELECT id INTO STRICT school_year_id
@@ -360,7 +360,7 @@ BEGIN
 
         INSERT INTO public.personas
             (nombres, apellidos, tipo_documento, numero_documento)
-        VALUES (staff.display_name, 'Personal Demo EduFast', 'CODIGO_DEMO', document_code)
+        VALUES (staff.display_name, 'Personal Demo AllinEdu', 'CODIGO_DEMO', document_code)
         ON CONFLICT (tipo_documento, numero_documento) DO UPDATE
             SET nombres = excluded.nombres,
                 apellidos = excluded.apellidos
@@ -385,7 +385,7 @@ BEGIN
         supervisor_id := NULL;
         IF staff.supervisor_code IS NOT NULL THEN
             SELECT cuenta_usuario_id INTO STRICT supervisor_id
-            FROM edufast_demo_staff WHERE staff_code = staff.supervisor_code;
+            FROM allinedu_demo_staff WHERE staff_code = staff.supervisor_code;
         END IF;
 
         INSERT INTO public.asignaciones_roles
@@ -404,7 +404,7 @@ BEGIN
               AND ar.vigente_hasta IS NULL
         );
 
-        INSERT INTO edufast_demo_staff (staff_code, cuenta_usuario_id)
+        INSERT INTO allinedu_demo_staff (staff_code, cuenta_usuario_id)
         VALUES (staff.staff_code, account_id)
         ON CONFLICT (staff_code) DO UPDATE
             SET cuenta_usuario_id = excluded.cuenta_usuario_id;

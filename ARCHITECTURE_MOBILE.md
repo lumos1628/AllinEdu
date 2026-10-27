@@ -105,7 +105,7 @@ El flujo de datos es **unidireccional y reactivo**:
 ## 📁 Estructura de Carpetas (Moderno + Escalable)
 
 ```
-mobile/app/src/main/kotlin/com/edufast/mobile/
+mobile/app/src/main/kotlin/com/allinedu/mobile/
 │
 ├── MainActivity.kt                    (Single Activity, punto de entrada)
 ├── MyApp.kt                           (Aplicación config)
@@ -495,7 +495,7 @@ object DatabaseModule {
     @Provides
     @Singleton
     fun provideAppDatabase(context: Context): AppDatabase {
-        return Room.databaseBuilder(context, AppDatabase::class.java, "edufast.db")
+        return Room.databaseBuilder(context, AppDatabase::class.java, "allinedu.db")
             .build()
     }
 }

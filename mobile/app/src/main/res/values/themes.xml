@@ -2,7 +2,7 @@
 <resources>
     <!-- Fondo negro de AllinEdu desde el arranque (sin destello blanco).
          Las barras del sistema las ajusta MainActivity según el modo oscuro/claro. -->
-    <style name="Theme.EduFast" parent="android:Theme.Material.NoActionBar">
+    <style name="Theme.AllinEdu" parent="android:Theme.Material.NoActionBar">
         <item name="android:windowBackground">@color/allin_background</item>
     </style>
 </resources>

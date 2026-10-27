@@ -4,7 +4,7 @@ const BASE = '/api/v1'
 
 // Evento que avisa a la UI (App.tsx) que la sesión dejó de ser válida.
 // La capa de servicios no manipula el DOM: solo notifica.
-export const SESSION_EXPIRED_EVENT = 'edufast:session-expired'
+export const SESSION_EXPIRED_EVENT = 'allinedu:session-expired'
 
 // El backend no respondió (servidor apagado, sin red, CORS...). Se distingue
 // de un 401 para que la UI no confunda un problema de red con credenciales.
@@ -16,7 +16,7 @@ export class NetworkError extends Error {
 }
 
 function getToken(): string | null {
-  return localStorage.getItem('edufast_token')
+  return localStorage.getItem('allinedu_token')
 }
 
 function authHeaders(): Record<string, string> {
@@ -223,18 +223,18 @@ export async function login(email: string, password: string): Promise<LoginRespo
   if (res.status === 401) throw new Error('Credenciales inválidas')
   if (!res.ok) throw new NetworkError()
   const data = (await res.json()) as LoginResponse
-  localStorage.setItem('edufast_token', data.token)
-  localStorage.setItem('edufast_name', data.name)
+  localStorage.setItem('allinedu_token', data.token)
+  localStorage.setItem('allinedu_name', data.name)
   return data
 }
 
 export function logout(): void {
-  localStorage.removeItem('edufast_token')
-  localStorage.removeItem('edufast_name')
+  localStorage.removeItem('allinedu_token')
+  localStorage.removeItem('allinedu_name')
 }
 
 export function loggedName(): string {
-  return localStorage.getItem('edufast_name') ?? ''
+  return localStorage.getItem('allinedu_name') ?? ''
 }
 
 export async function getMySections(): Promise<Section[]> {

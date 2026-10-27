@@ -6,20 +6,20 @@ plugins {
 }
 
 android {
-    namespace = "com.edufast.mobile"
+    namespace = "com.allinedu.mobile"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.edufast.mobile"
+        applicationId = "com.allinedu.mobile"
         minSdk = 26
         targetSdk = 35
         versionCode = 1
         versionName = "0.1.0"
     }
 
-    val debugApiBaseUrl = providers.gradleProperty("edufast.debugApiBaseUrl")
+    val debugApiBaseUrl = providers.gradleProperty("allinedu.debugApiBaseUrl")
         .getOrElse("http://10.0.2.2:8080")
-    val releaseApiBaseUrl = providers.gradleProperty("edufast.apiBaseUrl")
+    val releaseApiBaseUrl = providers.gradleProperty("allinedu.apiBaseUrl")
         .getOrElse("")
 
     buildTypes {
